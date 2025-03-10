@@ -17,7 +17,7 @@ class SetupMiddleware
             Artisan::call('key:generate');
             Artisan::call('config:cache');
         }
-        $setupStatus = setupStatus();
+        /* $setupStatus = setupStatus();
         if ($request->is('setup/*')) {
             if ($setupStatus) {
                 return redirect()->route('home');
@@ -27,7 +27,7 @@ class SetupMiddleware
         }
         if (! $setupStatus) {
             return redirect()->route('setup.verify');
-        }
+        } */
 
         return $next($request);
     }
