@@ -133,11 +133,32 @@
                                                 </li>
                                             @endif
                                         @endforeach
-                                              <!--  bouton "Mon Espace" -->
+                                              <!--  bouton "inscription" -->
                                               <li class="menu-item">
-                                                <a href="\" class="btn btn-primary" title="Mon Espace"   style="margin-left: 550px;  border-radius: 50px;height: -10%">Inscription</a>
-
+                                                <a href="\" class="btn btn-primary custom-btn" title="Mon Espace">
+                                                    Inscription
+                                                </a>
                                             </li>
+                                            <style>
+                                            .custom-btn {
+                                                width: 200px; /* Largeur du bouton */
+                                                height: 20px; /* Hauteur du bouton */
+                                                color: white; /* Texte en blanc */
+                                                text-align: center; /* Centrer le texte */
+                                                display: flex;
+                                                align-items: center; /* Centrer verticalement */
+                                                justify-content: center; /* Centrer horizontalement */
+                                                margin-left: 450px;
+
+
+                                            }
+
+                                            .custom-btn:hover {
+                                                color: black; /* Texte en noir au survol */
+                                                border: 2px solid black; /* Bordure noire au survol */
+                                            }
+
+</style>
 
 
 
