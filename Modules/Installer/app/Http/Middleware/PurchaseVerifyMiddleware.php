@@ -19,7 +19,7 @@ class PurchaseVerifyMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (strtolower(config('app.app_mode')) == 'demo') {
+        /* if (strtolower(config('app.app_mode')) == 'demo') {
             return $next($request);
         }
 
@@ -46,7 +46,8 @@ class PurchaseVerifyMiddleware
             return $next($request);
         }
 
-        return $this->invalidHashed();
+        return $this->invalidHashed(); */
+        return $next($request);
     }
 
     private function invalidHashed()
