@@ -18,7 +18,7 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link {{ session('profile_tab') == 'bio' ? 'active' : '' }}" id="itemFour-tab" data-bs-toggle="tab"
                                 data-bs-target="#itemFour-tab-pane" type="button" role="tab"
-                                aria-controls="itemFour-tab-pane" aria-selected="true">{{ __('Biography') }}</button>
+                                aria-controls="itemFour-tab-pane" aria-selected="true">{{ __('Biographie') }}</button>
                         </li>
 
                         <li class="nav-item" role="presentation">

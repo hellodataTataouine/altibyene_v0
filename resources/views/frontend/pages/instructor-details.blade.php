@@ -1,9 +1,9 @@
 @extends('frontend.layouts.master')
-@section('meta_title', 'Instructor Details' . ' || ' . $setting->app_name)
+@section('meta_title', 'Détails de l\'instructeur' . ' || ' . $setting->app_name)
 
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('Détails de l instructeur')" :links="[['url' => route('home'), 'text' => __('Home')], ['url' => '', 'text' => __('Détails de l instructeur')]]" />
+    <x-frontend.breadcrumb :title="__('Détails de l\'instructeur')" :links="[['url' => route('home'), 'text' => __('Home')], ['url' => '', 'text' => __('Détails de l\'instructeur')]]" />
     <!-- breadcrumb-area-end -->
 
     <!-- instructor-details-area -->
@@ -90,7 +90,7 @@
                                 <ul class="list-wrap">
                                     <li class="avg-rating"><i
                                             class="fas fa-star"></i>({{ number_format($instructor->courses->avg('avg_rating'), 1) }}
-                                        {{ __('Reviews') }})</li>
+                                        {{ __('Avis') }})</li>
                                     <li><i class="far fa-envelope"></i><a
                                             href="mailto:{{ $instructor->email }}">{{ $instructor->email }}</a></li>
                                     @if ($instructor?->country?->name)
@@ -124,7 +124,7 @@
                             </div>
                         </div>
                         <div class="instructor__details-biography">
-                            <h4 class="title">{{ __('Biography') }}</h4>
+                            <h4 class="title">{{ __('Biographie') }}</h4>
                             <p>{!! clean(nl2br($instructor->bio)) !!}</p>
                         </div>
                         <div class="instructor__details-Skill">

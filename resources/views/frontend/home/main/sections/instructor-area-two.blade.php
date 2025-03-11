@@ -19,7 +19,7 @@
                           <h3 class="title"><a href="{{ route('register') }}">{{ __('Devenez instructeur') }}</a></h3>
                           <p>{{ __('Rejoignez notre équipe pour inspirer les étudiants, partager vos connaissances et façonner l avenir') }}.</p>
                           <div class="tg-button-wrap">
-                              <a href="{{ route('register') }}" class="btn arrow-btn">{{ __('S inscrire ') }} <img
+                              <a href="{{ route('register') }}" class="btn arrow-btn">{{ __('S\'inscrire ') }} <img
                                       src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt="img"
                                       class="injectable"></a>
                           </div>
@@ -44,7 +44,7 @@
                           <p>{{ __('Libérez votre potentiel en rejoignant notre dynamique') }}.</p>
                           </p>
                           <div class="tg-button-wrap">
-                              <a href="{{ route('register') }}" class="btn arrow-btn">{{ __('S inscrire ') }} <img
+                              <a href="{{ route('register') }}" class="btn arrow-btn">{{ __('S\'inscrire  ') }} <img
                                       src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt="img"
                                       class="injectable"></a>
                           </div>

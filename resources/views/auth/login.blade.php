@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('meta_title', 'Login'. ' || ' . $setting->app_name)
+@section('meta_title', 'Se connecter'. ' || ' . $setting->app_name)
 @section('contents')
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb

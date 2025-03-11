@@ -83,12 +83,6 @@
               once: true, // L'animation se déclenche une seule fois
             });
           </script>
-
-
-
-
-
-
 <!-- Presentatio Attebyan-end  -->
 
     @if ($sectionSetting?->top_category_section)
@@ -108,7 +102,6 @@
         @include('frontend.home.main.sections.about-area')
         <!-- about-area-end -->
     @endif
-
     @if ($sectionSetting?->featured_course_section)
         <!-- course-area -->
         @include('frontend.home.main.sections.course-area')

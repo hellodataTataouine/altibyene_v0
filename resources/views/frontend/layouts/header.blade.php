@@ -135,7 +135,7 @@
                                         @endforeach
                                               <!--  bouton "inscription" -->
                                               <li class="menu-item">
-                                                <a href="\" class="btn btn-primary custom-btn" title="Mon Espace">
+                                                <a href="\" class="btn btn-primary custom-btn" title=" Inscription">
                                                     Inscription
                                                 </a>
                                             </li>
