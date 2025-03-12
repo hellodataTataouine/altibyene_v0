@@ -3,7 +3,7 @@
       <div class="row justify-content-center">
           <div class="col-xl-6">
               <div class="section__title white-title text-center mb-50">
-                  <span class="sub-title">{{ __('Ce n est que le début.') }}</span>
+                  <span class="sub-title">{{ __('Ce n\'est que le début.') }}</span>
                   <h2 class="title">{{ __('Les médailles du comportement ') }}</h2>
                   <p>{{ __('Favoriser l’épanouissement moral et spirituel des élèves en valorisant les comportements exemplaires selon les principes du Coran et de la Sunnah') }}</p>
               </div>
