@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('meta_title', 'Error' . ' || ' . $setting->app_name)
+@section('meta_title', 'Erreur' . ' || ' . $setting->app_name)
 
 @section('contents')
     <!-- breadcrumb-area -->

@@ -1,10 +1,10 @@
 @extends('frontend.layouts.master')
-@section('meta_title', $seo_setting['course_page']['seo_title'])
-@section('meta_description', $seo_setting['course_page']['seo_description'])
+@section('meta_title', $seo_setting['cours_page']['seo_title'])
+@section('meta_description', $seo_setting['cours_page']['seo_description'])
 
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('Cours')" :links="[['url' => route('home'), 'text' => __('Home')], ['url' => '', 'text' => __('Cours')]]" />
+    <x-frontend.breadcrumb :title="__('Cours')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __('Cours')]]" />
     <!-- breadcrumb-area-end -->
 
     <!-- all-courses -->

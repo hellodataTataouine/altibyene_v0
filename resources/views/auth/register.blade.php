@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('meta_title', 'Register'. ' || ' . $setting->app_name)
+@section('meta_title', 'Registre'. ' || ' . $setting->app_name)
 
 @section('contents')
     <!-- breadcrumb-area -->
@@ -28,7 +28,7 @@
                         @endif
                         <form method="POST" action="{{ route('register') }}" class="account__form">
                             @csrf
-                            
+
                             <div class="row gutter-20">
                                 <div class="col-md-12">
                                     <div class="form-grp">

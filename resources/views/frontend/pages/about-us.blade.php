@@ -5,7 +5,7 @@
 
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('Présentation attebyan')" :links="[['url' => route('home'), 'text' => __('Home')], ['url' => '', 'text' => __('présentation attebyan')]]" />
+    <x-frontend.breadcrumb :title="__('Présentation attebyan')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __('présentation attebyan')]]" />
     <!-- breadcrumb-area-end -->
 <style>
 .about-section {
@@ -55,7 +55,8 @@
             mais aussi capables d'appliquer ces connaissances avec sagesse et responsabilité.
         </p>
     </div>
-    <!-- Image/Vidéo -->
+    <!-- Image/Vidéo-->
+
     <div class="col-md-6 text-center" data-aos="fade-left"   >
         <video class="img-fluid custom-frame" width="100%" controls>
             <source src='uploads/custom-images/recitation.mov' type="video/mp4"style="width: 50%">
@@ -66,7 +67,7 @@
 </div>
 </section>
 
-<!-- Section Fondements -->
+<!-- Section Fondements
 <section class="about-section ">
 <div class="container">
 <div class="row">

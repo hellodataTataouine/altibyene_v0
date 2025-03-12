@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('meta_title', 'Order Fail'. ' || ' . $setting->app_name)
+@section('meta_title', 'Échec de la commande'. ' || ' . $setting->app_name)
 
 @section('contents')
     <!-- breadcrumb-area -->
@@ -18,7 +18,7 @@
                     <h6 class="mt-2">{{ __('Your order has been fail') }}</h6>
                     <p>{{ __('Please try again for more details connect with us') }}</p>
                     <a href="{{ route('student.dashboard') }}" class="btn btn-primary">{{ __('Go to Dashboard') }}</a>
-                </div>     
+                </div>
             </div>
         </div>
     </div>

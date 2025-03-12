@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('meta_title', 'Become Instructor'. ' || ' . $setting->app_name)
+@section('meta_title', 'Devenez instructeur'. ' || ' . $setting->app_name)
 @section('contents')
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb
@@ -44,7 +44,7 @@
                                 <label for="payout_account">{{ __('Payout Account') }} <code>*</code></label>
                                 <select name="payout_account" id="payout_account" class="form-select">
                                     <option value="">{{ __('Select') }}</option>
-                                    @foreach ($withdrawMethods as $method)  
+                                    @foreach ($withdrawMethods as $method)
                                         <option  value="{{ $method->name }}">{{ $method->name }}</option>
                                     @endforeach
 
@@ -54,7 +54,7 @@
                             <div class=" payment_info_wrap d-none">
                                 <div class="form-grp">
                                     <label for="payment_information">{{ __('Payment Information') }} <code>*</code></label>
-                                    @foreach ($withdrawMethods as $method)  
+                                    @foreach ($withdrawMethods as $method)
                                     <div class="normal-text payment-{{ $method->name }} payment-info">
                                         {!! clean($method->description) !!}
                                     </div>

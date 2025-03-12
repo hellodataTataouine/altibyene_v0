@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('meta_title', 'Order Completed' . ' || ' . $setting->app_name)
+@section('meta_title', 'Commande terminée' . ' || ' . $setting->app_name)
 
 @section('contents')
     <!-- breadcrumb-area -->

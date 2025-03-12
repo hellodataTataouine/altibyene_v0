@@ -1,4 +1,4 @@
-<section class="courses-area section-pt-120 section-pb-90">
+<section class="courses-area section-pt-120 section-pb-90" style="margin-top:-8%";>
     <div class="container">
         <div class="section__title-wrap">
             <div class="row justify-content-center">
@@ -28,7 +28,7 @@
                                 <button class="nav-link active" id="all-tab" data-bs-toggle="tab"
                                     data-bs-target="#all-tab-pane" type="button" role="tab"
                                     aria-controls="all-tab-pane" aria-selected="true">
-                                    {{ __('All Courses') }}
+                                    {{ __('Tous les cours') }}
                                 </button>
                             </li>
                             @if ($featuredCourse?->category_one_status == 1)
@@ -207,7 +207,7 @@
                                         <h3 class="title"><a
                                                 href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a>
                                         </h3>
-                                        <p class="author">{{ __('By') }} <a
+                                        <p class="author">{{ __('Par') }} <a
                                                 href="{{ route('instructor-details', ['id' => $course->instructor->id, 'slug' => Str::slug($course->instructor->name)]) }}">{{ $course->instructor->name }}</a>
                                         </p>
                                         <div class="courses__item-bottom">
@@ -231,7 +231,7 @@
                                                 <div class="button">
                                                     <a href="javascript:;" class="add-to-cart"
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('Add To Cart') }}</span>
+                                                        <span class="text">{{ __('Ajouter au panier') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
@@ -288,7 +288,7 @@
                                         <h3 class="title"><a
                                                 href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a>
                                         </h3>
-                                        <p class="author">{{ __('By') }} <a
+                                        <p class="author">{{ __('Par') }} <a
                                                 href="{{ route('instructor-details', ['id' => $course->instructor->id, 'slug' => Str::slug($course->instructor->name)]) }}">{{ $course->instructor->name }}</a>
                                         </p>
                                         <div class="courses__item-bottom">
@@ -368,7 +368,7 @@
                                         <h3 class="title"><a
                                                 href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a>
                                         </h3>
-                                        <p class="author">{{ __('By') }} <a
+                                        <p class="author">{{ __('Par') }} <a
                                                 href="{{ route('instructor-details', ['id' => $course->instructor->id, 'slug' => Str::slug($course->instructor->name)]) }}">{{ $course->instructor->name }}</a>
                                         </p>
                                         <div class="courses__item-bottom">
@@ -448,7 +448,7 @@
                                         <h3 class="title"><a
                                                 href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a>
                                         </h3>
-                                        <p class="author">{{ __('By') }} <a
+                                        <p class="author">{{ __('Par') }} <a
                                                 href="{{ route('instructor-details', ['id' => $course->instructor->id, 'slug' => Str::slug($course->instructor->name)]) }}">{{ $course->instructor->name }}</a>
                                         </p>
                                         <div class="courses__item-bottom">
@@ -528,7 +528,7 @@
                                         <h3 class="title"><a
                                                 href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a>
                                         </h3>
-                                        <p class="author">{{ __('By') }} <a
+                                        <p class="author">{{ __('Par') }} <a
                                                 href="{{ route('instructor-details', ['id' => $course->instructor->id, 'slug' => Str::slug($course->instructor->name)]) }}">{{ $course->instructor->name }}</a>
                                         </p>
                                         <div class="courses__item-bottom">
@@ -608,7 +608,7 @@
                                         <h3 class="title"><a
                                                 href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a>
                                         </h3>
-                                        <p class="author">{{ __('By') }} <a
+                                        <p class="author">{{ __('Par') }} <a
                                                 href="{{ route('instructor-details', ['id' => $course->instructor->id, 'slug' => Str::slug($course->instructor->name)]) }}">{{ $course->instructor->name }}</a>
                                         </p>
                                         <div class="courses__item-bottom">

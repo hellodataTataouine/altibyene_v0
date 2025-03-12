@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('meta_title', 'Reset Password'. ' || ' . $setting->app_name)
+@section('meta_title', 'Réinitialiser le mot de passe'. ' || ' . $setting->app_name)
 
 @section('contents')
     <!-- breadcrumb-area -->

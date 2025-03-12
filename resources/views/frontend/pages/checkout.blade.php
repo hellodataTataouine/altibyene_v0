@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('meta_title', 'Checkout' . ' || ' . $setting->app_name)
+@section('meta_title', 'Vérifier' . ' || ' . $setting->app_name)
 @section('contents')
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb :title="__('Make Payment')" :links="[
