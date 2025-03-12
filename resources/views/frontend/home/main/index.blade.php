@@ -11,7 +11,7 @@
         <!-- banner-area-end -->
     @endif
           <!--presentataion attebyan --->
-          <section class="presentation  offset-md-2 mt-6" style="margin-top:10%; margin-left:12%;">
+          <section class="presentation  offset-md-2 mt-6" style="margin-top:5%; margin-left:12%;">
 
             <div class="container-fluid">
               <div class="row align-items-center">

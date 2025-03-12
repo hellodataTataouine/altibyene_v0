@@ -1,4 +1,4 @@
-<section class="courses-area section-pt-120 section-pb-90">
+<section class="courses-area section-pt-120 section-pb-90" style="margin-top:-8%";>
     <div class="container">
         <div class="section__title-wrap">
             <div class="row justify-content-center">

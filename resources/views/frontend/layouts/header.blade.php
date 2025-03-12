@@ -134,34 +134,22 @@
                                             @endif
                                         @endforeach
                                               <!--  bouton "inscription" -->
-                                              <li class="menu-item">
-                                                <a href="\" class="btn btn-primary custom-btn" title=" Inscription">
-                                                    Inscription
+                                              <li class="menu-item" style=" margin-left: 450px;">
+                                                <a href="{{ url('/inscription') }}"class="btn btn-primary custom-btn" title=" Inscription"  style=" color: white;font-size:20px;">
+                                                    <strong>Inscription</strong>
                                                 </a>
                                             </li>
                                             <style>
-                                            .custom-btn {
+                                              .custom-btn {
                                                 width: 200px; /* Largeur du bouton */
-                                                height: 20px; /* Hauteur du bouton */
+                                                height: 10px; /* Hauteur du bouton */
                                                 color: white; /* Texte en blanc */
                                                 text-align: center; /* Centrer le texte */
                                                 display: flex;
                                                 align-items: center; /* Centrer verticalement */
                                                 justify-content: center; /* Centrer horizontalement */
-                                                margin-left: 450px;
 
-
-                                            }
-
-                                            .custom-btn:hover {
-                                                color: black; /* Texte en noir au survol */
-                                                border: 2px solid black; /* Bordure noire au survol */
-                                            }
-
-</style>
-
-
-
+                                            }</style>
                                     </ul><!-- /.menu -->
                                 @endif
 

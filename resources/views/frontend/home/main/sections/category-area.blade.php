@@ -1,4 +1,4 @@
-<section class="categories-area section-py-120">
+<section class="categories-area section-py-120" style="margin-top: -2%">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-7">
