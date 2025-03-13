@@ -4,7 +4,7 @@
 @section('contents')
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb :title="__('Actualité et evénement ')" :links="[
-        ['url' => route('home'), 'text' => __('Home')],
+        ['url' => route('home'), 'text' => __('Accueil')],
         ['url' => route('blogs'), 'text' => __('Actualité et evénement ')],
     ]" />
     <!-- breadcrumb-area-end -->

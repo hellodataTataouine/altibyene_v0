@@ -28,10 +28,10 @@
                                                 <div class="col-xl-7">
                                                     <div class="courses__item-content courses__item-content-two">
                                                         <ul class="courses__item-meta list-wrap">
-                                                            <li class="courses__item-tag">
+                                                           {{-- <li class="courses__item-tag">
                                                                 <a
                                                                     href="javascript:;">{{ $enroll->course->category->translation->name }}</a>
-                                                            </li>
+                                                            </li>  --}}
                                                         </ul>
 
                                                         <h5 class="title"><a

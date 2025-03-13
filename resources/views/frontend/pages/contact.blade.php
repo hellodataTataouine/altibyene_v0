@@ -3,7 +3,7 @@
 @section('meta_description', $seo_setting['contact_page']['seo_description'])
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('Contactez-nous')" :links="[['url' => route('home'), 'text' => __('Home')], ['url' => '', 'text' => __('Contactez-nous')]]" />
+    <x-frontend.breadcrumb :title="__('Contactez-nous')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __('Contactez-nous')]]" />
     <!-- breadcrumb-area-end -->
     <!-- contact-area -->
     <section class="contact-area section-py-120">

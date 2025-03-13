@@ -237,10 +237,10 @@
                                                     </div>
                                                     <div class="courses__item-content">
                                                         <ul class="courses__item-meta list-wrap">
-                                                            <li class="courses__item-tag">
+                                                            {{--    <li class="courses__item-tag">
                                                                 <a
                                                                     href="course.html">{{ $course->category->translation->name }}</a>
-                                                            </li>
+                                                            </li>--}}
                                                             <li class="avg-rating"><i class="fas fa-star"></i>
                                                                 {{ number_format($course->reviews()->avg('rating'), 1) ?? 0 }}
                                                             </li>
