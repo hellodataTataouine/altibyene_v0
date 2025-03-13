@@ -196,10 +196,10 @@
                                     </div>
                                     <div class="courses__item-content">
                                         <ul class="courses__item-meta list-wrap">
-                                            <li class="courses__item-tag">
+                                  {{--  <li class="courses__item-tag">
                                                 <a
                                                     href="{{ route('courses', ['category' => $course->category->id]) }}">{{ $course->category?->name }}</a>
-                                            </li>
+                                            </li>--}}
                                             <li class="avg-rating"><i class="fas fa-star"></i>
                                                 {{ number_format($course->avg_rating, 1) ?? 0 }}
                                             </li>
@@ -277,10 +277,10 @@
                                     </div>
                                     <div class="courses__item-content">
                                         <ul class="courses__item-meta list-wrap">
-                                            <li class="courses__item-tag">
+                                           {{-- <li class="courses__item-tag">
                                                 <a
                                                     href="{{ route('courses', ['category' => $course->category->id]) }}">{{ $course->category?->name }}</a>
-                                            </li>
+                                            </li>--}}
                                             <li class="avg-rating"><i class="fas fa-star"></i>
                                                 {{ number_format($course->avg_rating, 1) ?? 0 }}
                                             </li>
@@ -357,10 +357,10 @@
                                     </div>
                                     <div class="courses__item-content">
                                         <ul class="courses__item-meta list-wrap">
-                                            <li class="courses__item-tag">
+                                                {{--<li class="courses__item-tag">
                                                 <a
                                                     href="{{ route('courses', ['category' => $course->category->id]) }}">{{ $course->category?->name }}</a>
-                                            </li>
+                                            </li>--}}
                                             <li class="avg-rating"><i class="fas fa-star"></i>
                                                 {{ number_format($course->avg_rating, 1) ?? 0 }}
                                             </li>
@@ -437,10 +437,10 @@
                                     </div>
                                     <div class="courses__item-content">
                                         <ul class="courses__item-meta list-wrap">
-                                            <li class="courses__item-tag">
+                                           {{-- <li class="courses__item-tag">
                                                 <a
                                                     href="{{ route('courses', ['category' => $course->category->id]) }}">{{ $course->category?->name }}</a>
-                                            </li>
+                                            </li>--}}
                                             <li class="avg-rating"><i class="fas fa-star"></i>
                                                 {{ number_format($course->avg_rating, 1) ?? 0 }}
                                             </li>
@@ -517,10 +517,10 @@
                                     </div>
                                     <div class="courses__item-content">
                                         <ul class="courses__item-meta list-wrap">
-                                            <li class="courses__item-tag">
+                                            {{-- <li class="courses__item-tag">
                                                 <a
                                                     href="{{ route('courses', ['category' => $course->category->id]) }}">{{ $course->category?->name }}</a>
-                                            </li>
+                                            </li>--}}
                                             <li class="avg-rating"><i class="fas fa-star"></i>
                                                 {{ number_format($course->avg_rating, 1) ?? 0 }}
                                             </li>
@@ -597,10 +597,10 @@
                                     </div>
                                     <div class="courses__item-content">
                                         <ul class="courses__item-meta list-wrap">
-                                            <li class="courses__item-tag">
+                                           {{-- <li class="courses__item-tag">
                                                 <a
                                                     href="{{ route('courses', ['category' => $course->category->id]) }}">{{ $course->category?->name }}</a>
-                                            </li>
+                                            </li>--}}
                                             <li class="avg-rating"><i class="fas fa-star"></i>
                                                 {{ number_format($course->avg_rating, 1) ?? 0 }}
                                             </li>

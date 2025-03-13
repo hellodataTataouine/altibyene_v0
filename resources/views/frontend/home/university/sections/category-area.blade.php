@@ -22,7 +22,7 @@
                                                 <img src="{{ asset($category->icon) }}" alt="">
                                             </div>
                                             <span class="name">{{ $category?->name }}</span>
-                                            <span
+                                                 <span
                                                 class="courses">({{ $category->subCategories->sum('courses_count') }})</span>
                                         </a>
                                     </div>
