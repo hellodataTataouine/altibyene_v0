@@ -15,8 +15,7 @@
                         <a href="{{ route('courses', ['main_category' => $category->slug]) }}">
                             <div class="content">
                                 <img src="{{ asset($category?->icon) }}" alt="img">
-                                <span
-                                    class="name"><strong>{{ $category?->translation?->name }}</strong>{{ $category->subCategories->sum('courses_count') }}
+               <spanclass="name"><strong>{{ $category?->translation?->name }}</strong>{{ $category->subCategories->sum('courses_count') }}
                                     {{ __('Courses') }}</span>
                             </div>
                             <div class="icon">
