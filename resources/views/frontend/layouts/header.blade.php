@@ -39,10 +39,9 @@
                                 </ul>
                             @endif
                             <div class="header_language_area d-flex flex-wrap d-none d-xl-flex">
-
                                 <ul>
-                                    <li>
-                                        @if (count(allLanguages()?->where('status', 1)) > 1)
+                                   {{-- <li>
+                                  @if (count(allLanguages()?->where('status', 1)) > 1)
                                             <form action="{{ route('set-language') }}" id="setLanguageHeader">
                                                 <select name="code" class="select_js">
                                                     @forelse (allLanguages()?->where('status', 1) as $language)
@@ -51,15 +50,32 @@
                                                             {{ $language->name }}
                                                         </option>
                                                     @empty
-                                                        <option value="en"
-                                                            {{ getSessionLanguage() == 'en' ? 'selected' : '' }}>
-                                                            {{ __('English') }}
+                                                        <option value="fr"
+                                                            {{ getSessionLanguage() == 'fr' ? 'selected' : '' }}>
+                                                            {{ __('Francais') }}
                                                         </option>
                                                     @endforelse
                                                 </select>
                                             </form>
                                         @endif
+                                    </li>--}}
+
+                                    <li>
+                                        @php
+                                            $frenchLanguage = allLanguages()?->where('code', 'fr')->where('status', 1)->first();
+                                        @endphp
+
+                                        @if ($frenchLanguage)
+                                            <form action="{{ route('set-language') }}" id="setLanguageHeader">
+                                                <select name="code" class="select_js">
+                                                    <option value="{{ $frenchLanguage->code }}" {{ getSessionLanguage() == 'fr' ? 'selected' : '' }}>
+                                                        {{ $frenchLanguage->name }}
+                                                    </option>
+                                                </select>
+                                            </form>
+                                        @endif
                                     </li>
+
                                     <li>
                                         @if (count(allCurrencies()?->where('status', 'active')) > 1)
                                             <form action="{{ route('set-currency') }}" class="set-currency-header"
