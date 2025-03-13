@@ -2,7 +2,7 @@
 @section('meta_title', __('Notre équipe ') . ' || ' . $setting->app_name)
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('Notre équipe')" :links="[['url' => route('home'), 'text' => __('Home')], ['url' => '', 'text' => __('Notre équipe')]]" />
+    <x-frontend.breadcrumb :title="__('Notre équipe')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __('Notre équipe')]]" />
     <!-- breadcrumb-area-end -->
     <!-- instructor-area -->
     <section class="instructor__area">

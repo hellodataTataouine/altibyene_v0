@@ -1,11 +1,18 @@
 @extends('frontend.layouts.master')
-@section('meta_title', $seo_setting['cours_page']['seo_title'])
-@section('meta_description', $seo_setting['cours_page']['seo_description'])
+
+@section('meta_title', $seo_setting['about_page']['seo_title'])
+@section('meta_description', $seo_setting['about_page']['seo_description'])
 
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('Boutique')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __('Boutique')]]" />
+    <x-frontend.breadcrumb :title="__('Cours')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __('Cours')]]" />
     <!-- breadcrumb-area-end -->
+
+
+    <div class="container">
+        <h1>Bienvenue sur ma page Laravel</h1>
+        <p>Ceci est une page créée avec Laravel.</p>
+    </div>
 
     <!-- all-courses -->
     <section class="all-courses-area section-py-120 top-baseline">

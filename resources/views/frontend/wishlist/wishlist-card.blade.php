@@ -32,10 +32,10 @@
                 </div>
                 <div class="courses__item-content-three">
                     <ul class="courses__item-meta list-wrap">
-                        <li class="courses__item-tag">
+                    {{--   <li class="courses__item-tag">
                             <a
                                 href="{{ route('courses', ['category' => $course->category->id]) }}">{{ $course->category?->name }}</a>
-                        </li>
+                        </li>--}}
                         <li class="courses__wishlist">
                             <a href="javascript:;" class="wsus-wishlist-remove"
                                 data-slug="{{ $course?->slug }}">
