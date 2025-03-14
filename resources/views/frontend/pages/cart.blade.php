@@ -3,7 +3,7 @@
 
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('Cart')" :links="[['url' => route('home'), 'text' => __('Home')], ['url' => route('cart'), 'text' => __('Cart')]]" />
+    <x-frontend.breadcrumb :title="__('Panier')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('cart'), 'text' => __('Panier')]]" />
     <!-- breadcrumb-area-end -->
 
     <!-- cart-area -->
@@ -20,7 +20,7 @@
                                     d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                             </svg>
                             <div>
-                                {{ __('You have items in your cart that you already purchased. before proceed please remove those from cart ') }}
+                                {{ __('Vous avez des articles dans votre panier que vous avez déjà achetés. Avant de continuer, veuillez les supprimer du panier. ') }}
                             </div>
                         </div>
                     @elseif (in_array($item?->course?->id, session()->get('instructor_courses')))
@@ -32,7 +32,7 @@
                                     d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                             </svg>
                             <div>
-                                {{ __('You have your own courses in your cart. before proceed please remove those from cart ') }}
+                                {{ __('Vous avez vos propres cours dans votre panier. Avant de continuer, veuillez les supprimer du panier. ') }}
                             </div>
                         </div>
                     @endif
@@ -45,8 +45,8 @@
                                 <thead>
                                     <tr>
                                         <th class="product__thumb">&nbsp;</th>
-                                        <th class="product__name">{{ __('Course') }}</th>
-                                        <th class="product__price">{{ __('Price') }}</th>
+                                        <th class="product__name">{{ __('Cours') }}</th>
+                                        <th class="product__price">{{ __('Prix') }}</th>
                                         <th class="product__remove">&nbsp;</th>
                                     </tr>
                                 </thead>
@@ -79,8 +79,8 @@
                                             <form action="{{ route('apply-coupon') }}" class="cart__actions-form coupon-form"
                                                 method="POST">
                                                 @csrf
-                                                <input type="text" name="coupon" placeholder="Coupon code">
-                                                <button type="submit" class="btn">{{ __('Apply coupon') }}</button>
+                                                <input type="text" name="coupon" placeholder="Code promo">
+                                                <button type="submit" class="btn">{{ __('Appliquer le promo') }}</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -89,9 +89,9 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="cart__collaterals-wrap">
-                                <h2 class="title">{{ __('Cart totals') }}</h2>
+                                <h2 class="title">{{ __('Totaux du panier') }}</h2>
                                 <ul class="list-wrap">
-                                    <li>{{ __('Total Items') }}<span>{{ $cart_count }}</span></li>
+                                    <li>{{ __('Total des articles') }}<span>{{ $cart_count }}</span></li>
                                     <li>
                                         @if (Session::has('coupon_code'))
                                             <p class="coupon-discount m-0">
@@ -110,7 +110,7 @@
                                     </li>
                                     <li>{{ __('Total') }} <span class="amount">{{ $total }}</span></li>
                                 </ul>
-                                <a href="{{ route('checkout.index') }}" class="btn">{{ __('Proceed to checkout') }}</a>
+                                <a href="{{ route('checkout.index') }}" class="btn">{{ __('Passer à la caisse') }}</a>
                             </div>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                         <img class="mb-4" src="{{ asset('uploads/website-images/empty-cart.png') }}" alt="">
                         <h4 class="text-center">{{ __('Cart is empty!') }}</h4>
                         <p class="text-center">
-                            {{ __('Please add some courses in your cart.') }}
+                            {{ __('Veuillez ajouter des cours dans votre panier.') }}
                         </p>
                     </div>
                 @endif
@@ -146,7 +146,7 @@
                                     d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                             </svg>
                             <div>
-                                {{ __('You have your own courses in your cart. before proceed please remove those from cart ') }}
+                                {{ __('Vous avez vos propres cours dans votre panier. Avant de continuer, veuillez les supprimer du panier. ') }}
                             </div>
                         </div>
                     @endif
@@ -159,8 +159,8 @@
                                 <thead>
                                     <tr>
                                         <th class="product__thumb">&nbsp;</th>
-                                        <th class="product__name">{{ __('Course') }}</th>
-                                        <th class="product__price">{{ __('Price') }}</th>
+                                        <th class="product__name">{{ __('Cours') }}</th>
+                                        <th class="product__price">{{ __('Prix') }}</th>
                                         <th class="product__remove">&nbsp;</th>
                                     </tr>
                                 </thead>
@@ -176,9 +176,9 @@
                                                     href="{{ route('course.show', $product->options['slug']) }}">{{ $product->name }}</a>
                                                 <br>
                                                 @if (in_array($product->id, session()->get('enrollments')))
-                                                    <span class="badge bg-warning mt-2">{{ __('Already purchased') }}</span>
+                                                    <span class="badge bg-warning mt-2">{{ __('Déjà acheté') }}</span>
                                                 @elseif (in_array($product->id, session()->get('instructor_courses')))
-                                                    <span class="badge bg-warning mt-2">{{ __('Own course') }}</span>
+                                                    <span class="badge bg-warning mt-2">{{ __('Propre cours') }}</span>
                                                 @else
                                                 @endif
                                             </td>
@@ -193,8 +193,8 @@
                                             <form action="{{ route('apply-coupon') }}" class="cart__actions-form coupon-form"
                                                 method="POST">
                                                 @csrf
-                                                <input type="text" name="coupon" placeholder="Coupon code">
-                                                <button type="submit" class="btn">{{ __('Apply coupon') }}</button>
+                                                <input type="text" name="coupon" placeholder="Code promo">
+                                                <button type="submit" class="btn">{{ __('Appliquer promo') }}</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -205,7 +205,7 @@
                             <div class="cart__collaterals-wrap">
                                 <h2 class="title">{{ __('Cart totals') }}</h2>
                                 <ul class="list-wrap">
-                                    <li>{{ __('Total Items') }}<span>{{ $cart_count }}</span></li>
+                                    <li>{{ __('Total des articles') }}<span>{{ $cart_count }}</span></li>
                                     <li>
                                         @if (Session::has('coupon_code'))
                                             <p class="coupon-discount m-0">
@@ -224,16 +224,16 @@
                                     </li>
                                     <li>{{ __('Total') }} <span class="amount">{{ $total }}</span></li>
                                 </ul>
-                                <a href="{{ route('checkout.index') }}" class="btn">{{ __('Proceed to checkout') }}</a>
+                                <a href="{{ route('checkout.index') }}" class="btn">{{ __('Passer à la caisse') }}</a>
                             </div>
                         </div>
                     </div>
                 @else
                     <div class="w-100 text-center">
                         <img class="mb-4" src="{{ asset('uploads/website-images/empty-cart.png') }}" alt="">
-                        <h4 class="text-center">{{ __('Cart is empty!') }}</h4>
+                        <h4 class="text-center">{{ __('Le panier est vide!') }}</h4>
                         <p class="text-center">
-                            {{ __('Please add some courses in your cart.') }}
+                            {{ __('Veuillez ajouter des cours dans votre panier.') }}
                         </p>
                     </div>
                 @endif
