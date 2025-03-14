@@ -4,7 +4,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10 col-xl-8">
                     <div class="section__title text-center mb-40">
-                        <span class="sub-title">{{ __('Plans d abonnement mensuels') }}</span>
+                        <span class="sub-title">{{ __('Plans d\'abonnement mensuels') }}</span>
                         <h2 class="title">{{ __('Explorez nos cours ') }}</h2>
                         <p class="desc">{{ __('Découvrez les cours les plus exigeants en ce moment') }}</p>
                     </div>

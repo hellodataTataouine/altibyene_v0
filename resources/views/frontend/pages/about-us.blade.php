@@ -5,7 +5,7 @@
 
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('Présentation attebyan')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __('présentation attebyan')]]" />
+    <x-frontend.breadcrumb :title="__('Présentation Altibyan')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __('présentation  Altibyan')]]" />
     <!-- breadcrumb-area-end -->
 <style>
 .about-section {
