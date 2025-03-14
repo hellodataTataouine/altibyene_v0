@@ -1,6 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Frontend\CoursController;
+use App\Http\Controllers\Frontend\GalerieController;
+use App\Http\Controllers\Frontend\ProgrammeCoursController;
+use App\Http\Controllers\Frontend\PartenairesController;
+
+use App\Http\Controllers\Frontend\HistoireController;
+use App\Http\Controllers\Frontend\AppeletdonsController;
+use App\Http\Controllers\Frontend\PresentationClaireLuneController;
+use App\Http\Controllers\Frontend\EquipepedagogiqueController;
+
+
 use App\Http\Controllers\Frontend\QnaController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CartController;
@@ -283,9 +295,29 @@ require __DIR__ . '/admin.php';
 
 
 
+//****Courses routes*****/
+Route::get('/cours', [CoursController::class, 'index'])->name('cours.index');
 
-//****Cours routes*****/
-Route::get('cours', [CoursController::class, 'index'])->name('cours');
+//****galerie*****/
+Route::get('/galerie', [GalerieController::class, 'index'])->name('galerie.index');
+
+//****partenaires*****/
+Route::get('/partenaires', [PartenairesController::class, 'index'])->name('partenaires.index');
+
+//****programme et cours******/
+Route::get('/programme-cours', [ProgrammeCoursController::class, 'index'])->name('programme-cours.index');
 
 
 
+//****hitoire*****/
+
+Route::get('/histoire', [HistoireController::class, 'index'])->name('histoire.index');
+
+
+Route::get('/presentationclairelune', [PresentationClaireLuneController::class, 'index'])->name('presentationclairelune.index');
+
+
+Route::get('/appel-dons', [AppeletdonsController::class, 'index'])->name('appel-dons.index');
+
+
+Route::get('/equipe-pedagogique', [EquipepedagogiqueController::class, 'index'])->name('equipe-pedagogique.index');

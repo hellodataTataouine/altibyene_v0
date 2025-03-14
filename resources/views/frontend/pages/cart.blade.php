@@ -117,7 +117,7 @@
                 @else
                     <div class="w-100 text-center">
                         <img class="mb-4" src="{{ asset('uploads/website-images/empty-cart.png') }}" alt="">
-                        <h4 class="text-center">{{ __('Cart is empty!') }}</h4>
+                        <h4 class="text-center">{{ __('Le panier est vide!') }}</h4>
                         <p class="text-center">
                             {{ __('Veuillez ajouter des cours dans votre panier.') }}
                         </p>
@@ -203,7 +203,7 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="cart__collaterals-wrap">
-                                <h2 class="title">{{ __('Cart totals') }}</h2>
+                                <h2 class="title">{{ __('Totaux du panier') }}</h2>
                                 <ul class="list-wrap">
                                     <li>{{ __('Total des articles') }}<span>{{ $cart_count }}</span></li>
                                     <li>
