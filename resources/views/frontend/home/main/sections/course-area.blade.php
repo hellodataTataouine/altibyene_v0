@@ -228,7 +228,7 @@
                                                     </a>
                                                 </div>
                                             @else
-                                                <div class="button">
+                                          <div class="button">
                                                     <a href="javascript:;" class="add-to-cart"
                                                         data-id="{{ $course->id }}">
                                                         <span class="text">{{ __('Ajouter au panier') }}</span>
