@@ -8,7 +8,7 @@ class PartenairesController extends Controller
 {
     public function index()
     {
-        // Vous pouvez remplacer cette liste par des données récupérées depuis la base de données
+    
         $partenaires = [
             ['name' => 'Partenaire 1', 'logo' => 'partner1.png', 'description' => 'Description courte du partenaire 1.', 'website' => 'https://partenaire1.com'],
             ['name' => 'Partenaire 2', 'logo' => 'partner2.png', 'description' => 'Description courte du partenaire 2.', 'website' => 'https://partenaire2.com'],

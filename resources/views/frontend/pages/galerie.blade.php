@@ -6,142 +6,130 @@
     <x-frontend.breadcrumb :title="__('Galerie')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('cart'), 'text' => __('Galerie')]]" />
     <!-- breadcrumb-area-end -->
 
-
-
     <style>
-        .gallery-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-img {
-            transform: scale(1.1);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .gallery-item {
-            margin-bottom: 30px;
+        body {
+            background-color: #f8f9fa;
         }
 
         .page-header {
-            background-color: #343a40;
+
             color: white;
             padding: 50px 0;
+            text-align: center;
         }
 
         .page-header h1 {
             font-size: 3rem;
-            text-transform: uppercase;
         }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-auto-rows: 200px;
+            gap: 15px;
+            padding: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(80%);
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            font-size: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+
+
     </style>
 
-
-
-<style>
-    body {
-        background-color: #f8f9fa;
-    }
-
-    .page-header {
-        background-color: #343a40;
-        color: white;
-        padding: 50px 0;
-        text-align: center;
-    }
-
-    .page-header h1 {
-        font-size: 3rem;
-    }
-
-    .gallery-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        grid-auto-rows: 200px;
-        gap: 15px;
-        padding: 30px;
-    }
-
-    .gallery-item {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s ease, filter 0.3s ease;
-    }
-
-    .gallery-item:hover img {
-        transform: scale(1.1);
-        filter: brightness(80%);
-    }
-
-    .gallery-item.large {
-        grid-column: span 2;
-        grid-row: span 2;
-    }
-
-    .gallery-caption {
-        position: absolute;
-        bottom: 10px;
-        left: 10px;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: white;
-        padding: 5px 10px;
-        font-size: 1rem;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .gallery-item:hover .gallery-caption {
-        opacity: 1;
-    }
-</style>
-
-<!-- Gallery Section -->
-<div class="container"   style="margin-top:10%">
-    <div class="gallery-container">
-        <!-- Large Image -->
-        <div class="gallery-item large animate__animated animate__zoomIn">
-            <img src="https://via.placeholder.com/600x600" alt="Événement 1">
-            <div class="gallery-caption">Événement 1</div>
+    <!-- Gallery Section -->
+    <div class="container" style="margin-top:10%">
+        <div class="page-header">
+            <h1>Les Couleurs de notre Association</h1>
         </div>
 
-        <!-- Regular Image -->
-        <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.2s;">
-            <img src="https://via.placeholder.com/400x300" alt="Événement 2">
-            <div class="gallery-caption">Événement 2</div>
+        <div class="gallery-container">
+            <!-- Large Image -->
+            <div class="gallery-item large animate__animated animate__zoomIn">
+                <img src="uploads/custom-images/ga1.avif" alt="Événement 1">
+                <div class="gallery-caption">Événement 1</div>
+            </div>
+
+            <!-- Regular Image -->
+            <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.2s;">
+                <img src="uploads/custom-images/ga2.jpg" alt="Événement 2">
+                <div class="gallery-caption">Événement 2</div>
+            </div>
+
+            <!-- Regular Image -->
+            <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.4s;">
+                <img src="uploads/custom-images/ga3.jpg" alt="Événement 3">
+                <div class="gallery-caption">Événement 3</div>
+            </div>
+
+            <!-- Regular Image -->
+            <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.6s;">
+                <img src="uploads/custom-images/gal4.jpg" alt="Événement 4">
+                <div class="gallery-caption">Événement 4</div>
+            </div>
+
+            <!-- Regular Image -->
+            <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.8s;">
+                <img src="uploads/custom-images/ga5.jpg" alt="Événement 5">
+                <div class="gallery-caption">Événement 5</div>
+            </div>
+
+            <!-- Large Image -->
+            <div class="gallery-item large animate__animated animate__zoomIn" style="animation-delay: 1s;">
+                <img src="uploads/custom-images/ga6.jpg" alt="Événement 6">
+                <div class="gallery-caption">Événement 6</div>
+            </div>
         </div>
 
-        <!-- Regular Image -->
-        <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.4s;">
-            <img src="https://via.placeholder.com/400x300" alt="Événement 3">
-            <div class="gallery-caption">Événement 3</div>
-        </div>
 
-        <!-- Regular Image -->
-        <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.6s;">
-            <img src="https://via.placeholder.com/400x300" alt="Événement 4">
-            <div class="gallery-caption">Événement 4</div>
-        </div>
 
-        <!-- Regular Image -->
-        <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.8s;">
-            <img src="https://via.placeholder.com/400x300" alt="Événement 5">
-            <div class="gallery-caption">Événement 5</div>
-        </div>
+        <button id="voir plus-btn" class="btn btn-primary mt-6" onclick="toggleText()" style="margin-bottom:10% ">Voir plus
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" fill="none" data-inject-url="http://127.0.0.1:8000/frontend/img/icons/right_arrow.svg" class="injectable">
+              <path d="M1 7L15 7M15 7L9 1M15 7L9 13" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path d="M1 7L15 7M15 7L9 1M15 7L9 13" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg></button>
 
-        <!-- Large Image -->
-        <div class="gallery-item large animate__animated animate__zoomIn" style="animation-delay: 1s;">
-            <img src="https://via.placeholder.com/600x600" alt="Événement 6">
-            <div class="gallery-caption">Événement 6</div>
-        </div>
+            </div>
+
     </div>
-</div>
+
+
+
+
 
 <!-- Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
