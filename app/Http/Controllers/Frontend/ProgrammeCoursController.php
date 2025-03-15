@@ -1,15 +1,18 @@
 <?php
-namespace App\Http\Controllers\Frontend;
 
+namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AppeletdonsController extends Controller
+class ProgrammeCoursController extends Controller
 {
     public function index()
     {
         $images = ['image1.jpg', 'image2.jpg', 'image3.jpg'];
-        return view('frontend.pages.appel-dons', compact('images'));
+        return view('frontend.pages.programme-cours', compact('images'));
     }
 }
+
+
+
 

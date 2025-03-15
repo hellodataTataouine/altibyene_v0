@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PageController extends Controller
+class GalerieController extends Controller
 {
     public function index()
     {
-        return view('cours');
+        $images = ['image1.jpg', 'image2.jpg', 'image3.jpg'];
+        return view('frontend.pages.galerie', compact('images'));
     }
 }
