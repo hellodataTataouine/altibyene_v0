@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-              {{--  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+  <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                     @if(count($footer_menu_one->menuItems) > 0)
                     <div class="footer__widget">
                         <h4 class="footer__widget-title">{{ __('Liens utiles') }}</h4>
@@ -54,7 +54,7 @@
                     @endif
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="footer__widget">-}}
+                    <div class="footer__widget">
                         <h4 class="footer__widget-title">{{ __('Contactez-nous') }}</h4>
                         <div class="footer__contact-content">
                             <p>{{ $footerSetting?->get_in_touch_text }}</p>

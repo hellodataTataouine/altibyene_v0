@@ -66,7 +66,7 @@
             <div class="carousel-item active">
                 <img src="https://via.placeholder.com/800x400?text=Image+1" class="d-block w-100" alt="Image 1">
             </div>
-            <div class="carousel-item">
+            <div class="carousel-item">p
                 <img src="https://via.placeholder.com/800x400?text=Image+2" class="d-block w-100" alt="Image 2">
             </div>
             <div class="carousel-item">
