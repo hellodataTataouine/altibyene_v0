@@ -1,8 +1,8 @@
 <section class="features__area-seven grey-bg-two">
     <div class="container">
-        <div class="features__item-wrap-four">
+        <div class="features__item-wrap-four"   data-aos="fade-up">
             <div class="row">
-                <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="features__item-six">
                         <div class="features__icon-six">
                             <img src="{{ asset($ourFeatures?->global_content?->image_one) }}" alt="">
@@ -13,7 +13,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="col-xl-3 col-lg-4 col-md-6" >
                     <div class="features__item-six">
                         <div class="features__icon-six">
                             <img src="{{ asset($ourFeatures?->global_content?->image_two) }}" alt="">

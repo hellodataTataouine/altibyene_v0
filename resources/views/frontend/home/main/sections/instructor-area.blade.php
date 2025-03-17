@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-xl-4">
-                <div class="instructor__content-wrap">
+                <div class="instructor__content-wrap"  data-aos="fade-right">
                     <div class="section__title mb-15">
                         <span class="sub-title">{{ __('Top Enseignants') }}</span>
                         <h2 class="title">{!! clean(processText($featuredInstructorSection?->translation?->title)) !!}</h2>
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="col-xl-8">
-                <div class="instructor__item-wrap">
+                <div class="instructor__item-wrap"  data-aos="fade-left">
                     <div class="row">
                         @foreach ($selectedInstructors as $index => $instructor)
                             @if ($index < 4)

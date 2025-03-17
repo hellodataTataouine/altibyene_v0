@@ -7,11 +7,11 @@
     <!-- instructor-area -->
     <section class="instructor__area">
         <div class="container">
-            <div class="row">
+            <div class="row"  >
                 @foreach ($instructors as $instructor)
                     @if ($instructor->courses()->where(['status' => 'active', 'is_approved' => 'approved'])->count() > 0)
-                        <div class="col-xl-4 col-sm-6">
-                            <div class="instructor__item">
+                        <div class="col-xl-4 col-sm-6"  data-aos="fade-up" data-aos-delay="100">
+                            <div class="instructor__item"  >
 
                              <div class="instructor__thumb">
                                     <a

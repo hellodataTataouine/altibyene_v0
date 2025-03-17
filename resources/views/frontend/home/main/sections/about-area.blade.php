@@ -1,6 +1,6 @@
-<section class="about-area tg-motion-effects section-py-120">
+<section class="about-area tg-motion-effects section-py-120"   >
     <div class="container">
-        <div class="row align-items-center justify-content-center">
+        <div class="row align-items-center justify-content-center" data-aos="fade-right">
             <div class="col-lg-6 col-md-9">
                 <div class="about__images">
                     <img src="{{ asset($aboutSection?->global_content?->image) }}" alt="img" class="main-img">
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6" data-aos="fade-left">
                 <div class="about__content">
                     <div class="section__title">
                         <span class="sub-title">{{ $aboutSection?->content?->short_title }}</span>
@@ -47,8 +47,6 @@
             </div>
         </div>
     </div>
-    <div class="newsletter__shape">
-        <img src="{{ asset('frontend/img/banner/h3_hero_shape01.svg') }}" alt="img" data-aos="fade-left" data-aos-delay="400">
-    </div>
+
 
 </section>

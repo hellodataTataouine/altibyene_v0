@@ -1,9 +1,9 @@
-<section class="courses-area section-pt-120 section-pb-90" style="margin-top:-8%";>
+<section class="courses-area section-pt-120 section-pb-90" style="margin-top:-8%";   >
     <div class="container">
         <div class="section__title-wrap">
             <div class="row justify-content-center">
                 <div class="col-lg-10 col-xl-8">
-                    <div class="section__title text-center mb-40">
+                    <div class="section__title text-center mb-40"   data-aos="fade-up-right">
                         <span class="sub-title">{{ __('Plans d\'abonnement mensuels') }}</span>
                         <h2 class="title">{{ __('Explorez nos cours ') }}</h2>
                         <p class="desc">{{ __('Découvrez les cours les plus exigeants en ce moment') }}</p>
@@ -176,7 +176,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-content" id="courseTabContent">
+        <div class="tab-content" id="courseTabContent"    data-aos="fade-up-left">
             <div class="tab-pane fade show active" id="all-tab-pane" role="tabpanel" aria-labelledby="all-tab"
                 tabindex="0">
                 <div class="swiper courses-swiper-active">
@@ -661,3 +661,26 @@
         </div>
     </div>
 </section>
+<script>
+    AOS.init({
+      duration: 1000, // Durée de l'animation
+      easing: "ease-in-out", // Effet d'animation
+      once: true, // Animation ne se joue qu'une seule fois
+    });
+  </script>
+
+  <style>
+.sub-title {
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        opacity: 0.7;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+ </style>
