@@ -8,9 +8,7 @@
 
 
     <style>
-        body {
-            background-color: #f8f9fa;
-        }
+
 
         .hero-section {
 
@@ -79,43 +77,50 @@
     </style>
 </head>
 <body>
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <h1 class="wow animate__animated animate__fadeIn">Notre Équipe Pédagogique</h1>
+        <p class="lead wow animate__animated animate__fadeIn animate__delay-1s">Des enseignants passionnés et dédiés à .......</p>
+    </div>
+</section>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <h1 class="animate__animated animate__fadeIn">Notre Équipe Pédagogique</h1>
-            <p class="lead animate__animated animate__fadeIn animate__delay-1s">Des enseignants passionnés et dédiés à .......</p>
-        </div>
-    </section>
+<!-- Team Section -->
+<section class="team-section">
+    <div class="container">
+        <h2 class="wow animate__animated animate__fadeIn animate__delay-2s">Nos Formateurs et Éducateurs</h2>
+        <p class="team-text wow animate__animated animate__fadeIn animate__delay-3s">
+            L'équipe pédagogique de l'Association Claire de Lune est composée de professionnels engagés et expérimentés, prêts à guider chaque étudiant vers l'excellence .....
+        </p>
 
-    <!-- Team Section -->
-    <section class="team-section">
-        <div class="container">
-            <h2 class="animate__animated animate__fadeIn animate__delay-2s">Nos Formateurs et Educateurs</h2>
-            <p class="team-text animate__animated animate__fadeIn animate__delay-3s">
-                L'équipe pédagogique de l'Association Claire de Lune est composée de professionnels engagés et expérimentés, prêts à guider chaque étudiant vers l'excellence .....
-            </p>
-
-            <!-- Team Members -->
-            <div class="row">
-                <div class="col-md-4 team-member">
-                    <img src="uploads/custom-images/teacher1.jpg" >
-                    <h5>Ahmed Ahmed</h5>
-                    <p>enseignant de Aqida</p>
-                </div>
-                <div class="col-md-4 team-member">
-                    <img src="uploads/custom-images/teacher2.jpg" >
-                    <h5>Marwa Ahmed</h5>
-                    <p>enseignante de Sona</p>
-                </div>
-                <div class="col-md-4 team-member">
-                    <img src="uploads/custom-images/teacher3.jpg" >
-                    <h5>Ahmed Ben Ali</h5>
-                    <p>enseignate de récitation de coran </p>
-                </div>
+        <!-- Team Members -->
+        <div class="row">
+            <div class="col-md-4 team-member wow animate__animated animate__fadeIn">
+                <img src="uploads/custom-images/pcl.webp">
+                <h5>Ahmed Ahmed</h5>
+                <p>Enseignant de Aqida</p>
+            </div>
+            <div class="col-md-4 team-member wow animate__animated animate__fadeIn animate__delay-1s">
+                <img src="uploads/custom-images/pcl.webp">
+                <h5>Marwa Ahmed</h5>
+                <p>Enseignante de Sona</p>
+            </div>
+            <div class="col-md-4 team-member wow animate__animated animate__fadeIn animate__delay-2s">
+                <img src="uploads/custom-images/pcl.webp">
+                <h5>Ahmed Ben Ali</h5>
+                <p>Enseignant de récitation du Coran</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- WOW.js & Animate.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+
 
     <!-- Call to Action Section -->
     <section class="text-center py-5">

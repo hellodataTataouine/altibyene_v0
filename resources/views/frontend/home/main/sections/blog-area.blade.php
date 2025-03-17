@@ -2,16 +2,16 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <div class="section__title text-center mb-40">
+                <div class="section__title text-center mb-40"  data-aos="fade-up-right">
                     <span class="sub-title">{{ __('Actualité et evénement') }}</span>
                     <h2 class="title">{{ __('Restez informé des dernières nouveautés') }}</h2>
                     <p>{{ __('Nous sommes heureux de vous inviter à rejoindre nos evenement et activités') }}</p>
                 </div>
             </div>
         </div>
-        <div class="row gutter-20">
+        <div class="row gutter-20"  >
             @foreach ($featuredBlogs as $blog)
-                <div class="col-xxl-3 col-md-6 col-lg-4">
+                <div class="col-xxl-3 col-md-6 col-lg-4"    data-aos="fade-up-left">
                     <div class="blog__post-item shine__animate-item">
                         <div class="blog__post-thumb">
                             <a href="{{ route('blog.show', $blog->slug) }}" class="shine__animate-link blog"><img src="{{ asset($blog->image) }}"

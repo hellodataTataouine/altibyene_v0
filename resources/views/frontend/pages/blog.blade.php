@@ -10,10 +10,10 @@
     <!-- breadcrumb-area-end -->
 
     <!-- blog-area -->
-    <section class="blog-area section-py-120">
+    <section class="blog-area section-py-120"   >
         <div class="container">
             <div class="row">
-                <div class="col-xl-9 col-lg-8">
+                <div class="col-xl-9 col-lg-8"   >
                     <div class="row gutter-20">
                         @forelse($blogs as $blog)
                         <div class="col-xl-4 col-md-6">
@@ -43,7 +43,7 @@
                         {{ $blogs->links() }}
                     </nav>
                 </div>
-                <div class="col-xl-3 col-lg-4">
+                <div class="col-xl-3 col-lg-4"   data-aos="fade-up-left">
                     <aside class="blog-sidebar">
                         <div class="blog-widget widget_search">
                             <div class="sidebar-search-form">

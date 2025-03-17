@@ -1,8 +1,9 @@
-<section class="categories-area section-py-120" style="margin-top: -2%">
+<section class="categories-area section-py-120" style="margin-top: -2%"   data-aos="fade-right">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-5 col-lg-7">
-                <div class="section__title text-center mb-40">
+
+                <div class="section__title text-center mb-40"   >
                     <span class="sub-title">{{ __('s\'inscrire ') }}</span>
                     <h2 class="title">{{ __('Comment vous inscrire ?') }}</h2>
                     <p class="desc">{{ __('Inscrivez-vous facilement en suivant ces étapes.') }}</p>
@@ -51,3 +52,4 @@
         </div>
     </div>
 </section>
+

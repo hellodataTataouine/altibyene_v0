@@ -414,7 +414,7 @@ textarea {
     -moz-user-select: none;
     background: var(--tg-theme-primary) none repeat scroll 0 0;
     border: medium none;
-    color: var(--tg-common-color-white);
+    color: #000;
     cursor: pointer;
     display: inline-block;
     font-size: 16px;
@@ -439,7 +439,7 @@ textarea {
     -ms-border-radius: 50px;
     border-radius: 50px;
     white-space: nowrap;
-    box-shadow: 4px 6px 0px 0px var(--tg-common-color-blue);
+    box-shadow: 4px 6px 0px 0px var(--tg-common-color-white);
     overflow: hidden;
 }
 

@@ -2,12 +2,17 @@
   <div class="container">
       <div class="row align-items-center">
           <div class="col-lg-6">
-              <div class="faq__img-wrap tg-svg">
+              <div class="faq__img-wrap tg-svg"  data-aos="fade-left">
                   <div class="faq__round-text">
-                      <div class="curved-circle {{ getSessionLanguage() == 'en' ? '' : 'd-none' }}">
+                      <div class="curved-circle {{ getSessionLanguage() == 'fr' ? '' : 'd-none' }}">
                           * {{ __('Le savoir ') }} * {{ __('est') }} * {{ __('la ') }} * {{ __('clé ') }} * {{ __('du succés ') }} *
                       </div>
                   </div>
+
+
+
+
+
                   <div class="faq__img">
                       <img src="{{ asset($faqSection?->global_content?->image) }}" alt="img">
                       <div class="shape-one">
@@ -21,7 +26,7 @@
                   </div>
               </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-6"   data-aos="fade-right">
               <div class="faq__content">
                   <div class="section__title pb-10">
                       <span class="sub-title">{{ $faqSection?->content?->short_title }}</span>

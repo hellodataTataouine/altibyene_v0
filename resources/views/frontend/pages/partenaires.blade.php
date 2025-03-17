@@ -7,10 +7,7 @@
     <!-- breadcrumb-area-end -->
 
 <style>
-    body {
-        background-color: #f8f9fa;
-        font-family: Arial, sans-serif;
-    }
+    
     .partner-card {
         transition: transform 0.3s ease-in-out;
         overflow: hidden;

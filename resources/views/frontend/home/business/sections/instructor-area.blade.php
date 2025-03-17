@@ -1,14 +1,14 @@
 <section class="instructor__area">
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-center" data-aos="fade-up">
             <div class="col-xl-4">
-                <div class="instructor__content-wrap">
+                <div class="instructor__content-wrap"  data-aos="fade-up" data-aos-delay="100">
                     <div class="section__title mb-15">
                         <span class="sub-title">{{ __(' Top Enseignants') }}</span>
                         <h2 class="title">{!! clean(processText($featuredInstructorSection?->translation?->title)) !!}</h2>
                     </div>
                     <p>{!! clean(processText($featuredInstructorSection?->translation?->sub_title)) !!}</p>
-                    <div class="tg-button-wrap">
+                    <div class="tg-button-wrap"     data-aos="fade-up" data-aos-delay="100">
                         <a href="{{ $featuredInstructorSection->button_url }}"
                             class="btn arrow-btn">{{ $featuredInstructorSection?->translation?->button_text }} <img
                                 src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt="img"
@@ -17,17 +17,17 @@
                 </div>
             </div>
             <div class="col-xl-8">
-                <div class="instructor__item-wrap">
+                <div class="instructor__item-wrap" >
                     <div class="row">
                         @foreach ($selectedInstructors as $index => $instructor)
                             @if ($index < 4)
                                 <div class="col-sm-6">
-                                    <div class="instructor__item">
+                                    <div class="instructor__item"   data-aos="fade-up" data-aos-delay="100">
                                         <div class="instructor__thumb">
                                             <a href="{{ route('instructor-details', $instructor->id) }}">
                                                 <img src="{{ asset($instructor->image) }}" alt="img"></a>
                                         </div>
-                                        <div class="instructor__content">
+                                        <div class="instructor__content" data-aos="fade-up" data-aos-delay="200">
                                             <h2 class="title"><a
                                                     href="{{ route('instructor-details', $instructor->id) }}">{{ $instructor->name }}</a>
                                             </h2>
@@ -36,7 +36,7 @@
                                                 <i class="fas fa-star"></i>
                                                 {{ number_format($instructor->courses->avg('avg_rating'), 1) }} {{ __('Ratings') }}
                                             </p>
-                                            <div class="instructor__social">
+                                            <div class="instructor__social"  data-aos="fade-up" data-aos-delay="300">
                                                 <ul class="list-wrap">
                                                     @if ($instructor->facebook)
                                                         <li><a href="{{ $instructor->facebook }}" aria-label="Facebook"><i

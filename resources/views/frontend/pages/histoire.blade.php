@@ -8,9 +8,7 @@
 
 
     <style>
-        body {
-            background-color: #f8f9fa;
-        }
+
         .hero-section {
 
             color: white;
@@ -26,7 +24,7 @@
             animation: fadeIn 3s ease-in-out;
         }
         .history-section {
-            background-color: #fff;
+
             padding: 50px 0;
         }
         .history-section h2 {
@@ -49,7 +47,7 @@
         }
         .timeline-item {
             margin-bottom: 20px;
-            background-color: #f8f9fa;
+
             padding: 20px;
             border-radius: 10px;
         }
@@ -69,43 +67,52 @@
 </head>
 <body>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <h1 class="animate__animated animate__fadeIn">L'Histoire de Notre Association</h1>
-            <p class="lead animate__animated animate__fadeIn animate__delay-1s">Découvrez comment notre association a vu le jour et l'impact qu'elle a eu au fil des années.</p>
-        </div>
-    </section>
+   <!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <h1 class="wow animate__animated animate__zoomIn">L'Histoire de Notre Association</h1>
+        <p class="lead wow animate__animated animate__fadeInUp animate__delay-1s">
+            Découvrez comment notre association a vu le jour et l'impact qu'elle a eu au fil des années.
+        </p>
+    </div>
+</section>
 
-    <!-- History Section -->
-    <section class="history-section">
-        <div class="container">
-            <h2 class="animate__animated animate__fadeIn animate__delay-2s">Notre Parcours</h2>
-            <p class="history-text animate__animated animate__fadeIn animate__delay-3s">
-                Notre association a été fondée avec la mission de soutenir les communautés en difficulté. Depuis notre création, nous avons travaillé sans relâche pour améliorer la vie de ceux qui en ont besoin. Voici notre histoire en quelques étapes clés :
-            </p>
+<!-- History Section -->
+<section class="history-section">
+    <div class="container">
+        <h2 class="wow animate__animated animate__flipInX animate__delay-2s">Notre Parcours</h2>
+        <p class="history-text wow animate__animated animate__fadeInLeft animate__delay-3s">
+            Notre association a été fondée avec la mission de soutenir les communautés en difficulté. Depuis notre création, nous avons travaillé sans relâche pour améliorer la vie de ceux qui en ont besoin. Voici notre histoire en quelques étapes clés :
+        </p>
 
-            <!-- History Timeline -->
-            <ul class="history-timeline">
-                <li class="timeline-item animate__animated animate__fadeIn animate__delay-4s">
-                    <h5>1990 - Fondation de l'Association</h5>
-                    <p>En 1990, l'association a été fondée par un groupe de bénévoles passionnés, avec pour mission de venir en aide aux personnes en situation de précarité.</p>
-                </li>
-                <li class="timeline-item animate__animated animate__fadeIn animate__delay-5s">
-                    <h5>2005 - Extension des Activités</h5>
-                    <p>En 2005, l'association a élargi ses activités en lançant des programmes d'éducation et de formation pour les jeunes défavorisés.</p>
-                </li>
-                <li class="timeline-item animate__animated animate__fadeIn animate__delay-6s">
-                    <h5>2010 - Reconnaissance Nationale</h5>
-                    <p>En 2010, l'association a reçu un prix national pour ses efforts exceptionnels dans l'amélioration des conditions de vie des communautés vulnérables.</p>
-                </li>
-                <li class="timeline-item animate__animated animate__fadeIn animate__delay-7s">
-                    <h5>2020 - Projet International</h5>
-                    <p>En 2020, nous avons étendu nos actions à l'international, en apportant de l'aide humanitaire et en soutenant des projets éducatifs dans plusieurs pays en développement.</p>
-                </li>
-            </ul>
-        </div>
-    </section>
+        <!-- History Timeline -->
+        <ul class="history-timeline">
+            <li class="timeline-item wow animate__animated animate__fadeInRight animate__delay-4s">
+                <h5>1990 - Fondation de l'Association</h5>
+                <p>En 1990, l'association a été fondée par un groupe de bénévoles passionnés, avec pour mission de venir en aide aux personnes en situation de précarité.</p>
+            </li>
+            <li class="timeline-item wow animate__animated animate__fadeInLeft animate__delay-5s">
+                <h5>2005 - Extension des Activités</h5>
+                <p>En 2005, l'association a élargi ses activités en lançant des programmes d'éducation et de formation pour les jeunes défavorisés.</p>
+            </li>
+            <li class="timeline-item wow animate__animated animate__zoomIn animate__delay-6s">
+                <h5>2010 - Reconnaissance Nationale</h5>
+                <p>En 2010, l'association a reçu un prix national pour ses efforts exceptionnels dans l'amélioration des conditions de vie des communautés vulnérables.</p>
+            </li>
+            <li class="timeline-item wow animate__animated animate__fadeInUp animate__delay-7s">
+                <h5>2020 - Projet International</h5>
+                <p>En 2020, nous avons étendu nos actions à l'international, en apportant de l'aide humanitaire et en soutenant des projets éducatifs dans plusieurs pays en développement.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- WOW.js & Animate.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
 
     <!-- Call to Action Section -->
     <section class="text-center py-5">

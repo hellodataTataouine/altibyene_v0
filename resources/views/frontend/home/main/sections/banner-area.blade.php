@@ -44,18 +44,16 @@
                             <h4 class="title">{{ $hero?->content?->total_instructor }}</h4>
                         </div>
                     </div>
-                   
+
                 </div>
             </div>
         </div>
     </div>
     <div class="blog__shape-wrape">
-        <img src="http://127.0.0.1:8000/frontend/img/blog/h4_blog_shape.svg"
-             alt="shape" class="rotateme"
+        <img src="{{asset('frontend/img/blog/h4_blog_shape.svg')}}"alt="shape" class="rotateme"
              style="position: absolute; ;left:-250px; top: 280px;">
 
-        <img src="http://127.0.0.1:8000/frontend/img/blog/h4_blog_shape.svg"
-             alt="shape" class="rotateme"
+        <img src="{{asset('frontend/img/blog/h4_blog_shape.svg')}}" alt="shape" class="rotateme"
              style="position: absolute; right:-250px; top:-150px;">
     </div>
 
