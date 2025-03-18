@@ -107,7 +107,7 @@
         <!-- Team Members -->
         <div class="row">
             <div class="col-md-4 team-member wow animate__animated animate__fadeIn">
-                <img src="uploads/custom-images/pcl.webp" alt="Membre de l'équipe 1">
+                <img src="uploads/custom-images/instructor3.png" alt="Membre de l'équipe 1">
                 <h5>Ahmed Ahmed </h5>
                 <p>Président de l'association</p>
             </div>
@@ -117,7 +117,7 @@
                 <p>Responsable des projets humanitaires</p>
             </div>
             <div class="col-md-4 team-member wow animate__animated animate__fadeIn animate__delay-2s">
-                <img src="uploads/custom-images/pcl.webp" alt="Membre de l'équipe 3">
+                <img src="uploads/custom-images/instructor1.png" alt="Membre de l'équipe 3">
                 <h5>Ahmed Ben Ali</h5>
                 <p>Coordinateur des événements</p>
             </div>

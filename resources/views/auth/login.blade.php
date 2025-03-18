@@ -46,7 +46,7 @@
                                 <div class="account__check-remember">
                                     <input type="checkbox" class="form-check-input" name="remember" value=""
                                         id="terms-check">
-                                    <label for="terms-check" class="form-check-label">{{ __('Remember me') }}</label>
+                                    <label for="terms-check" class="form-check-label">{{ __('Se souvenir de moi') }}</label>
                                 </div>
                                 <div class="account__check-forgot">
                                     <a href="{{ route('password.request') }}">{{ __('Mot de passe oublié?') }}</a>

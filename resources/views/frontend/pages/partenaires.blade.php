@@ -7,7 +7,7 @@
     <!-- breadcrumb-area-end -->
 
 <style>
-    
+
     .partner-card {
         transition: transform 0.3s ease-in-out;
         overflow: hidden;
@@ -26,12 +26,12 @@
 </head>
 <body>
 
-<div class="container my-5">
-    <h1 class="text-center mb-4" data-aos="fade-down">Nos Partenaires</h1>
+<div class="container my-5" >
+    <h1 class="text-center mb-4" >Nos Partenaires</h1>
 
     <div class="row">
         @foreach ($partenaires as $index => $partenaires)
-            <div class="col-md-3 col-sm-6 mb-4">
+            <div class="col-md-3 col-sm-6 mb-4" data-aos="fade-right">
                 <div class="card shadow-lg text-center partner-card" data-aos="zoom-in" data-aos-delay="{{ $index * 100 }}">
                     <img src="{{ asset('images/' . $partenaires['logo']) }}" class="card-img-top p-3" alt="{{ $partenaires['name'] }}">
                     <div class="card-body">

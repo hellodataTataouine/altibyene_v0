@@ -80,28 +80,28 @@
 <!-- History Section -->
 <section class="history-section">
     <div class="container">
-        <h2 class="wow animate__animated animate__flipInX animate__delay-2s">Notre Parcours</h2>
-        <p class="history-text wow animate__animated animate__fadeInLeft animate__delay-3s">
+        <h2 data-aos="fade-up" data-aos-delay="200">Notre Parcours</h2>
+        <p class="history-text" data-aos="fade-up" data-aos-delay="300">
             Notre association a été fondée avec la mission de soutenir les communautés en difficulté. Depuis notre création, nous avons travaillé sans relâche pour améliorer la vie de ceux qui en ont besoin. Voici notre histoire en quelques étapes clés :
         </p>
 
         <!-- History Timeline -->
         <ul class="history-timeline">
-            <li class="timeline-item wow animate__animated animate__fadeInRight animate__delay-4s">
-                <h5>1990 - Fondation de l'Association</h5>
-                <p>En 1990, l'association a été fondée par un groupe de bénévoles passionnés, avec pour mission de venir en aide aux personnes en situation de précarité.</p>
+            <li class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                <h5>2020 - Fondation de l'Association</h5>
+                <p>2020, l'association a été fondée par un groupe de bénévoles passionnés, avec pour mission de venir en aide aux personnes en situation de précarité.</p>
             </li>
-            <li class="timeline-item wow animate__animated animate__fadeInLeft animate__delay-5s">
-                <h5>2005 - Extension des Activités</h5>
-                <p>En 2005, l'association a élargi ses activités en lançant des programmes d'éducation et de formation pour les jeunes défavorisés.</p>
+            <li class="timeline-item" data-aos="fade-up" data-aos-delay="500">
+                <h5>2022 - Extension des Activités</h5>
+                <p>En 2022, l'association a élargi ses activités en lançant des programmes d'éducation et de formation pour les jeunes défavorisés.</p>
             </li>
-            <li class="timeline-item wow animate__animated animate__zoomIn animate__delay-6s">
-                <h5>2010 - Reconnaissance Nationale</h5>
-                <p>En 2010, l'association a reçu un prix national pour ses efforts exceptionnels dans l'amélioration des conditions de vie des communautés vulnérables.</p>
+            <li class="timeline-item" data-aos="fade-up" data-aos-delay="600">
+                <h5>2023 - Reconnaissance Nationale</h5>
+                <p>En 2023, l'association a reçu un prix national pour ses efforts exceptionnels dans l'amélioration des conditions de vie des communautés vulnérables.</p>
             </li>
-            <li class="timeline-item wow animate__animated animate__fadeInUp animate__delay-7s">
-                <h5>2020 - Projet International</h5>
-                <p>En 2020, nous avons étendu nos actions à l'international, en apportant de l'aide humanitaire et en soutenant des projets éducatifs dans plusieurs pays en développement.</p>
+            <li class="timeline-item" data-aos="fade-up" data-aos-delay="700">
+                <h5>2024 - Projet International</h5>
+                <p>En 2024, nous avons étendu nos actions à l'international, en apportant de l'aide humanitaire et en soutenant des projets éducatifs dans plusieurs pays en développement.</p>
             </li>
         </ul>
     </div>

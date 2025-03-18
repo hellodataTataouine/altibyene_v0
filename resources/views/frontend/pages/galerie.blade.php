@@ -77,39 +77,39 @@
             <h1>Les Couleurs de notre Association</h1>
         </div>
 
-        <div class="gallery-container">
+        <div class="gallery-container" >
             <!-- Large Image -->
-            <div class="gallery-item large animate__animated animate__zoomIn">
+            <div class="gallery-item large animate__animated animate__zoomIn" data-aos="flip-left">
                 <img src="uploads/custom-images/ga1.avif" alt="Événement 1">
                 <div class="gallery-caption">Événement 1</div>
             </div>
 
             <!-- Regular Image -->
-            <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.2s;">
+            <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.2s;" data-aos="flip-left">
                 <img src="uploads/custom-images/ga2.jpg" alt="Événement 2">
                 <div class="gallery-caption">Événement 2</div>
             </div>
 
             <!-- Regular Image -->
-            <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.4s;">
+            <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.4s;" data-aos="flip-left">
                 <img src="uploads/custom-images/ga3.jpg" alt="Événement 3">
                 <div class="gallery-caption">Événement 3</div>
             </div>
 
             <!-- Regular Image -->
-            <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.6s;">
+            <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.6s;"   data-aos="flip-left">
                 <img src="uploads/custom-images/gal4.jpg" alt="Événement 4">
                 <div class="gallery-caption">Événement 4</div>
             </div>
 
             <!-- Regular Image -->
-            <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.8s;">
+            <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.8s;"   data-aos="flip-left">
                 <img src="uploads/custom-images/ga5.jpg" alt="Événement 5">
                 <div class="gallery-caption">Événement 5</div>
             </div>
 
             <!-- Large Image -->
-            <div class="gallery-item large animate__animated animate__zoomIn" style="animation-delay: 1s;">
+            <div class="gallery-item large animate__animated animate__zoomIn" style="animation-delay: 1s;"  data-aos="flip-left">
                 <img src="uploads/custom-images/ga6.jpg" alt="Événement 6">
                 <div class="gallery-caption">Événement 6</div>
             </div>
@@ -117,7 +117,7 @@
 
 
 
-        <button id="voir plus-btn" class="btn btn-primary mt-6" onclick="toggleText()" style="margin-bottom:10% ">Voir plus
+        <button id="voir plus-btn" class="btn btn-primary mt-6" onclick="toggleText()" style="margin-bottom:10% " data-aos="fade-up">Voir plus
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14" fill="none" data-inject-url="http://127.0.0.1:8000/frontend/img/icons/right_arrow.svg" class="injectable">
               <path d="M1 7L15 7M15 7L9 1M15 7L9 13" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
               <path d="M1 7L15 7M15 7L9 1M15 7L9 13" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>

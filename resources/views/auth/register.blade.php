@@ -1,9 +1,9 @@
 @extends('frontend.layouts.master')
-@section('meta_title', 'Registre'. ' || ' . $setting->app_name)
+@section('meta_title', 'S\'inscrire'. ' || ' . $setting->app_name)
 
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('Register')" :links="[['url' => route('home'), 'text' => __('Home')], ['url' => route('register'), 'text' => __('Register')]]" />
+    <x-frontend.breadcrumb :title="__('S\'inscrire')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('register'), 'text' => __('S\'inscrire')]]" />
     <!-- breadcrumb-area-end -->
 
     <!-- singUp-area -->
@@ -12,18 +12,18 @@
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8">
                     <div class="singUp-wrap">
-                        <h2 class="title">{{ __('Create Your Account') }}</h2>
-                        <p>{{ __('Hey there! Ready to join the party? We just need a few details from you to get') }}<br>{{ __('started Lets do this!') }}
+                        <h2 class="title">{{ __('Créez votre compte') }}</h2>
+                        <p>{{ __('Salut ! Prêt à nous rejoindre ? Nous avons juste besoin de quelques informations :') }}<br>{{ __('') }}
                         </p>
                         @if($setting->google_login_status == 'active')
                         <div class="account__social">
                             <a href="{{ route('auth.social', 'google') }}" class="account__social-btn">
                                 <img src="{{ asset('frontend/img/icons/google.svg') }}" alt="img">
-                                {{ __('Continue with google') }}
+                                {{ __('Continuer avec Google') }}
                             </a>
                         </div>
                         <div class="account__divider">
-                            <span>{{ __('or') }}</span>
+                            <span>{{ __('ou') }}</span>
                         </div>
                         @endif
                         <form method="POST" action="{{ route('register') }}" class="account__form">
@@ -32,8 +32,8 @@
                             <div class="row gutter-20">
                                 <div class="col-md-12">
                                     <div class="form-grp">
-                                        <label for="fast-name">{{ __('Full Name') }}</label>
-                                        <input type="text" id="fast-name" placeholder="{{ __('full name') }}"
+                                        <label for="fast-name">{{ __('Nom et Prénom') }}</label>
+                                        <input type="text" id="fast-name" placeholder="{{ __('Nom et Prénom') }}"
                                             name="name">
                                         <x-frontend.validation-error name="name" />
                                     </div>
@@ -45,13 +45,13 @@
                                 <x-frontend.validation-error name="email" />
                             </div>
                             <div class="form-grp">
-                                <label for="password">{{ __('Password') }}</label>
-                                <input type="password" id="password" placeholder="{{ __('password') }}" name="password">
+                                <label for="password">{{ __('Mot de passe') }}</label>
+                                <input type="password" id="password" placeholder="{{ __('Mot de passe') }}" name="password">
                                 <x-frontend.validation-error name="password" />
                             </div>
                             <div class="form-grp">
-                                <label for="confirm-password">{{ __('Confirm Password') }}</label>
-                                <input type="password" id="confirm-password" placeholder="{{ __('Confirm Password') }}"
+                                <label for="confirm-password">{{ __('Confirmez le mot de passe') }}</label>
+                                <input type="password" id="confirm-password" placeholder="{{ __('Confirmez le mot de passe') }}"
                                     name="password_confirmation">
                                 <x-frontend.validation-error name="password_confirmation" />
                             </div>
@@ -65,12 +65,12 @@
                                 </div>
                             @endif
 
-                            <button type="submit" class="btn btn-two arrow-btn">{{ __('Sign Up') }}<img
+                            <button type="submit" class="btn btn-two arrow-btn">{{ __('S\'inscrire') }}<img
                                     src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt="img"
                                     class="injectable"></button>
                         </form>
                         <div class="account__switch">
-                            <p>{{ __('Already have an account?') }}<a href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <p>{{ __('Vous avez déjà un compte ?') }}<a href="{{ route('login') }}">{{ __('se connecter') }}</a>
                             </p>
                         </div>
                     </div>
