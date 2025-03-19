@@ -18,7 +18,7 @@ $(document).ready(function () {
                 _token: csrf_token
             },
             beforeSend: function () {
-                element.find("span").text("Adding...");
+                element.find("span").text("Ajout...");
             },
             success: function (data) {
                 if (data.status == "success") {
@@ -30,16 +30,16 @@ $(document).ready(function () {
                             'cart_details': data.dataLayer
                         });
                     }
-                    
+
                 } else {
                     toastr.error(data.message);
                 }
 
-                element.find("span").text("Add to cart");
+                element.find("span").text("Ajouter au panier");
             },
             error: function (xhr, status, error) {
                 toastr.error(basic_error_message);
-                element.find("span").text("Add to cart");
+                element.find("span").text("Ajouter au panier");
             },
 
         })

@@ -85,34 +85,25 @@
     </div>
 </section>
 
-<!-- Team Section -->
-<section class="team-section">
-    <div class="container">
-        <h2 class="wow animate__animated animate__fadeIn animate__delay-2s">Nos Formateurs et Éducateurs</h2>
-        <p class="team-text wow animate__animated animate__fadeIn animate__delay-3s">
-            L'équipe pédagogique de l'Association Claire de Lune est composée de professionnels engagés et expérimentés, prêts à guider chaque étudiant vers l'excellence .....
-        </p>
-
-        <!-- Team Members -->
-        <div class="row">
-            <div class="col-md-4 team-member wow animate__animated animate__fadeIn">
-                <img src="uploads/custom-images/pcl.webp">
-                <h5>Ahmed Ahmed</h5>
-                <p>Enseignant de Aqida</p>
-            </div>
-            <div class="col-md-4 team-member wow animate__animated animate__fadeIn animate__delay-1s">
-                <img src="uploads/custom-images/pcl.webp">
-                <h5>Marwa Ahmed</h5>
-                <p>Enseignante de Sona</p>
-            </div>
-            <div class="col-md-4 team-member wow animate__animated animate__fadeIn animate__delay-2s">
-                <img src="uploads/custom-images/pcl.webp">
-                <h5>Ahmed Ben Ali</h5>
-                <p>Enseignant de récitation du Coran</p>
-            </div>
-        </div>
+<div class="row">
+    @foreach ([
+        ['img' => 'instructor1.png', 'name' => 'Ahmed Ahmed', 'desc' => "Enseignant d'Aqida"],
+        ['img' => 'pcl.webp', 'name' => 'Marwa Ahmed', 'desc' => "Enseignante de Sona"],
+        ['img' => 'instructor3.png', 'name' => 'Ahmed Ben Ali', 'desc' => "Enseignant de récitation du Coran"],
+        ['img' => 'instructor4.png', 'name' => 'Fatima Youssef', 'desc' => "Enseignante d'arabe"],
+        ['img' => 'instructor5.webp', 'name' => 'Khaled Mansour', 'desc' => "Enseignant d'Histoire Islamique"],
+        ['img' => 'pcl.webp', 'name' => 'Layla Hassan', 'desc' => "Enseignante d'éducation religieuse"]
+    ] as $index => $instructor)
+    <div class="col-md-4 team-member wow animate__animated animate__fadeIn animate__delay-{{ $index }}s">
+        <img src="uploads/custom-images/{{ $instructor['img'] }}" class="img-fluid rounded-circle mb-3" alt="{{ $instructor['name'] }}">
+        <h5>{{ $instructor['name'] }}</h5>
+        <p>{{ $instructor['desc'] }}</p>
     </div>
-</section>
+    @if (($index + 1) % 3 === 0)
+</div><div class="row mt-4">
+    @endif
+    @endforeach
+</div>
 
 <!-- WOW.js & Animate.css -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">

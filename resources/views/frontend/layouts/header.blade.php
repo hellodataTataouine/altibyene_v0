@@ -223,8 +223,8 @@
                                                 </li>
                                             @endauth
                                             @guest
-                                                <li><a href="{{ route('login') }}">{{ __('Sign in') }}</a></li>
-                                                <li><a href="{{ route('register') }}">{{ __('Sign Up') }}</a></li>
+                                                <li><a href="{{ route('login') }}">{{ __('Se connecter') }}</a></li>
+                                                <li><a href="{{ route('register') }}">{{ __('S\'inscrire') }}</a></li>
                                             @else
                                                 @if (Auth::guard('web')->user())
                                                     @if (instructorStatus() == 'approved')

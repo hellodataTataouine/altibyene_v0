@@ -312,7 +312,7 @@
                                                 <div class="button">
                                                     <a href="javascript:;" class="add-to-cart"
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('Add To Cart') }}</span>
+                                                        <span class="text">{{ __('Ajouter au panier') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>

@@ -5,94 +5,113 @@
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb :title="__('Appel et Dons ')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('cart'), 'text' => __('Appel et Dons ')]]" />
     <!-- breadcrumb-area-end -->
+<style>
+    .cta-section {
 
-    <style>
-
-        .hero-section {
-
-            color: white;
-            text-align: center;
-            padding: 80px 0;
-        }
-        .hero-section h1 {
-            font-size: 3rem;
-            animation: fadeIn 2s ease-in-out;
-        }
-        .hero-section p {
-            font-size: 1.2rem;
-            animation: fadeIn 3s ease-in-out;
-        }
-        .carousel-inner img {
-            object-fit: cover;
-            height: 400px;
-        }
-        .donation-buttons button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            border-radius: 25px;
-            margin-top: 30px;
-            transition: background-color 0.3s ease;
-        }
-        .donation-buttons button:hover {
-
-            color: white;
-        }
-        .carousel-item {
-            animation: zoomIn 1s ease;
-        }
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        @keyframes zoomIn {
-            0% { transform: scale(0.9); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-    </style>
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+    }
+    .cta-section h1 {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+    .cta-section p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+    }
+    .btn-cta {
+        font-size: 1.2rem;
+        padding: 12px 30px;
+        margin-top: 10%;
+        justify-content:space-between;
+    }
+    .cta-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 15px;
+    }
+    .features {
+        padding: 60px 0;
+    }
+    .feature-item {
+        text-align: center;
+        padding: 20px;
+    }
+</style>
 </head>
 <body>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <h1 class="animate__animated animate__fadeIn">Soutenez Notre Cause</h1>
-            <p class="lead animate__animated animate__fadeIn animate__delay-1s">Votre générosité peut faire une grande différence dans la vie de ceux qui en ont besoin.</p>
-        </div>
-    </section>
+<!-- Call to Action Section -->
+<section class="cta-section">
+<div class="container">
+    <h1 class="wow animate__animated animate__fadeInDown">Agissez pour un Monde Meilleur</h1>
+    <p class="wow animate__animated animate__fadeInUp animate__delay-1s">
+        Rejoignez-nous dans notre mission de transformation sociale. Ensemble, nous pouvons faire la différence.
+    </p>
 
-    <!-- Carousel Section -->
-    <div id="donationCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://via.placeholder.com/800x400?text=Image+1" class="d-block w-100" alt="Image 1">
-            </div>
-            <div class="carousel-item">p
-                <img src="https://via.placeholder.com/800x400?text=Image+2" class="d-block w-100" alt="Image 2">
-            </div>
-            <div class="carousel-item">
-                <img src="https://via.placeholder.com/800x400?text=Image+3" class="d-block w-100" alt="Image 3">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#donationCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#donationCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+    <!-- Center Image -->
+    <div class="cta-image wow animate__animated animate__zoomIn animate__delay-1s" >
+        <img src="uploads/custom-images/dons2.jpg" alt="Impact Social">
     </div>
 
-    <!-- Donation Section -->
-    <section class="donation-buttons text-center py-5">
-        <h3 class="animate__animated animate__fadeIn animate__delay-2s">Faites un Don Maintenant</h3>
-        <button class="btn btn-primary btn-lg animate__animated animate__fadeIn animate__delay-3s" onclick="window.location.href='#'">Faire un Don</button>
-    </section>
+    <button class="btn btn-light btn-cta wow animate__animated animate__pulse animate__infinite animate__delay-2s" >
+        Faites un Don
+    </button>
+    <button class="btn btn-outline-light btn-cta wow animate__animated animate__pulse animate__infinite animate__delay-2s">
+        Rejoignez-nous
+    </button>
+</div>
+</section>
 
-    <!-- Bootstrap JS and Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+<!-- Features Section -->
+<section class="features text-center py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 wow animate__animated animate__fadeInLeft">
+                    <div class="card-body">
+                        <i class="fas fa-hands-helping fa-3x mb-3"></i>
+                        <h4 class="card-title">Solidarité</h4>
+                        <p class="card-text">Participez à nos initiatives pour soutenir les communautés dans le besoin.</p>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Card 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 wow animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <i class="fas fa-school fa-3x mb-3"></i>
+                        <h4 class="card-title">Éducation</h4>
+                        <p class="card-text">Aidez-nous à offrir un accès à l'éducation pour les jeunes défavorisés.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 wow animate__animated animate__fadeInRight">
+                    <div class="card-body">
+                        <i class="fas fa-globe fa-3x mb-3"></i>
+                        <h4 class="card-title">Impact Global</h4>
+                        <p class="card-text">Contribuez à nos projets internationaux pour un monde plus équitable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WOW.js & Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script>
+new WOW().init();
+</script>
 
 
 

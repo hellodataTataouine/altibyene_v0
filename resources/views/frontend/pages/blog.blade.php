@@ -13,10 +13,10 @@
     <section class="blog-area section-py-120"   >
         <div class="container">
             <div class="row">
-                <div class="col-xl-9 col-lg-8"   >
+                <div class="col-xl-9 col-lg-8"   data-aos="fade-up-left">
                     <div class="row gutter-20">
                         @forelse($blogs as $blog)
-                        <div class="col-xl-4 col-md-6">
+                        <div class="col-xl-4 col-md-6"   >
                             <div class="blog__post-item shine__animate-item">
                                 <div class="blog__post-thumb">
                                     <a href="{{ route('blog.show', $blog->slug) }}" class="shine__animate-link blog"><img
@@ -53,7 +53,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="blog-widget">
+                        <div class="blog-widget"   data-aos="fade-up-left">
                             <h4 class="widget-title">{{ __('Categories') }}</h4>
                             <div class="shop-cat-list">
                                 <ul class="list-wrap">
@@ -70,7 +70,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="blog-widget">
+                        <div class="blog-widget"   data-aos="fade-up-left">
                             <h4 class="widget-title">{{ __('Popular Posts') }}</h4>
                             @forelse($popularBlogs as $blog)
                             <div class="rc-post-item">

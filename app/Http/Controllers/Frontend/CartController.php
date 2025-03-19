@@ -28,7 +28,7 @@ class CartController extends Controller {
             }
             $products = Cart::content();
         }
-        
+
         $cartTotal = $this->cartTotal();
         $discountPercent = Session::has('offer_percentage') ? Session::get('offer_percentage') : 0;
         $discountAmount = ($cartTotal * $discountPercent) / 100;
@@ -41,26 +41,26 @@ class CartController extends Controller {
         $course = Course::active()->find($id);
 
         if (!$course) {
-            return response()->json(['status' => 'error', 'message' => 'Not Found!'], 404);
+            return response()->json(['status' => 'error', 'message' => 'Introuvable !'], 404);
         }
 
         if (auth()->check()) {
             $user = userAuth();
             if (isOwnCourse($user, $course)) {
-                return response()->json(['status' => 'error', 'message' => 'You can not add to cart your own course!'], 400);
+                return response()->json(['status' => 'error', 'message' => 'Vous ne pouvez pas ajouter votre propre cours au panier !'], 400);
             }
             if (hasCourseInCartOrPurchased($user, $course)) {
-                return response()->json(['status' => 'error', 'message' => 'Already purchased'], 400);
+                return response()->json(['status' => 'error', 'message' => 'Déjà acheté'], 400);
             }
             $user->carts()->create(['course_id' => $course->id]);
-            $response = ['status'     => 'success','message'    => 'Added to cart successfully!','cart_count' => $user->cartCount];
+            $response = ['status'     => 'success','message'    => 'Ajouté au panier avec succès!','cart_count' => $user->cartCount];
         } else {
             if ($this->checkItemExist($id)) {
-                return response(['status' => 'error', 'message' => 'Already added to cart or cannot add your own course!']);
+                return response(['status' => 'error', 'message' => 'Déjà ajouté au panier ou impossible d\'ajouter votre propre cours !']);
             }
             $cartData = $this->prepareCartData($course);
             Cart::add($cartData);
-            $response = ['status' => 'success','message' => 'Added to cart successfully!','cart_count' => Cart::content()->count()];
+            $response = ['status' => 'success','message' => 'Ajouté au panier avec succès !','cart_count' => Cart::content()->count()];
         }
         $this->handleGoogleTagManager($course, $response);
         $this->updateCouponDiscountAmount();
@@ -111,7 +111,7 @@ class CartController extends Controller {
             $course = Course::select('id')->whereSlug($rowId)->first();
             if (!$course || !$user->carts()->where('course_id', $course->id)->exists()) {
                 $notification = [
-                    'messege'    => __('Not Found!'),
+                    'messege'    => __('Introuvable !'),
                     'alert-type' => 'error',
                 ];
                 return redirect()->back()->with($notification);
@@ -129,19 +129,19 @@ class CartController extends Controller {
                     'name'  => auth('web')->user()->name,
                     'email' => auth('web')->user()->email,
                 ] : 'guest';
-    
+
                 $settings = cache()->get('setting');
                 $marketingSettings = cache()->get('marketing_setting');
                 if ($settings->google_tagmanager_status == 'active' && $marketingSettings->remove_from_cart) {
                     session()->put('removeFromCart', $cartItem);
                 }
-    
+
             }
             Cart::remove($rowId);
         }
         $notification = [
-            'messege'    => __('Item removed from cart!'),
-            'alert-type' => 'success',
+            'messege'    => __('Article retiré du panier !'),
+            'alert-type' => 'succès',
         ];
 
         $this->updateCouponDiscountAmount();
@@ -177,7 +177,7 @@ class CartController extends Controller {
             'coupon' => 'required',
         ];
         $customMessages = [
-            'coupon.required' => __('Coupon is required'),
+            'coupon.required' => __('Un coupon est requis'),
         ];
 
         $request->validate($rules, $customMessages);
@@ -185,24 +185,24 @@ class CartController extends Controller {
         $coupon = Coupon::where(['coupon_code' => $request->coupon, 'status' => 'active'])->first();
 
         if (!$coupon) {
-            $notification = __('Invalid coupon');
+            $notification = __('Coupon invalide');
 
             return response()->json(['message' => $notification], 403);
         }
 
         if ($coupon->expired_date < date('Y-m-d')) {
-            $notification = __('Coupon already expired');
+            $notification = __('Coupon déjà expiré');
 
             return response()->json(['message' => $notification], 403);
         }
 
         if ($this->cartTotal() < $coupon->min_price) {
-            $notification = __('Minimum order amount should be :amount', ['amount' => currency($coupon->min_price)]);
+            $notification = __('Le montant minimum de commande doit être :amount', ['amount' => currency($coupon->min_price)]);
 
             return response()->json(['message' => $notification], 403);
         }
         if ($this->cartTotal() <= 0) {
-            $notification = __('Cart amount should be greater than 0');
+            $notification = __('Le montant du panier doit être supérieur à 0');
 
             return response()->json(['message' => $notification], 403);
         }
@@ -235,8 +235,8 @@ class CartController extends Controller {
         $this->destroyCouponSession();
 
         $notification = [
-            'messege'    => __('Coupon removed successfully!'),
-            'alert-type' => 'success',
+            'messege'    => __('Coupon supprimé avec succès !'),
+            'alert-type' => 'succès',
         ];
         return redirect()->back()->with($notification);
     }

@@ -9,7 +9,7 @@
 
 <!-- all-courses -->
 <section class="all-courses-area section-py-120 top-baseline">
-    <div class="container position-relative">
+    <div class="container position-relative" data-aos="fade-down">
         <div class="preloader-two d-none">
             <div class="loader-icon-two"><img src="{{ asset(Cache::get('setting')->preloader) }}" alt="Preloader"></div>
         </div>
@@ -41,7 +41,7 @@
                             </div>
                         </div>
 
-                        <div class="sub-category-holder "></div>
+                        <div class="sub-category-holder "   data-aos="fade-down"></div>
                         <div class="courses-widget">
                             <h4 class="widget-title">{{ __('Langue') }}</h4>
                             <div class="courses-cat-list">
@@ -71,7 +71,7 @@
                             <div class="show-more">
                             </div>
                         </div>
-                        <div class="courses-widget">
+                        <div class="courses-widget"   data-aos="fade-down">
                             <h4 class="widget-title">{{ __('Prix') }}</h4>
                             <div class="courses-cat-list">
                                 <ul class="list-wrap">
@@ -100,7 +100,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="courses-widget">
+                        <div class="courses-widget"   data-aos="fade-down">
                             <h4 class="widget-title">{{ __('Niveau de compétence') }}</h4>
                             <div class="courses-cat-list">
                                 <ul class="list-wrap">
@@ -128,7 +128,7 @@
                     </aside>
                 </div>
             </div>
-            <div class="col-xl-9 col-lg-8">
+            <div class="col-xl-9 col-lg-8"   data-aos="fade-down">
                 <div class="courses-top-wrap courses-top-wrap">
                     <div class="row align-items-center">
                         <div class="col-md-5">
@@ -137,7 +137,7 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-7"   data-aos="fade-down">
                             <div class="d-flex justify-content-center align-items-center flex-wrap">
                                 <div class="courses-top-right m-0 ms-md-auto">
                                     <span class="sort-by">{{ __('Trier par') }}:</span>
