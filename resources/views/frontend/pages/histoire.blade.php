@@ -8,12 +8,14 @@
 
 
     <style>
+body{
+    
+}
 
-        .hero-section {
-
-            color: white;
-            text-align: center;
-            padding: 80px 0;
+ .hero-section {
+   color: white;
+    text-align: center;
+    padding: 80px 0;
         }
         .hero-section h1 {
             font-size: 3rem;
