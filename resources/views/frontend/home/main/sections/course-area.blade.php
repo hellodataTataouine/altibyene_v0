@@ -115,6 +115,10 @@
                                 </li>
                             @endif
 
+                            <div class="blog__shape-wrape">
+                                <img src="{{asset('frontend/img/blog/h4_blog_shape.svg')}}"alt="shape" class="rotateme"
+                                     style="position: absolute; ;left:950px; top:-380px;">
+
                             @if ($featuredCourse?->category_four_status == 1)
                                 <li class="nav-item" role="presentation">
                                     @php

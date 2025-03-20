@@ -7,138 +7,161 @@
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb :title="__('Présentation Altibyan')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __('présentation  Altibyan')]]" />
     <!-- breadcrumb-area-end -->
-<style>
-.about-section {
-    padding: 80px 0;
+    <style>
+        /* Section À Propos et Objectif Final */
+        .about-section {
+            padding: 80px 0;
 
-}
-.about-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #000;
-    text-align: center;
-}
-.about-content {
-    font-size: 1.2rem;
-    text-align: justify;
-}
-.custom-frame {
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
+        }
 
-.team-image {
-        width: 150px; /* Taille de l'image */
-        height: 150px; /* Taille de l'image */
-        object-fit: cover; /* Pour éviter la déformation de l'image */
-        border-radius: 50%; /* Pour rendre l'image circulaire */
-        margin-bottom: 15px; /* Espacement sous l'image */
-    }
-</style>
+        .about-title {
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: #000;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .about-content {
+            font-size: 1.2rem;
+            text-align: justify;
+            color: #000;
+        }
+
+        .custom-frame {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
 
 
-<!-- Section À Propos -->
+        .team-section {
+
+            color: white;
+            padding: 60px 0;
+        }
+
+        .team-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .team-member {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+
+            .team-member img {
+            border-radius: 50%;
+            border: 5px solid #F7C815;
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .team-member img:hover {
+            transform: scale(1.1);
+        }
+
+        .team-member h5 {
+            margin-top: 15px;
+            font-size: 1.5rem;
+        }
+
+        .team-member p {
+            color: #000;
+        }
+
+        .btn-primary {
+            background-color: #ffce00;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #e6b800;
+        }
+
+        @media (max-width: 768px) {
+            .about-section, .objective-section {
+                text-align: center;
+            }
+        }
+        </style>
+
+<!-- À Propos Section -->
 <section class="about-section">
-<div class="container">
-<div class="row align-items-center">
-    <!-- Texte -->
-    <div class="col-md-6" data-aos="fade-right">
-        <h1 class="about-title mb-4">À Propos de l'Attebyane</h1>
-        <p class="about-content">
-            L'Attebyane est une approche pédagogique spécifique dédiée à l'enseignement des études islamiques.
-            Elle repose sur une méthode d'apprentissage progressive, intégrant la transmission du savoir religieux,
-            la réflexion critique et la pratique des principes de l'islam dans la vie quotidienne.
-        </p>
-        <p class="about-content">
-            Son objectif est de former des individus non seulement savants en théologie islamique,
-            mais aussi capables d'appliquer ces connaissances avec sagesse et responsabilité.
-        </p>
-    </div>
-    <!-- Image/Vidéo-->
-
-    <div class="col-md-6 text-center" data-aos="fade-left"   >
-        <video class="img-fluid custom-frame" width="100%" controls>
-            <source src='uploads/custom-images/recitation.mov' type="video/mp4"style="width: 50%">
-            Votre navigateur ne supporte pas la lecture des vidéos.
-        </video>
-    </div>
-</div>
-</div>
-</section>
-
-<!-- Section Fondements
-<section class="about-section ">
-<div class="container">
-<div class="row">
-    <div class="col-md-12 text-center" data-aos="fade-up">
-        <h2 class="about-title">Les Fondements de l'Attebyane</h2>
-        <p class="about-content">
-            ◆ <strong>Transmission du Savoir Authentique :</strong> Respect des sources primaires comme le Coran et la Sunnah.<br>
-            ◆ <strong>Approche Contextualisée :</strong> Adaptation des enseignements islamiques à la société moderne.<br>
-            ◆ <strong>Éducation Morale et Spirituelle :</strong> Développement des valeurs telles que la justice et l'humilité.
-        </p>
-    </div>
-</div>
-</div>
-</section>
-
-<!--Section Objectif Final -->
-<section class="about-section">
-<div class="container">
-<div class="row align-items-center">
-    <div class="col-md-6" data-aos="fade-right">
-        <h2 class="about-title">L'Objectif Final</h2>
-        <p class="about-content">
-            L'attebyane vise à créer une société plus juste et harmonieuse, en offrant une éducation complète
-            qui lie savoir théologique, pratique éthique et engagement social.
-        </p>
-    </div>
-    <div class="col-md-6 text-center" data-aos="fade-left">
-        <img src='uploads/custom-images/presentation1.jpg' alt="Éducation" class="img-fluid custom-frame">
-    </div>
-</div>
-</div>
-</section>
-
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init();
-</script>
-<!-- Section Équipe -->
-<section class="container my-5">
-    <h2 class="text-center mb-4" data-aos="fade-up" style="flex-box:">Notre Équipe</h2>
-    <div class="row">
-        <div class="col-md-4 mb-4 team-member" data-aos="fade-up" data-aos-delay="100">
-            <img src="uploads/custom-images/instructor1.png" alt="Membre 1" class="team-image">
-            <h5 class="mt-3">Ahmed Fares</h5>
-            <p>Fondateur & CEO</p>
-        </div>
-        <div class="col-md-4 mb-4 team-member" data-aos="fade-up" data-aos-delay="200">
-            <img src="uploads/custom-images/instructor4.png" alt="Membre 2" class="team-image">
-            <h5 class="mt-3">Mouhamed Maher</h5>
-            <p>Responsable Pédagogique</p>
-        </div>
-        <div class="col-md-4 mb-4 team-member" data-aos="fade-up" data-aos-delay="300">
-            <img src="uploads/custom-images/instructor3.png" alt="Membre 3" class="team-image">
-            <h5 class="mt-3">Saif Taher</h5>
-            <p>Coordinateur pédagogique</p>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6" data-aos="fade-right">
+                <h1 class="about-title">À Propos de l'Altiyane</h1>
+                <p class="about-content">
+                    L'Altiyane est une approche pédagogique dédiée à l'enseignement des études islamiques, intégrant la réflexion critique et la pratique des principes islamiques.
+                </p>
+                <p class="about-content">
+                    Notre objectif est de former des individus capables d'appliquer ces connaissances avec sagesse et responsabilité.
+                </p>
+            </div>
+          {{-- <div class="col-md-6 text-center" data-aos="fade-left">
+                <video class="img-fluid custom-frame" controls>
+                    <source src="uploads/custom-images/recitation.mov" type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo.
+                </video>
+            </div>--}} 
         </div>
     </div>
 </section>
 
-<!-- Bootstrap JS & AOS JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
-    AOS.init({
-      duration: 1000,
-      easing: 'ease-in-out',
-      once: true,
-    });
-</script>
+<!-- Objectif Final Section -->
+<section class="objective-section about-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center" data-aos="fade-right">
+                <img src="uploads/custom-images/presentation1.jpg" alt="Éducation" class="img-fluid custom-frame">
+            </div>
+            <div class="col-md-6" data-aos="fade-left">
+                <h2 class="about-title">L'Objectif Final</h2>
+                <p class="about-content">
+                    Offrir une éducation complète alliant savoir théologique, éthique et engagement social pour une société juste et harmonieuse.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Équipe Section -->
+<section class="team-section">
+    <div class="container text-center">
+        <h2>Notre Équipe</h2>
+        <p>Des passionnés qui œuvrent pour un avenir meilleur.</p>
+
+        <div class="row">
+            <div class="col-md-4 team-member" data-aos="fade-up" data-aos-delay="100">
+                <img src="uploads/custom-images/instructor1.png" alt="Ahmed Fares">
+                <h5>Ahmed Fares</h5>
+                <p>Fondateur & CEO</p>
+            </div>
+
+            <div class="col-md-4 team-member" data-aos="fade-up" data-aos-delay="200">
+                <img src="uploads/custom-images/instructor4.png" alt="Mouhamed Maher">
+                <h5>Mouhamed Maher</h5>
+                <p>Responsable Pédagogique</p>
+            </div>
+
+            <div class="col-md-4 team-member" data-aos="fade-up" data-aos-delay="300">
+                <img src="uploads/custom-images/instructor3.png" alt="Saif Taher">
+                <h5>Saif Taher</h5>
+                <p>Coordinateur pédagogique</p>
+            </div>
+        </div>
+
+        <button class="btn btn-primary mt-4" onclick="window.location.href='/equipe'">Voir Plus</button>
+    </div>
+</section>
+
 
   {{--  <!-- about-area -->
     <section class="about-area tg-motion-effects section-py-120">
@@ -432,8 +455,8 @@ AOS.init();
             </div>
         </div>
         <div class="newsletter__shape">
-            <img src="{{ asset('frontend/img/banner/h3_hero_shape01.svg')}}" alt="img" data-aos="fade-left"
-                data-aos-delay="400">
+            <img src="{{ asset('frontend/img/banner/avion.webp') }}" alt="img" data-aos="fade-left"
+                data-aos-delay="400"  style="margin-top:50px;right:20px" >
         </div>
     </section>
     <!-- newsletter-area-end -->

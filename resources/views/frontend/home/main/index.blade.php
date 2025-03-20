@@ -23,6 +23,10 @@
                         Qui nous sommes ?</h2>
                   </div>
 
+
+                  <img src="{{asset('frontend/img/blog/h4_blog_shape.svg')}}"alt="shape" class="rotateme"
+                  style="position: absolute; ;left:1100px; top:-50px;">
+
                  <!-- Texte visible (limité à 3 lignes) -->
 <p class="lead text-left" id="intro-text">
     Attebyan est une approche pédagogique spécifique dédiée à l'enseignement des études islamiques.

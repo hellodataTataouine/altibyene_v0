@@ -26,8 +26,10 @@
           </div>
       </div>
   </div>
-  <div class="newsletter__shape">
-      <img src="{{ asset('frontend/img/banner/h3_hero_shape01.svg') }}" alt="img" data-aos="fade-left"
-          data-aos-delay="400"  style="margin-top:50px" >
+<div class="newsletter__shape">
+      <img src="{{ asset('frontend/img/banner/avion.webp') }}" alt="img" data-aos="fade-right"
+          data-aos-delay="400"  style="margin-top:50px;right:20px" >
   </div>
+  
+
 </section>

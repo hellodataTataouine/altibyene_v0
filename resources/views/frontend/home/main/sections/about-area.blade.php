@@ -4,8 +4,8 @@
             <div class="col-lg-6 col-md-9">
                 <div class="about__images">
                     <img src="{{ asset($aboutSection?->global_content?->image) }}" alt="img" class="main-img">
-                    <img src="{{ asset('frontend/img/others/about_shape.svg') }}" alt="img"
-                        class="shape alltuchtopdown">
+                   {{-- <img src="{{ asset('frontend/img/others/about_shape.svg') }}" alt="img"
+                        class="shape alltuchtopdown">--}}
                     @if($aboutSection?->global_content?->video_url)
                       <a href="{{ $aboutSection?->global_content?->video_url }}" class="popup-video" aria-label="Watch introductory video">
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="28" viewBox="0 0 22 28"
