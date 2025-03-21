@@ -28,7 +28,7 @@
                         <div class="tg-header__top-right">
                             @if ($setting?->header_social_status == 'active')
                                 <ul class="tg-header__top-social list-wrap">
-                                    <li>{{ __('Follow Us On') }} :</li>
+                                    <li>{{ __('Suivez-nous sur') }} :</li>
                                     @foreach (getSocialLinks() as $socialLink)
                                         <li class="header-social">
                                             <a href="{{ $socialLink->link }}" target="_blank">

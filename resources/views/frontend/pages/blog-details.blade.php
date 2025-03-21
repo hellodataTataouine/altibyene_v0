@@ -35,13 +35,14 @@
                         <div class="blog__details-content">
                             <div class="blog__post-meta">
                                 <ul class="list-wrap">
-                                    <li><i class="flaticon-calendar"></i> {{ formatDate($blog->created_at) }}</li>
-                                    <li><i class="flaticon-user-1"></i> {{ __('by') }} <a
+                                    <li><i class="flaticon-calendar"></i> {{ \Carbon\Carbon::parse($blog->created_at)->locale('fr')->isoFormat('DD MMM YYYY') }}
+                                    </li>
+                                    <li><i class="flaticon-user-1"></i> {{ __('par') }} <a
                                             href="javascript:;">{{ $blog->author->name }}</a></li>
                                     <li><i class="flaticon-clock"></i>
-                                        {{ calculateReadingTime($blog->translation->description) }} {{ __('Min Read') }}
+                                        {{ calculateReadingTime($blog->translation->description) }} {{ __('Lecture minimale') }}
                                     </li>
-                                    <li><i class="far fa-comment-alt"></i> {{ count($comments) }} {{ __('Comments') }}
+                                    <li><i class="far fa-comment-alt"></i> {{ count($comments) }} {{ __('Commentaires') }}
                                     </li>
                                 </ul>
                             </div>
@@ -54,7 +55,7 @@
                                     <div class="col-xl-6 col-md-7">
                                         <div class="tg-post-tag">
                                             @if($blog->tags)
-                                            <h5 class="tag-title">{{ __('Tags ') }}:</h5>
+                                            <h5 class="tag-title">{{ __('Balises ') }}:</h5>
                                             <ul class="list-wrap p-0 mb-0">
                                                 @foreach (json_decode($blog->tags) ?? [] as $tag)
                                                     <li><a href="javascript:;">{{ $tag->value }}</a></li>
@@ -65,7 +66,7 @@
                                     </div>
                                     <div class="col-xl-6 col-md-5">
                                         <div class="tg-post-social justify-content-start justify-content-md-end">
-                                            <h5 class="social-title">{{ __('Share') }} :</h5>
+                                            <h5 class="social-title">{{ __('Partager') }} :</h5>
                                             <ul class="list-wrap p-0 mb-0">
                                                 <div class="shareon">
                                                     <a class="facebook"></a>
@@ -86,7 +87,7 @@
                             <a href="#"><img src="{{ asset($blog->author->image) }}" alt="img"></a>
                         </div>
                         <div class="blog__post-author-content">
-                            <span class="designation">{{ __('Author') }}</span>
+                            <span class="designation">{{ __('Auteur') }}</span>
                             <h5 class="name">{{ $blog->author->name }}</h5>
                             <p>{{ $blog->author->bio }}</p>
                         </div>
@@ -95,7 +96,7 @@
                         <div class="comment-wrap">
                             @if(count($comments) > 0)
                             <div class="comment-wrap-title">
-                                <h4 class="title">{{ count($comments) }} {{ __('Comments') }}</h4>
+                                <h4 class="title">{{ count($comments) }} {{ __('Commentaires') }}</h4>
                             </div>
                             @endif
                             <div class="latest-comments">
@@ -109,7 +110,8 @@
                                                 <div class="comments-text">
                                                     <div class="avatar-name">
                                                         <h6 class="name">{{ $comment->user->name }}</h6>
-                                                        <span class="date">{{ formatDate($comment->created_at) }}</span>
+                                                        <span class="date">{{ \Carbon\Carbon::parse($comment->created_at)->locale('fr')->isoFormat('DD MMM YYYY') }}
+                                                        </span>
                                                     </div>
                                                     <p>{{ $comment->comment }}</p>
                                                 </div>
@@ -122,15 +124,15 @@
                         </div>
                         @auth
                             <div class="comment-respond">
-                                <h4 class="comment-reply-title">{{ __('Post a comment') }}</h4>
+                                <h4 class="comment-reply-title">{{ __('Poster un commentaire') }}</h4>
                                 <div class="comment-note">
-                                    <p>{{ __('Please keep your comment under 1000 characters') }}</p>
+                                    <p>{{ __('Veuillez garder votre commentaire sous 1000 caractères') }}</p>
                                 </div>
                                 <form action="{{ route('blog.submit-comment') }}" class="comment-form" method="post">
                                     @csrf
                                     <input type="hidden" name="blog_id" value="{{ $blog->id }}">
                                     <div class="comment-field">
-                                        <textarea placeholder="{{ __('Comment') }}" name="comment"></textarea>
+                                        <textarea placeholder="{{ __('Commentaire') }}" name="comment"></textarea>
                                     </div>
                                     <!-- g-recaptcha -->
                                     @if (Cache::get('setting')->recaptcha_status === 'active')
@@ -141,7 +143,7 @@
                                     @endif
 
                                     <p class="form-submit"></p>
-                                    <button class="btn btn-two arrow-btn">{{ __('Post Comment') }} <img
+                                    <button class="btn btn-two arrow-btn">{{ __('Publier un commentaire') }} <img
                                             src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt="img"
                                             class="injectable"></button>
                                 </form>
@@ -155,7 +157,7 @@
                                         d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                                 </svg>
                                 <div>
-                                    {{ __('Please login to comment') }}
+                                    {{ __('Veuillez vous connecter pour commenter') }}
                                 </div>
                             </div>
                         @endauth
@@ -167,7 +169,7 @@
                         <div class="blog-widget widget_search">
                             <div class="sidebar-search-form">
                                 <form action="{{ route('blogs') }}" method="get">
-                                    <input type="text" placeholder="{{ __('Search here') }}" name="search">
+                                    <input type="text" placeholder="{{ __('Rechercher ici') }}" name="search">
                                     <button type="submit"><i class="flaticon-search"></i></button>
                                 </form>
                             </div>
@@ -187,7 +189,7 @@
                             </div>
                         </div>
                         <div class="blog-widget">
-                            <h4 class="widget-title">{{ __('Latest Post') }}</h4>
+                            <h4 class="widget-title">{{ __('Dernier message') }}</h4>
                             @forelse($latestBlogs as $blog)
                                 <div class="rc-post-item">
                                     <div class="rc-post-thumb">
@@ -197,14 +199,15 @@
                                     </div>
                                     <div class="rc-post-content">
                                         <span class="date"><i class="flaticon-calendar"></i>
-                                            {{ formatDate($blog->created_at) }}</span>
+                                            {{ \Carbon\Carbon::parse($blog->created_at)->locale('fr')->isoFormat('DD MMM YYYY') }}
+                                        </span>
                                         <h4 class="title"><a
                                                 href="{{ route('blog.show', $blog->slug) }}">{{ truncate($blog->translation->title, 30) }}</a>
                                         </h4>
                                     </div>
                                 </div>
                             @empty
-                                <p>{{ __('No latest post yet') }}.</p>
+                                <p>{{ __('Pas encore de dernier message') }}.</p>
                             @endforelse
                         </div>
                     </aside>
