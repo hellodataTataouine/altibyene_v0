@@ -13,9 +13,9 @@
 @endpush
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('Course Details')" :links="[
-        ['url' => route('home'), 'text' => __('Home')],
-        ['url' => route('become-instructor'), 'text' => __('Course Details')],
+    <x-frontend.breadcrumb :title="__('Détails du cours')" :links="[
+        ['url' => route('home'), 'text' => __('Accueil')],
+        ['url' => route('become-instructor'), 'text' => __('Détails du cours')],
     ]" />
     <!-- breadcrumb-area-end -->
 
@@ -38,7 +38,7 @@
                                     href="{{ route('courses', ['category' => $course->category->id]) }}">{{ $course->category->translation->name }}</a>
                             </li>--}}
                             <li class="avg-rating"><i class="fas fa-star"></i>
-                                {{ number_format($course->reviews()->avg('rating'), 1) ?? 0 }} {{ __('Reviews') }}</li>
+                                {{ number_format($course->reviews()->avg('rating'), 1) ?? 0 }} {{ __('Avis') }}</li>
                             <li class="courses__wishlist">
                                 <a href="javascript:;" class="wsus-wishlist-btn" aria-label="WishList"
                                     data-slug="{{ $course?->slug }}">
@@ -52,45 +52,46 @@
                                 <li class="author-two">
                                     <img src="{{ asset($course->instructor->image) }}" alt="img"
                                         class="instructor-avatar">
-                                    {{ __('By') }}
+                                    {{ __('Par') }}
                                     <a
                                         href="{{ route('instructor-details', $course->instructor->id) }}">{{ $course->instructor->name }}</a>
                                 </li>
                                 <li class="date"><i
-                                        class="flaticon-calendar"></i>{{ formatDate($course->created_at, 'd/M/Y') }}</li>
+                                        class="flaticon-calendar"></i>{{ \Carbon\Carbon::parse($course->created_at)->locale('fr')->isoFormat('DD MMM YYYY') }}
+                                    </li>
                                 <li><i class="flaticon-mortarboard"></i>{{ $course->enrollments->count() }}
-                                    {{ __('Students') }}</li>
+                                    {{ __('Étudiants') }}</li>
                             </ul>
                         </div>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="overview-tab" data-bs-toggle="tab"
                                     data-bs-target="#overview-tab-pane" type="button" role="tab"
-                                    aria-controls="overview-tab-pane" aria-selected="true">{{ __('Overview') }}</button>
+                                    aria-controls="overview-tab-pane" aria-selected="true">{{ __('Aperçu') }}</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="curriculum-tab" data-bs-toggle="tab"
                                     data-bs-target="#curriculum-tab-pane" type="button" role="tab"
                                     aria-controls="curriculum-tab-pane"
-                                    aria-selected="false">{{ __('Curriculum') }}</button>
+                                    aria-selected="false">{{ __('Programme d\'études') }}</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="instructors-tab" data-bs-toggle="tab"
                                     data-bs-target="#instructors-tab-pane" type="button" role="tab"
                                     aria-controls="instructors-tab-pane"
-                                    aria-selected="false">{{ __('Instructors') }}</button>
+                                    aria-selected="false">{{ __('Instructeurs') }}</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="reviews-tab" data-bs-toggle="tab"
                                     data-bs-target="#reviews-tab-pane" type="button" role="tab"
-                                    aria-controls="reviews-tab-pane" aria-selected="false">{{ __('reviews') }}</button>
+                                    aria-controls="reviews-tab-pane" aria-selected="false">{{ __('avis') }}</button>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel"
                                 aria-labelledby="overview-tab" tabindex="0">
                                 <div class="courses__overview-wrap">
-                                    <h3 class="title">{{ __('Course Description') }}</h3>
+                                    <h3 class="title">{{ __('Description du cours') }}</h3>
                                     {!! clean($course->description) !!}
 
                                 </div>
@@ -98,7 +99,7 @@
                             <div class="tab-pane fade" id="curriculum-tab-pane" role="tabpanel"
                                 aria-labelledby="curriculum-tab" tabindex="0">
                                 <div class="courses__curriculum-wrap">
-                                    <h3 class="title">{{ __('Course Curriculum') }}</h3>
+                                    <h3 class="title">{{ __('Programme du cours') }}</h3>
                                     <p></p>
                                     <div class="accordion" id="accordionExample">
                                         @foreach ($course->chapters as $chapter)
@@ -467,9 +468,9 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="courses__details-sidebar">
                         <div class="courses__cost-wrap">
-                            <span>{{ __('This Course Fee') }}:</span>
+                            <span>{{ __('Ce cours gratuit') }}:</span>
                             @if ($course->price == 0)
-                                <h2 class="title">{{ __('Free') }}</h2>
+                                <h2 class="title">{{ __('Gratuit') }}</h2>
                             @elseif ($course->discount)
                                 <h2 class="title">{{ currency($course->discount) }}
                                     <del>{{ currency($course->price) }}</del>
@@ -480,13 +481,13 @@
 
                         </div>
                         <div class="courses__information-wrap">
-                            <h5 class="title">{{ __('Course includes') }}:</h5>
+                            <h5 class="title">{{ __('Le cours comprend') }}:</h5>
                             <ul class="list-wrap">
                                 <li class="level-wrapper">
                                     <b>
                                         <img src="{{ asset('frontend/img/icons/course_icon01.svg') }}" alt="img"
                                             class="injectable">
-                                        {{ __('Level') }}
+                                        {{ __('Niveau') }}
                                     </b>
                                     <ul class="course-level-list">
                                         @foreach ($course->levels as $level)
@@ -497,19 +498,19 @@
                                 <li>
                                     <img src="{{ asset('frontend/img/icons/course_icon02.svg') }}" alt="img"
                                         class="injectable">
-                                    {{ __('Duration') }}
+                                    {{ __('Durée') }}
                                     <span>{{ minutesToHours($course->duration) }}</span>
                                 </li>
                                 <li>
                                     <img src="{{ asset('frontend/img/icons/course_icon03.svg') }}" alt="img"
                                         class="injectable">
-                                    {{ __('Lessons') }}
+                                    {{ __('Leçons') }}
                                     <span>{{ $courseLessonCount }}</span>
                                 </li>
                                 <li>
                                     <img src="{{ asset('frontend/img/icons/course_icon04.svg') }}" alt="img"
                                         class="injectable">
-                                    {{ __('Quizzes') }}
+                                    {{ __('Quiz') }}
                                     <span>{{ $courseQuizCount }}</span>
                                 </li>
                                 <li>
@@ -517,16 +518,16 @@
                                         class="injectable">
                                     {{ __('Certifications') }}
                                     @if ($course->certificate)
-                                        <span>{{ __('Yes') }}</span>
+                                        <span>{{ __('Oui') }}</span>
                                     @else
-                                        <span>{{ __('No') }}</span>
+                                        <span>{{ __('Non') }}</span>
                                     @endif
                                 </li>
                                 <li class="level-wrapper">
                                     <b>
                                         <img src="{{ asset('frontend/img/icons/course_icon06.svg') }}" alt="img"
                                             class="injectable">
-                                        {{ __('Language') }}
+                                        {{ __('Langue') }}
                                     </b>
 
                                     <ul class="course-language-list">
@@ -538,7 +539,7 @@
                             </ul>
                         </div>
                         <div class="courses__details-social">
-                            <h5 class="title">{{ __('Share this course') }}:</h5>
+                            <h5 class="title">{{ __('Partagez ce cours') }}:</h5>
                             <div class="shareon">
                                 <a class="facebook"></a>
                                 <a class="linkedin"></a>
@@ -552,18 +553,18 @@
                                 @if (in_array($course->id, session('enrollments') ?? []))
                                     <a href="{{ route('student.enrolled-courses') }}"
                                         class="btn btn-two arrow-btn already-enrolled-btn" data-id="">
-                                        <span class="text">{{ __('Enrolled') }}</span>
+                                        <span class="text">{{ __('Inscrit') }}</span>
                                         <i class="flaticon-arrow-right"></i>
                                     </a>
                                 @elseif ($course->enrollments->count() >= $course->capacity && $course->capacity != null)
                                     <a href="javascript:;" class="btn btn-two arrow-btn" data-id="{{ $course->id }}">
-                                        <span class="text">{{ __('Booked') }}</span>
+                                        <span class="text">{{ __('Réservé') }}</span>
                                         <i class="flaticon-arrow-right"></i>
                                     </a>
                                 @else
                                     <a href="javascript:;" class="btn btn-two arrow-btn add-to-cart"
                                         data-id="{{ $course->id }}">
-                                        <span class="text">{{ __('Add To Cart') }}</span>
+                                        <span class="text">{{ __('Ajouter au panier') }}</span>
                                         <i class="flaticon-arrow-right"></i>
                                     </a>
                                 @endif

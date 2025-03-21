@@ -18,7 +18,7 @@
                                     <img src="{{ asset('frontend/img/icons/map.svg') }}" alt="img" class="injectable">
                                 </div>
                                 <div class="content">
-                                    <h4 class="title">{{ __('Address') }}</h4>
+                                    <h4 class="title">{{ __('Addresse') }}</h4>
                                     <p>{{ $contact?->address }}</p>
                                 </div>
                             </li>
@@ -30,7 +30,7 @@
                                         class="injectable">
                                 </div>
                                 <div class="content">
-                                    <h4 class="title">{{ __('Phone') }}</h4>
+                                    <h4 class="title">{{ __('Téléphone') }}</h4>
                                     <a href="tel:{{ $contact?->phone_one }}">{{ $contact?->phone_one }}</a>
                                     <a href="tel:{{ $contact?->phone_two }}">{{ $contact?->phone_two }}</a>
                                 </div>
@@ -43,7 +43,7 @@
                                         class="injectable">
                                 </div>
                                 <div class="content">
-                                    <h4 class="title">{{ __('E-mail Address') }}</h4>
+                                    <h4 class="title">{{ __('Adresse email') }}</h4>
                                     <a href="mailto:{{ $contact?->email_one }}">{{ $contact?->email_one }}</a>
                                     <a href="mailto:{{ $contact?->email_one }}">{{ $contact?->email_two }}</a>
                                 </div>

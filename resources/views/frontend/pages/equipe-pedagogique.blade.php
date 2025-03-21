@@ -36,7 +36,7 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 30px;
-            animation: fadeIn 3s ease-in-out;
+            animation: fadeIn 2s ease-in-out;
         }
 
         .team-text {
@@ -44,7 +44,7 @@
             font-size: 1.2rem;
             line-height: 1.6;
             margin-bottom: 30px;
-            animation: fadeIn 4s ease-in-out;
+            animation: fadeIn 3s ease-in-out;
         }
 
         .team-member {
@@ -74,9 +74,22 @@
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
+
+        .team-member img {
+            border-radius: 50%;
+            border: 5px solid #F7C815;
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            transition: transform 0.2s;
+        }
+
+        .team-member img:hover {
+            transform: scale(1.1);
+        }
+
     </style>
-</head>
-<body>
+
 <!-- Hero Section -->
 <section class="hero-section">
     <div class="container">

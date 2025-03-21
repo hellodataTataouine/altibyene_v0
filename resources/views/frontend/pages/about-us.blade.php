@@ -110,7 +110,7 @@
                     <source src="uploads/custom-images/recitation.mov" type="video/mp4">
                     Votre navigateur ne supporte pas la vidéo.
                 </video>
-            </div>--}} 
+            </div>--}}
         </div>
     </div>
 </section>
@@ -455,7 +455,7 @@
             </div>
         </div>
         <div class="newsletter__shape">
-            <img src="{{ asset('frontend/img/banner/avion.webp') }}" alt="img" data-aos="fade-left"
+            <img src="{{ asset('frontend/img/banner/avion.webp') }}" alt="img" data-aos="fade-right"
                 data-aos-delay="400"  style="margin-top:50px;right:20px" >
         </div>
     </section>

@@ -26,8 +26,9 @@
                                 <div class="blog__post-content">
                                     <div class="blog__post-meta">
                                         <ul class="list-wrap">
-                                            <li><i class="flaticon-calendar"></i>{{ formatDate($blog->created_at) }}</li>
-                                            <li><i class="flaticon-user-1"></i>{{ __('by') }} <a href="javascript:;">{{ truncate($blog->author->name, 14) }}</a>
+                                            <li><i class="flaticon-calendar"></i>{{ \Carbon\Carbon::parse($blog->created_at)->locale('fr')->isoFormat('DD MMM YYYY') }}
+                                            </li>
+                                            <li><i class="flaticon-user-1"></i>{{ __('par') }} <a href="javascript:;">{{ truncate($blog->author->name, 14) }}</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -36,7 +37,7 @@
                             </div>
                         </div>
                         @empty
-                        <p class="text-center">{{ __('No Data Found') }}</p>
+                        <p class="text-center">{{ __('Aucune donnée trouvée') }}</p>
                         @endforelse
                     </div>
                     <nav class="pagination__wrap mt-25">
@@ -63,7 +64,7 @@
                                     </li>
                                     @empty
                                     <li>
-                                        {{ __('No Category Found') }}
+                                        {{ __('Aucune catégorie trouvée') }}
                                     </li>
                                     @endforelse
 
@@ -71,7 +72,7 @@
                             </div>
                         </div>
                         <div class="blog-widget"   data-aos="fade-up-left">
-                            <h4 class="widget-title">{{ __('Popular Posts') }}</h4>
+                            <h4 class="widget-title">{{ __('Articles populaires') }}</h4>
                             @forelse($popularBlogs as $blog)
                             <div class="rc-post-item">
                                 <div class="rc-post-thumb">
@@ -80,13 +81,14 @@
                                     </a>
                                 </div>
                                 <div class="rc-post-content">
-                                    <span class="date"><i class="flaticon-calendar"></i> {{ formatDate($blog->created_at) }}</span>
+                                    <span class="date"><i class="flaticon-calendar"></i> {{ \Carbon\Carbon::parse($blog->created_at)->locale('fr')->isoFormat('DD MMM YYYY') }}
+                                    </span>
                                     <h4 class="title"><a href="{{ route('blog.show', $blog->slug) }}">{{ truncate($blog->translation->title, 30) }}</a>
                                     </h4>
                                 </div>
                             </div>
                             @empty
-                            <p class="">{{ __('No latest post yet') }}.</p>
+                            <p class="">{{ __('Pas encore de dernier message') }}.</p>
                             @endforelse
                         </div>
                     </aside>
