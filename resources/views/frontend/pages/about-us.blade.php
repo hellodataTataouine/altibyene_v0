@@ -5,7 +5,7 @@
 
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('Présentation Altibyan')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __('présentation  Altibyan')]]" />
+    <x-frontend.breadcrumb :title="__(' A Propos de l\'Altiyane')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __(' A Propos de l\'Altiyane')]]" />
     <!-- breadcrumb-area-end -->
     <style>
         /* Section À Propos et Objectif Final */
@@ -99,11 +99,41 @@
             <div class="col-md-6" data-aos="fade-right">
                 <h1 class="about-title">À Propos de l'Altiyane</h1>
                 <p class="about-content">
-                    L'Altiyane est une approche pédagogique dédiée à l'enseignement des études islamiques, intégrant la réflexion critique et la pratique des principes islamiques.
+                    <h2>Une méthode efficace</h2>
+                    Nous offrons aux enseignants une approche
+                    pédagogique structurée et efficace pour l\’enseignement
+                    du Coran et de la langue arabe. Elle est reconnue pour
+                    ses résultats exceptionnels.
+                    Un responsable agréé auprès du fondateur
+                    Son responsable, Walid REFIS, est reconnu au niveau
+                    européen comme formateur de la méthode Tybiane par
+                    le fondateur Abderrahmane Bakr à Médina, un gage de la
+                    qualité et de la pertinence de cette méthode.
+
+                    <h2>Un responsable agréé auprès du fondateur</h2>
+                    Son responsable, Walid REFIS, est reconnu au niveau européen comme formateur de la méthode Tybiane par le fondateur Abderrahmane Bakr à Médina,
+                     un gage de la qualité et de la pertinence de cette méthode.
+                     <h2>Une méthode déjà éprouvée et appliquée</h2>
+                     L'Institut et la Faculté de la mosquée du Prophète (que la paix soit sur lui), ainsi que certains bureaux de
+prédication et de guidance, et le centre de bienfaisance.
+L'Association caritative pour l'apprentissage du Coran
+dans plusieurs régions du royaume, notamment : La
+Mecque, Médine, Riyad, Al-Qasim, Al-Joeuf, Tabouk, les
+frontières du nord, la région orientale et Asir.
+Certaines écoles privées et internationales, ainsi que des
+écoles publiques, des académies privées et des instituts
+privés.
+
+
+
+À l\’international, cette méthode est mise en œuvre dans
+de nombreux pays : France,Indonésie, Malaisie, Thaïlande,
+Sri Lanka, Inde, Pakistan, Turquie, Somalie, Guinée,
+Djibouti, Nigeria, ainsi que certaines régions en
+Mauritanie selon le récit de Warsh.
+
                 </p>
-                <p class="about-content">
-                    Notre objectif est de former des individus capables d'appliquer ces connaissances avec sagesse et responsabilité.
-                </p>
+
             </div>
           {{-- <div class="col-md-6 text-center" data-aos="fade-left">
                 <video class="img-fluid custom-frame" controls>
@@ -115,52 +145,9 @@
     </div>
 </section>
 
-<!-- Objectif Final Section -->
-<section class="objective-section about-section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6 text-center" data-aos="fade-right">
-                <img src="uploads/custom-images/presentation1.jpg" alt="Éducation" class="img-fluid custom-frame">
-            </div>
-            <div class="col-md-6" data-aos="fade-left">
-                <h2 class="about-title">L'Objectif Final</h2>
-                <p class="about-content">
-                    Offrir une éducation complète alliant savoir théologique, éthique et engagement social pour une société juste et harmonieuse.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Équipe Section -->
-<section class="team-section">
-    <div class="container text-center">
-        <h2>Notre Équipe</h2>
-        <p>Des passionnés qui œuvrent pour un avenir meilleur.</p>
 
-        <div class="row">
-            <div class="col-md-4 team-member" data-aos="fade-up" data-aos-delay="100">
-                <img src="uploads/custom-images/instructor1.png" alt="Ahmed Fares">
-                <h5>Ahmed Fares</h5>
-                <p>Fondateur & CEO</p>
-            </div>
 
-            <div class="col-md-4 team-member" data-aos="fade-up" data-aos-delay="200">
-                <img src="uploads/custom-images/instructor4.png" alt="Mouhamed Maher">
-                <h5>Mouhamed Maher</h5>
-                <p>Responsable Pédagogique</p>
-            </div>
-
-            <div class="col-md-4 team-member" data-aos="fade-up" data-aos-delay="300">
-                <img src="uploads/custom-images/instructor3.png" alt="Saif Taher">
-                <h5>Saif Taher</h5>
-                <p>Coordinateur pédagogique</p>
-            </div>
-        </div>
-
-        <button class="btn btn-primary mt-4" onclick="window.location.href='/equipe'">Voir Plus</button>
-    </div>
-</section>
 
 
   {{--  <!-- about-area -->
@@ -377,8 +364,8 @@
                 <div class="col-xl-5">
                     <div class="section__title text-center mb-50" data-aos="fade-up-right">
                         <span class="sub-title">{{ __('Nos témoignages') }}</span>
-                        <h2 class="title">{{ __('Ce que les étudiants pensent et disent de nous') }}</h2>
-                        <p>{{ __('Retours authentiques de nos étudiants sur leurs expériences avec notre enseignement') }}</p>
+                        <h2 class="title">{{ __('Ce qu’ils disent de nous :') }}</h2>
+                        <p>{{ __('Grâce à Allah Taala : ') }}</p>
                     </div>
                 </div>
             </div>

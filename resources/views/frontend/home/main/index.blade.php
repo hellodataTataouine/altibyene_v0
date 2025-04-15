@@ -118,15 +118,15 @@
         <!-- newsletter-area-end -->
     @endif
 
-    @if ($sectionSetting?->featured_instructor_section)
-        <!-- instructor-area -->
+    <!--  @if ($sectionSetting?->featured_instructor_section)
+       instructor-area
         @include('frontend.home.main.sections.instructor-area')
-        <!-- instructor-area-end -->
-    @endif
-    @if ($sectionSetting?->counter_section)
-        <!-- fact-area -->
+    @endif instructor-area-end -->
+
+     <!--@if ($sectionSetting?->counter_section)
+        fact-area
         @include('frontend.home.main.sections.fact-area')
-        <!-- fact-area-end -->
+   fact-area-end -->
     @endif
 
     @if ($sectionSetting?->faq_section)

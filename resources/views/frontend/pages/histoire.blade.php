@@ -81,7 +81,7 @@
                     <div class="timeline-frame" style="width: 192px; height: 390px;">
                         <h5>2020 - Fondation</h5>
                         <p>Création de l'association par des bénévoles passionnés.</p>
-                        <img src="uploads/custom-images/equipe.jpg" alt="Fondation">
+                        <img src="uploads/custom-images/dons2.jpg" alt="Fondation">
                     </div>
                 </div>
 
