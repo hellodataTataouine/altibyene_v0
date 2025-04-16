@@ -19,7 +19,7 @@
                     <div class="courses__sidebar_button d-lg-none">
                         <h4>{{ __('filter') }}</h4>
                     </div>
-                    <aside class="courses__sidebar">
+                    {{--<aside class="courses__sidebar">
                         <div class="courses-widget">
                             <h4 class="widget-title">{{ __('Categories') }}</h4>
                             <div class="courses-cat-list">
@@ -39,9 +39,9 @@
                                 <div class="show-more">
                                 </div>
                             </div>
-                        </div>
+                        </div>--}}
 
-                        <div class="sub-category-holder "   data-aos="fade-down"></div>
+                      {{--  <div class="sub-category-holder "   data-aos="fade-down"></div>
                         <div class="courses-widget">
                             <h4 class="widget-title">{{ __('Langue') }}</h4>
                             <div class="courses-cat-list">
@@ -70,8 +70,8 @@
                             </div>
                             <div class="show-more">
                             </div>
-                        </div>
-                        <div class="courses-widget"   data-aos="fade-down">
+                        </div>--}}
+                        {{--<div class="courses-widget"   data-aos="fade-down">
                             <h4 class="widget-title">{{ __('Prix') }}</h4>
                             <div class="courses-cat-list">
                                 <ul class="list-wrap">
@@ -99,7 +99,38 @@
                                     </li>
                                 </ul>
                             </div>
+                        </div>--}}
+
+                        <div class="courses-widget" data-aos="fade-down">
+                            <h4 class="widget-title">{{ __('Type de cours') }}</h4>
+                            <div class="courses-cat-list">
+                                <ul class="list-wrap">
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input type-checkbox" type="checkbox"
+                                                value="" id="type_all">
+                                            <label class="form-check-label" for="type_all">{{ __('Tous les types') }}</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input type-checkbox" type="checkbox"
+                                                value="presentiel" id="type_presentiel">
+                                            <label class="form-check-label" for="type_presentiel">{{ __('Présentiel') }}</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input type-checkbox" type="checkbox"
+                                                value="distanciel" id="type_distanciel">
+                                            <label class="form-check-label" for="type_distanciel">{{ __('Distanciel') }}</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
+
+
                         <div class="courses-widget"   data-aos="fade-down">
                             <h4 class="widget-title">{{ __('Niveau de compétence') }}</h4>
                             <div class="courses-cat-list">
@@ -153,6 +184,81 @@
                         </div>
                     </div>
                 </div>
+
+
+
+                
+                @forelse ($courses as $course)
+                <div class="col-xxl-4 col-md-6 col-lg-6 col-xl-6">
+                    <div class="courses__item shine__animate-item">
+                        <div class="courses__item-thumb">
+                            <a href="{{ route('course.show', $course->slug) }}" class="shine__animate-link">
+                                <img src="{{ asset($course->thumbnail) }}" alt="img">
+                            </a>
+                            <a href="javascript:;" class="wsus-wishlist-btn common-white courses__wishlist-two"
+                                data-slug="{{ $course?->slug }}" aria-label="WishList">
+                                <i class="{{ $course?->favorite_by_client ? 'fas' : 'far' }} fa-heart"></i>
+                            </a>
+                        </div>
+                        <div class="courses__item-content">
+                            <ul class="courses__item-meta list-wrap">
+                               {{--<li class="courses__item-tag">
+                                    <a
+                                        href="{{ route('courses', ['category' => $course->category->id]) }}">{{ $course->category->translation->name }}</a>
+                                </li>--}}
+                                <li class="avg-rating"><i class="fas fa-star"></i>
+                                    {{ number_format($course->reviews()->avg('rating'), 1) ?? 0 }}</li>
+                            </ul>
+                            <h5 class="title"><a
+                                    href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a></h5>
+                            <p class="author">{{ __('Par') }} <a
+                                    href="{{ route('instructor-details', ['id' => $course->instructor->id, 'slug' => Str::slug($course->instructor->name)]) }}">{{ $course->instructor->name }}</a>
+                            </p>
+                            <div class="courses__item-bottom">
+                                @if (in_array($course->id, session('enrollments') ?? []))
+                                    <div class="button">
+                                        <a href="{{ route('student.enrolled-courses') }}" class="already-enrolled-btn"
+                                            data-id="">
+                                            <span class="text">{{ __('Enrolled') }}</span>
+                                            <i class="flaticon-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                @elseif ($course->enrollments->count() >= $course->capacity && $course->capacity != null)
+                                    <div class="button">
+                                        <a href="javascript:;" class="" data-id="{{ $course->id }}">
+                                            <span class="text">{{ __('Booked') }}</span>
+                                            <i class="flaticon-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                @else
+                                  {{--  <div class="button">
+                                        <a href="javascript:;" class="add-to-cart" data-id="{{ $course->id }}">
+                                            <span class="text">{{ __('Ajouter au panier') }}</span>
+                                            <i class="flaticon-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                @endif
+                                @if ($course->price == 0)
+                                    <h5 class="price">{{ __('Free') }}</h5>
+                                @elseif ($course->price > 0 && $course->discount > 0)
+                                    <h5 class="price">{{ currency($course->discount) }}</h5>
+                                @else
+                                    <h5 class="price">{{ currency($course->price) }}</h5>--}}
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <div class="w-100">
+                    <h6 class="text-center">{{ __('Aucun cours trouvé !') }}</h6>
+                </div>
+            @endforelse
+
+
+
+
+
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="grid" role="tabpanel"
                         aria-labelledby="grid-tab">
