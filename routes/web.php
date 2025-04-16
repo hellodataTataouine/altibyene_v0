@@ -7,6 +7,8 @@ use App\Http\Controllers\Frontend\GalerieController;
 use App\Http\Controllers\Frontend\ProgrammeCoursController;
 use App\Http\Controllers\Frontend\PartenairesController;
 
+use App\Http\Controllers\Frontend\FormationController;
+
 use App\Http\Controllers\Frontend\HistoireController;
 use App\Http\Controllers\Frontend\AppeletdonsController;
 use App\Http\Controllers\Frontend\PresentationClaireLuneController;
@@ -321,3 +323,5 @@ Route::get('/appel-dons', [AppeletdonsController::class, 'index'])->name('appel-
 
 
 Route::get('/equipe-pedagogique', [EquipepedagogiqueController::class, 'index'])->name('equipe-pedagogique.index');
+
+Route::get('/formation', [FormationController::class, 'index'])->name('formation.index');

@@ -211,9 +211,15 @@
                                         <h3 class="title"><a
                                                 href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a>
                                         </h3>
-                                        <p class="author">{{ __('Par') }} <a
+                                       {{-- <p class="author">{{ __('Par') }} <a
                                                 href="{{ route('instructor-details', ['id' => $course->instructor->id, 'slug' => Str::slug($course->instructor->name)]) }}">{{ $course->instructor->name }}</a>
-                                        </p>
+                                        </p>--}}
+
+                                        <div class="courses__item-info mt-2">
+                                            <p><strong>{{ __('Date du cours') }} :</strong> {{ $course->date ?? 'À venir' }}</p>
+                                            <p><strong>{{ __('Public') }} :</strong> {{ ucfirst($course->public ?? 'Non spécifié') }}</p>
+                                        </div>
+
                                         <div class="courses__item-bottom">
                                             @if (in_array($course->id, session('enrollments') ?? []))
                                                 <div class="button">
@@ -235,7 +241,7 @@
                                           <div class="button">
                                                     <a href="javascript:;" class="add-to-cart"
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('Ajouter au panier') }}</span>
+                                                        <span class="text">{{ __('Réservé') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
@@ -316,7 +322,7 @@
                                                 <div class="button">
                                                     <a href="javascript:;" class="add-to-cart"
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('Ajouter au panier') }}</span>
+                                                        <span class="text">{{ __('Réservé') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
@@ -476,7 +482,7 @@
                                                 <div class="button">
                                                     <a href="javascript:;" class="add-to-cart"
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('Ajouter au panier') }}</span>
+                                                        <span class="text">{{ __('Réservé') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
@@ -556,7 +562,7 @@
                                                 <div class="button">
                                                     <a href="javascript:;" class="add-to-cart"
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('Ajouter au panier') }}</span>
+                                                        <span class="text">{{ __('Réservé') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
@@ -636,7 +642,7 @@
                                                 <div class="button">
                                                     <a href="javascript:;" class="add-to-cart"
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('Ajouter au panier') }}</span>
+                                                        <span class="text">{{ __('Réservé') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>

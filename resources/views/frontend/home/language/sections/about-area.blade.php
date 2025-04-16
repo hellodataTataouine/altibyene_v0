@@ -4,8 +4,8 @@
             <div class="col-lg-6 col-md-10">
                 <div class="choose__img-three">
                     <img src="{{ asset($aboutSection?->global_content?->image) }}" alt="img">
-                    @if ($aboutSection?->global_content?->video_url)
-                        <a href="{{ $aboutSection?->global_content?->video_url }}" class="play-btn popup-video" aria-label="Watch introductory video"><i
+     @if ($aboutSection?->global_content?->video_url)
+                     <a href="{{ $aboutSection?->global_content?->video_url }}" class="play-btn popup-video" aria-label="Watch introductory video"><i
                                 class="fas fa-play"></i></a>
                     @endif
 

@@ -12,7 +12,7 @@
                             <img src="{{ asset($hero?->global_content?->enroll_students_image)}}" alt="img">
                         </div>
                     @endif
-                    @if ($aboutSection?->global_content?->video_url)
+           @if ($aboutSection?->global_content?->video_url)
                         <div class="about__video" data-aos="fade-left" data-aos-delay="400">
                             <a href="{{ $aboutSection?->global_content?->video_url }}" class="play-btn popup-video" aria-label="Watch introductory video"><i
                                     class="fas fa-play"></i> {{ __('Watch our') }} <br> {{ __('Video') }}</a>
