@@ -5,163 +5,97 @@
 
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('Présentation Altibyan')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __('présentation  Altibyan')]]" />
+    <x-frontend.breadcrumb :title="__(' A Propos de l\'Altibyane')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __(' A Propos de l\'Altiyane')]]" />
     <!-- breadcrumb-area-end -->
     <style>
-        /* Section À Propos et Objectif Final */
-        .about-section {
-            padding: 80px 0;
+   .about-section {
+    padding: 80px 0;
+    background-color: #00000;
+    color: #333;
+    text-align: center;
+}
 
-        }
-
-        .about-title {
-            font-size: 2.75rem;
-            font-weight: 700;
-            color: #000;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .about-content {
-            font-size: 1.2rem;
-            text-align: justify;
-            color: #000;
-        }
-
-        .custom-frame {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
+.about-section .row {
+    justify-content: center;
+}
 
 
-        .team-section {
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: left;
+}
 
-            color: white;
-            padding: 60px 0;
-        }
+.about-content h2 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+    color: #00000;
+    text-align: center;
+-
+}
 
-        .team-section h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
+.about-content p {
+    margin-bottom: 20px;
+}
+.about-image {
+    text-align: center;
+    margin-top: 40px;
 
-        .team-member {
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
+}
 
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
 
-            .team-member img {
-            border-radius: 50%;
-            border: 5px solid #F7C815;
-            width: 160px;
-            height: 160px;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .team-member img:hover {
-            transform: scale(1.1);
-        }
-
-        .team-member h5 {
-            margin-top: 15px;
-            font-size: 1.5rem;
-        }
-
-        .team-member p {
-            color: #000;
-        }
-
-        .btn-primary {
-            background-color: #ffce00;
-            border: none;
-            padding: 10px 25px;
-            font-size: 1.1rem;
-        }
-
-        .btn-primary:hover {
-            background-color: #e6b800;
-        }
-
-        @media (max-width: 768px) {
-            .about-section, .objective-section {
-                text-align: center;
-            }
-        }
+    margin-right:50px;
+}
         </style>
 
-<!-- À Propos Section -->
-<section class="about-section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6" data-aos="fade-right">
-                <h1 class="about-title">À Propos de l'Altiyane</h1>
-                <p class="about-content">
-                    L'Altiyane est une approche pédagogique dédiée à l'enseignement des études islamiques, intégrant la réflexion critique et la pratique des principes islamiques.
-                </p>
-                <p class="about-content">
-                    Notre objectif est de former des individus capables d'appliquer ces connaissances avec sagesse et responsabilité.
-                </p>
-            </div>
-          {{-- <div class="col-md-6 text-center" data-aos="fade-left">
-                <video class="img-fluid custom-frame" controls>
-                    <source src="uploads/custom-images/recitation.mov" type="video/mp4">
-                    Votre navigateur ne supporte pas la vidéo.
-                </video>
-            </div>--}}
-        </div>
+    <div class="col-md-12" data-aos="fade-right"  style="margin-top:-10px">
+    <div class="about-content">
+        <h2 >Une méthode efficace</h2>
+        <p>
+            Nous offrons aux enseignants une approche pédagogique structurée et efficace pour l’enseignement du Coran et de la langue arabe. Elle est reconnue pour ses résultats exceptionnels.
+        </p>
+
+        <h2>Un responsable agréé auprès du fondateur</h2>
+        <p>
+            Son responsable, Walid REFIS, est reconnu au niveau européen comme formateur de la méthode Tybiane par le fondateur Abderrahmane Bakr à Médina, un gage de la qualité et de la pertinence de cette méthode.
+        </p>
+
+        <h2>Une méthode déjà éprouvée et appliquée</h2>
+        <p>
+            L'Institut et la Faculté de la mosquée du Prophète (que la paix soit sur lui), ainsi que certains bureaux de prédication, de guidance et centres de bienfaisance...
+        </p>
+
+        <p>
+            À l’international, cette méthode est mise en œuvre dans de nombreux pays : France, Indonésie, Malaisie, Thaïlande, Sri Lanka, Inde, Pakistan, Turquie, Somalie, Guinée, Djibouti, Nigeria, ainsi que certaines régions en Mauritanie selon le récit de Warsh.
+        </p>
+
+    <div class="about-image mt-4">
+        <img src="{{ asset('uploads/custom-images/map.png') }}" alt="Image de la méthode" >
     </div>
-</section>
 
-<!-- Objectif Final Section -->
-<section class="objective-section about-section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6 text-center" data-aos="fade-right">
-                <img src="uploads/custom-images/presentation1.jpg" alt="Éducation" class="img-fluid custom-frame">
-            </div>
-            <div class="col-md-6" data-aos="fade-left">
-                <h2 class="about-title">L'Objectif Final</h2>
-                <p class="about-content">
-                    Offrir une éducation complète alliant savoir théologique, éthique et engagement social pour une société juste et harmonieuse.
-                </p>
-            </div>
-        </div>
+          {{-- <div class="image mt-4">
+   <img src="{{ asset('uploads/custom-images/lo.png') }}" alt="Image de la méthode" style="width: -50px" >--}}
+
+    <h2 >Nos Objectifs</h2>
+    <p >
+        L’association Clair de Lune a pour vocation de transmettre les connaissances essentielles de l’islam,
+         en particulier à travers l’enseignement de la langue arabe, du texte et des sciences religieuses.
+          Nous nous engageons à offrir un apprentissage accessible et de qualité, respectueux des traditions et adapté aux besoins de chacun.
+           Notre mission est également de former des enseignants à la méthode Tybiane,
+            une méthode d'apprentissage qui vise le perfectionnement de la lecture et de l'écriture du texte ainsi qu'une initiation à l'éducation religieuse à travers les invocations quotidiennes, permettant ainsi de diffuser un savoir authentique et structuré dans le respect des valeurs islamiques. Au sein de Clair de Lune, nous aspirons à créer un environnement d’apprentissage où chaque membre de notre communauté peut s’épanouir et approfondir sa foi,
+         dans un cadre bienveillant et respectueux.
+    </p>
+</div>
+</div>
     </div>
+  </div>
 </section>
-
-<!-- Équipe Section -->
-<section class="team-section">
-    <div class="container text-center">
-        <h2>Notre Équipe</h2>
-        <p>Des passionnés qui œuvrent pour un avenir meilleur.</p>
-
-        <div class="row">
-            <div class="col-md-4 team-member" data-aos="fade-up" data-aos-delay="100">
-                <img src="uploads/custom-images/instructor1.png" alt="Ahmed Fares">
-                <h5>Ahmed Fares</h5>
-                <p>Fondateur & CEO</p>
-            </div>
-
-            <div class="col-md-4 team-member" data-aos="fade-up" data-aos-delay="200">
-                <img src="uploads/custom-images/instructor4.png" alt="Mouhamed Maher">
-                <h5>Mouhamed Maher</h5>
-                <p>Responsable Pédagogique</p>
-            </div>
-
-            <div class="col-md-4 team-member" data-aos="fade-up" data-aos-delay="300">
-                <img src="uploads/custom-images/instructor3.png" alt="Saif Taher">
-                <h5>Saif Taher</h5>
-                <p>Coordinateur pédagogique</p>
-            </div>
-        </div>
-
-        <button class="btn btn-primary mt-4" onclick="window.location.href='/equipe'">Voir Plus</button>
-    </div>
-</section>
-
 
   {{--  <!-- about-area -->
     <section class="about-area tg-motion-effects section-py-120">
@@ -377,8 +311,8 @@
                 <div class="col-xl-5">
                     <div class="section__title text-center mb-50" data-aos="fade-up-right">
                         <span class="sub-title">{{ __('Nos témoignages') }}</span>
-                        <h2 class="title">{{ __('Ce que les étudiants pensent et disent de nous') }}</h2>
-                        <p>{{ __('Retours authentiques de nos étudiants sur leurs expériences avec notre enseignement') }}</p>
+                        <h2 class="title">{{ __('Ce qu’ils disent de nous :') }}</h2>
+                        <p>{{ __('Grâce à Allah Taala : ') }}</p>
                     </div>
                 </div>
             </div>

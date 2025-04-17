@@ -111,9 +111,9 @@ class ProgrammeCoursController extends Controller
             $reviews = CourseReview::where('course_id', $course->id)->where('status', 1)->whereHas('course')->whereHas('user')->orderBy('created_at', 'desc')->paginate(20);
             return view('frontend.pages.course-details', compact('course', 'courseLessonCount', 'courseQuizCount', 'reviews'));
         }
-    }
+   
 
-
+}
 
 
 

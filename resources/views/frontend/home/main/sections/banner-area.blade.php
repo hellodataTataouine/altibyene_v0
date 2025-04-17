@@ -13,7 +13,7 @@
                         @if ($hero?->content?->action_button_text != null)
                         <a href="{{ $hero?->global_content?->action_button_url }}" class="btn arrow-btn">{{ $hero->content?->action_button_text }} <img src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt="img" class="injectable"></a>
                         @endif
-                        @if ($hero?->content?->video_button_text != null)
+                     @if ($hero?->content?->video_button_text != null)
                         <a href="{{ $hero?->global_content?->video_button_url }}" class="play-btn popup-video" aria-label="{{$hero?->content?->video_button_text}}"><i class="fas fa-play"></i> {!! clean(processText($hero?->content?->video_button_text)) !!}</a>
                         @endif
                     </div>

@@ -19,7 +19,7 @@
                     <div class="courses__sidebar_button d-lg-none">
                         <h4>{{ __('filter') }}</h4>
                     </div>
-                    <aside class="courses__sidebar">
+                    {{--<aside class="courses__sidebar">
                         <div class="courses-widget">
                             <h4 class="widget-title">{{ __('Categories') }}</h4>
                             <div class="courses-cat-list">
@@ -39,9 +39,9 @@
                                 <div class="show-more">
                                 </div>
                             </div>
-                        </div>
+                        </div>--}}
 
-                        <div class="sub-category-holder "   data-aos="fade-down"></div>
+                      {{--  <div class="sub-category-holder "   data-aos="fade-down"></div>
                         <div class="courses-widget">
                             <h4 class="widget-title">{{ __('Langue') }}</h4>
                             <div class="courses-cat-list">
@@ -70,8 +70,8 @@
                             </div>
                             <div class="show-more">
                             </div>
-                        </div>
-                        <div class="courses-widget"   data-aos="fade-down">
+                        </div>--}}
+                        {{--<div class="courses-widget"   data-aos="fade-down">
                             <h4 class="widget-title">{{ __('Prix') }}</h4>
                             <div class="courses-cat-list">
                                 <ul class="list-wrap">
@@ -99,9 +99,40 @@
                                     </li>
                                 </ul>
                             </div>
+                        </div>--}}
+
+                        <div class="courses-widget" data-aos="fade-down">
+                            <h4 class="widget-title">{{ __('Type de cours') }}</h4>
+                            <div class="courses-cat-list">
+                                <ul class="list-wrap">
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input type-checkbox" type="checkbox"
+                                                value="" id="type_all">
+                                            <label class="form-check-label" for="type_all">{{ __('Tous les types') }}</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input type-checkbox" type="checkbox"
+                                                value="presentiel" id="type_presentiel">
+                                            <label class="form-check-label" for="type_presentiel">{{ __('Présentiel') }}</label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <input class="form-check-input type-checkbox" type="checkbox"
+                                                value="distanciel" id="type_distanciel">
+                                            <label class="form-check-label" for="type_distanciel">{{ __('Distanciel') }}</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
+
+
                         <div class="courses-widget"   data-aos="fade-down">
-                            <h4 class="widget-title">{{ __('Niveau de compétence') }}</h4>
+                            <h4 class="widget-title">{{ __('Catégorie ') }}</h4>
                             <div class="courses-cat-list">
                                 <ul class="list-wrap">
                                     <li>
@@ -153,6 +184,13 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
+             
+
+
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="grid" role="tabpanel"
                         aria-labelledby="grid-tab">

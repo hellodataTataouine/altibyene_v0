@@ -7,163 +7,103 @@
     <!-- breadcrumb-area-end -->
     <style>
 
-       body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
+        .header {
+
+          height: 400px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          text-shadow: 2px 2px 4px #000;
+          position: relative;
         }
 
-        .hero-section {
+        .header::after {
+          content: "";
+          position: absolute;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
 
-            color: white;
-            text-align: center;
-            padding: 120px 0;
         }
 
-        .hero-section h1 {
-            font-size: 3.5rem;
-            font-weight: bold;
-            animation: fadeInUp 1.5s ease-out;
+        .header h1 {
+          z-index: 1;
+          font-size: 3rem;
+          animation: fadeInDown 2s;
         }
 
-        .hero-section p {
-            font-size: 1.5rem;
-            margin-top: 15px;
-            animation: fadeInUp 2s ease-out;
+        @keyframes fadeInDown {
+          0% { opacity: 0; transform: translateY(-30px); }
+          100% { opacity: 1; transform: translateY(0); }
         }
 
-        .mission-section, .team-section {
-            padding: 60px 0;
-            background-color: #ffffff;
-            text-align: center;
-        }
-
-        .mission-section h2, .team-section h2 {
-            font-size: 2.8rem;
-            color: #000;
-            margin-bottom: 20px;
-        }
-
-        .mission-text, .team-text {
-            font-size: 1.2rem;
-            color: #000;
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        .team-member {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .team-member img {
-            border-radius: 50%;
-            border: 5px solid #F7C815;
-            width: 160px;
-            height: 160px;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .team-member img:hover {
-            transform: scale(1.1);
-        }
-
-        .team-member h5 {
-            font-size: 1.6rem;
-            color: #000;
-            margin-top: 15px;
-        }
-
-        .team-member p {
-            color: #000;
-            font-size: 1rem;
-        }
-
-        .cta-section {
-
-            color: white;
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        .cta-section h3 {
-            font-size: 2rem;
-        }
-
-        .cta-section .btn {
-            background-color: #F7C815;
-            color: #000;
-            padding: 12px 30px;
-            border-radius: 30px;
-            transition: background-color 0.3s, color 0.3s;
+        .section {
+          padding: 4rem 2rem;
         }
 
 
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .quote {
+          font-style: italic;
+          color: #198754;
+          text-align: center;
+          margin-top: 3rem;
         }
-    </style>
+      </style>
+    </head>
+    <body>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <h1>Bienvenue à l'Association Claire de Lune</h1>
-            <p>Nous œuvrons pour le bien-être des communautés et la solidarité à travers diverses initiatives.</p>
+      <!-- Header -->
+      <div class="header">
+        <h1>✨ Association Clair de Lune</h1>
+      </div>
+
+      <!-- Présentation -->
+      <div class="container section">
+        <h2 class="mb-4 text-center">Qui sommes-nous ?</h2>
+        <p class="lead text-center">
+          Clair de lune vous accompagne dans l'apprentissage des fondements de votre religion. En effet, la pratique correcte de la religion trouve son essence dans la bonne méthode d'apprentissage.
+        </p>
+        <p class="text-center">
+          Ainsi, un musulman bien formé trouve de l'aisance dans sa pratique religieuse car il comprend mieux ce que <strong>SON SEIGNEUR</strong> attend de lui à travers l'explication correcte des textes et de leurs applications dans le bon contexte tout en respectant les valeurs du pays dans lequel il vit.
+        </p>
+        <p class="text-center">
+          Il devient donc un modèle parfait car il réussit à concilier sa pratique religieuse et les relations humaines. Cette conciliation le conduit sans doute à une réussite dans ce monde et dans l'au-delà.
+        </p>
+      </div>
+
+      <!-- Nos Valeurs -->
+<div class="container section objectifs">
+    <h2 class="mb-4 text-center">Nos Valeurs</h2>
+    <p class="text-center text-muted mb-5">Le Prophète ﷺ a dit : Le meilleur d’entre vous est celui qui apprend le Coran et l’enseigne.</p>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card p-4 text-center border-0 shadow-sm" style="background-color: white;">
+          <img src="{{ asset('uploads/custom-images/coran (1).png') }}" class="w-25 mb-3" alt="Coran" />
+          <h5 class="mb-2">La récitation correcte du Saint Coran</h5>
+          <p>Permettre à chacun d’apprendre à réciter le Coran selon les règles du Tajwid.</p>
         </div>
-    </section>
-
-    <!-- Mission Section -->
-    <section class="mission-section">
-        <div class="container">
-            <h2>Notre Mission</h2>
-            <p class="mission-text">
-                L'Association Claire de Lune vise à promouvoir l'éducation, la solidarité et l'aide humanitaire par des projets locaux et internationaux.
-            </p>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-4 text-center border-0 shadow-sm" style="background-color:white;">
+          <img src="{{ asset('uploads/custom-images/education.png') }}" class="w-25 mb-3" alt="Éducation" />
+          <h5 class="mb-2">La purification et l'éducation</h5>
+          <p>Éduquer les cœurs, purifier les âmes et favoriser un bon comportement au quotidien.</p>
         </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="team-section">
-        <div class="container">
-            <h2>Notre Équipe</h2>
-            <p class="team-text">Une équipe de bénévoles passionnés qui changent des vies chaque jour.</p>
-
-            <div class="row">
-                <div class="col-md-4 team-member">
-                    <img src="uploads/custom-images/instructor3.png" alt="Ahmed Ahmed">
-                    <h5>Ahmed Ahmed</h5>
-                    <p>Président de l'association</p>
-                </div>
-                <div class="col-md-4 team-member">
-                    <img src="uploads/custom-images/pcl.webp" alt="Fatma Ahmed">
-                    <h5>Fatma Ahmed</h5>
-                    <p>Responsable des projets humanitaires</p>
-                </div>
-                <div class="col-md-4 team-member">
-                    <img src="uploads/custom-images/instructor1.png" alt="Ahmed Ben Ali">
-                    <h5>Ahmed Ben Ali</h5>
-                    <p>Coordinateur des événements</p>
-                </div>
-            </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-4 text-center border-0 shadow-sm" style="background-color: white;">
+          <img src="{{ asset('uploads/custom-images/apprentissage.png') }}" class="w-25 mb-3" alt="Apprentissage" />
+          <h5 class="mb-2">L'apprentissage inclusif</h5>
+          <p>Offrir un cadre d’apprentissage ouvert à tous : hommes, femmes, jeunes et moins jeunes.</p>
         </div>
-        </div>
+      </div>
+    </div>
+  </div>
 
-    </section>
-
-    <!-- Call to Action Section -->
-    <section class="cta-section">
-        <h3>Rejoignez-nous pour faire la différence!</h3>
-        <button class="btn btn-lg" onclick="window.location.href='#'">Faire un Don</button>
-    </section>
-
+      <!-- Citation -->
+      <div class="quote container">
+        <p>"Une bonne compréhension mène à une bonne application. Et la bonne application, c'est la lumière sur le chemin."</p>
+      </div>
 
 @endsection
 @if (session('removeFromCart') &&

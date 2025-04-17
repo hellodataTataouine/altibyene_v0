@@ -81,7 +81,7 @@
                     <div class="timeline-frame" style="width: 192px; height: 390px;">
                         <h5>2020 - Fondation</h5>
                         <p>Création de l'association par des bénévoles passionnés.</p>
-                        <img src="uploads/custom-images/equipe.jpg" alt="Fondation">
+                        <img src="uploads/custom-images/formation.jpg" alt="Fondation">
                     </div>
                 </div>
 
@@ -90,7 +90,7 @@
                     <div class="timeline-frame" style="width: 272px; height: 338px;">
                         <h5>2022 - Extension</h5>
                         <p>Lancement des programmes éducatifs pour les jeunes.</p>
-                        <img src="uploads/custom-images/equipe.jpg" alt="Extension">
+                        <img src="uploads/custom-images/formation.jpg" alt="Extension">
                     </div>
                 </div>
 
@@ -99,7 +99,7 @@
                     <div class="timeline-frame" style="width: 272px; height: 434px;">
                         <h5>2023 - Reconnaissance</h5>
                         <p>Prix national pour améliorer les conditions sociales.</p>
-                        <img src="uploads/custom-images/equipe.jpg" alt="Reconnaissance">
+                        <img src="uploads/custom-images/formation.jpg" alt="Reconnaissance">
                     </div>
                 </div>
 
@@ -108,7 +108,7 @@
                     <div class="timeline-frame" style="width: 272px; height: 338px;">
                         <h5>2024 - Expansion Internationale</h5>
                         <p>Aide humanitaire et soutien éducatif à l'international.</p>
-                        <img src="uploads/custom-images/equipe.jpg" alt="Expansion">
+                        <img src="uploads/custom-images/formation.jpg" alt="Expansion">
                     </div>
                 </div>
 
