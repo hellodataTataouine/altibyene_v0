@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\ProgrammeCoursController;
 use App\Http\Controllers\Frontend\PartenairesController;
 
 use App\Http\Controllers\Frontend\FormationController;
+use App\Http\Controllers\Frontend\MemorisationController;
 
 use App\Http\Controllers\Frontend\HistoireController;
 use App\Http\Controllers\Frontend\AppeletdonsController;
@@ -325,3 +326,4 @@ Route::get('/appel-dons', [AppeletdonsController::class, 'index'])->name('appel-
 Route::get('/equipe-pedagogique', [EquipepedagogiqueController::class, 'index'])->name('equipe-pedagogique.index');
 
 Route::get('/formation', [FormationController::class, 'index'])->name('formation.index');
+Route::get('/memorisation', [MemorisationController::class, 'index'])->name('memorisation.index');
