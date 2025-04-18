@@ -134,7 +134,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-5">
                             <div class="courses-top-left">
-                                <p>{{ __('Total') }} <span class="course-count">0</span> {{ __('cours trouvés') }}
+                                <p>{{ __('Total') }} <span class="course-count">0</span> {{ __('Programmes trouvés') }}
                                 </p>
                             </div>
                         </div>

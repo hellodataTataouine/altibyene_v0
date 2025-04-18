@@ -5,7 +5,7 @@
 
                 <div class="section__title text-center mb-40"   >
                     <span class="sub-title">{{ __('s\'inscrire ') }}</span>
-                    <h2 class="title">{{ __('Comment vous inscrire ?') }}</h2>
+                    <h2 class="title">{{ __('Envie de participer ? ') }}</h2>
                     <p class="desc">{{ __('Inscrivez-vous facilement en suivant ces étapes.') }}</p>
                 </div>
             </div>

@@ -20,7 +20,7 @@
                 <div class="col-md-6" data-aos="fade-left" data-aos-delay="300">
                   <div class="presentation_title text-left mb-3">
                     <h2 class=sub-title>
-                        Qui nous sommes ?</h2>
+                       A propos Altibyan </h2>
                   </div>
 
 
@@ -29,7 +29,7 @@
 
                  <!-- Texte visible (limité à 3 lignes) -->
 <p class="lead text-left" id="intro-text">
-    Attebyan est une approche pédagogique spécifique dédiée à l'enseignement des études islamiques.
+    Altibyan est une approche pédagogique spécifique dédiée à l'enseignement des études islamiques.
     Elle repose sur une méthode d'apprentissage progressive, intégrant à la fois la transmission du savoir religieux,
     la réflexion critique et la pratique des principes de l'islam dans la vie quotidienne.
 </p>
@@ -135,17 +135,17 @@
         <!-- faq-area-end -->
     @endif
 
-    @if ($sectionSetting?->our_features_section)
+    {{--@if ($sectionSetting?->our_features_section)
         <!-- features-area -->
         @include('frontend.home.main.sections.features-area')
         <!-- features-area-end -->
-    @endif
+    @endif--}}
 
-    @if ($sectionSetting?->banner_section)
+    {{--@if ($sectionSetting?->banner_section)
         <!-- instructor-area-two -->
         @include('frontend.home.main.sections.instructor-area-two')
         <!-- instructor-area-two-end -->
-    @endif
+    @endif--}}
 
     @if ($sectionSetting?->latest_blog_section)
         <!-- blog-area -->

@@ -68,11 +68,16 @@
                                                                     ? ($courseLectureCompletedByUser /
                                                                             $courseLectureCount) *
                                                                         100
-                                                                    : 0;
+
+
+
+
+
+                                                                        : 0;
                                                         @endphp
                                                         <div class="progress-item progress-item-two">
                                                             <h6 class="title">
-                                                                {{ __('COMPLETE') }}<span>{{ number_format($courseCompletedPercent, 1) }}%</span>
+                                                                {{ __('complete') }}<span>{{ number_format($courseCompletedPercent, 1) }}%</span>
                                                             </h6>
                                                             <div class="progress" role="progressbar"
                                                                 aria-label="Example with label" aria-valuenow="25"

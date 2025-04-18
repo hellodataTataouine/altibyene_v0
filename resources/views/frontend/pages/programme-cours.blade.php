@@ -1,9 +1,9 @@
 @extends('frontend.layouts.master')
-@section('meta_title', 'programme et cours ' . ' || ' . $setting->app_name)
+@section('meta_title', 'Nos programmes ' . ' || ' . $setting->app_name)
 
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('Programme et Cours')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('cart'), 'text' => __('Programme et Cours')]]" />
+    <x-frontend.breadcrumb :title="__('Nos programmes')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('cart'), 'text' => __('Nos programmes')]]" />
     <!-- breadcrumb-area-end -->
 
 
@@ -102,7 +102,7 @@
                         </div>--}}
 
                         <div class="courses-widget" data-aos="fade-down">
-                            <h4 class="widget-title">{{ __('Type de cours') }}</h4>
+                            <h4 class="widget-title">{{ __('Type de programme') }}</h4>
                             <div class="courses-cat-list">
                                 <ul class="list-wrap">
                                     <li>
@@ -164,7 +164,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-5">
                             <div class="courses-top-left">
-                                <p>{{ __('Total') }} <span class="course-count">0</span> {{ __('cours trouvés') }}
+                                <p>{{ __('Total') }} <span class="course-count">0</span> {{ __('Programmes trouvés') }}
                                 </p>
                             </div>
                         </div>
@@ -188,7 +188,7 @@
 
 
 
-             
+
 
 
                 <div class="tab-content" id="myTabContent">

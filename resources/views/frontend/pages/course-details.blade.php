@@ -13,9 +13,9 @@
 @endpush
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('Détails du cours')" :links="[
+    <x-frontend.breadcrumb :title="__('Détails du programmes')" :links="[
         ['url' => route('home'), 'text' => __('Accueil')],
-        ['url' => route('become-instructor'), 'text' => __('Détails du cours')],
+        ['url' => route('become-instructor'), 'text' => __('Détails du programmes')],
     ]" />
     <!-- breadcrumb-area-end -->
 
@@ -26,10 +26,10 @@
                 <div class="col-xl-9 col-lg-8">
                     <div class="courses__details-thumb">
                         <img class="w-100" src="{{ asset($course->thumbnail) }}" alt="img">
-                        @if ($course->demo_video_source)
-                            <a href="{{ $course->demo_video_source }}" class="popup-video"
+                        {{-- @if ($course->demo_video_source)
+                          <a href="{{ $course->demo_video_source }}" class="popup-video"
                                 aria-label="{{ $course?->title }}"><i class="fas fa-play"></i></a>
-                        @endif
+                        @endif--}}
                     </div>
                     <div class="courses__details-content">
                         <ul class="courses__item-meta list-wrap">
@@ -49,13 +49,13 @@
                         <h2 class="title">{{ $course?->title }}</h2>
                         <div class="courses__details-meta">
                             <ul class="list-wrap">
-                                <li class="author-two">
+                               {{-- <li class="author-two">
                                     <img src="{{ asset($course->instructor->image) }}" alt="img"
                                         class="instructor-avatar">
                                     {{ __('Par') }}
                                     <a
                                         href="{{ route('instructor-details', $course->instructor->id) }}">{{ $course->instructor->name }}</a>
-                                </li>
+                                </li>--}}
                                 <li class="date"><i
                                         class="flaticon-calendar"></i>{{ \Carbon\Carbon::parse($course->created_at)->locale('fr')->isoFormat('DD MMM YYYY') }}
                                     </li>
@@ -75,12 +75,12 @@
                                     aria-controls="curriculum-tab-pane"
                                     aria-selected="false">{{ __('Programme d\'études') }}</button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                           {{--<li class="nav-item" role="presentation">
                                 <button class="nav-link" id="instructors-tab" data-bs-toggle="tab"
                                     data-bs-target="#instructors-tab-pane" type="button" role="tab"
                                     aria-controls="instructors-tab-pane"
                                     aria-selected="false">{{ __('Instructeurs') }}</button>
-                            </li>
+                            </li>--}}
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="reviews-tab" data-bs-toggle="tab"
                                     data-bs-target="#reviews-tab-pane" type="button" role="tab"
@@ -277,7 +277,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @if ($course->partnerInstructors->count() > 0)
+                                {{-- @if ($course->partnerInstructors->count() > 0)
                                     <h3 class="title mt-3">{{ __('Partner Instructors') }}</h3>
                                     @foreach ($course->partnerInstructors as $instructor)
                                         <div class="courses__instructors-wrap">
@@ -311,7 +311,7 @@
                                             </div>
                                         </div>
                                     @endforeach
-                                @endif
+                                @endif--}}
                             </div>
                             <div class="tab-pane fade" id="reviews-tab-pane" role="tabpanel"
                                 aria-labelledby="reviews-tab" tabindex="0">
@@ -468,7 +468,7 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="courses__details-sidebar">
                         <div class="courses__cost-wrap">
-                            <span>{{ __('Ce cours gratuit') }}:</span>
+                            <span>{{ __('Ce programme gratuit') }}:</span>
                             @if ($course->price == 0)
                                 <h2 class="title">{{ __('Gratuit') }}</h2>
                             @elseif ($course->discount)
@@ -481,7 +481,7 @@
 
                         </div>
                         <div class="courses__information-wrap">
-                            <h5 class="title">{{ __('Le cours comprend') }}:</h5>
+                            <h5 class="title">{{ __('Le programme comprend') }}:</h5>
                             <ul class="list-wrap">
                                 <li class="level-wrapper">
                                     <b>
@@ -539,7 +539,7 @@
                             </ul>
                         </div>
                         <div class="courses__details-social">
-                            <h5 class="title">{{ __('Partagez ce cours') }}:</h5>
+                            <h5 class="title">{{ __('Partagez ce programmes') }}:</h5>
                             <div class="shareon">
                                 <a class="facebook"></a>
                                 <a class="linkedin"></a>
@@ -564,7 +564,7 @@
                                 @else
                                     <a href="javascript:;" class="btn btn-two arrow-btn add-to-cart"
                                         data-id="{{ $course->id }}">
-                                        <span class="text">{{ __('Ajouter au panier') }}</span>
+                                        <span class="text">{{ __('S\'abonner') }}</span>
                                         <i class="flaticon-arrow-right"></i>
                                     </a>
                                 @endif
