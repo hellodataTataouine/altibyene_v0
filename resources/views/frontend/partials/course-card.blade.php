@@ -21,22 +21,24 @@
                 </ul>
                 <h5 class="title"><a
                         href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a></h5>
-                <p class="author">{{ __('Par') }} <a
+                {{--<p class="author">{{ __('Par') }} <a
                         href="{{ route('instructor-details', ['id' => $course->instructor->id, 'slug' => Str::slug($course->instructor->name)]) }}">{{ $course->instructor->name }}</a>
-                </p>
+                </p>--}}
+
+                
                 <div class="courses__item-bottom">
-                    @if (in_array($course->id, session('enrollments') ?? []))
+                    @if (in_array($course->id, session('inscriptions') ?? []))
                         <div class="button">
                             <a href="{{ route('student.enrolled-courses') }}" class="already-enrolled-btn"
                                 data-id="">
-                                <span class="text">{{ __('Enrolled') }}</span>
+                                <span class="text">{{ __('Inscrit') }}</span>
                                 <i class="flaticon-arrow-right"></i>
                             </a>
                         </div>
                     @elseif ($course->enrollments->count() >= $course->capacity && $course->capacity != null)
                         <div class="button">
                             <a href="javascript:;" class="" data-id="{{ $course->id }}">
-                                <span class="text">{{ __('Booked') }}</span>
+                                <span class="text">{{ __('Réservé') }}</span>
                                 <i class="flaticon-arrow-right"></i>
                             </a>
                         </div>

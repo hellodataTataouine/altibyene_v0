@@ -8,9 +8,10 @@
                         <h2 class="title">{{ __('Explorez nos cours ') }}</h2>
                         <p class="desc">{{ __('Découvrez les cours les plus exigeants en ce moment') }}</p>
                     </div>
+
                     <div class="courses__nav">
-                        <ul class="nav nav-tabs" id="courseTab" role="tablist">
-                            @php
+                <ul class="nav nav-tabs" id="courseTab" role="tablist">
+                           @php
                                 $allCoursesIds = json_decode(
                                     $featuredCourse?->all_category_ids ? $featuredCourse->all_category_ids : '[]',
                                 );
@@ -24,15 +25,15 @@
                                     ->withCount('enrollments')
                                     ->get();
                             @endphp
-                            <li class="nav-item" role="presentation">
+                           {{--<li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="all-tab" data-bs-toggle="tab"
                                     data-bs-target="#all-tab-pane" type="button" role="tab"
                                     aria-controls="all-tab-pane" aria-selected="true">
                                     {{ __('Tous les cours') }}
                                 </button>
-                            </li>
+                            </li>--}}
                             @if ($featuredCourse?->category_one_status == 1)
-                                <li class="nav-item" role="presentation">
+                                 {{-- <li class="nav-item" role="presentation">
                                     @php
                                         $categoryOne = Modules\Course\app\Models\CourseCategory::with(['translation'])
                                             ->where('id', $featuredCourse->category_one)
@@ -56,10 +57,10 @@
                                         aria-controls="design-tab-pane" aria-selected="false">
                                         {{ $categoryOne?->name }}
                                     </button>
-                                </li>
+                                </li>--}}
                             @endif
                             @if ($featuredCourse?->category_two_status == 1)
-                                <li class="nav-item" role="presentation">
+                                {{--  <li class="nav-item" role="presentation">
                                     @php
                                         $categoryTwo = Modules\Course\app\Models\CourseCategory::with(['translation'])
                                             ->where('id', $featuredCourse->category_two)
@@ -84,11 +85,11 @@
                                         aria-controls="business-tab-pane" aria-selected="false">
                                         {{ $categoryTwo?->name }}
                                     </button>
-                                </li>
+                                </li>--}}
                             @endif
 
                             @if ($featuredCourse?->category_three_status == 1)
-                                <li class="nav-item" role="presentation">
+                                 {{-- <li class="nav-item" role="presentation">
                                     @php
                                         $categoryThree = Modules\Course\app\Models\CourseCategory::with(['translation'])
                                             ->where('id', $featuredCourse->category_three)
@@ -112,7 +113,7 @@
                                         aria-controls="development-tab-pane" aria-selected="false">
                                         {{ $categoryThree?->name }}
                                     </button>
-                                </li>
+                                </li>--}}
                             @endif
 
                             <div class="blog__shape-wrape">
@@ -120,7 +121,7 @@
                                      style="position: absolute; ;left:950px; top:-380px;">
 
                             @if ($featuredCourse?->category_four_status == 1)
-                                <li class="nav-item" role="presentation">
+                                 {{-- <li class="nav-item" role="presentation">
                                     @php
                                         $categoryFour = Modules\Course\app\Models\CourseCategory::with(['translation'])
                                             ->where('id', $featuredCourse->category_four)
@@ -144,11 +145,11 @@
                                         aria-controls="categoryFour-tab-pane" aria-selected="false">
                                         {{ $categoryFour?->name }}
                                     </button>
-                                </li>
+                                </li>--}}
                             @endif
 
                             @if ($featuredCourse?->category_five_status == 1)
-                                <li class="nav-item" role="presentation">
+                                 {{-- <li class="nav-item" role="presentation">
                                     @php
                                         $categoryFive = Modules\Course\app\Models\CourseCategory::with(['translation'])
                                             ->where('id', $featuredCourse->category_five)
@@ -172,7 +173,7 @@
                                         aria-controls="development-tab-pane" aria-selected="false">
                                         {{ $categoryFive?->name }}
                                     </button>
-                                </li>
+                                </li>--}}
                             @endif
 
                         </ul>
@@ -180,6 +181,8 @@
                 </div>
             </div>
         </div>
+
+
         <div class="tab-content" id="courseTabContent"    data-aos="fade-up-left">
             <div class="tab-pane fade show active" id="all-tab-pane" role="tabpanel" aria-labelledby="all-tab"
                 tabindex="0">
@@ -241,19 +244,26 @@
                                           <div class="button">
                                                     <a href="javascript:;" class="add-to-cart"
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('Réservé') }}</span>
+                                                        <span class="text">{{ __('S\'abonner') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
                                             @endif
-
                                             @if ($course->price == 0)
+                                            <h4 class="price">{{ __('Gratuit') }}</h4>
+                                        @elseif ($course->price > 0 && $course->discount > 0)
+                                            <h4 class="price">{{ number_format($course->discount, 2) }} £ /M</h4>
+                                        @else
+                                            <h4 class="price">{{ number_format($course->price, 2) }} £ /M</h4>
+                                        @endif
+
+                                          {{--  @if ($course->price == 0)
                                                 <h4 class="price">{{ __('Gratuit') }}</h4>
                                             @elseif ($course->price > 0 && $course->discount > 0)
                                                 <h4 class="price">{{ currency($course->discount) }}</h4>
                                             @else
                                                 <h4 class="price">{{ currency($course->price) }}</h4>
-                                            @endif
+                                            @endif--}}
                                         </div>
                                     </div>
                                 </div>
@@ -298,9 +308,9 @@
                                         <h3 class="title"><a
                                                 href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a>
                                         </h3>
-                                        <p class="author">{{ __('Par') }} <a
+                                      {{-- <p class="author">{{ __('Par') }} <a
                                                 href="{{ route('instructor-details', ['id' => $course->instructor->id, 'slug' => Str::slug($course->instructor->name)]) }}">{{ $course->instructor->name }}</a>
-                                        </p>
+                                        </p>--}}
                                         <div class="courses__item-bottom">
                                             @if (in_array($course->id, session('enrollments') ?? []))
                                                 <div class="button">
@@ -378,9 +388,9 @@
                                         <h3 class="title"><a
                                                 href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a>
                                         </h3>
-                                        <p class="author">{{ __('Par') }} <a
+                                      {{--<p class="author">{{ __('Par') }} <a
                                                 href="{{ route('instructor-details', ['id' => $course->instructor->id, 'slug' => Str::slug($course->instructor->name)]) }}">{{ $course->instructor->name }}</a>
-                                        </p>
+                                        </p>--}}
                                         <div class="courses__item-bottom">
                                             @if (in_array($course->id, session('enrollments') ?? []))
                                                 <div class="button">
@@ -402,7 +412,7 @@
                                                 <div class="button">
                                                     <a href="javascript:;" class="add-to-cart"
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('Ajouter au panier') }}</span>
+                                                        <span class="text">{{ __('S\'abonner') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
@@ -458,9 +468,9 @@
                                         <h3 class="title"><a
                                                 href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a>
                                         </h3>
-                                        <p class="author">{{ __('Par') }} <a
+                                            {{--<p class="author">{{ __('Par') }} <a
                                                 href="{{ route('instructor-details', ['id' => $course->instructor->id, 'slug' => Str::slug($course->instructor->name)]) }}">{{ $course->instructor->name }}</a>
-                                        </p>
+                                        </p>--}}
                                         <div class="courses__item-bottom">
                                             @if (in_array($course->id, session('enrollments') ?? []))
                                                 <div class="button">
@@ -538,9 +548,9 @@
                                         <h3 class="title"><a
                                                 href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a>
                                         </h3>
-                                        <p class="author">{{ __('Par') }} <a
+                                        {{-- <p class="author">{{ __('Par') }} <a
                                                 href="{{ route('instructor-details', ['id' => $course->instructor->id, 'slug' => Str::slug($course->instructor->name)]) }}">{{ $course->instructor->name }}</a>
-                                        </p>
+                                        </p>--}}
                                         <div class="courses__item-bottom">
                                             @if (in_array($course->id, session('enrollments') ?? []))
                                                 <div class="button">
@@ -618,9 +628,9 @@
                                         <h3 class="title"><a
                                                 href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a>
                                         </h3>
-                                        <p class="author">{{ __('Par') }} <a
+                                        {{--<p class="author">{{ __('Par') }} <a
                                                 href="{{ route('instructor-details', ['id' => $course->instructor->id, 'slug' => Str::slug($course->instructor->name)]) }}">{{ $course->instructor->name }}</a>
-                                        </p>
+                                        </p>--}}
                                         <div class="courses__item-bottom">
                                             @if (in_array($course->id, session('enrollments') ?? []))
                                                 <div class="button">
