@@ -12,6 +12,9 @@ use App\Http\Controllers\Frontend\MemorisationController;
 
 use App\Http\Controllers\Frontend\HistoireController;
 use App\Http\Controllers\Frontend\AppeletdonsController;
+use App\Http\Controllers\Frontend\ClaireLuneController;
+use App\Http\Controllers\Frontend\AltibyanController;
+
 use App\Http\Controllers\Frontend\PresentationClaireLuneController;
 use App\Http\Controllers\Frontend\EquipepedagogiqueController;
 
@@ -327,3 +330,5 @@ Route::get('/equipe-pedagogique', [EquipepedagogiqueController::class, 'index'])
 
 Route::get('/formation', [FormationController::class, 'index'])->name('formation.index');
 Route::get('/memorisation', [MemorisationController::class, 'index'])->name('memorisation.index');
+Route::get('/clairelune', [ClaireLuneController::class, 'index'])->name('clairelune.index');
+Route::get('/altibyan', [AltibyanController::class, 'index'])->name('altibyan.index');

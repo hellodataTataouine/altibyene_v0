@@ -54,7 +54,7 @@
 }
         </style>
 
-    <div class="col-md-12" data-aos="fade-right"  style="margin-top:-10px">
+    <div class="col-md-12" data-aos="fade-right"  style="margin-top:40px">
     <div class="about-content">
         <h2 >Une méthode efficace</h2>
         <p>
@@ -75,22 +75,14 @@
             À l’international, cette méthode est mise en œuvre dans de nombreux pays : France, Indonésie, Malaisie, Thaïlande, Sri Lanka, Inde, Pakistan, Turquie, Somalie, Guinée, Djibouti, Nigeria, ainsi que certaines régions en Mauritanie selon le récit de Warsh.
         </p>
 
-    <div class="about-image mt-4">
+    <div class="about-image mt-4"  data-aos="fade-up-right">
         <img src="{{ asset('uploads/custom-images/map.png') }}" alt="Image de la méthode" >
     </div>
 
           {{-- <div class="image mt-4">
    <img src="{{ asset('uploads/custom-images/lo.png') }}" alt="Image de la méthode" style="width: -50px" >--}}
 
-    <h2 >Nos Objectifs</h2>
-    <p >
-        L’association Clair de Lune a pour vocation de transmettre les connaissances essentielles de l’islam,
-         en particulier à travers l’enseignement de la langue arabe, du texte et des sciences religieuses.
-          Nous nous engageons à offrir un apprentissage accessible et de qualité, respectueux des traditions et adapté aux besoins de chacun.
-           Notre mission est également de former des enseignants à la méthode Tybiane,
-            une méthode d'apprentissage qui vise le perfectionnement de la lecture et de l'écriture du texte ainsi qu'une initiation à l'éducation religieuse à travers les invocations quotidiennes, permettant ainsi de diffuser un savoir authentique et structuré dans le respect des valeurs islamiques. Au sein de Clair de Lune, nous aspirons à créer un environnement d’apprentissage où chaque membre de notre communauté peut s’épanouir et approfondir sa foi,
-         dans un cadre bienveillant et respectueux.
-    </p>
+
 </div>
 </div>
     </div>
@@ -326,9 +318,9 @@
                                         <div class="testimonial__item">
                                             <div class="testimonial__item-top">
                                                 <div class="testimonial__author">
-                                                    <div class="testimonial__author-thumb" data-aos="fade-up-right">
+                                                 {{--   <div class="testimonial__author-thumb" data-aos="fade-up-right">
                                                         <img src="{{ asset($testimonial?->image) }}" alt="img">
-                                                    </div>
+                                                    </div>--}}
                                                     <div class="testimonial__author-content">
                                                         <div class="rating">
                                                             @for ($i = 0; $i < $testimonial?->rating; $i++)

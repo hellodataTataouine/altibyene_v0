@@ -21,12 +21,52 @@
                 </ul>
                 <h5 class="title"><a
                         href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a></h5>
+
                 {{--<p class="author">{{ __('Par') }} <a
                         href="{{ route('instructor-details', ['id' => $course->instructor->id, 'slug' => Str::slug($course->instructor->name)]) }}">{{ $course->instructor->name }}</a>
                 </p>--}}
 
-                
+                <div class="courses__item-info mt-2">
+                    <p><strong>{{ __('Date du cours') }} :</strong> {{ $course->date ?? 'À venir' }}</p>
+                    <p><strong>{{ __('Public') }} :</strong> {{ ucfirst($course->public ?? 'Non spécifié') }}</p>
+                </div>
+
                 <div class="courses__item-bottom">
+                    @if (in_array($course->id, session('enrollments') ?? []))
+                        <div class="button">
+                            <a href="{{ route('student.enrolled-courses') }}"
+                                class="already-enrolled-btn" data-id="">
+                                <span class="text">{{ __('Inscrit') }}</span>
+                                <i class="flaticon-arrow-right"></i>
+                            </a>
+                        </div>
+                    @elseif ($course->enrollments_count >= $course->capacity && $course->capacity != null)
+                        <div class="button">
+                            <a href="javascript:;" class=""
+                                data-id="{{ $course->id }}">
+                                <span class="text">{{ __('Réservé') }}</span>
+                                <i class="flaticon-arrow-right"></i>
+                            </a>
+                        </div>
+                    @else
+                  <div class="button">
+                            <a href="javascript:;" class="add-to-cart"
+                                data-id="{{ $course->id }}">
+                                <span class="text">{{ __('S\'abonner') }}</span>
+                                <i class="flaticon-arrow-right"></i>
+                            </a>
+                        </div>
+                    @endif
+                    @if ($course->price == 0)
+                    <h4 class="price">{{ __('Gratuit') }}</h4>
+                @elseif ($course->price > 0 && $course->discount > 0)
+                    <h4 class="price">{{ number_format($course->discount, 2) }} £ /M</h4>
+                @else
+                    <h4 class="price">{{ number_format($course->price, 2) }} £ /M</h4>
+                @endif
+            </div>
+
+             <div class="courses__item-bottom">
                     @if (in_array($course->id, session('inscriptions') ?? []))
                         <div class="button">
                             <a href="{{ route('student.enrolled-courses') }}" class="already-enrolled-btn"
