@@ -59,8 +59,8 @@
                                 <li class="date"><i
                                         class="flaticon-calendar"></i>{{ \Carbon\Carbon::parse($course->created_at)->locale('fr')->isoFormat('DD MMM YYYY') }}
                                     </li>
-                                <li><i class="flaticon-mortarboard"></i>{{ $course->enrollments->count() }}
-                                    {{ __('Étudiants') }}</li>
+                                 {{-- <li><i class="flaticon-mortarboard"></i>{{ $course->enrollments->count() }}
+                                    {{ __('Étudiants') }}</li> --}}
                             </ul>
                         </div>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -69,7 +69,7 @@
                                     data-bs-target="#overview-tab-pane" type="button" role="tab"
                                     aria-controls="overview-tab-pane" aria-selected="true">{{ __('Aperçu') }}</button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                         {{--   <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="curriculum-tab" data-bs-toggle="tab"
                                     data-bs-target="#curriculum-tab-pane" type="button" role="tab"
                                     aria-controls="curriculum-tab-pane"
@@ -81,24 +81,24 @@
                                     aria-controls="instructors-tab-pane"
                                     aria-selected="false">{{ __('Instructeurs') }}</button>
                             </li>--}}
-                            <li class="nav-item" role="presentation">
+                          {{--  <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="reviews-tab" data-bs-toggle="tab"
                                     data-bs-target="#reviews-tab-pane" type="button" role="tab"
                                     aria-controls="reviews-tab-pane" aria-selected="false">{{ __('avis') }}</button>
-                            </li>
+                            </li>--}}
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel"
                                 aria-labelledby="overview-tab" tabindex="0">
                                 <div class="courses__overview-wrap">
-                                    <h3 class="title">{{ __('Description du cours') }}</h3>
+                                    <h3 class="title">{{ __('Description du programme') }}</h3>
                                     {!! clean($course->description) !!}
 
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="curriculum-tab-pane" role="tabpanel"
+                       <div class="tab-pane fade" id="curriculum-tab-pane" role="tabpanel"
                                 aria-labelledby="curriculum-tab" tabindex="0">
-                                <div class="courses__curriculum-wrap">
+                                    <div class="courses__curriculum-wrap">
                                     <h3 class="title">{{ __('Programme du cours') }}</h3>
                                     <p></p>
                                     <div class="accordion" id="accordionExample">
@@ -226,7 +226,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="instructors-tab-pane" role="tabpanel"
+                           {{-- <div class="tab-pane fade" id="instructors-tab-pane" role="tabpanel"
                                 aria-labelledby="instructors-tab" tabindex="0">
 
                                 <div class="courses__instructors-wrap">
@@ -276,7 +276,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
+                                </div>--}}
                                 {{-- @if ($course->partnerInstructors->count() > 0)
                                     <h3 class="title mt-3">{{ __('Partner Instructors') }}</h3>
                                     @foreach ($course->partnerInstructors as $instructor)
@@ -507,13 +507,13 @@
                                     {{ __('Leçons') }}
                                     <span>{{ $courseLessonCount }}</span>
                                 </li>
-                                <li>
+                              {{-- <li>
                                     <img src="{{ asset('frontend/img/icons/course_icon04.svg') }}" alt="img"
                                         class="injectable">
                                     {{ __('Quiz') }}
                                     <span>{{ $courseQuizCount }}</span>
-                                </li>
-                                <li>
+                                </li>--}}
+                                      {{-- <li>
                                     <img src="{{ asset('frontend/img/icons/course_icon05.svg') }}" alt="img"
                                         class="injectable">
                                     {{ __('Certifications') }}
@@ -522,7 +522,7 @@
                                     @else
                                         <span>{{ __('Non') }}</span>
                                     @endif
-                                </li>
+                                </li>--}}
                                 <li class="level-wrapper">
                                     <b>
                                         <img src="{{ asset('frontend/img/icons/course_icon06.svg') }}" alt="img"

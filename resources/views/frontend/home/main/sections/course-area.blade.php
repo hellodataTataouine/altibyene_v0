@@ -11,7 +11,19 @@
 
                     <div class="courses__nav">
                 <ul class="nav nav-tabs" id="courseTab" role="tablist">
-                           @php
+
+                    @php
+                    $allCourses = App\Models\Course::with('favoriteBy', 'category.translation', 'instructor:id,name')
+        ->withCount([
+            'reviews as avg_rating' => function ($query) {
+                $query->select(DB::raw('coalesce(avg(rating), 0)'));
+            },
+        ])
+        ->withCount('enrollments')
+        ->where('status', 1) // si tu veux limiter aux cours actifs
+        ->get();
+@endphp
+                        {{--   @php
                                 $allCoursesIds = json_decode(
                                     $featuredCourse?->all_category_ids ? $featuredCourse->all_category_ids : '[]',
                                 );
@@ -24,7 +36,8 @@
                                     ])
                                     ->withCount('enrollments')
                                     ->get();
-                            @endphp
+                            @endphp --}}
+
                            {{--<li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="all-tab" data-bs-toggle="tab"
                                     data-bs-target="#all-tab-pane" type="button" role="tab"
@@ -223,8 +236,13 @@
                                             <p><strong>{{ __('Public') }} :</strong> {{ ucfirst($course->public ?? 'Non spécifié') }}</p>
                                         </div>
 
+
+
+
+
                                         <div class="courses__item-bottom">
                                             @if (in_array($course->id, session('enrollments') ?? []))
+
                                                 <div class="button">
                                                     <a href="{{ route('student.enrolled-courses') }}"
                                                         class="already-enrolled-btn" data-id="">
@@ -232,24 +250,27 @@
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
+
                                             @elseif ($course->enrollments_count >= $course->capacity && $course->capacity != null)
                                                 <div class="button">
-                                                    <a href="javascript:;" class=""
-                                                        data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('Réservé') }}</span>
+                                                    <a href="{{ route('courses') }}" >
+                                                        <span class="text">{{ __('S\'abonner') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
+
+
                                             @else
                                           <div class="button">
-                                                    <a href="javascript:;" class="add-to-cart"
-                                                        data-id="{{ $course->id }}">
+                                            <a href="{{ route('courses') }}" >
                                                         <span class="text">{{ __('S\'abonner') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
                                             @endif
-                                            @if ($course->price == 0)
+
+
+                                        @if ($course->price == 0)
                                             <h4 class="price">{{ __('Gratuit') }}</h4>
                                         @elseif ($course->price > 0 && $course->discount > 0)
                                             <h4 class="price">{{ number_format($course->discount, 2) }} £ /M</h4>
@@ -324,7 +345,7 @@
                                                 <div class="button">
                                                     <a href="javascript:;" class=""
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('Réservé') }}</span>
+                                                        <span class="text">{{ __('S\'abonner') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
@@ -332,7 +353,7 @@
                                                 <div class="button">
                                                     <a href="javascript:;" class="add-to-cart"
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('Réservé') }}</span>
+                                                        <span class="text">{{ __('S\'abonner') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
@@ -412,7 +433,7 @@
                                                 <div class="button">
                                                     <a href="javascript:;" class="add-to-cart"
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('S\'abonner') }}</span>
+                                                        <span class="text">{{ __('Réservé') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
@@ -599,6 +620,7 @@
             </div>
 
             <div class="tab-pane fade" id="categoryFive-tab-pane" role="tabpanel"
+
                 aria-labelledby="categoryFive-tab-pane" tabindex="0">
                 <div class="swiper courses-swiper-active">
                     <div class="swiper-wrapper">

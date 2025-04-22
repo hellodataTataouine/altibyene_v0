@@ -52,45 +52,63 @@
 
 
       <!-- Header -->
-      <div class="header">
+      <div class="header" data-aos="fade-right">
         <h1>✨ Association Clair de Lune</h1>
       </div>
 
       <!-- Présentation -->
       <div class="container section" style="margin-top: -100px">
-        <h2 class="mb-4 text-center">À propos de nous</h2>
-        <p class="text-center">
-          Clair de lune vous accompagne dans l'apprentissage des fondements de votre religion. En effet, la pratique correcte de la religion trouve son essence dans la bonne méthode d'apprentissage.
+        <h2 class="mb-4 text-center" data-aos="fade-right">Qui sommes-nous ?</h2>
+        <p class="text-center" data-aos="fade-right">
+            CLAIR DE LUNE, association culturelle fondée en 2021 et régie par la loi 1901,
+             a pour vocation de diffuser les enseignements essentiels de l'islam en proposant des cours axés sur la maîtrise de la langue arabe,
+             l’étude des textes et l’apprentissage des sciences religieuses.
         </p>
-        <p class="text-center">
-          Ainsi, un musulman bien formé trouve de l'aisance dans sa pratique religieuse car il comprend mieux ce que <strong>SON SEIGNEUR</strong> attend de lui à travers l'explication correcte des textes et de leurs applications dans le bon contexte tout en respectant les valeurs du pays dans lequel il vit.
+        <p class="text-center" data-aos="fade-right">
+          Ainsi, un musulman bien formé trouve de l'aisance dans sa pratique religieuse car il comprend mieux ce que
+          <strong>SON SEIGNEUR</strong> attend de lui à travers l'explication correcte des textes et de leurs applications dans le bon contexte tout
+          en respectant les valeurs du pays dans lequel il vit.
         </p>
-        <p class="text-center">
-          Il devient donc un modèle parfait car il réussit à concilier sa pratique religieuse et les relations humaines. Cette conciliation le conduit sans doute à une réussite dans ce monde et dans l'au-delà.
+        <p class="text-center" data-aos="fade-right">
+          Il devient donc un modèle parfait car il réussit à concilier sa pratique religieuse et les relations humaines.
+           Cette conciliation le conduit sans doute à une réussite dans ce monde et dans l'au-delà.
         </p>
-      </div>
 
+
+
+      <h2 class="mb-4 text-center"  style="margin-top: 20px" data-aos="fade-right">Nos Objectifs</h2>
+      <p class="text-center" data-aos="fade-right">
+          L’association Clair de Lune a pour vocation de transmettre les connaissances essentielles de l’islam,
+           en particulier à travers l’enseignement de la langue arabe, du texte et des sciences religieuses.
+        </p>
+      <p class="text-center" data-aos="fade-right">
+        Nous nous engageons à offrir un apprentissage accessible et de qualité, respectueux des traditions et adapté aux besoins de chacun.</p>
+        <p class="text-center" data-aos="fade-right">
+        Nous formons aussi des enseignants à la méthode Tybiane, une approche qui perfectionne la lecture,
+        l’écriture et initie à l’éducation religieuse à travers les invocations quotidiennes,
+        le tout dans un cadre bienveillant et respectueux des valeurs islamiques.</p>
+    </div>
       <!-- Nos Valeurs -->
-  <div class="container section objectifs"  style="margin-top: -90px">
-    <h2 class="mb-4 text-center">Nos Valeurs</h2>
-    <p class="text-center text-muted mb-5">Le Prophète ﷺ a dit : Le meilleur d’entre vous est celui qui apprend le Coran et l’enseigne.</p>
+  <div class="container section objectifs"  style="margin-top: -80px"  data-aos="fade-right">
+    <h2 class="mb-4 text-center"  data-aos="fade-right">Nos Valeurs</h2>
+    <p class="text-center text-muted mb-5" data-aos="fade-right">Le Prophète ﷺ a dit : Le meilleur d’entre vous est celui qui apprend le Coran et l’enseigne.</p>
     <div class="row g-4">
       <div class="col-md-4">
-        <div class="card p-4 text-center border-0 shadow-sm" style="background-color: white;">
+        <div class="card p-4 text-center border-0 shadow-sm" style="background-color: white;" data-aos="fade-right">
           <img src="{{ asset('uploads/custom-images/coran (1).png') }}" class="w-25 mb-3" alt="Coran" />
-          <h5 class="mb-2">La récitation correcte du Saint Coran</h5>
+          <h5 class="mb-2" >La récitation correcte du Saint Coran</h5>
           <p>Permettre à chacun d’apprendre à réciter le Coran selon les règles du Tajwid.</p>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card p-4 text-center border-0 shadow-sm" style="background-color:white;">
+        <div class="card p-4 text-center border-0 shadow-sm" style="background-color:white;" data-aos="fade-right">
           <img src="{{ asset('uploads/custom-images/education.png') }}" class="w-25 mb-3" alt="Éducation" />
           <h5 class="mb-2">La purification et l'éducation</h5>
           <p>Éduquer les cœurs, purifier les âmes et favoriser un bon comportement au quotidien.</p>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card p-4 text-center border-0 shadow-sm" style="background-color: white;">
+        <div class="card p-4 text-center border-0 shadow-sm" style="background-color: white;" data-aos="fade-right">
           <img src="{{ asset('uploads/custom-images/apprentissage.png') }}" class="w-25 mb-3" alt="Apprentissage" />
           <h5 class="mb-2">L'apprentissage inclusif</h5>
           <p>Offrir un cadre d’apprentissage ouvert à tous : hommes, femmes, jeunes et moins jeunes.</p>
@@ -100,17 +118,9 @@
   </div>
 
       <!-- Citation -->
-      <div class="quote container" style="margin-top: -40px">
+      <div class="quote container" style="margin-top: -10px"  data-aos="fade-right">
         <p>"Une bonne compréhension mène à une bonne application. Et la bonne application, c'est la lumière sur le chemin."</p>
       </div>
-
-      <div style="text-align: center;">
-        <video autoplay muted loop playsinline width="50%" style="margin-top: 2rem; border-radius: 12px;">
-          <source src="{{ asset('uploads/custom-images/version 1.mp4') }}" type="video/mp4">
-          Votre navigateur ne prend pas en charge la lecture de la vidéo.
-        </video>
-      </div>
-
 
 @endsection
 @if (session('removeFromCart') &&

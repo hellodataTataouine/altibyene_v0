@@ -72,7 +72,7 @@
     </style>
 
     <!-- Gallery Section -->
-    <div class="container" style="margin-top:10%">
+    <div class="container" style="margin-top:5%">
         <div class="page-header">
             <h1>Les Couleurs de notre Association</h1>
         </div>
@@ -80,38 +80,38 @@
         <div class="gallery-container" >
             <!-- Large Image -->
             <div class="gallery-item large animate__animated animate__zoomIn" data-aos="flip-left">
-                <img src="uploads/custom-images/ga1.avif" alt="Événement 1">
-                <div class="gallery-caption">Événement 1</div>
+                <img src="https://app.assoconnect.com/services/storage?id=5163187&type=picture&secret=WDd14EPnUzQ3XH5BNDgaRgp8MNpomQA4ACMvxDUR&timestamp=1734723541&size=original" alt="Événement 1">
+              {{--  <div class="gallery-caption">Événement 1</div>--}}
             </div>
 
             <!-- Regular Image -->
             <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.2s;" data-aos="flip-left">
-                <img src="uploads/custom-images/ga2.jpg" alt="Événement 2">
-                <div class="gallery-caption">Événement 2</div>
+                <img src="https://app.assoconnect.com/services/storage?id=5163184&type=picture&secret=DP8LZaHAoVoHvDTBXBvz2sVN0slSIq6aTvFgCZ5n&timestamp=1734723494&size=original" alt="Événement 2">
+                {{--<div class="gallery-caption">Événement 2</div>--}}
             </div>
 
             <!-- Regular Image -->
             <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.4s;" data-aos="flip-left">
-                <img src="uploads/custom-images/ga3.jpg" alt="Événement 3">
-                <div class="gallery-caption">Événement 3</div>
+                <img src="https://app.assoconnect.com/services/storage?id=5163185&type=picture&secret=Jx28BkHlmeTbGQJPEnauppxG0yYREleLkvC51zkl&timestamp=1734723501&size=original" alt="Événement 3">
+               {{-- <div class="gallery-caption">Événement 3</div>--}}
             </div>
 
             <!-- Regular Image -->
             <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.6s;"   data-aos="flip-left">
-                <img src="uploads/custom-images/gal4.jpg" alt="Événement 4">
-                <div class="gallery-caption">Événement 4</div>
+                <img src="https://app.assoconnect.com/services/storage?id=5163205&type=picture&secret=EUeXRLE55hzd9WeDhPWkGRVswkcwHCGOOS3feEVL&timestamp=1734724109&size=original" alt="Événement 4">
+             {{--   <div class="gallery-caption">Événement 4</div>--}}
             </div>
 
             <!-- Regular Image -->
             <div class="gallery-item animate__animated animate__zoomIn" style="animation-delay: 0.8s;"   data-aos="flip-left">
-                <img src="uploads/custom-images/ga5.jpg" alt="Événement 5">
-                <div class="gallery-caption">Événement 5</div>
+                <img src="uploads/custom-images/ga6.jpg" alt="Événement 5">
+               {{-- <div class="gallery-caption">Événement 5</div>--}}
             </div>
 
             <!-- Large Image -->
             <div class="gallery-item large animate__animated animate__zoomIn" style="animation-delay: 1s;"  data-aos="flip-left">
-                <img src="uploads/custom-images/ga6.jpg" alt="Événement 6">
-                <div class="gallery-caption">Événement 6</div>
+                <img src="uploads/custom-images/claire.jpg" alt="Événement 6">
+                {{-- <div class="gallery-caption">Événement 6</div>--}}
             </div>
         </div>
 

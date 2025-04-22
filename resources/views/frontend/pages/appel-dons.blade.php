@@ -73,8 +73,8 @@
                 <div class="card h-100 wow animate__animated animate__fadeInLeft">
                     <div class="card-body">
                         <i class="fas fa-hands-helping fa-3x mb-3"></i>
-                        <h4 class="card-title">Solidarité</h4>
-                        <p class="card-text">Participez à nos initiatives pour soutenir les communautés dans le besoin.</p>
+                        <h4 class="card-title">Fraternité</h4>
+                        <p class="card-text">Renforcez les liens entre étudiants et enseignants dans un esprit de bienveillance islamique.</p>
                     </div>
                 </div>
             </div>
@@ -84,8 +84,8 @@
                 <div class="card h-100 wow animate__animated animate__fadeInUp">
                     <div class="card-body">
                         <i class="fas fa-school fa-3x mb-3"></i>
-                        <h4 class="card-title">Éducation</h4>
-                        <p class="card-text">Aidez-nous à offrir un accès à l'éducation pour les jeunes défavorisés.</p>
+                        <h4 class="card-title">Savoir</h4>
+                        <p class="card-text">Approfondissez vos connaissances en sciences islamiques à travers une formation authentique et structurée.</p>
                     </div>
                 </div>
             </div>
@@ -95,14 +95,15 @@
                 <div class="card h-100 wow animate__animated animate__fadeInRight">
                     <div class="card-body">
                         <i class="fas fa-globe fa-3x mb-3"></i>
-                        <h4 class="card-title">Impact Global</h4>
-                        <p class="card-text">Contribuez à nos projets internationaux pour un monde plus équitable.</p>
+                        <h4 class="card-title">Transmission</h4>
+                        <p class="card-text">Participez à la diffusion du savoir islamique auprès des générations futures.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 
 <!-- WOW.js & Bootstrap JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>

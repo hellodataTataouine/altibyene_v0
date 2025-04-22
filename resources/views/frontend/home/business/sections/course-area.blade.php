@@ -13,7 +13,7 @@
                                 $featuredCourse?->all_category_ids ? $featuredCourse->all_category_ids : '[]',
                             );
                             $allCourses = App\Models\Course::with('favoriteBy','category.translation', 'instructor:id,name')
-                                ->whereIn('id', $allCoursesIds)
+                             ->whereIn('id', $allCoursesIds)
                                 ->withCount([
                                     'reviews as avg_rating' => function ($query) {
                                         $query->select(DB::raw('coalesce(avg(rating), 0)'));
@@ -25,7 +25,7 @@
                                 ])
                                 ->withCount('enrollments')
                                 ->get();
-                        @endphp
+                                            @endphp
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="all-tab" data-bs-toggle="tab"
                                 data-bs-target="#all-tab-pane" type="button" role="tab"

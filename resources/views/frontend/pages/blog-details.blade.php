@@ -37,8 +37,8 @@
                                 <ul class="list-wrap">
                                     <li><i class="flaticon-calendar"></i> {{ \Carbon\Carbon::parse($blog->created_at)->locale('fr')->isoFormat('DD MMM YYYY') }}
                                     </li>
-                                    <li><i class="flaticon-user-1"></i> {{ __('par') }} <a
-                                            href="javascript:;">{{ $blog->author->name }}</a></li>
+                                    {{--<li><i class="flaticon-user-1"></i> {{ __('par') }} <a
+                                            href="javascript:;">{{ $blog->author->name }}</a></li>--}}
                                     <li><i class="flaticon-clock"></i>
                                         {{ calculateReadingTime($blog->translation->description) }} {{ __('Lecture minimale') }}
                                     </li>
@@ -82,14 +82,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="blog__post-author">
+                         <div class="blog__post-author">
                         <div class="blog__post-author-thumb">
                             <a href="#"><img src="{{ asset($blog->author->image) }}" alt="img"></a>
                         </div>
-                        <div class="blog__post-author-content">
-                            <span class="designation">{{ __('Auteur') }}</span>
-                            <h5 class="name">{{ $blog->author->name }}</h5>
-                            <p>{{ $blog->author->bio }}</p>
+                      <div class="blog__post-author-content">
+
+                              {{--  <span class="designation">{{ __('Auteur') }}</span>
+                          <h5 class="name">{{ $blog->author->name }}</h5>
+                            <p>{{ $blog->author->bio }}</p>--}}
                         </div>
                     </div>
                     <div class="blog-post-comment">
