@@ -10,6 +10,113 @@
         @include('frontend.home.main.sections.banner-area')
         <!-- banner-area-end -->
     @endif
+
+    <style>
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap');
+
+        .adhkar-container {
+          position: fixed;
+          bottom: 580px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(10px);
+          border-radius: 25px;
+          padding: 18px 30px;
+          box-shadow: 0 0 25px  #ffffff;
+          border: 2px solid  #F7C815;
+          text-align: center;
+          transition: all 0.5s ease;
+          opacity: 0;
+          transform: translate(-50%, 30px);
+          min-width: 260px;
+          max-width: 400px;
+          z-index: 999;
+          margin-left:-43%;
+
+        }
+
+        .adhkar-container.show {
+          opacity: 1;
+          transform: translate(-50%, 0);
+        }
+
+        .adhkar-text {
+          font-size: 22px;
+          color: #333;
+          font-weight: 600;
+          letter-spacing: 1px;
+          text-shadow: 0 0 4px #000000;
+        }
+
+        .adhkar-decor {
+          position: absolute;
+          top: -10px;
+          right: -10px;
+          width: 20px;
+          height: 20px;
+          background:#F7C815;
+          border-radius: 50%;
+          animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+          0% {
+            transform: scale(0.9);
+            opacity: 0.7;
+          }
+          50% {
+            transform: scale(1.2);
+            opacity: 1;
+          }
+          100% {
+            transform: scale(0.9);
+            opacity: 0.7;
+          }
+        }
+      </style>
+    </head>
+    <body>
+
+      <div class="adhkar-container" id="adhkarBox"  >
+        <div class="adhkar-decor"></div>
+        <div class="adhkar-text" id="adhkarText"></div>
+      </div>
+
+      <script>
+        const adhkarList = [
+          " ٱللَّهِ  ﷽",
+          "سُبْحَانَ ٱللَّٰه",
+          "ٱلْـحَمْدُ لِلَّٰه",
+          "اللّٰهُ أَكْبَر",
+          "لَا إِلَٰهَ إِلَّا ٱللَّٰه",
+          "ٱسْتَغْفِرُ ٱللَّٰه",
+          "اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّد",
+          "سُبْحَانَ ٱللَّهِ وَبِحَمْدِهِ",
+          "سُبْحَانَ ٱللَّهِ ٱلْعَظِيم"
+        ];
+
+        const box = document.getElementById('adhkarBox');
+        const text = document.getElementById('adhkarText');
+        let index = 0;
+
+        function showAdhkar() {
+          box.classList.remove('show');
+          setTimeout(() => {
+            text.innerText = adhkarList[index];
+            box.classList.add('show');
+            index = (index + 1) % adhkarList.length;
+          }, 300);
+        }
+
+        showAdhkar();
+        setInterval(showAdhkar, 5000); // toutes les 5 secondes
+      </script>
+
+    </body>
+
           <!--presentataion attebyan --->
           <section class="presentation  offset-md-2 mt-6" style="margin-top:5%; margin-left:12%;">
 
@@ -20,7 +127,6 @@
                   <div class="presentation_title text-left mb-3">
                     <h2 class=sub-title>
                        A propos Altibyan </h2>
-
              <p >
                     Altibyan est une approche pédagogique spécifique dédiée à l'enseignement des études islamiques.
                     Elle repose sur une méthode d'apprentissage progressive, intégrant à la fois la transmission du savoir religieux,
@@ -98,8 +204,9 @@
         <!-- newsletter-area-end -->
     @endif
 
+
     <!--  @if ($sectionSetting?->featured_instructor_section)
-       instructor-area
+  instructor-area
         @include('frontend.home.main.sections.instructor-area')
     @endif instructor-area-end -->
 
@@ -114,6 +221,35 @@
         @include('frontend.home.main.sections.faq-area')
         <!-- faq-area-end -->
     @endif
+    <section class="cta__area home_3_cta" >
+       <div class="cta__bg" data-background="uploads/custom-images/formation.jpg"
+        style="background-image: url('uploads/custom-images/formation.jpg');">
+   </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="cta__content">
+                        <h2 class="title"> FORMATION À LA MÉTHODE TIBYANE</h2>
+                        <p>Rejoignez notre formation et avancez à votre rythme, dans un cadre bienveillant et structuré..</p>
+                        <a href="/formation"  class="btn arrow-btn"> Inscrivez-vous ! </a>
+    <path d="M1 7L15 7M15 7L9 1M15 7L9 13" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M1 7L15 7M15 7L9 1M15 7L9 13" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<style>
+    .cta__bg::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* atténue l’image en ajoutant un voile */
+    z-index: 1;
+}
+</style>
 
     {{--@if ($sectionSetting?->our_features_section)
         <!-- features-area -->

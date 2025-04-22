@@ -66,6 +66,7 @@
                 @endif
             </div>
 
+     
              <div class="courses__item-bottom">
                     @if (in_array($course->id, session('inscriptions') ?? []))
                         <div class="button">

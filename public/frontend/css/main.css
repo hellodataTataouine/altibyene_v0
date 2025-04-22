@@ -14613,7 +14613,7 @@ textarea {
     height: 100%;
     background-position: center;
     background-size: cover;
-    mix-blend-mode: luminosity;
+    mix-blend-mode: normal !important;
     background-attachment: fixed;
     z-index: -1;
 }

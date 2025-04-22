@@ -11,16 +11,16 @@
           </div>
           <div class="col-lg-8">
               <div class="newsletter__content"  data-aos="fade-up">
-                  <h1 class="title"><b>{{ __('Vous souhaitez rester informé des') }}</b> <br> <b>{{ __('nouveaux cours et études') }}?</b></h1>
+                  <h1 class="title"><b>{{ __('Rejoignez notre programme de mémorisation du Coran sur 6 ans conçu pour un apprentissage ') }}</b> <br> <b>{{ __('progressif et structuré') }}?</b></h1>
                   <div class="newsletter__form">
-                      <form action="{{route('newsletter-request')}}" method="post" class="newsletter">
+                      {{-- <form action="{{route('newsletter-request')}}" method="post" class="newsletter">
                         @csrf
-                          <input type="email" placeholder="{{ __('Tapez votre email') }} " name="email"  >
+                         <input type="email" placeholder="{{ __('Tapez votre email') }} " name="email"  >          </form>--}}
+                          <a href="\memorisation">
+                            <button type="submit" class="btn">{{ __('Abonnez-vous !') }}</button>
+                          </a>
 
 
-
-                          <button type="submit" class="btn">{{ __('Abonnez-vous !') }}</button>
-                      </form>
                   </div>
               </div>
           </div>
@@ -30,6 +30,6 @@
       <img src="{{ asset('frontend/img/banner/avion.webp') }}" alt="img" data-aos="fade-right"
           data-aos-delay="400"  style="margin-top:50px;right:20px" >
   </div>
-  
+
 
 </section>

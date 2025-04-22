@@ -79,16 +79,16 @@
                 <!-- Item 1 -->
                 <div class="timeline-item"  style="margin-top: 8%">
                     <div class="timeline-frame" style="width: 192px; height: 390px;">
-                        <h5>2020 - Fondation</h5>
+                        <h5  style="margin-top: -60%">2020 - Fondation</h5>
                         <p>Création de l'association par des bénévoles passionnés.</p>
-                        <img src="uploads/custom-images/formation.jpg" alt="Fondation">
+                        <img src="uploads/custom-images/formation.jpg" alt="Fondation" >
                     </div>
                 </div>
 
                 <!-- Item 2 -->
                 <div class="timeline-item" style="margin-top: 8%">
                     <div class="timeline-frame" style="width: 272px; height: 338px;">
-                        <h5>2022 - Extension</h5>
+                        <h5  style="margin-top: -60%">2022 - Extension</h5>
                         <p>Lancement des programmes éducatifs pour les jeunes.</p>
                         <img src="uploads/custom-images/formation.jpg" alt="Extension">
                     </div>
@@ -97,7 +97,7 @@
                 <!-- Item 3 -->
                 <div class="timeline-item"  style="margin-top: 8%">
                     <div class="timeline-frame" style="width: 272px; height: 434px;">
-                        <h5>2023 - Reconnaissance</h5>
+                        <h5  style="margin-top: -60%">2023 - Reconnaissance</h5>
                         <p>Prix national pour améliorer les conditions sociales.</p>
                         <img src="uploads/custom-images/formation.jpg" alt="Reconnaissance">
                     </div>
@@ -106,7 +106,7 @@
                 <!-- Item 4 -->
                 <div class="timeline-item"   style="margin-top: 8%">
                     <div class="timeline-frame" style="width: 272px; height: 338px;">
-                        <h5>2024 - Expansion Internationale</h5>
+                        <h5    style="margin-top: -70%">2024 - Expansion Internationale</h5>
                         <p>Aide humanitaire et soutien éducatif à l'international.</p>
                         <img src="uploads/custom-images/formation.jpg" alt="Expansion">
                     </div>

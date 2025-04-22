@@ -236,13 +236,13 @@
                                                 <div class="button">
                                                     <a href="javascript:;" class=""
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('Réservé') }}</span>
+                                                        <span class="text">{{ __('S\'abonner') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
                                             @else
                                           <div class="button">
-                                                    <a href="javascript:;" class="add-to-cart"
+                                                 <a href="javascript:;" class="add-to-cart"
                                                         data-id="{{ $course->id }}">
                                                         <span class="text">{{ __('S\'abonner') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
@@ -324,7 +324,7 @@
                                                 <div class="button">
                                                     <a href="javascript:;" class=""
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('Réservé') }}</span>
+                                                        <span class="text">{{ __('S\'abonner') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
@@ -332,7 +332,7 @@
                                                 <div class="button">
                                                     <a href="javascript:;" class="add-to-cart"
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('Réservé') }}</span>
+                                                        <span class="text">{{ __('S\'abonner') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
@@ -412,7 +412,7 @@
                                                 <div class="button">
                                                     <a href="javascript:;" class="add-to-cart"
                                                         data-id="{{ $course->id }}">
-                                                        <span class="text">{{ __('S\'abonner') }}</span>
+                                                        <span class="text">{{ __('Réservé') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
@@ -599,6 +599,7 @@
             </div>
 
             <div class="tab-pane fade" id="categoryFive-tab-pane" role="tabpanel"
+
                 aria-labelledby="categoryFive-tab-pane" tabindex="0">
                 <div class="swiper courses-swiper-active">
                     <div class="swiper-wrapper">

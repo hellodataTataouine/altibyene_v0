@@ -151,7 +151,7 @@
                                         @endforeach
                                               <!--  bouton "inscription" -->
                                               <li class="menu-item" style=" margin-left: 350px;">
-                                                <a href="{{ url('/register') }}"class="btn btn-primary custom-btn" title=" Inscription"  style=" color: #000;font-size:20px;">
+                                                <a href="{{ url('/programme-cours') }}"class="btn btn-primary custom-btn" title=" Inscription"  style=" color: #000;font-size:20px;">
                                                     <strong>Inscription</strong>
                                                 </a>
                                             </li>

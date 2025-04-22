@@ -366,15 +366,15 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="newsletter__content" data-aos="fade-up">
-                        <h2 class="title"><b>{{ __('Vous souhaitez rester informé de') }}</b> <br>
-                            <b>{{ __('nouveaux cours et études') }}?</b>
+                        <h1 class="title"><b>{{ __('Rejoignez notre programme de mémorisation du Coran sur 6 ans conçu pour un apprentissage ') }}</b> <br> <b>{{ __('progressif et structuré') }}?</b></h1>
                         </h2>
-                        <div class="newsletter__form">
+                              {{--<div class="newsletter__form">
                             <form action="" method="post" class="newsletter">
                                 @csrf
-                                <input type="email" placeholder="{{ __('Tapez votre email') }}" name="email">
-                                <button type="submit" class="btn">{{ __('Abonnez-vous ') }}</button>
-                            </form>
+                                {{--<input type="email" placeholder="{{ __('Tapez votre email') }}" name="email">       </form>--}}
+                                <a href="\memorisation">
+                                <button type="submit" class="btn">{{ __('Abonnez-vous !') }}</button>
+
                         </div>
                     </div>
                 </div>
@@ -387,3 +387,7 @@
     </section>
     <!-- newsletter-area-end -->
 @endsection
+ <section>
+
+    
+ </section>

@@ -18,7 +18,9 @@
                             @foreach ($trendingCategories as $category)
                                 <div class="swiper-slide">
                                     <div class="categories__item">
-                                        <a href="{{ route('courses', ['main_category' => $category->slug]) }}">
+                                    
+
+                                         {{--<a href="{{ route('courses', ['main_category' => $category->slug]) }}">--}}
                                             <div class="icon">
                                                 <img src="{{ asset($category?->icon) }}" alt="">
                                             </div>

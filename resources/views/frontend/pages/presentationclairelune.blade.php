@@ -58,7 +58,7 @@
 
       <!-- Présentation -->
       <div class="container section" style="margin-top: -100px">
-        <h2 class="mb-4 text-center">Qui sommes-nous ?</h2>
+        <h2 class="mb-4 text-center">À propos de nous</h2>
         <p class="text-center">
           Clair de lune vous accompagne dans l'apprentissage des fondements de votre religion. En effet, la pratique correcte de la religion trouve son essence dans la bonne méthode d'apprentissage.
         </p>
@@ -103,6 +103,14 @@
       <div class="quote container" style="margin-top: -40px">
         <p>"Une bonne compréhension mène à une bonne application. Et la bonne application, c'est la lumière sur le chemin."</p>
       </div>
+
+      <div style="text-align: center;">
+        <video autoplay muted loop playsinline width="50%" style="margin-top: 2rem; border-radius: 12px;">
+          <source src="{{ asset('uploads/custom-images/version 1.mp4') }}" type="video/mp4">
+          Votre navigateur ne prend pas en charge la lecture de la vidéo.
+        </video>
+      </div>
+
 
 @endsection
 @if (session('removeFromCart') &&
