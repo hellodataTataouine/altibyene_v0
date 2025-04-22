@@ -11,7 +11,19 @@
 
                     <div class="courses__nav">
                 <ul class="nav nav-tabs" id="courseTab" role="tablist">
-                           @php
+
+                    @php
+                    $allCourses = App\Models\Course::with('favoriteBy', 'category.translation', 'instructor:id,name')
+        ->withCount([
+            'reviews as avg_rating' => function ($query) {
+                $query->select(DB::raw('coalesce(avg(rating), 0)'));
+            },
+        ])
+        ->withCount('enrollments')
+        ->where('status', 1) // si tu veux limiter aux cours actifs
+        ->get();
+@endphp
+                        {{--   @php
                                 $allCoursesIds = json_decode(
                                     $featuredCourse?->all_category_ids ? $featuredCourse->all_category_ids : '[]',
                                 );
@@ -24,7 +36,7 @@
                                     ])
                                     ->withCount('enrollments')
                                     ->get();
-                            @endphp
+                            @endphp --}}
 
                            {{--<li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="all-tab" data-bs-toggle="tab"
@@ -257,7 +269,7 @@
                                                 </div>
                                             @endif
 
-                                            
+
                                         @if ($course->price == 0)
                                             <h4 class="price">{{ __('Gratuit') }}</h4>
                                         @elseif ($course->price > 0 && $course->discount > 0)
