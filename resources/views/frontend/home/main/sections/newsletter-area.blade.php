@@ -15,7 +15,7 @@
                   <div class="newsletter__form">
                       {{-- <form action="{{route('newsletter-request')}}" method="post" class="newsletter">
                         @csrf
-                         <input type="email" placeholder="{{ __('Tapez votre email') }} " name="email"  >          </form>--}}
+                         <input type="email" placeholder="{{ __('Tapez votre email') }} " name="email"  > </form>--}}
                           <a href="\memorisation">
                             <button type="submit" class="btn">{{ __('Abonnez-vous !') }}</button>
                           </a>

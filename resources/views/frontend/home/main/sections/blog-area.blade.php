@@ -23,9 +23,9 @@
                             <div class="blog__post-meta">
                                 <ul class="list-wrap">
                                     <li><i class="flaticon-calendar"></i>{{ formatDate($blog->created_at) }}</li>
-                                <li><i class="flaticon-user-1"></i>{{ __('by') }} <a
+                               {{-- <li><i class="flaticon-user-1"></i>{{ __('by') }} <a
                                             href="javascript:;">{{ truncate($blog->author->name, 14) }}</a>
-                                    </li>
+                                    </li>--}}
                                 </ul>
                             </div>
                             <h3 class="title"><a

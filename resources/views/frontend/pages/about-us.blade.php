@@ -10,7 +10,7 @@
     <style>
    .about-section {
     padding: 80px 0;
-    background-color: #00000;
+    background-color: #000000;
     color: #333;
     text-align: center;
 }
@@ -389,5 +389,5 @@
 @endsection
  <section>
 
-    
+
  </section>

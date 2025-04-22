@@ -25,6 +25,7 @@
                                     ->withCount('enrollments')
                                     ->get();
                             @endphp
+
                            {{--<li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="all-tab" data-bs-toggle="tab"
                                     data-bs-target="#all-tab-pane" type="button" role="tab"
@@ -223,8 +224,13 @@
                                             <p><strong>{{ __('Public') }} :</strong> {{ ucfirst($course->public ?? 'Non spécifié') }}</p>
                                         </div>
 
+
+
+
+
                                         <div class="courses__item-bottom">
                                             @if (in_array($course->id, session('enrollments') ?? []))
+
                                                 <div class="button">
                                                     <a href="{{ route('student.enrolled-courses') }}"
                                                         class="already-enrolled-btn" data-id="">
@@ -232,24 +238,27 @@
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
+
                                             @elseif ($course->enrollments_count >= $course->capacity && $course->capacity != null)
                                                 <div class="button">
-                                                    <a href="javascript:;" class=""
-                                                        data-id="{{ $course->id }}">
+                                                    <a href="{{ route('courses') }}" >
                                                         <span class="text">{{ __('S\'abonner') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
+
+
                                             @else
                                           <div class="button">
-                                                 <a href="javascript:;" class="add-to-cart"
-                                                        data-id="{{ $course->id }}">
+                                            <a href="{{ route('courses') }}" >
                                                         <span class="text">{{ __('S\'abonner') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
                                                 </div>
                                             @endif
-                                            @if ($course->price == 0)
+
+                                            
+                                        @if ($course->price == 0)
                                             <h4 class="price">{{ __('Gratuit') }}</h4>
                                         @elseif ($course->price > 0 && $course->discount > 0)
                                             <h4 class="price">{{ number_format($course->discount, 2) }} £ /M</h4>
