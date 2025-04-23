@@ -8,6 +8,7 @@
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb :title="__(' Mémorisation du coran en 6 ans')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __(' Mémorisation du coran en 6 ans')]]" />
     <!-- breadcrumb-area-end -->
+    @include('frontend.pages.adhkar')
   <style>
 
 

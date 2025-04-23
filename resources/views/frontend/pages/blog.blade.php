@@ -7,6 +7,8 @@
         ['url' => route('home'), 'text' => __('Accueil')],
         ['url' => route('blogs'), 'text' => __('Actualité et evénement ')],
     ]" />
+
+@include('frontend.pages.adhkar')
     <!-- breadcrumb-area-end -->
 
     <!-- blog-area -->
@@ -29,7 +31,7 @@
                                             <li><i class="flaticon-calendar"></i>{{ \Carbon\Carbon::parse($blog->created_at)->locale('fr')->isoFormat('DD MMM YYYY') }}
                                             </li>
                                             {{-- <li><i class="flaticon-user-1"></i>{{ __('par') }} <a href="javascript:;">{{ truncate($blog->author->name, 14) }}</a>
-                                            </li>--}} 
+                                            </li>--}}
                                         </ul>
                                     </div>
                                     <h4 class="title"><a href="{{ route('blog.show', $blog->slug) }}">{{ truncate($blog->translation->title, 50) }}</a></h4>

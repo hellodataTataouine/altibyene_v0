@@ -7,6 +7,7 @@
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb :title="__(' A Propos de l\'Altibyane')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __(' A Propos de l\'Altiyane')]]" />
     <!-- breadcrumb-area-end -->
+    @include('frontend.pages.adhkar')
     <style>
    .about-section {
     padding: 80px 0;

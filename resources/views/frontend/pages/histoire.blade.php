@@ -5,7 +5,7 @@
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb :title="__('Histoire')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('cart'), 'text' => __('Histoire')]]" />
     <!-- breadcrumb-area-end -->
-
+    @include('frontend.pages.adhkar')
     <style>
         .history-section {
             padding: 50px 0;

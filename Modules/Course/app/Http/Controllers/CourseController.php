@@ -74,11 +74,12 @@ class CourseController extends Controller
             $course->instructor_id = $request->instructor;
         } else {
             $course = new Course();
-            $slug = generateUniqueSlug(Course::class, $request->title);
-            $course->slug = $slug;
+            //$slug = generateUniqueSlug(Course::class, $request->title);
+            //$course->slug = $request->$slug;
         }
 
         $course->title = $request->title;
+        $course->slug = $request->slug;
         $course->seo_description = $request->seo_description;
         $course->thumbnail = $request->thumbnail;
         $course->demo_video_storage = $request->demo_video_storage;

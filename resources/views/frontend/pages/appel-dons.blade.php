@@ -5,6 +5,7 @@
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb :title="__('Appel et Dons ')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('cart'), 'text' => __('Appel et Dons ')]]" />
     <!-- breadcrumb-area-end -->
+    @include('frontend.pages.adhkar')
 <style>
     .cta-section {
 

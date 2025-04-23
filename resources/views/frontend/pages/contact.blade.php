@@ -5,6 +5,7 @@
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb :title="__('Contactez-nous')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => '', 'text' => __('Contactez-nous')]]" />
     <!-- breadcrumb-area-end -->
+    @include('frontend.pages.adhkar')
     <!-- contact-area -->
     <section class="contact-area section-py-120">
         <div class="container">

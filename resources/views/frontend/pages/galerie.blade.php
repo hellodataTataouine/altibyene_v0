@@ -5,7 +5,7 @@
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb :title="__('Galerie')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('cart'), 'text' => __('Galerie')]]" />
     <!-- breadcrumb-area-end -->
-
+    @include('frontend.pages.adhkar')
     <style>
         body {
             background-color: #f8f9fa;

@@ -5,6 +5,7 @@
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb :title="__('Formation à la méthode Altibyan')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('cart'), 'text' => __('Formation à la méthode Altibyan')]]" />
     <!-- breadcrumb-area-end -->
+    @include('frontend.pages.adhkar')
     <style>
 
 
