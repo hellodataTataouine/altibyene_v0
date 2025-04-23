@@ -18,7 +18,7 @@
         ['url' => route('become-instructor'), 'text' => __('Détails du programmes')],
     ]" />
     <!-- breadcrumb-area-end -->
-
+    @include('frontend.pages.adhkar')
     <!-- courses-details-area -->
     <section class="courses__details-area section-py-120">
         <div class="container">
@@ -465,10 +465,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-4">
-                    <div class="courses__details-sidebar">
+                <div class="col-xl-3 col-lg-4" >
+                    <div class="courses__details-sidebar" style="position:absolute;top:560px; right:170px;">
                         <div class="courses__cost-wrap">
-                            <span>{{ __('Ce programme gratuit') }}:</span>
+                           {{--<span>{{ __('Ce programme gratuit') }}:</span>--}}
                             @if ($course->price == 0)
                                 <h2 class="title">{{ __('Gratuit') }}</h2>
                             @elseif ($course->discount)

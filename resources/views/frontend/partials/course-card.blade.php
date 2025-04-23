@@ -50,8 +50,7 @@
                         </div>
                     @else
                   <div class="button">
-                            <a href="javascript:;" class="add-to-cart"
-                                data-id="{{ $course->id }}">
+                    <a href="{{ route('register') }}" >
                                 <span class="text">{{ __('S\'abonner') }}</span>
                                 <i class="flaticon-arrow-right"></i>
                             </a>
@@ -66,7 +65,7 @@
                 @endif
             </div>
 
-     
+
              <div class="courses__item-bottom">
                     @if (in_array($course->id, session('inscriptions') ?? []))
                         <div class="button">
