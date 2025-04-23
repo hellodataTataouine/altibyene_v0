@@ -14,24 +14,25 @@
             <div class="col-12">
                 <div class="categories__wrap">
                     <div class="swiper categories-active">
-                        <div class="swiper-wrapper">
+                        <div class="swiper-wrapper" style="margin-left: 100px">
                             @foreach ($trendingCategories as $category)
-                                <div class="swiper-slide">
-                                    <div class="categories__item">
-                                    
+                                <div class="swiper-slide"  >
+                                    <div class="categories__item" >
 
                                          {{--<a href="{{ route('courses', ['main_category' => $category->slug]) }}">--}}
                                             <div class="icon">
                                                 <img src="{{ asset($category?->icon) }}" alt="">
                                             </div>
                                             <span class="name">{{ $category?->translation?->name }}</span>
-                        {{-- <span class="courses">({{ $category->subCategories->sum('courses_count') }})</span>--}}
+                                         {{-- <span class="courses">({{ $category->subCategories->sum('courses_count') }})</span>--}}
                                         </a>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
                     </div>
+
+
                     <div class="categories__nav">
                         <button class="categories-button-prev">
                             <svg width="16" height="14" viewBox="0 0 16 14" fill="none"

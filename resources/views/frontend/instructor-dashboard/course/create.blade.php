@@ -25,6 +25,7 @@
                                     <input id="title" name="title" type="text" value="{{ @$course?->title }}">
                                 </div>
                             </div>
+                            
 
                             <div class="col-md-12">
                                 <div class="form-grp">

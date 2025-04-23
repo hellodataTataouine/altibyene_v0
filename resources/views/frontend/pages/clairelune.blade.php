@@ -5,6 +5,7 @@
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb :title="__('Claire de Lune')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('cart'), 'text' => __('Claire de Lune')]]" />
     <!-- breadcrumb-area-end -->
+    @include('frontend.pages.adhkar')
     <style>
 
         .header {

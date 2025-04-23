@@ -16,6 +16,7 @@ class CourseStoreRequest extends FormRequest
         // dd($this);
         $rules = [
             'title' => ['required', 'max:255'],
+            'slug' => ['required', 'string', 'max:255'],
             'seo_description' => ['nullable', 'string', 'max:255'],
             'thumbnail' => ['required', 'max:255'],
             'demo_video_source' => ['nullable', 'string'],

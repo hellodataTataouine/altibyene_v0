@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\GalerieController;
 use App\Http\Controllers\Frontend\ProgrammeCoursController;
 use App\Http\Controllers\Frontend\PartenairesController;
 
+use App\Http\Controllers\Frontend\AdhkarController;
 use App\Http\Controllers\Frontend\FormationController;
 use App\Http\Controllers\Frontend\MemorisationController;
 
@@ -332,3 +333,4 @@ Route::get('/formation', [FormationController::class, 'index'])->name('formation
 Route::get('/memorisation', [MemorisationController::class, 'index'])->name('memorisation.index');
 Route::get('/clairelune', [ClaireLuneController::class, 'index'])->name('clairelune.index');
 Route::get('/altibyan', [AltibyanController::class, 'index'])->name('altibyan.index');
+Route::get('/adhkar', [AdhkarController::class, 'index'])->name('adhkar.index');

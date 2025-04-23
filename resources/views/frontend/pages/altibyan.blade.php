@@ -5,6 +5,7 @@
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb :title="__('Altibyan')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('cart'), 'text' => __('Altibyan')]]" />
     <!-- breadcrumb-area-end -->
+    @include('frontend.pages.adhkar')
     <style>
 
         .header {

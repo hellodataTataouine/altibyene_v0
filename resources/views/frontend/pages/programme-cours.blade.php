@@ -6,7 +6,7 @@
     <x-frontend.breadcrumb :title="__('Nos programmes')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('cart'), 'text' => __('Nos programmes')]]" />
     <!-- breadcrumb-area-end -->
 
-
+    @include('frontend.pages.adhkar')
 <!-- all-courses -->
 <section class="all-courses-area section-py-120 top-baseline">
     <div class="container position-relative" data-aos="fade-down">
