@@ -7,6 +7,7 @@
     <!-- breadcrumb-area-end -->
     @include('frontend.pages.adhkar')
     <style>
+
         body {
             background-color: #f8f9fa;
         }
@@ -72,7 +73,7 @@
     </style>
 
     <!-- Gallery Section -->
-    <div class="container" style="margin-top:5%">
+    <div class="container" style="margin-top:5%"  >
         <div class="page-header">
             <h1>Les Couleurs de notre Association</h1>
         </div>

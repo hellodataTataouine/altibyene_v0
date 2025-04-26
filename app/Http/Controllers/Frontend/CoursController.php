@@ -56,6 +56,14 @@ class CoursController extends Controller
                 });
             });
 
+            $query->when($request->type && $request->filled('type'), function($q) use ($request) {
+                $typeIds = explode(',', $request->type);
+                $q->whereHas('type', function($q) use ($typeIds) {
+                    $q->whereIn('type_id', $typeIds);
+                });
+            });
+
+
             $query->when($request->price, function($q) use ($request) {
                 if($request->price == 'paid') {
                     $q->where('price', '>', 0);

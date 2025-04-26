@@ -1,4 +1,4 @@
-<style>
+{{--<style>
 
 
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap');
@@ -72,15 +72,16 @@
 
   <script>
     const adhkarList = [
-      " ٱللَّهِ  ﷽",
-      "سُبْحَانَ ٱللَّٰه",
-      "ٱلْـحَمْدُ لِلَّٰه",
-      "اللّٰهُ أَكْبَر",
-      "لَا إِلَٰهَ إِلَّا ٱللَّٰه",
-      "ٱسْتَغْفِرُ ٱللَّٰه",
-      "اللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّد",
-      "سُبْحَانَ ٱللَّهِ وَبِحَمْدِهِ",
-      "سُبْحَانَ ٱللَّهِ ٱلْعَظِيم"
+
+    "Inscris-toi vite  !",
+    "Commence aujourd’hui  !",
+    "Réserve ta place  !",
+    "Lance-toi !",
+    "Apprends le Coran",
+    "Découvre nos cours" ,
+      "Places limitées !",
+      "",
+      ""
     ];
 
     const box = document.getElementById('adhkarBox');
@@ -98,4 +99,4 @@
 
     showAdhkar();
     setInterval(showAdhkar, 5000); // toutes les 5 secondes
-  </script>
+  </script>--}}

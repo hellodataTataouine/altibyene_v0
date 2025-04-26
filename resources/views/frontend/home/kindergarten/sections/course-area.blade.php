@@ -8,7 +8,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-9 col-xl-8 col-xxl-6">
-                <div class="section__title text-center mb-50">
+                <div class="section__title text-center mb-
+                ">
                     <span class="sub-title">{{ __('Top Class Courses') }}</span>
                     <h2 class="title bold">{{ __('Get The Best Exciting Class Experience With us') }}</h2>
                     <p class="desc">{{ __('Check out the most demanding courses right now') }}</p>

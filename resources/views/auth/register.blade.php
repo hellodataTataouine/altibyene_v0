@@ -12,6 +12,8 @@
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8">
                     <div class="singUp-wrap">
+
+                        <img src="{{ asset('uploads/custom-images/logocd.png') }}" class="w-25 mb-5" alt="logo" style="margin-left:200px">
                         <h2 class="title">{{ __('Créez votre compte') }}</h2>
                         <p>{{ __('Salut ! Prêt à nous rejoindre ? Nous avons juste besoin de quelques informations :') }}<br>{{ __('') }}
                         </p>
@@ -26,54 +28,89 @@
                             <span>{{ __('ou') }}</span>
                         </div>
                         @endif
-                        <form method="POST" action="{{ route('register') }}" class="account__form">
+                        <form method="POST" action="{{ route('register') }}" class="account__form" id="multiStepForm">
                             @csrf
 
-                            <div class="row gutter-20">
-                                <div class="col-md-12">
-                                    <div class="form-grp">
-                                        <label for="fast-name">{{ __('Nom et Prénom') }}</label>
-                                        <input type="text" id="fast-name" placeholder="{{ __('Nom et Prénom') }}"
-                                            name="name">
-                                        <x-frontend.validation-error name="name" />
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- Nom -->
                             <div class="form-grp">
-                                <label for="email">{{ __('Email') }}</label>
-                                <input type="email" id="email" placeholder="{{ __('email') }}" name="email">
-                                <x-frontend.validation-error name="email" />
-                            </div>
-                            <div class="form-grp">
-                                <label for="password">{{ __('Mot de passe') }}</label>
-                                <input type="password" id="password" placeholder="{{ __('Mot de passe') }}" name="password">
-                                <x-frontend.validation-error name="password" />
-                            </div>
-                            <div class="form-grp">
-                                <label for="confirm-password">{{ __('Confirmez le mot de passe') }}</label>
-                                <input type="password" id="confirm-password" placeholder="{{ __('Confirmez le mot de passe') }}"
-                                    name="password_confirmation">
-                                <x-frontend.validation-error name="password_confirmation" />
+                                <label for="last_name">Nom *</label>
+                                <input type="text" id="last_name" name="last_name" placeholder="Nom" required>
                             </div>
 
-                            <!-- g-recaptcha -->
-                            @if (Cache::get('setting')->recaptcha_status === 'active')
-                                <div class="form-grp mt-3">
-                                    <div class="g-recaptcha"
-                                        data-sitekey="{{ Cache::get('setting')->recaptcha_site_key }}"></div>
-                                    <x-frontend.validation-error name="g-recaptcha-response" />
-                                </div>
-                            @endif
+                            <!-- Prénom -->
+                            <div class="form-grp">
+                                <label for="first_name">Prénom *</label>
+                                <input type="text" id="first_name" name="first_name" placeholder="Prénom" required>
+                            </div>
 
-                            <button type="submit" class="btn btn-two arrow-btn">{{ __('S\'inscrire') }}<img
-                                    src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt="img"
-                                    class="injectable"></button>
+                            <!-- Genre -->
+                            <div class="form-grp">
+                                <label>Genre *</label><br>
+                                <label><input type="radio" name="gender" value="M" required> M</label><br>
+                                <label><input type="radio" name="gender" value="F" required> F</label>
+                            </div>
+
+                            <!-- Né(e) à -->
+                            <div class="form-grp">
+                                <label for="birthplace">Né(e) à *</label>
+                                <input type="text" id="birthplace" name="birthplace" placeholder="Lieu de naissance" required>
+                            </div>
+
+                            <!-- Date de naissance -->
+                            <div class="form-grp">
+                                <label for="birthdate">Date de naissance *</label>
+                                <input type="date" id="birthdate" name="birthdate" required>
+                            </div>
+
+                            <!-- Adresse -->
+                            <div class="form-grp">
+                                <label for="address">Adresse *</label>
+                                <input type="text" id="address" name="address" placeholder="Adresse" required>
+                            </div>
+
+                            <!-- Code postal -->
+                            <div class="form-grp">
+                                <label for="postal_code">Code Postal *</label>
+                                <input type="text" id="postal_code" name="postal_code" required>
+                            </div>
+
+                            <!-- Ville -->
+                            <div class="form-grp">
+                                <label for="city">Ville *</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+
+                            <!-- Téléphone fixe -->
+                            <div class="form-grp">
+                                <label for="phone_fix">N° Fixe *</label>
+                                <input type="text" id="phone_fix" name="phone_fix" placeholder="N° Fixe" required>
+                            </div>
+
+                            <!-- Téléphone portable -->
+                            <div class="form-grp">
+                                <label for="phone">N° Portable *</label>
+                                <input type="text" id="phone" name="phone" placeholder="N° Portable" required>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-grp">
+                                <label for="email">Adresse e-mail *</label>
+                                <input type="email" id="email" name="email" placeholder="Adresse e-mail" required>
+                            </div>
+                            <div class="form-grp">
+                                <label for="password">Mot de passe *</label>
+                                <input type="password" id="password" name="password" placeholder="password" required>
+                            </div>
+                            <div class="form-grp">
+                                <label for="password">Confirmer de passe *</label>
+                                <input type="password" id="password" name="password" placeholder="password" required>
+                            </div>
+                            <!-- Informations supplémentaires -->
+
+                            <button type="submit" class="btn btn-two">S'inscrire</button>
+
+                            </div>
                         </form>
-                        <div class="account__switch">
-                            <p>{{ __('Vous avez déjà un compte ?') }}<a href="{{ route('login') }}">{{ __('se connecter') }}</a>
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
