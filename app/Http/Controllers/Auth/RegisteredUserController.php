@@ -98,4 +98,58 @@ class RegisteredUserController extends Controller
             return redirect()->route('register')->with($notification);
         }
     }
+
+    public function step2(): View
+{
+    return view('auth.register.step2');  // Charger la vue pour l'étape 2
 }
+
+public function postStep2(Request $request): RedirectResponse
+{
+    // Validation des données de l'étape 2
+    $request->validate([
+        'email' => 'required|email',
+        // autres champs
+    ]);
+
+    // Enregistrer les données dans la session pour que l'utilisateur puisse passer à l'étape 3
+    session(['step2_completed' => true]);
+
+    return redirect()->route('register.step3');  // Rediriger vers l'étape 3
+}
+
+
+public function step3(): View
+{
+    return view('auth.register.step3');  // Charger la vue pour l'étape 3
+}
+
+public function postStep3(Request $request): RedirectResponse
+{
+    // Validation des données de l'étape 3
+    $request->validate([
+        'password' => 'required|confirmed',
+        // autres champs
+    ]);
+
+    // Créer l'utilisateur et finaliser l'inscription
+    $user = User::create([
+        'first_name' => session('first_name'),
+        'last_name' => session('last_name'),
+        'email' => session('email'),
+        'password' => bcrypt($request->input('password')),
+        // autres champs
+    ]);
+
+    // Rediriger vers la page d'accueil ou connexion
+    return redirect()->route('login')->with('success', 'Registration completed successfully');
+}
+
+}
+
+
+
+
+
+
+

@@ -83,8 +83,7 @@
       box-shadow: 0 6px 15px rgba(0,0,0,0.25);
     }
   </style>
-</head>
-<body>
+
 
   <div class="header fade-in" >
     <h1>

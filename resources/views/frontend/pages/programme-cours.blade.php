@@ -101,7 +101,7 @@
                             </div>
                         </div>--}}
 
-                        <div class="courses-widget" data-aos="fade-down">
+                    <div class="courses-widget" data-aos="fade-down">
                             <h4 class="widget-title">{{ __('Type de programme') }}</h4>
                             <div class="courses-cat-list">
                                 <ul class="list-wrap">
@@ -132,7 +132,7 @@
 
 
                         <div class="courses-widget"   data-aos="fade-down">
-                            <h4 class="widget-title">{{ __('Catégorie ') }}</h4>
+                            <h4 class="widget-title">{{ __('Cours') }}</h4>
                             <div class="courses-cat-list">
                                 <ul class="list-wrap">
                                     <li>
@@ -140,7 +140,7 @@
                                             <input class="form-check-input level-checkbox" type="checkbox"
                                                 value="" id="difficulty_1">
                                             <label class="form-check-label"
-                                                for="difficulty_1">{{ __('Tous les niveaux') }}</label>
+                                                for="difficulty_1">{{ __('Tous les cours') }}</label>
                                         </div>
                                     </li>
                                     @foreach ($levels as $level)

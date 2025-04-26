@@ -50,16 +50,20 @@
           margin-top: 3rem;
         }
       </style>
-
-
       <!-- Header -->
-      <div class="header" data-aos="fade-right">
-        <h1>✨ Association Clair de Lune</h1>
-      </div>
 
+      <div style="text-align: center;">
+        <video autoplay muted loop playsinline width="50%" style="margin-top: 2rem; border-radius: 12px;">
+          <source src="{{ asset('uploads/custom-images/version 1.mp4') }}" type="video/mp4">
+          Votre navigateur ne prend pas en charge la lecture de la vidéo.
+        </video>
+      </div>
+      <div class="header" data-aos="fade-right" >
+        <h1   style="margin-top: -160px">✨ Association Clair de Lune</h1>
+      </div>
       <!-- Présentation -->
-      <div class="container section" style="margin-top: -100px">
-        <h2 class="mb-4 text-center" data-aos="fade-right">Qui sommes-nous ?</h2>
+      <div class="container section" style="margin-top: -200px">
+        <h2 class="mb-4 text-center" data-aos="fade-right">A propos de nous </h2>
         <p class="text-center" data-aos="fade-right">
             CLAIR DE LUNE, association culturelle fondée en 2021 et régie par la loi 1901,
              a pour vocation de diffuser les enseignements essentiels de l'islam en proposant des cours axés sur la maîtrise de la langue arabe,
@@ -74,9 +78,6 @@
           Il devient donc un modèle parfait car il réussit à concilier sa pratique religieuse et les relations humaines.
            Cette conciliation le conduit sans doute à une réussite dans ce monde et dans l'au-delà.
         </p>
-
-
-
       <h2 class="mb-4 text-center"  style="margin-top: 20px" data-aos="fade-right">Nos Objectifs</h2>
       <p class="text-center" data-aos="fade-right">
           L’association Clair de Lune a pour vocation de transmettre les connaissances essentielles de l’islam,
@@ -121,6 +122,13 @@
       <!-- Citation -->
       <div class="quote container" style="margin-top: -10px"  data-aos="fade-right">
         <p>"Une bonne compréhension mène à une bonne application. Et la bonne application, c'est la lumière sur le chemin."</p>
+      </div>
+
+      <div style="text-align: center;">
+        <video autoplay muted loop playsinline width="50%" style="margin-top: 2rem; border-radius: 12px;">
+          <source src="{{ asset('uploads/custom-images/version 1.mp4') }}" type="video/mp4">
+          Votre navigateur ne prend pas en charge la lecture de la vidéo.
+        </video>
       </div>
 
 @endsection

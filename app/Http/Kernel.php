@@ -77,4 +77,9 @@ class Kernel extends HttpKernel
         'payment.api' => \App\Http\Middleware\API\HeaderBearerTokenSet::class,
         'abilities' => \Laravel\Sanctum\Http\Middleware\CheckAbilities::class,
     ];
+
+
+
+
+
 }

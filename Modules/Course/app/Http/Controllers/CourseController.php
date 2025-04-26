@@ -77,7 +77,7 @@ class CourseController extends Controller
             //$slug = generateUniqueSlug(Course::class, $request->title);
             //$course->slug = $request->$slug;
         }
-
+        $course->type = $request->type;
         $course->title = $request->title;
         $course->slug = $request->slug;
         $course->seo_description = $request->seo_description;
@@ -92,7 +92,7 @@ class CourseController extends Controller
 
         // save course id in session
         Session::put('course_create', $course->id);
-
+        
         return response()->json([
             'status' => 'success',
             'message' => __('Updated successfully'),

@@ -50,7 +50,12 @@
         }
       </style>
 
-
+<div style="text-align: center;">
+    <video autoplay muted loop playsinline width="50%" style="margin-top: 2rem; border-radius: 12px;">
+      <source src="{{ asset('uploads/custom-images/version 1.mp4') }}" type="video/mp4">
+      Votre navigateur ne prend pas en charge la lecture de la vidéo.
+    </video>
+  </div>
       <!-- Header -->
       <div class="header">
         <h1>✨ Association Clair de Lune</h1>
@@ -104,12 +109,7 @@
         <p>"Une bonne compréhension mène à une bonne application. Et la bonne application, c'est la lumière sur le chemin."</p>
       </div>
 
-      <div style="text-align: center;">
-        <video autoplay muted loop playsinline width="50%" style="margin-top: 2rem; border-radius: 12px;">
-          <source src="{{ asset('uploads/custom-images/version 1.mp4') }}" type="video/mp4">
-          Votre navigateur ne prend pas en charge la lecture de la vidéo.
-        </video>
-      </div>
+
 
 
 @endsection

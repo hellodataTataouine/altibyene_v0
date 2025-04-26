@@ -18,7 +18,7 @@ use App\Http\Controllers\Frontend\AltibyanController;
 
 use App\Http\Controllers\Frontend\PresentationClaireLuneController;
 use App\Http\Controllers\Frontend\EquipepedagogiqueController;
-
+use App\Http\Controllers\Auth\RegisterController;
 
 use App\Http\Controllers\Frontend\QnaController;
 use App\Http\Controllers\Frontend\BlogController;
@@ -54,6 +54,7 @@ Route::group(['middleware' => 'maintenance.mode'], function () {
      * Global Routes
      * ============================================================================
      */
+
 
     Route::get('set-language', [DashboardController::class, 'setLanguage'])->name('set-language');
     Route::get('set-currency', [HomePageController::class, 'setCurrency'])->name('set-currency');
@@ -334,3 +335,8 @@ Route::get('/memorisation', [MemorisationController::class, 'index'])->name('mem
 Route::get('/clairelune', [ClaireLuneController::class, 'index'])->name('clairelune.index');
 Route::get('/altibyan', [AltibyanController::class, 'index'])->name('altibyan.index');
 Route::get('/adhkar', [AdhkarController::class, 'index'])->name('adhkar.index');
+
+
+
+
+
