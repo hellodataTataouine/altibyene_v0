@@ -7,6 +7,10 @@
     <!-- breadcrumb-area-end -->
 
     <!-- singUp-area -->
+
+
+
+
     <section class="singUp-area section-py-120">
         <div class="container">
             <div class="row justify-content-center">
@@ -28,8 +32,10 @@
                             <span>{{ __('ou') }}</span>
                         </div>
                         @endif
-                        <form method="POST" action="{{ route('register') }}" class="account__form" id="multiStepForm">
+                        <form method="POST" action="{{ route('register.step1') }}" class="account__form" id="multiStepForm">
+
                             @csrf
+
 
                             <!-- Nom -->
                             <div class="form-grp">
@@ -45,10 +51,11 @@
 
                             <!-- Genre -->
                             <div class="form-grp">
-                                <label>Genre *</label><br>
+                                <label >Genre *</label><br>
                                 <label><input type="radio" name="gender" value="M" required> Melle</label><br>
                                 <label><input type="radio" name="gender" value="F" required> Femelle</label>
                             </div>
+
 
                             <!-- Né(e) à -->
                             <div class="form-grp">
@@ -102,8 +109,8 @@
                                 <input type="password" id="password" name="password" placeholder="password" required>
                             </div>
                             <div class="form-grp">
-                                <label for="password">Confirmer de passe *</label>
-                                <input type="password" id="password" name="password" placeholder="password" required>
+                                <label for="password_confirm">Confirmer de passe *</label>
+                                <input type="password_confirm" id="password_confirm" name="password_confirm" placeholder="Confirmer mot de passe" required>
                             </div>
                             <!-- Informations supplémentaires -->
                             <button type="submit" class="btn btn-primary">Suivant</button>
@@ -116,3 +123,10 @@
     </section>
     <!-- singUp-area-end -->
 @endsection
+
+
+
+
+
+
+

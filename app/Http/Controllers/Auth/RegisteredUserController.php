@@ -1,150 +1,98 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Rules\CustomRecaptcha;
-use App\Services\MailSenderService;
-use App\Traits\GetGlobalInformationTrait;
-use Cache;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\View\View;
-use Str;
+use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
-    use GetGlobalInformationTrait;
-
-    public function create(): View
+    public function step1()
     {
-        return view('auth.register');
+        return view('auth.register.step1');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function postStep1(Request $request)
     {
-        $setting = Cache::get('setting');
-
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', 'min:4', 'max:100'],
-            'g-recaptcha-response' => $setting->recaptcha_status == 'active' ? ['required', new CustomRecaptcha()] : '',
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'gender' => 'required|string|max:255',
+            'birthdate' => 'required|date',
+            'birthplace' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'postal_code' => 'required|string|max:10',
+            'city' => 'required|string|max:255',
+            'phone_fix' => 'required|string|max:20',
+            'phone' => 'required|string|max:20',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'password' => 'required|string|min:6|max:100|confirmed',
         ], [
-            'name.required' => __('Name is required'),
-            'email.required' => __('Email is required'),
-            'email.unique' => __('Email already exist'),
-            'password.required' => __('Password is required'),
-            'password.confirmed' => __('Confirm password does not match'),
-            'password.min' => __('You have to provide minimum 4 character password'),
-            'g-recaptcha-response.required' => __('Please complete the recaptcha to submit the form'),
+            'password.confirmed' => __('Password confirmation does not match'),
         ]);
 
-        $user = User::create([
-            'role' => 'student',
-            'name' => $request->name,
-            'email' => $request->email,
-            'status' => 'active',
-            'is_banned' => 'no',
-            'password' => Hash::make($request->password),
-            'verification_token' => Str::random(100),
+        // Stocker les données dans la session pour les étapes suivantes
+        session([
+            'register' => array_merge(session('register', []), $validated)
         ]);
 
-        $settings = cache()->get('setting');
-        $marketingSettings = cache()->get('marketing_setting');
-        if ($user && $settings->google_tagmanager_status == 'active' && $marketingSettings->register) {
-            $register_user = [
-                'name' => $user->name,
-                'email' => $user->email,
-            ];
-            session()->put('registerUser', $register_user);
-        }
-
-        (new MailSenderService)->sendVerifyMailToUserFromTrait('single_user', $user);
-
-        $notification = __('A varification link has been send to your mail, please verify and enjoy our service');
-        $notification = ['messege' => $notification, 'alert-type' => 'success'];
-
-        return redirect()->back()->with($notification);
-
+        return redirect()->route('register.step2');
     }
 
-    public function custom_user_verification($token)
+    public function postStep2(Request $request)
     {
+        $validated = $request->validate([
+            'honor_statement' => 'accepted',
+            'rules_acknowledgment' => 'accepted',
+            'data_processing_acknowledgment' => 'accepted',
+        ], [
+            'honor_statement.accepted' => 'Vous devez attester sur l\'honneur l\'exactitude des renseignements fournis.',
+            'rules_acknowledgment.accepted' => 'Vous devez reconnaître avoir pris connaissance du règlement intérieur.',
+            'data_processing_acknowledgment.accepted' => 'Vous devez reconnaître que les informations recueillies font l\'objet d\'un traitement informatique.',
+        ]);
 
-        $user = User::where('verification_token', $token)->first();
-        if ($user) {
+        // Tu peux éventuellement stocker qu'on a coché ces cases
+        session(['register' => array_merge(session('register', []), $validated)]);
 
-            if ($user->email_verified_at != null) {
-                $notification = __('Email already verified');
-                $notification = ['messege' => $notification, 'alert-type' => 'error'];
-
-                return redirect()->route('login')->with($notification);
-            }
-
-            $user->email_verified_at = date('Y-m-d H:i:s');
-            $user->verification_token = null;
-            $user->save();
-
-            $notification = __('Verification successful please try to login now');
-            $notification = ['messege' => $notification, 'alert-type' => 'success'];
-            return redirect()->route('login')->with($notification);
-        } else {
-            $notification = __('Invalid token');
-            $notification = ['messege' => $notification, 'alert-type' => 'error'];
-
-            return redirect()->route('register')->with($notification);
-        }
+        return redirect()->route('register.step3');
     }
 
-    public function step2(): View
-{
-    return view('auth.register.step2');  // Charger la vue pour l'étape 2
-}
+    public function postStep3(Request $request)
+    {
+        $validated = $request->validate([
+            // Ici normalement tu peux valider d'autres données si besoin.
+            // Exemple : 'payment_method' => 'required|string',
+        ]);
 
-public function postStep2(Request $request): RedirectResponse
-{
-    // Validation des données de l'étape 2
-    $request->validate([
-        'email' => 'required|email',
-        // autres champs
-    ]);
+        // Récupère toutes les données enregistrées dans les sessions des étapes précédentes
+        $registerData = session('register');
 
-    // Enregistrer les données dans la session pour que l'utilisateur puisse passer à l'étape 3
-    session(['step2_completed' => true]);
+        // Crée l'utilisateur (ou autre enregistrement)
+        $user = User::create([
+            'first_name' => $registerData['first_name'] ?? '',
+            'last_name' => $registerData['last_name'] ?? '',
+            'gender' => $registerData['gender'] ?? '',
+            'birthdate' => $registerData['birthdate'] ?? null,
+            'birthplace' => $registerData['birthplace'] ?? '',
+            'adresse' => $registerData['adresse'] ?? '',
+            'postal_code' => $registerData['postal_code'] ?? '',
+            'city' => $registerData['city'] ?? '',
+            'phone_fix' => $registerData['phone_fix'] ?? '',
+            'phone' => $registerData['phone'] ?? '',
+            'email' => $registerData['email'],
+            'password' => Hash::make($registerData['password']),
+        ]);
 
-    return redirect()->route('register.step3');  // Rediriger vers l'étape 3
-}
+        // Nettoie la session
+        session()->forget('register');
 
+        // Connecte automatiquement l'utilisateur (optionnel)
+        // Auth::login($user);
 
-public function step3(): View
-{
-    return view('auth.register.step3');  // Charger la vue pour l'étape 3
-}
-
-public function postStep3(Request $request): RedirectResponse
-{
-    // Validation des données de l'étape 3
-    $request->validate([
-        'password' => 'required|confirmed',
-        // autres champs
-    ]);
-
-    // Créer l'utilisateur et finaliser l'inscription
-    $user = User::create([
-        'first_name' => session('first_name'),
-        'last_name' => session('last_name'),
-        'email' => session('email'),
-        'password' => bcrypt($request->input('password')),
-        // autres champs
-    ]);
-
-    // Rediriger vers la page d'accueil ou connexion
-    return redirect()->route('login')->with('success', 'Registration completed successfully');
-}
-
+        // Redirige où tu veux (par exemple vers la page d'accueil)
+        return redirect()->route('home')->with('success', 'Inscription réussie !');
+    }
 }
 
 
