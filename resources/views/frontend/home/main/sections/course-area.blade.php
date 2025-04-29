@@ -253,7 +253,7 @@
 
                                             @elseif ($course->enrollments_count >= $course->capacity && $course->capacity != null)
                                                 <div class="button">
-                                                    <a href="{{ route('register') }}" >
+                                                    <a href="{{ route('register.step1') }}" >
                                                         <span class="text">{{ __('S\'abonner') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>
@@ -262,7 +262,7 @@
 
                                             @else
                                           <div class="button">
-                                            <a href="{{ route('register') }}" >
+                                            <a href="{{ route('register.step1') }}" >
                                                         <span class="text">{{ __('S\'abonner') }}</span>
                                                         <i class="flaticon-arrow-right"></i>
                                                     </a>

@@ -10,7 +10,7 @@
         @include('frontend.home.main.sections.banner-area')
         <!-- banner-area-end -->
     @endif
-
+    @include('frontend.pages.message')
     @include('frontend.pages.adhkar')
 
           <!--presentataion attebyan --->
@@ -142,7 +142,7 @@
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); 
+    background-color: rgba(0, 0, 0, 0.4);
     z-index: 1;
 }
 </style>

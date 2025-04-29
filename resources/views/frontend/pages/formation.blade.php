@@ -224,7 +224,11 @@
                     </div>
                 </li>
             </ul>
+
+        <img src="{{ asset('uploads/custom-images/attestation.png') }}" class="img-fluid" alt="Méthode Tibyane" style="margin-left: 200px">
         </div>
+
+
 
         <div class="row mt-5">
             <h5 class="mb-4"> ✦ Les créneaux des séances seront choisis, selon vos disponibilités et nos différents créneaux, au moment de l’inscription.</h5>
