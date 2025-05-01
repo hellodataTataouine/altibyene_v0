@@ -5,6 +5,7 @@
     <!-- breadcrumb-area -->
     <x-frontend.breadcrumb :title="__('Claire de Lune')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('cart'), 'text' => __('Claire de Lune')]]" />
     <!-- breadcrumb-area-end -->
+    
     @include('frontend.pages.adhkar')
     <style>
 
@@ -51,13 +52,6 @@
         }
       </style>
       <!-- Header -->
-
-      <div style="text-align: center;">
-        <video autoplay muted loop playsinline width="50%" style="margin-top: 2rem; border-radius: 12px;">
-          <source src="{{ asset('uploads/custom-images/version 1.mp4') }}" type="video/mp4">
-          Votre navigateur ne prend pas en charge la lecture de la vidéo.
-        </video>
-      </div>
       <div class="header" data-aos="fade-right" >
         <h1   style="margin-top: -160px">✨ Association Clair de Lune</h1>
       </div>

@@ -76,7 +76,7 @@ class Kernel extends HttpKernel
         'json.only' => \App\Http\Middleware\API\EnforceJsonMiddleware::class,
         'payment.api' => \App\Http\Middleware\API\HeaderBearerTokenSet::class,
         'abilities' => \Laravel\Sanctum\Http\Middleware\CheckAbilities::class,
-        'registration.step' => \App\Http\Middleware\EnsureRegistrationStep::class,
+       
     ];
 
 
