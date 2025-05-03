@@ -270,7 +270,7 @@
                                             @endif
 
 
-                                        @if ($course->price == 0)
+                                        {{--   @if ($course->price == 0)
                                             <h4 class="price">{{ __('Gratuit') }}</h4>
                                         @elseif ($course->price > 0 && $course->discount > 0)
                                             <h4 class="price">{{ number_format($course->discount, 2) }}  €  /M</h4>
@@ -278,7 +278,7 @@
                                             <h4 class="price">{{ number_format($course->price, 2) }}  €  /M</h4>
                                         @endif
 
-                                          {{--  @if ($course->price == 0)
+                                         @if ($course->price == 0)
                                                 <h4 class="price">{{ __('Gratuit') }}</h4>
                                             @elseif ($course->price > 0 && $course->discount > 0)
                                                 <h4 class="price">{{ currency($course->discount) }}</h4>

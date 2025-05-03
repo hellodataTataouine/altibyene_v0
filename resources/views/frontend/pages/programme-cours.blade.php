@@ -15,11 +15,11 @@
         </div>
         <div class="row">
             <div class="col-xl-3 col-lg-4">
-                <div class="courses__sidebar_area">
+                  {{--<div class="courses__sidebar_area">
                     <div class="courses__sidebar_button d-lg-none">
                         <h4>{{ __('filter') }}</h4>
                     </div>
-                    {{--<aside class="courses__sidebar">
+                  <aside class="courses__sidebar">
                         <div class="courses-widget">
                             <h4 class="widget-title">{{ __('Categories') }}</h4>
                             <div class="courses-cat-list">
@@ -101,7 +101,7 @@
                             </div>
                         </div>--}}
 
-                    <div class="courses-widget" data-aos="fade-down">
+                   {{-- <div class="courses-widget" data-aos="fade-down">
                             <h4 class="widget-title">{{ __('Type de programme') }}</h4>
                             <div class="courses-cat-list">
                                 <ul class="list-wrap">
@@ -128,10 +128,10 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div>--}}
 
 
-                        <div class="courses-widget"   data-aos="fade-down">
+                     {{--  <div class="courses-widget"   data-aos="fade-down">
                             <h4 class="widget-title">{{ __('Cours') }}</h4>
                             <div class="courses-cat-list">
                                 <ul class="list-wrap">
@@ -155,7 +155,7 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        </div>
+                        </div>--}}
                     </aside>
                 </div>
             </div>
@@ -171,12 +171,12 @@
                         <div class="col-md-7"   data-aos="fade-down">
                             <div class="d-flex justify-content-center align-items-center flex-wrap">
                                 <div class="courses-top-right m-0 ms-md-auto">
-                                    <span class="sort-by">{{ __('Trier par') }}:</span>
+                                   {{-- <span class="sort-by">{{ __('Trier par') }}:</span>
                                     <div class="courses-top-right-select">
                                         <select name="orderby" class="orderby">
                                             <option value="desc">{{ __('Du plus récent au plus ancien') }}</option>
                                             <option value="asc">{{ __('Du plus ancien au plus récent') }}</option>
-                                        </select>
+                                        </select>--}}
                                     </div>
                                 </div>
 
@@ -184,7 +184,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="grid" role="tabpanel"
                         aria-labelledby="grid-tab">
@@ -193,10 +193,10 @@
                             {{-- dynamic content will go here via ajax --}}
                         </div>
 
-                        <div class="pagination-wrap">
+                         {{-- <div class="pagination-wrap">
                             <div class="pagination">
-                                {{-- dynamic content will go here via ajax --}}
-                            </div>
+                                {{-- dynamic content will go here via ajax
+                            </div>--}}
                         </div>
 
                     </div>

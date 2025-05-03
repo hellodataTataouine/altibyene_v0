@@ -44,9 +44,10 @@ class HomePageController extends Controller {
         $sections = Section::whereHas("home", function ($q) use ($theme_name) {
             $q->where('slug', $theme_name);
         })->get();
+
         //dd($sections);
         $hero = $sections->where('name', 'hero_section')->first();
-        
+
         $slider = $sections->where('name', 'slider_section')->first();
         $aboutSection = $sections->where('name', 'about_section')->first();
         $newsletterSection = $sections->where('name', 'newsletter_section')->first();
@@ -245,4 +246,7 @@ class HomePageController extends Controller {
         }
         return redirect('/');
     }
+
+
+
 }

@@ -137,7 +137,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="col-md-7">
+                          {{--  <div class="col-md-7">
                                 <div class="d-flex justify-content-center align-items-center flex-wrap">
                                     <div class="courses-top-right m-0 ms-md-auto">
                                         <span class="sort-by">{{ __('Trier par') }}:</span>
@@ -149,7 +149,7 @@
                                         </div>
                                     </div>
 
-                                </div>
+                                </div>--}}
                             </div>
                         </div>
                     </div>

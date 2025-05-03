@@ -5,19 +5,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\CoursController;
 use App\Http\Controllers\Frontend\GalerieController;
 use App\Http\Controllers\Frontend\ProgrammeCoursController;
-use App\Http\Controllers\Frontend\PartenairesController;
-
-use App\Http\Controllers\Frontend\AdhkarController;
+use App\Http\Controllers\Frontend\WhatsAppController;
 use App\Http\Controllers\Frontend\FormationController;
 use App\Http\Controllers\Frontend\MemorisationController;
-
+use App\Http\Controllers\Frontend\OffreController;
 use App\Http\Controllers\Frontend\HistoireController;
 use App\Http\Controllers\Frontend\AppeletdonsController;
 use App\Http\Controllers\Frontend\ClaireLuneController;
 use App\Http\Controllers\Frontend\AltibyanController;
 use App\Http\Controllers\Frontend\MessageController;
 use App\Http\Controllers\Frontend\PresentationClaireLuneController;
-use App\Http\Controllers\Frontend\EquipepedagogiqueController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Frontend\QnaController;
@@ -309,8 +306,6 @@ Route::get('/cours', [CoursController::class, 'index'])->name('cours.index');
 //****galerie*****/
 Route::get('/galerie', [GalerieController::class, 'index'])->name('galerie.index');
 
-//****partenaires*****/
-Route::get('/partenaires', [PartenairesController::class, 'index'])->name('partenaires.index');
 
 //****programme et cours******/
 Route::get('/programme-cours', [ProgrammeCoursController::class, 'index'])->name('programme-cours.index');
@@ -327,35 +322,37 @@ Route::get('/presentationclairelune', [PresentationClaireLuneController::class, 
 
 Route::get('/appel-dons', [AppeletdonsController::class, 'index'])->name('appel-dons.index');
 
-
-Route::get('/equipe-pedagogique', [EquipepedagogiqueController::class, 'index'])->name('equipe-pedagogique.index');
-
 Route::get('/formation', [FormationController::class, 'index'])->name('formation.index');
 Route::get('/memorisation', [MemorisationController::class, 'index'])->name('memorisation.index');
 Route::get('/clairelune', [ClaireLuneController::class, 'index'])->name('clairelune.index');
 Route::get('/altibyan', [AltibyanController::class, 'index'])->name('altibyan.index');
 Route::get('/adhkar', [AdhkarController::class, 'index'])->name('adhkar.index');
 Route::get('/message', [MessageController::class, 'index'])->name('message.index');
+Route::get('/offre-tarif', [OffreController::class, 'index'])->name('offre-tarif.index');
 
 
 
+
+
+//register
 
 // Step 1
 Route::get('register/step1', [RegisteredUserController::class, 'step1'])->name('register.step1');
 Route::post('register/step1', [RegisteredUserController::class, 'postStep1'])->name('register.postStep1');
 
-// Step 2 (protégé)
+// Step 2
 Route::get('register/step2', [RegisteredUserController::class, 'step2'])
     ->middleware('registration.step:step2')
     ->name('register.step2');
 Route::post('register/step2', [RegisteredUserController::class, 'postStep2'])->name('register.postStep2');
 
-// Step 3 (protégé)
+// Step 3
 Route::get('register/step3', function () {
     return view('auth.register.step3');
 })
 ->middleware('registration.step:step3')
 ->name('register.step3');
 Route::post('register/step3', [RegisteredUserController::class, 'postStep3'])->name('register.postStep3');
+
 
 

@@ -472,7 +472,7 @@
                             @if ($course->price == 0)
                                 <h2 class="title">{{ __('Gratuit') }}</h2>
                             @elseif ($course->discount)
-                                <h2 class="title">{{ currency($course->discount) }}
+                            <h2 class="title">{{ currency($course->price) }}
                                     <del>{{ currency($course->price) }}</del>
                                 </h2>
                             @else
@@ -501,8 +501,10 @@
                                     {{ __('Durée') }}
                                     <span>{{ minutesToHours($course->duration) }}</span>
                                 </li>
+
+                                
                                 <li>
-                                    <img src="{{ asset('frontend/img/icons/course_icon03.svg') }}" alt="img"
+                                   <img src="{{ asset('frontend/img/icons/course_icon03.svg') }}" alt="img"
                                         class="injectable">
                                     {{ __('Leçons') }}
                                     <span>{{ $courseLessonCount }}</span>
@@ -557,12 +559,12 @@
                                         <i class="flaticon-arrow-right"></i>
                                     </a>
                                 @elseif ($course->enrollments->count() >= $course->capacity && $course->capacity != null)
-                                    <a href="javascript:;" class="btn btn-two arrow-btn" data-id="{{ $course->id }}">
+                                    <a href="{{ route('register.step1') }}" class="btn btn-two arrow-btn" data-id="{{ $course->id }}">
                                         <span class="text">{{ __('Réservé') }}</span>
                                         <i class="flaticon-arrow-right"></i>
                                     </a>
                                 @else
-                                    <a href="javascript:;" class="btn btn-two arrow-btn add-to-cart"
+                                    <a href="{{ route('register.step1') }}"class="btn btn-two arrow-btn add-to-cart"
                                         data-id="{{ $course->id }}">
                                         <span class="text">{{ __('S\'abonner') }}</span>
                                         <i class="flaticon-arrow-right"></i>
