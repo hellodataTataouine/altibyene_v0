@@ -8,9 +8,6 @@
 
     <!-- singUp-area -->
 
-
-
-
     <section class="singUp-area section-py-120">
         <div class="container">
             <div class="row justify-content-center">

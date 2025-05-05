@@ -69,6 +69,7 @@
                                     data-bs-target="#overview-tab-pane" type="button" role="tab"
                                     aria-controls="overview-tab-pane" aria-selected="true">{{ __('Aperçu') }}</button>
                             </li>
+
                          {{--   <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="curriculum-tab" data-bs-toggle="tab"
                                     data-bs-target="#curriculum-tab-pane" type="button" role="tab"
@@ -502,12 +503,12 @@
                                     <span>{{ minutesToHours($course->duration) }}</span>
                                 </li>
 
-                                
+
                                 <li>
                                    <img src="{{ asset('frontend/img/icons/course_icon03.svg') }}" alt="img"
                                         class="injectable">
-                                    {{ __('Leçons') }}
-                                    <span>{{ $courseLessonCount }}</span>
+                                    {{ __('Date') }}
+                                    <span>{{ ($courseLessonCount) }}</span>
                                 </li>
                               {{-- <li>
                                     <img src="{{ asset('frontend/img/icons/course_icon04.svg') }}" alt="img"
