@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
-
 use Closure;
 use Illuminate\Http\Request;
+class EnsureRegistrationStep
 
-class EnsureRegistrationStep 
 {
     public function handle(Request $request, Closure $next, $step)
     {

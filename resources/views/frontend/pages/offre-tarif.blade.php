@@ -49,7 +49,10 @@
                 <p class="price">💰670 €</p>
                 <p>Nombre de places limitées (30)</p>
                 <p>Support limité</p>
-                <button class="btn btn-outline-primary rounded-pill">Choisir</button>
+                <button onclick="window.location.href='/register/step1'" class="btn btn-outline-primary rounded-pill">
+                    Choisir
+                </button>
+
             </div>
         </div>
         <!-- Card 2 -->
@@ -59,7 +62,9 @@
                 <p class="price">💰250 €</p>
                 <p>Nombre de places limitées (30)</p>
                 <p>Support Email</p>
-                <button class="btn btn-primary rounded-pill">Choisir</button>
+                <button onclick="window.location.href='/register/step1'" class="btn btn-outline-primary rounded-pill">
+                    Choisir
+                </button>
             </div>
         </div>
         <!-- Card 3 -->
@@ -69,7 +74,9 @@
                 <p class="price">💰350 €</p>
                 <p>Nombre de places limitées (30)</p>
                 <p>Support prioritaire</p>
-                <button class="btn btn-outline-primary rounded-pill">Choisir</button>
+                <button onclick="window.location.href='/register/step1'" class="btn btn-outline-primary rounded-pill">
+                    Choisir
+                </button>
             </div>
         </div>
         <!-- Card 4 -->
@@ -79,7 +86,9 @@
                 <p class="price">💰200 €</p>
                 <p>Nombre de places limitées (30)</p>
                 <p>Gestion de compte dédiée</p>
-                <button class="btn btn-primary rounded-pill">Choisir</button>
+                <button onclick="window.location.href='/register/step1'" class="btn btn-outline-primary rounded-pill">
+                    Choisir
+                </button>
             </div>
         </div>
     </div>

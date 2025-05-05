@@ -150,7 +150,7 @@
                                             @endif
                                         @endforeach
                                               <!--  bouton "inscription" -->
-                                              <li class="menu-item" style=" margin-left: 350px;">
+                                              <li class="menu-item" style=" margin-left: 250px;">
                                                 <a href="{{ url('/programme-cours') }}"class="btn btn-primary custom-btn" title=" Inscription"  style=" color: #000;font-size:20px;">
                                                     <strong>Inscription</strong>
                                                 </a>

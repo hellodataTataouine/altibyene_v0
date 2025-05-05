@@ -75,21 +75,21 @@
 
 
                 <h2 class="mb-4 text-center"  style="margin-top: 20px" data-aos="fade-right">Pourquoi choisir la méthode Tibyane ?</h2>
-                <h3  style="margin-top: 20px">✅ Des résultats concrets pour vos élèves :</h2>
-                Lecture fluide et précise du Saint Coran.
+                <h3  style="margin-top: 20px"  data-aos="fade-right">✅ Des résultats concrets pour vos élèves :</h2>
+               <p data-aos="fade-right"> Lecture fluide et précise du Saint Coran.
                 Mémorisation des textes fondamentaux (Tuhfat al-Atfal).
                 Maîtrise des règles de récitation du tajwid.
                 Compréhension approfondie de la langue arabe.
                 Application pratique des enseignements (invocations du matin et
-                du soir, comportement exemplaire)
-                <h3 style="margin-top: 20px">✅ Pour vous, un accompagnement sur-mesure :</h2>
-                Soutien pédagogique personnalisé
+                du soir, comportement exemplaire)</p>
+                <h3 style="margin-top: 20px" data-aos="fade-right">✅ Pour vous, un accompagnement sur-mesure :</h2>
+               <p data-aos="fade-right"> Soutien pédagogique personnalisé
                 Outils innovants pour simplifer et enrichir l’enseignement.
                 Formations claires et adaptées.
                 Gestion efficace des différences de niveau entre les élèves
                 Gain de temps grâce à une méthode rapide
                 Accès à un réseau dynamique de l’Association Clair de Lune
-                (enseignants, formateurs)
+                (enseignants, formateurs)</p>
 
 
 
