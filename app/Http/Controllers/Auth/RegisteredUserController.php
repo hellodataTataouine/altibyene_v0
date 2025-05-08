@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -69,7 +70,7 @@ class RegisteredUserController extends Controller
 
         // Récupère toutes les données enregistrées dans les sessions des étapes précédentes
         $registerData = array_merge(session('StepOne'),session('StepTow'));
-       
+
         // Crée l'utilisateur (ou autre enregistrement)
         $user = User::create([
             'name' => $registerData['first_name'] ?? '',
@@ -91,7 +92,7 @@ class RegisteredUserController extends Controller
 
         // Nettoie la session
         session()->forget('StepOne','StepTow');
-
+        event(new Registered($user));
         // Connecte automatiquement l'utilisateur (optionnel)
         Auth::login($user);
 
