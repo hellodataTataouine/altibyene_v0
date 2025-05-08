@@ -13,7 +13,7 @@
                 <div class="cta__content-two">
                     <h2 class="title">{{__('My course helps to become Balance in life')}}</h2>
                     <div class="cta__btn">
-                        <a href="{{ route('register') }}" class="btn">{{__('Check Available Seat')}}</a>
+                        <a href="{{ route('register.step1') }}" class="btn">{{__('Check Available Seat')}}</a>
                     </div>
                 </div>
             </div>

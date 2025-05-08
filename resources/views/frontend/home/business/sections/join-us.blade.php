@@ -11,7 +11,7 @@
                             <h2 class="title">{{ __('Finding Your Right Courses') }}</h2>
                             <p>{{ __('Unlock your potential by joining our vibrant learning community') }}</p>
                         </div>
-                        <a href="{{ route('register') }}" class="btn arrow-btn">{{ __('Get Started') }} <img src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt="" class="injectable"></a>
+                        <a href="{{ route('register.step1') }}" class="btn arrow-btn">{{ __('Get Started') }} <img src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt="" class="injectable"></a>
                     </div>
                     <div class="cta__shape-two">
                         <img src="{{ asset('frontend/img/others/h7_cta_shape.svg') }}" alt="shape">

@@ -14,7 +14,7 @@
                 <div class="video__content">
                     <h2 class="title">{{ __('Finding Your Right Courses') }}</h2>
                             <p>{{ __('Unlock your potential by joining our vibrant learning community') }}</p>
-                    <a href="{{ route('register') }}" class="btn btn-three arrow-btn">{{ __('Join class Now') }} <img
+                    <a href="{{ route('register.step1') }}" class="btn btn-three arrow-btn">{{ __('Join class Now') }} <img
                             src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt="" class="injectable"></a>
                 </div>
             </div>

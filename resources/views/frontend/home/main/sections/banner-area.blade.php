@@ -22,14 +22,26 @@
             <div class="col-lg-6">
                 <div class="banner__images">
                     <img src="{{ asset($hero?->global_content?->banner_image) }}" alt="img" class="main-img">
-                    <div class="shape big-shape" data-aos="fade-up-right" data-aos-delay="600">
-                        <img src="{{  asset($hero?->global_content?->banner_background) }}" alt="shape" class="tg-motion-effects1">
-                    </div>
+                    @php
+                        use Illuminate\Support\Facades\File;
+
+                        $bannerPath = $hero?->global_content?->banner_background;
+                        $bannerUrl = ($bannerPath && File::exists(public_path($bannerPath)))
+                            ? asset($bannerPath)
+                            : null; // fallback image
+                    @endphp
+
+                    @if (!is_null($bannerUrl))
+                        <div class="shape big-shape" data-aos="fade-up-right" data-aos-delay="600">
+                            <img src="{{  asset($hero?->global_content?->banner_background) }}" alt="shape" class="tg-motion-effects1">
+                        </div>
+                    @endif
                     <img src="{{ asset('frontend/img/banner/bg_dots.svg') }}" alt="shape"
                         class="shape bg-dots rotateme">
 
                     <div class="about__enrolled students aos-init aos-animate" data-aos="fade-right"
                         data-aos-delay="200">
+
                         <p class="title"><span>{{ $hero?->content?->total_student }}</span>
                             {{ __('') }}</p>
                         <img src="{{ asset($hero?->global_content?->enroll_students_image) }}" alt="img">

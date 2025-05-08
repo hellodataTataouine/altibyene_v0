@@ -224,7 +224,7 @@
                                             @endauth
                                             @guest
                                                 <li><a href="{{ route('login') }}">{{ __('Se connecter') }}</a></li>
-                                                <li><a href="{{ route('register') }}">{{ __('S\'inscrire') }}</a></li>
+                                                <li><a href="{{ route('register.step1') }}">{{ __('S\'inscrire') }}</a></li>
                                             @else
                                                 @if (Auth::guard('web')->user())
                                                     @if (instructorStatus() == 'approved')
@@ -314,7 +314,7 @@
                                 @endauth
                                 @guest
                                     <li><a href="{{ route('login') }}">{{ __('login') }}</a></li>
-                                    <li><a href="{{ route('register') }}">{{ __('register') }}</a></li>
+                                    <li><a href="{{ route('register.step1') }}">{{ __('register') }}</a></li>
                                 @endguest
 
                                 @auth('web')

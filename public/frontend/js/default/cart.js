@@ -21,6 +21,7 @@ $(document).ready(function () {
                 element.find("span").text("Ajout...");
             },
             success: function (data) {
+
                 if (data.status == "success") {
                     if (data.redirect) {
                         window.location.href = data.redirect;
@@ -42,8 +43,13 @@ $(document).ready(function () {
                 element.find("span").text("S'abonner");
             },
             error: function (xhr, status, error) {
-                toastr.error(basic_error_message);
-                element.find("span").text("S'abonner");
+                console.log(xhr,status,error);
+                if(xhr.status==401){
+                    window.location.href='/login';
+                }else{
+                    toastr.error(basic_error_message);
+                    element.find("span").text("S'abonner");
+                }
             },
 
         })

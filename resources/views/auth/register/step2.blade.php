@@ -4,7 +4,7 @@
 
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('S\'inscrire')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('register'), 'text' => __('S\'inscrire')]]" />
+    <x-frontend.breadcrumb :title="__('S\'inscrire')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('register.step2'), 'text' => __('S\'inscrire')]]" />
     <!-- breadcrumb-area-end -->
 
     <!-- singUp-area -->

@@ -4,7 +4,7 @@
           <div class="col-xl-5 col-lg-6">
               <div class="banner__content-two">
                   <h3 class="title" data-aos="fade-right" data-aos-delay="400">
-                    {!! clean(processText($hero?->content?->title)) !!}    
+                    {!! clean(processText($hero?->content?->title)) !!}
                   </h3>
                   <div class="banner__btn-two" data-aos="fade-right" data-aos-delay="600">
                     @if ($hero?->content?->action_button_text != null)
@@ -26,6 +26,9 @@
                   <span class="svg-icon" id="banner-svg"
                       data-svg-icon="{{ asset('frontend/img/banner/h2_banner_shape02.svg') }}"></span>
                   <div class="about__enrolled" data-aos="fade-right" data-aos-delay="200">
+                    @php
+                        dd($hero);
+                    @endphp
                       <p class="title"><span>{{ $hero?->content?->total_student }}</span> {{ __('Enrolled Students') }}</p>
                       <img src="{{ asset($hero?->global_content?->enroll_students_image) }}" alt="img">
                   </div>

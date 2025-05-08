@@ -64,7 +64,7 @@
                                     class="injectable"></button>
                         </form>
                         <div class="account__switch">
-                            <p>{{ __('Je n\'ai pas de compte?') }}<a href="{{ route('register') }}">{{ __('S\'inscrire') }}</a></p>
+                            <p>{{ __('Je n\'ai pas de compte?') }}<a href="{{ route('register.step1') }}">{{ __('S\'inscrire') }}</a></p>
                         </div>
                     </div>
                 </div>

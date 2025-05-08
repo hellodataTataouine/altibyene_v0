@@ -73,7 +73,7 @@
                 <div class="newsletter__inner-wrap">
                     <h2 class="title">{{__('Join our teaching team and inspire the next generation!')}}.</h2>
                     <div class="newsletter__btn">
-                        <a href="{{ route('register') }}" class="btn arrow-btn btn-two">{{__('Get Started Now')}} <img src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt="" class="injectable"></a>
+                        <a href="{{ route('register.step1') }}" class="btn arrow-btn btn-two">{{__('Get Started Now')}} <img src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt="" class="injectable"></a>
                     </div>
                     <img src="{{asset('frontend/img/others/h7_newsletter_shape01.svg')}}" alt="shape" data-aos="fade-down-right" data-aos-delay="400" class="shape shape-one">
                     <img src="{{asset('frontend/img/others/h7_newsletter_shape02.svg')}}" alt="shape" class="shape shape-two rotateme">

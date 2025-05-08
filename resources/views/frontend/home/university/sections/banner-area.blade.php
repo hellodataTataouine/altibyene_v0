@@ -35,6 +35,7 @@
                         data-aos="fade-down-left" data-aos-delay="400">
                 </div>
                 <div class="about__enrolled" data-aos="fade-right" data-aos-delay="900">
+                   
                     <p class="title"><span>{{ $hero?->content?->total_student }}</span>
                         {{ __('Enrolled Students') }}</p>
                     <img src="{{ asset($hero?->global_content?->enroll_students_image) }}" alt="img">

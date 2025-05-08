@@ -43,6 +43,7 @@
                             class="rotateme">
                     </div>
                     <div class="about__enrolled" data-aos="fade-right" data-aos-delay="200">
+                        
                         <p class="title"><span>{{ $hero?->content?->total_student }}</span>
                             {{ __('Enrolled Students') }}</p>
                         <img src="{{ asset($hero?->global_content?->enroll_students_image) }}" alt="img">

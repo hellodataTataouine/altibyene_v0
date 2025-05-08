@@ -6,7 +6,7 @@
                 <div class="cta__content">
                     <h2 class="title">{{ __('Together We Go Far') }}</h2>
                     <p>{{ __('Through research and discovery, we are changing the world.') }}</p>
-                    <a href="{{ route('register') }}" class="btn arrow-btn">{{ __('Join With Us') }} <img
+                    <a href="{{ route('register.step1') }}" class="btn arrow-btn">{{ __('Join With Us') }} <img
                             src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt=""
                             class="injectable"></a>
                 </div>

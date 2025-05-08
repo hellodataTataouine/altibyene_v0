@@ -71,15 +71,18 @@ Route::group(['middleware' => 'maintenance.mode'], function () {
     Route::get('fetch-courses', [CoursePageController::class, 'fetchCourses'])->name('fetch-courses');
     Route::get('course/{slug}', [CoursePageController::class, 'show'])->name('course.show');
 
-    /** cours session show */
-    Route::get('cours-sessions/{id}',[CoursSessionController::class,'show'])->name('public.show-cours-sessions');
-    Route::get('redirect-to-checkout/{id}',[CoursSessionController::class,'redirectToCheckout'])->name('public.redirect-to-checkout');
-    /** cart routes */
-    Route::get('cart', [CartController::class, 'index'])->name('cart');
-    Route::post('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add-to-cart');
-    Route::get('remove-cart-item/{rowId}', [CartController::class, 'removeCartItem'])->name('remove-cart-item');
-    Route::post('apply-coupon', [CartController::class, 'applyCoupon'])->name('apply-coupon');
-    Route::get('remove-coupon', [CartController::class, 'removeCoupon'])->name('remove-coupon');
+    Route::group(['middleware'=>'auth'],function(){
+        /** cours session show */
+        Route::get('cours-sessions/{id}',[CoursSessionController::class,'show'])->name('public.show-cours-sessions');
+        Route::get('redirect-to-checkout/{id}',[CoursSessionController::class,'redirectToCheckout'])->name('public.redirect-to-checkout');
+        /** cart routes */
+        Route::get('cart', [CartController::class, 'index'])->name('cart');
+        Route::post('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add-to-cart');
+        Route::get('remove-cart-item/{rowId}', [CartController::class, 'removeCartItem'])->name('remove-cart-item');
+        Route::post('apply-coupon', [CartController::class, 'applyCoupon'])->name('apply-coupon');
+        Route::get('remove-coupon', [CartController::class, 'removeCoupon'])->name('remove-coupon');
+
+    });
 
     /** Blog Routes */
     Route::get('blog', [BlogController::class, 'index'])->name('blogs');
@@ -338,25 +341,7 @@ Route::get('/offre-tarif', [OffreController::class, 'index'])->name('offre-tarif
 
 
 
-//register
 
-// Step 1
-Route::get('register/step-1', [RegisteredUserController::class, 'stepOne'])->name('register.step1');
-Route::post('register/step-1', [RegisteredUserController::class, 'postStepOne'])->name('register.postStep1');
-
-// Step 2
-Route::get('register/step-2', [RegisteredUserController::class, 'stepTow'])
-    ->middleware('registration.stepTow')
-    ->name('register.step2');
-Route::post('register/step-2', [RegisteredUserController::class, 'postStepTow'])->name('register.postStep2');
-
-// Step 3
-Route::get('register/step-3', function () {
-    return view('auth.register.step3');
-})
-->middleware('registration.stepThree')
-->name('register.step3');
-Route::post('register/step-3', [RegisteredUserController::class, 'postStepThree'])->name('register.postStep3');
 
 
 
