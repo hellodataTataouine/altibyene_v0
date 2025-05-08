@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('courses', function (Blueprint $table) {
+        Schema::table('cours_sessions', function (Blueprint $table) {
             //
+            $table->string('type')->after('end_date')->nullable();
         });
     }
 
@@ -21,14 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('courses', function (Blueprint $table) {
+        Schema::table('cours_sessions', function (Blueprint $table) {
             //
+            $table->dropColumn('type');
         });
     }
 };
-Schema::table('courses', function (Blueprint $table) {
-    $table->date('date')->nullable();
-    $table->time('start_time')->nullable();
-    $table->time('end_time')->nullable();
-    $table->string('public')->nullable(); // homme, femme, enfant
-});

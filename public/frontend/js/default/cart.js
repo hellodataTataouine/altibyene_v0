@@ -22,24 +22,28 @@ $(document).ready(function () {
             },
             success: function (data) {
                 if (data.status == "success") {
-                    toastr.success(data.message);
-                    $('.mini-cart-count').text(data.cart_count);
-                    if (data.dataLayer && typeof data.dataLayer === 'object') {
-                        dataLayer.push({
-                            'event': 'addToCart',
-                            'cart_details': data.dataLayer
-                        });
+                    if (data.redirect) {
+                        window.location.href = data.redirect;
+                    }else{
+                        toastr.success(data.message);
+                        $('.mini-cart-count').text(data.cart_count);
+                        if (data.dataLayer && typeof data.dataLayer === 'object') {
+                            dataLayer.push({
+                                'event': 'addToCart',
+                                'cart_details': data.dataLayer
+                            });
+                        }
                     }
 
                 } else {
                     toastr.error(data.message);
                 }
 
-                element.find("span").text("Ajouter au panier");
+                element.find("span").text("S'abonner");
             },
             error: function (xhr, status, error) {
                 toastr.error(basic_error_message);
-                element.find("span").text("Ajouter au panier");
+                element.find("span").text("S'abonner");
             },
 
         })

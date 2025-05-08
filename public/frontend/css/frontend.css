@@ -439,6 +439,20 @@ b.text-highlight {
     -ms-transition: all linear 0.3s;
     -o-transition: all linear 0.3s;
 }
+.wsus__single_session {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #faf6f3fa;
+    display: block;
+    transition: all linear 0.3s;
+    margin-top: 25px;
+    height: 105px;
+    -webkit-transition: all linear 0.3s;
+    -moz-transition: all linear 0.3s;
+    -ms-transition: all linear 0.3s;
+    -o-transition: all linear 0.3s;
+}
 
 .wsus__single_payment img {
     border-radius: 4px;

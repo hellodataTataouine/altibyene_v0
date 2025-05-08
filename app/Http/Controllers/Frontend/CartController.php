@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\CoursSession;
 use App\Traits\RedirectHelperTrait;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -46,14 +47,30 @@ class CartController extends Controller {
 
         if (auth()->check()) {
             $user = userAuth();
+            $carts = $user->carts()->get();
+            if($carts &&!$carts->isEmpty()){
+                foreach($carts as $cart){
+                    $cart->delete();
+                }
+            }
             if (isOwnCourse($user, $course)) {
                 return response()->json(['status' => 'error', 'message' => 'Vous ne pouvez pas ajouter votre propre cours au panier !'], 400);
             }
             if (hasCourseInCartOrPurchased($user, $course)) {
                 return response()->json(['status' => 'error', 'message' => 'Déjà acheté'], 400);
             }
+
             $user->carts()->create(['course_id' => $course->id]);
-            $response = ['status'     => 'success','message'    => 'Ajouté au panier avec succès!','cart_count' => $user->cartCount];
+            $response = [
+                'status' => 'success',
+                'message' => 'Ajouté au panier avec succès !',
+                'cart_count' => Cart::content()->count(),
+                'redirect' => route('public.show-cours-sessions', $course->id)
+            ];
+            //return redirect()->route('public.show-cours-sessions',['id' => $course->id]);
+            //$user->carts()->create(['course_id' => $course->id]);
+            //$sessions = CoursSession::where('cours_id',$course->id)->get();
+            //$response = ['status'     => 'success','message'    => 'Ajouté au panier avec succès!','cart_count' => $user->cartCount];
         } else {
             if ($this->checkItemExist($id)) {
                 return response(['status' => 'error', 'message' => 'Déjà ajouté au panier ou impossible d\'ajouter votre propre cours !']);

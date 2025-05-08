@@ -21,6 +21,7 @@ use App\Http\Controllers\Frontend\QnaController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\CoursSessionController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\CheckOutController;
 use App\Http\Controllers\Frontend\FavoriteController;
@@ -70,6 +71,9 @@ Route::group(['middleware' => 'maintenance.mode'], function () {
     Route::get('fetch-courses', [CoursePageController::class, 'fetchCourses'])->name('fetch-courses');
     Route::get('course/{slug}', [CoursePageController::class, 'show'])->name('course.show');
 
+    /** cours session show */
+    Route::get('cours-sessions/{id}',[CoursSessionController::class,'show'])->name('public.show-cours-sessions');
+    Route::get('redirect-to-checkout/{id}',[CoursSessionController::class,'redirectToCheckout'])->name('public.redirect-to-checkout');
     /** cart routes */
     Route::get('cart', [CartController::class, 'index'])->name('cart');
     Route::post('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add-to-cart');
@@ -337,22 +341,22 @@ Route::get('/offre-tarif', [OffreController::class, 'index'])->name('offre-tarif
 //register
 
 // Step 1
-Route::get('register/step1', [RegisteredUserController::class, 'step1'])->name('register.step1');
-Route::post('register/step1', [RegisteredUserController::class, 'postStep1'])->name('register.postStep1');
+Route::get('register/step-1', [RegisteredUserController::class, 'stepOne'])->name('register.step1');
+Route::post('register/step-1', [RegisteredUserController::class, 'postStepOne'])->name('register.postStep1');
 
 // Step 2
-Route::get('register/step2', [RegisteredUserController::class, 'step2'])
-    ->middleware('registration.step:step2')
+Route::get('register/step-2', [RegisteredUserController::class, 'stepTow'])
+    ->middleware('registration.stepTow')
     ->name('register.step2');
-Route::post('register/step2', [RegisteredUserController::class, 'postStep2'])->name('register.postStep2');
+Route::post('register/step-2', [RegisteredUserController::class, 'postStepTow'])->name('register.postStep2');
 
 // Step 3
-Route::get('register/step3', function () {
+Route::get('register/step-3', function () {
     return view('auth.register.step3');
 })
-->middleware('registration.step:step3')
+->middleware('registration.stepThree')
 ->name('register.step3');
-Route::post('register/step3', [RegisteredUserController::class, 'postStep3'])->name('register.postStep3');
+Route::post('register/step-3', [RegisteredUserController::class, 'postStepThree'])->name('register.postStep3');
 
 
 

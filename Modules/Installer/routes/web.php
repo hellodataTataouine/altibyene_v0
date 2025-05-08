@@ -26,5 +26,5 @@ Route::prefix('setup')->withoutMiddleware(PurchaseVerifyMiddleware::class)->grou
         Route::get('complete', 'setupComplete')->name('setup.complete');
     });
 
-    Route::get('lunch/{type}', [InstallerController::class, 'launchWebsite'])->name('website.completed')->withoutMiddleware('demo')->withoutMiddleware(SetupMiddleware::class);
+    //Route::get('lunch/{type}', [InstallerController::class, 'launchWebsite'])->name('website.completed')->withoutMiddleware('demo')->withoutMiddleware(SetupMiddleware::class);
 });

@@ -3,17 +3,18 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class RegisteredUserController extends Controller
 {
-    public function step1()
+    public function stepOne()
     {
         return view('auth.register.step1');
     }
 
-    public function postStep1(Request $request)
+    public function postStepOne(Request $request)
     {
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
@@ -34,13 +35,14 @@ class RegisteredUserController extends Controller
 
         // Stocker les données dans la session pour les étapes suivantes
         session([
-            'register' => array_merge(session('register', []), $validated)
+            'StepOne' => array_merge(session('StepOne', []), $validated)
         ]);
-
         return redirect()->route('register.step2');
     }
-
-    public function postStep2(Request $request)
+    public function stepTow(){
+        return view('auth.register.step2');
+    }
+    public function postStepTow(Request $request)
     {
         $validated = $request->validate([
             'honor_statement' => 'accepted',
@@ -53,12 +55,12 @@ class RegisteredUserController extends Controller
         ]);
 
         // Tu peux éventuellement stocker qu'on a coché ces cases
-        session(['register' => array_merge(session('register', []), $validated)]);
+        session(['StepTow' => array_merge(session('StepTow', []), $validated)]);
 
         return redirect()->route('register.step3');
     }
 
-    public function postStep3(Request $request)
+    public function postStepThree(Request $request)
     {
         $validated = $request->validate([
             // Ici normalement tu peux valider d'autres données si besoin.
@@ -66,29 +68,32 @@ class RegisteredUserController extends Controller
         ]);
 
         // Récupère toutes les données enregistrées dans les sessions des étapes précédentes
-        $registerData = session('register');
-
+        $registerData = array_merge(session('StepOne'),session('StepTow'));
+       
         // Crée l'utilisateur (ou autre enregistrement)
         $user = User::create([
-            'first_name' => $registerData['first_name'] ?? '',
+            'name' => $registerData['first_name'] ?? '',
             'last_name' => $registerData['last_name'] ?? '',
-            'gender' => $registerData['gender'] ?? '',
-            'birthdate' => $registerData['birthdate'] ?? null,
-            'birthplace' => $registerData['birthplace'] ?? '',
-            'adresse' => $registerData['adresse'] ?? '',
-            'postal_code' => $registerData['postal_code'] ?? '',
+            'gender' => $registerData['gender']=="M" ? 'male' : 'female',
+            'birth_date' => $registerData['birthdate'] ?? null,
+            'birth_place' => $registerData['birthplace'] ?? '',
+            'address' => $registerData['address'] ?? '',
+            'zip_code' => $registerData['postal_code'] ?? '',
             'city' => $registerData['city'] ?? '',
             'phone_fix' => $registerData['phone_fix'] ?? '',
             'phone' => $registerData['phone'] ?? '',
             'email' => $registerData['email'],
             'password' => Hash::make($registerData['password']),
+            'honor_statement' => $registerData['honor_statement']=="on" ? 1 :0,
+            'rules_acknowledgment' => $registerData['rules_acknowledgment']=="on" ? 1 :0,
+            'data_processing_acknowledgment' => $registerData['data_processing_acknowledgment']=="on" ? 1 :0,
         ]);
 
         // Nettoie la session
-        session()->forget('register');
+        session()->forget('StepOne','StepTow');
 
         // Connecte automatiquement l'utilisateur (optionnel)
-        // Auth::login($user);
+        Auth::login($user);
 
         // Redirige où tu veux (par exemple vers la page d'accueil)
         return redirect()->route('home')->with('success', 'Inscription réussie !');

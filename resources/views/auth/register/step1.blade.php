@@ -47,11 +47,18 @@
                             </div>
 
                             <!-- Genre -->
-                            <div class="form-grp">
-                                <label >Genre *</label><br>
-                                <label><input type="radio" name="gender" value="M" required> Melle</label><br>
-                                <label><input type="radio" name="gender" value="F" required> Femelle</label>
+                            <div class="form-grp" style="display: flex; align-items: center; gap: 1rem; ">
+                                <label style="margin-right: 10px;">Genre *</label>
+
+                                <label style="display: flex; align-items: center; gap: 4px;">
+                                    <input type="radio" name="gender" value="M" required> Melle
+                                </label>
+
+                                <label style="display: flex; align-items: center; gap: 4px;">
+                                    <input type="radio" name="gender" value="F" required> Femelle
+                                </label>
                             </div>
+
 
 
                             <!-- Né(e) à -->
@@ -63,7 +70,7 @@
                             <!-- Date de naissance -->
                             <div class="form-grp">
                                 <label for="birthdate">Date de naissance *</label>
-                                <input type="date" id="birthdate" name="birthdate" required>
+                                <input type="text" id="birthdate" name="birthdate" class="form-group" required>
                             </div>
 
                             <!-- Adresse -->
@@ -106,8 +113,8 @@
                                 <input type="password" id="password" name="password" placeholder="password" required>
                             </div>
                             <div class="form-grp">
-                                <label for="password_confirm">Confirmer de passe *</label>
-                                <input type="password_confirm" id="password_confirm" name="password_confirm" placeholder="Confirmer mot de passe" required>
+                                <label for="password_confirmation">Confirmer de passe *</label>
+                                <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirmer mot de passe" required>
                             </div>
                             <!-- Informations supplémentaires -->
                             <button type="submit" class="btn btn-primary">Suivant</button>
@@ -118,6 +125,18 @@
             </div>
         </div>
     </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $('#birthdate').datepicker({
+                format: 'dd-mm-yyyy',
+                language: 'fr',
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+    </script>
+
+
     <!-- singUp-area-end -->
 @endsection
 

@@ -51,7 +51,7 @@
                     @else
                   <div class="button">
 
-                    <a href="{{ route('register.step1') }}" >
+                    <a href="javascript:;" class="add-to-cart" data-id="{{ $course->id }}">
                                 <span class="text">{{ __('S\'abonner') }}</span>
                                 <i class="flaticon-arrow-right"></i>
                             </a>

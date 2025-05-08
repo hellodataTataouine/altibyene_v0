@@ -78,7 +78,10 @@ class OrderController extends Controller
             foreach ($order->orderItems as $item) {
                 // delete enrollment
                 $enrollment = Enrollment::where('user_id', $order->buyer_id)->where('course_id', $item->course_id)->first();
-                $enrollment->delete();
+                
+                if($enrollment && !is_null($enrollment)){
+                    $enrollment->delete();
+                }
                 // decrement instructor commission from his wallet
                 $commissionAmount = $item->price * ($order->commission_rate / 100);
                 $amountAfterCommission = $item->price - $commissionAmount;
@@ -95,7 +98,7 @@ class OrderController extends Controller
 
     function printInvoice(Request $request, $id) {
        $order = Order::where('id', $id)->firstOrFail();
-       return view('order::invoice', ['order' => $order]); 
+       return view('order::invoice', ['order' => $order]);
     }
 
     public function destroy($id)

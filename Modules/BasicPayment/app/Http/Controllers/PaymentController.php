@@ -7,6 +7,7 @@ use App\Http\Requests\Frontend\BankInformationRequest;
 use App\Jobs\DefaultMailJob;
 use App\Mail\DefaultMail;
 use App\Models\Course;
+use App\Models\CoursSession;
 use App\Traits\GetGlobalInformationTrait;
 use App\Traits\MailSenderTrait;
 use Closure;
@@ -96,19 +97,21 @@ class PaymentController extends Controller {
             ]);
 
             $data_layer_order_items = [];
-
+            $session_id = session()->get('session_id');
             foreach ($carts as $item) {
                 $order_item = [
                     'order_id'        => $order->id,
                     'price'           => $item->course->price,
                     'course_id'       => $item->course->id,
                     'commission_rate' => Cache::get('setting')->commission_rate,
+                    'session_id'      => $session_id,
                 ];
                 OrderItem::create([
                     'order_id'        => $order->id,
                     'price'           => $item->course->price,
                     'course_id'       => $item->course->id,
                     'commission_rate' => Cache::get('setting')->commission_rate,
+                    'session_id'      => $session_id,
                 ]);
                 $data_layer_order_items[] = [
                     'course_name' => $item->course->title,
@@ -563,7 +566,7 @@ class PaymentController extends Controller {
                     "value" => "$paid_amount",
                 ],
                 "description" => userAuth()?->name,
-                "redirectUrl" => route('mollie-payment-success'),           
+                "redirectUrl" => route('mollie-payment-success'),
             ]);
             $payment = $mollie->payments->get($payment->id);
 
@@ -679,7 +682,7 @@ class PaymentController extends Controller {
                 return redirect($response?->payment_request?->longurl);
             }else{
                 return redirect()->route('student.orders.index')->with(['messege' => __('Payment faild, please try again'), 'alert-type' => 'error']);
-            } 
+            }
 
         } catch (Exception $ex) {
             info($ex->getMessage());
@@ -744,7 +747,7 @@ class PaymentController extends Controller {
         $order = session()->get('order');
         $after_success_transaction = session()->get('after_success_transaction', null);
         $payment_details = session()->get('payment_details', null);
-
+        $session_id= session()->get('session_id');
         try {
             $order->transaction_id = $after_success_transaction;
             $order->payment_status = $order->payment_method == $this->paymentService::BANK_PAYMENT ? 'pending' : 'paid';
@@ -759,7 +762,10 @@ class PaymentController extends Controller {
                         'user_id'    => $order->buyer_id,
                         'course_id'  => $item->course_id,
                         'has_access' => 1,
+                        'session_id' => $session_id,
                     ]);
+                    $coursSession = CoursSession::findOrFail($session_id);
+                    $coursSession->enrolled_students= $coursSession->enrolled_students+1;
                 }
             }
             $user = userAuth();

@@ -2,6 +2,8 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\RegistrationStepOneMiddleware;
+use App\Http\Middleware\RegistrationStepTowMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -76,7 +78,8 @@ class Kernel extends HttpKernel
         'json.only' => \App\Http\Middleware\API\EnforceJsonMiddleware::class,
         'payment.api' => \App\Http\Middleware\API\HeaderBearerTokenSet::class,
         'abilities' => \Laravel\Sanctum\Http\Middleware\CheckAbilities::class,
-       
+        'registration.stepTow'=> RegistrationStepOneMiddleware::class,
+        'registration.stepThree'=>RegistrationStepTowMiddleware::class,
     ];
 
 

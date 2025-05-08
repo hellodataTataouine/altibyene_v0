@@ -416,8 +416,8 @@ class ComposerStaticInit6611f65c1de81cdbc1d2be168f156d69
         ),
         'Spatie\\LaravelIgnition\\' => 
         array (
-            0 => __DIR__ . '/..' . '/spatie/laravel-ignition/src',
-            1 => __DIR__ . '/..' . '/spatie/error-solutions/legacy/laravel-ignition',
+            0 => __DIR__ . '/..' . '/spatie/error-solutions/legacy/laravel-ignition',
+            1 => __DIR__ . '/..' . '/spatie/laravel-ignition/src',
         ),
         'Spatie\\ImageOptimizer\\' => 
         array (
@@ -425,8 +425,8 @@ class ComposerStaticInit6611f65c1de81cdbc1d2be168f156d69
         ),
         'Spatie\\Ignition\\' => 
         array (
-            0 => __DIR__ . '/..' . '/spatie/ignition/src',
-            1 => __DIR__ . '/..' . '/spatie/error-solutions/legacy/ignition',
+            0 => __DIR__ . '/..' . '/spatie/error-solutions/legacy/ignition',
+            1 => __DIR__ . '/..' . '/spatie/ignition/src',
         ),
         'Spatie\\FlareClient\\' => 
         array (
@@ -810,6 +810,7 @@ class ComposerStaticInit6611f65c1de81cdbc1d2be168f156d69
         'App\\Enums\\SocialiteDriverType' => __DIR__ . '/../..' . '/app/Enums/SocialiteDriverType.php',
         'App\\Enums\\ThemeList' => __DIR__ . '/../..' . '/app/Enums/ThemeList.php',
         'App\\Enums\\UserStatus' => __DIR__ . '/../..' . '/app/Enums/UserStatus.php',
+        'App\\Events\\MessageSent' => __DIR__ . '/../..' . '/app/Events/MessageSent.php',
         'App\\Exceptions\\AccessPermissionDeniedException' => __DIR__ . '/../..' . '/app/Exceptions/AccessPermissionDeniedException.php',
         'App\\Exceptions\\DemoModeEnabledException' => __DIR__ . '/../..' . '/app/Exceptions/DemoModeEnabledException.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -872,6 +873,7 @@ class ComposerStaticInit6611f65c1de81cdbc1d2be168f156d69
         'App\\Http\\Controllers\\Frontend\\LearningController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/LearningController.php',
         'App\\Http\\Controllers\\Frontend\\MemorisationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/MemorisationController.php',
         'App\\Http\\Controllers\\Frontend\\MessageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/MessageController.php',
+        'App\\Http\\Controllers\\Frontend\\OffreController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/OffreController.php',
         'App\\Http\\Controllers\\Frontend\\PartenairesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/PartenairesController.php',
         'App\\Http\\Controllers\\Frontend\\PresentationClaireLuneController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/PresentationClaireLuneController.php',
         'App\\Http\\Controllers\\Frontend\\ProgrammeCoursController' => __DIR__ . '/../..' . '/app/Http/Controllers/Frontend/ProgrammeCoursController.php',

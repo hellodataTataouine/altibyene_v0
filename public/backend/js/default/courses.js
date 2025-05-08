@@ -211,10 +211,10 @@ $(document).ready(function () {
         const isUpload = select_source === "upload";
         const isCloud = (select_source == "wasabi" || select_source == "aws");
         const isMediaSource = ['youtube', 'vimeo'].includes(select_source);
-    
+
         // Reset file type options visibility
         $("#file_type option").show();
-        
+
         // Manage visibility based on source type
         $(".upload").toggleClass("d-none", !isUpload);
         $(".cloud_storage").toggleClass("d-none", !isCloud);
@@ -509,7 +509,7 @@ $(document).ready(function () {
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    method: "DELETE",
+                    method: "POST",
                     url: url,
                     data: {
                         _token: $('meta[name="csrf-token"]').attr("content"),

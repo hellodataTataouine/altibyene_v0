@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\Frontend\InstructorCourseController;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,7 @@ use Modules\Course\app\Http\Controllers\CourseLevelController;
 use Modules\Course\app\Http\Controllers\CourseReviewController;
 use Modules\Course\app\Http\Controllers\CourseSubCategoryController;
 use Modules\Course\app\Http\Controllers\ReviewController;
+use Modules\Course\app\Http\Controllers\CoursSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,13 @@ Route::group(['middleware' => ['auth:admin', 'translation'], 'prefix' => 'admin'
     /** Course category routes */
     Route::put('course-category/status-update/{id}', [CourseCategoryController::class, 'statusUpdate'])->name('course-category.status-update');
     Route::resource('course-category', CourseCategoryController::class)->names('course-category');
+    //Route::resource('course-sessions',CoursSessionController::class)->names('course-session');
+    Route::get('course-sessions',[CoursSessionController::class,'index'])->name('course-session.index');
+    Route::get('course-sessions/create',[CoursSessionController::class,'create'])->name('course-session.create');
+    Route::post('course-sessions/store',[CoursSessionController::class,'store'])->name('course-session.store');
+    Route::get('course-sessions/{id}/edit',[CoursSessionController::class,'edit'])->name('course-session.edit');
+    Route::get('course-sessions/{id}/update',[CoursSessionController::class,'update'])->name('course-session.update');
+    Route::post('course-sessions/{id}/destroy',[CoursSessionController::class,'destroy'])->name('course-session.destroy');
     /** Course sub category routes */
     Route::get('course-sub-category/{parent_id}', [CourseSubCategoryController::class, 'index'])->name('course-sub-category.index');
     Route::get('course-sub-category/{parent_id}/create', [CourseSubCategoryController::class, 'create'])->name('course-sub-category.create');
@@ -55,7 +64,7 @@ Route::group(['middleware' => ['auth:admin', 'translation'], 'prefix' => 'admin'
 
     Route::post('courses/create', [CourseController::class, 'store'])->name('courses.store');
     Route::post('courses/update', [CourseController::class, 'update'])->name('courses.update');
-    Route::delete('courses/delete/{id}', [CourseController::class, 'destroy'])->name('courses.destroy');
+    Route::post('courses/destroy/{id}', [CourseController::class, 'destroy'])->name('courses.destroy');
     Route::post('courses/status-update/{id}', [CourseController::class, 'statusUpdate'])->name('courses.status-update');
 
 

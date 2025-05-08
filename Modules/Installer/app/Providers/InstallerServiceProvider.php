@@ -28,8 +28,8 @@ class InstallerServiceProvider extends ServiceProvider
 
         // register installer middleware globally
         $router = $this->app->make(Router::class);
-        $router->prependMiddlewareToGroup('web', PurchaseVerifyMiddleware::class);
-        $router->pushMiddlewareToGroup('web', SetupMiddleware::class);
+        //$router->prependMiddlewareToGroup('web', PurchaseVerifyMiddleware::class);
+        //$router->pushMiddlewareToGroup('web', SetupMiddleware::class);
     }
 
     /**

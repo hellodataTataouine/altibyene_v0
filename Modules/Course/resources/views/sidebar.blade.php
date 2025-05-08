@@ -16,6 +16,11 @@
                     @endif
                 </a>
             </li>
+            <li class="{{ isRoute('admin.course-session.*', 'active') }}">
+                <a class="nav-link" href="{{ route('admin.course-session.index') }}">
+                    {{ __('Sessions') }}
+                </a>
+            </li>
             <li class="{{ isRoute('admin.course-category.*', 'active') }} {{ isRoute('admin.course-sub-category.*', 'active') }}">
                 <a class="nav-link" href="{{ route('admin.course-category.index') }}">
                     {{ __('Categories') }}

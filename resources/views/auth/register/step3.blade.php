@@ -32,7 +32,7 @@
 
                         <img src="{{ asset('uploads/custom-images/rib.png') }}" class="w-30 mb-5" alt="logo" style="margin-left:15px;">
 
-                        <form method="POST" action="{{ route('register.step3') }}">
+                        <form method="POST" action="{{ route('register.postStep3') }}">
                                  @csrf
                            <p>Paiement  par chèque : à l'ordre de l'association claire de Lune  (TIBYANE)
                             Chèque à envoyer à l'adresse de Mebtoul Mohamed au 14 Rue Gaston Carré, 93300 Aubervilliers</p>
@@ -40,7 +40,7 @@
                           <button type="submit" class="btn btn-success">Terminer</button>
 
                     </div>
-                    
+
                 </form>
             </div>
         </div>
