@@ -37,7 +37,7 @@ Route::group(['middleware' => ['auth:admin', 'translation'], 'prefix' => 'admin'
     Route::get('course-sessions/create',[CoursSessionController::class,'create'])->name('course-session.create');
     Route::post('course-sessions/store',[CoursSessionController::class,'store'])->name('course-session.store');
     Route::get('course-sessions/{id}/edit',[CoursSessionController::class,'edit'])->name('course-session.edit');
-    Route::get('course-sessions/{id}/update',[CoursSessionController::class,'update'])->name('course-session.update');
+    Route::post('course-sessions/{id}/update',[CoursSessionController::class,'update'])->name('course-session.update');
     Route::post('course-sessions/{id}/destroy',[CoursSessionController::class,'destroy'])->name('course-session.destroy');
     /** Course sub category routes */
     Route::get('course-sub-category/{parent_id}', [CourseSubCategoryController::class, 'index'])->name('course-sub-category.index');

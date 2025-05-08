@@ -18,7 +18,7 @@
                             <div class="card-body">
                                 <form action="{{ route('admin.course-session.update',$session->id) }}" method="POST"
                                     enctype="multipart/form-data">
-                                    @method('PUT')
+                                    @method('POST')
                                     @csrf
                                     <div class="row">
 
