@@ -23,7 +23,7 @@
                             <img src="{{ asset(auth()->user()->image) }}" alt="img">
                         </div>
                         <div class="content">
-                            <h4 class="title">{{ auth()->user()->name }}</h4>
+                            <h4 class="title">{{ auth()->user()->name.' '.auth()->user()->last_name }}</h4>
                             <ul class="list-wrap">
                                 <li>
                                     <img src="{{ asset('frontend/img/icons/envelope.svg') }}" alt="img" class="injectable">
@@ -35,7 +35,7 @@
                                     {{ auth()->user()->phone }}
                                 </li>
                                 @endif
-                                
+
                             </ul>
                         </div>
                     </div>
