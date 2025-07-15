@@ -203,6 +203,6 @@
 @endsection
 @push('js')
     <script src="{{ asset('global/js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('backend/js/default/course-session.js') }}"></script>
+    <script src="{{ asset('backend/js/default/course-sessions.js') }}"></script>
     <script src="{{ asset('backend/js/sweetalert.js') }}"></script>
 @endpush
