@@ -61,7 +61,7 @@
       <div class="container section" style="margin-top: -170px">
         <h2 class="mb-5 text-center" data-aos="fade-right" style="margin-top: -20px">Qui sommes-nous ?</h2>
 
-             <p class="text-center" data-aos="fade-right">
+             {{-- <p class="text-center" data-aos="fade-right">
 
                  Altibyan est une approche pédagogique spécifique dédiée à l'enseignement des études islamiques.
                 Elle repose sur une méthode d'apprentissage progressive, intégrant à la fois la transmission du savoir religieux,
@@ -90,7 +90,39 @@
                 Gain de temps grâce à une méthode rapide
                 Accès à un réseau dynamique de l’Association Clair de Lune
                 (enseignants, formateurs)</p>
+ --}}
 
+ <p class="text-center" data-aos="fade-right">
+    Altibyan est une approche pédagogique spécifique dédiée à l'enseignement de disciplines culturelles et linguistiques.
+    Elle repose sur une méthode d'apprentissage progressive, intégrant à la fois la transmission de savoirs,
+    la réflexion critique et l'application de valeurs éthiques dans le quotidien.
+</p>
+
+<p class="text-center" data-aos="fade-right">
+    L'objectif principal d'Altibyan est de former des individus dotés de solides connaissances théoriques,
+    tout en développant leur capacité à les mettre en œuvre de manière réfléchie, responsable et cohérente.
+</p>
+
+<h2 class="mb-4 text-center" style="margin-top: 20px" data-aos="fade-right">Pourquoi choisir la méthode Tibyane ?</h2>
+
+<h3 style="margin-top: 20px" data-aos="fade-right">✅ Des résultats concrets pour vos élèves :</h3>
+<p data-aos="fade-right">
+    Lecture fluide et précise de textes en arabe.<br>
+    Mémorisation de repères fondamentaux adaptés au niveau des apprenants.<br>
+    Maîtrise des règles de prononciation et d’articulation spécifiques.<br>
+    Compréhension approfondie de la langue arabe.<br>
+    Mise en pratique des notions étudiées au quotidien (exercices, expressions utiles, comportements bienveillants).
+</p>
+
+<h3 style="margin-top: 20px" data-aos="fade-right">✅ Pour vous, un accompagnement sur-mesure :</h3>
+<p data-aos="fade-right">
+    Soutien pédagogique personnalisé.<br>
+    Outils innovants pour simplifier et enrichir l’enseignement.<br>
+    Formations claires et adaptées à votre progression.<br>
+    Gestion efficace des différences de niveau entre les élèves.<br>
+    Gain de temps grâce à une méthode structurée et progressive.<br>
+    Accès à un réseau dynamique de l’Association Clair de Lune (enseignants, formateurs, coordinateurs).
+</p>
 
 
 
