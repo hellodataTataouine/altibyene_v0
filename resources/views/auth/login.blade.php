@@ -64,7 +64,15 @@
                                     class="injectable"></button>
                         </form>
                         <div class="account__switch">
-                            <p>{{ __('Je n\'ai pas de compte?') }}<a href="{{ route('register.step1') }}">{{ __('S\'inscrire') }}</a></p>
+                            <div class="account__divider">
+
+                            </div>
+                            <p>{{ __('Je n\'ai pas de compte?') }}</p>
+                            <form method="GET" action="{{ route('register.step1') }}" class="account__form">
+                                <button type="submit" class="btn btn-two arrow-btn">{{ __('S\'inscrire') }}<img
+                                    src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt="img"
+                                    class="injectable"></button>
+                            </form>
                         </div>
                     </div>
                 </div>

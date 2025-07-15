@@ -47,17 +47,18 @@
                             </div>
 
                             <!-- Genre -->
-                            <div class="form-grp" style="display: flex; align-items: center; gap: 1rem; ">
-                                <label style="margin-right: 10px;">Genre *</label>
+                            <div class="form-grp" style="display: flex; align-items: center; gap: 1rem;">
+                                <label for="gender-male" style="margin-right: 10px;">Genre *</label>
 
-                                <label style="display: flex; align-items: center; gap: 4px;">
-                                    <input type="radio" name="gender" value="M" required> Melle
+                                <label for="gender-male" style="display: flex; align-items: center; gap: 4px;">
+                                    <input type="radio" id="gender-male" name="gender" value="H" required> Homme
                                 </label>
 
-                                <label style="display: flex; align-items: center; gap: 4px;">
-                                    <input type="radio" name="gender" value="F" required> Femelle
+                                <label for="gender-female" style="display: flex; align-items: center; gap: 4px;">
+                                    <input type="radio" id="gender-female" name="gender" value="F"> Femme
                                 </label>
                             </div>
+
 
 
 
