@@ -24,7 +24,7 @@ class CourseStoreRequest extends FormRequest
             'price' => ['required', 'numeric', 'min:0'],
             'discount_price' => ['nullable', 'numeric', new ValidateDiscountRule()],
             'description' => ['required', 'string', 'max:5000'],
-            'instructor' => ['required', 'numeric'],
+            'instructor' => ['nullable', 'numeric'],
         ];
 
         return $rules;

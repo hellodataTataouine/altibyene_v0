@@ -71,7 +71,7 @@ class CourseController extends Controller
     {
         if ($request->edit_mode == 1) {
             $course = Course::findOrFail($request->id);
-            $course->instructor_id = $request->instructor;
+            $course->instructor_id = $request->instructor ?? null;
         } else {
             $course = new Course();
             //$slug = generateUniqueSlug(Course::class, $request->title);
@@ -87,7 +87,7 @@ class CourseController extends Controller
         $course->price = $request->price;
         $course->discount = $request->discount_price;
         $course->description = $request->description;
-        $course->instructor_id = $request->instructor;
+        $course->instructor_id = $request->instructor?? null;
         $course->save();
 
         // save course id in session

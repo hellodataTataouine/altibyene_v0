@@ -34,7 +34,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="instructor">{{ __('Instructor') }}
-                                                            <code>*</code></label>
+                                                            {{-- <code>*</code> --}}</label>
                                                         <select name="instructor" id=""
                                                             class="form-control select2">
                                                             <option value="">{{ __('Select') }}</option>
