@@ -13,7 +13,7 @@ class AskBookController extends Controller
     public function index()
     {
         $contact = ContactSection::first();
-        return view('frontend.pages.ask-for-book',compact($contact));
+        return view('frontend.pages.ask-for-book',compact('contact'));
     }
     public function store(Request $request)
     {
