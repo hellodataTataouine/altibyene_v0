@@ -40,9 +40,10 @@
                                             <div class="col-md-6">
                                                 <div class="from-group">
                                                     <label for="course_duration">{{ __('Course Duration (Minutes)') }}
-                                                        <code>*</code></label>
+                                                        {{-- <code>*</code> --}}</label>
                                                     <input id="course_duration" name="course_duration" class="form-control"
                                                         type="text" value="{{ $course?->duration }}">
+                                                        <code>{{ __('laissez ce champ vide si la durée est inconnue') }}</code>
                                                 </div>
                                             </div>
 

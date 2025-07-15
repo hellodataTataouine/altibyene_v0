@@ -28,7 +28,7 @@
 
                 <div class="courses__item-info mt-2">
                     <p><strong>{{ __('Date du cours') }} :</strong> {{ $course->date ?? 'À venir' }}</p>
-                    <p><strong>{{ __('Public') }} :</strong> {{ ucfirst($course->public ?? 'Non spécifié') }}</p>
+                    {{-- <p><strong>{{ __('Public') }} :</strong> {{ ucfirst($course->public ?? 'Non spécifié') }}</p> --}}
                 </div>
 
                 <div class="courses__item-bottom">

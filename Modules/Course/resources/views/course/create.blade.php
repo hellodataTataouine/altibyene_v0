@@ -54,6 +54,7 @@
                                                             class="form-control" value="{{ @$course?->title }}">
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="col-md-12">
                                                     <div class="form-grp">
                                                         <label for="slug">{{ __('Slug') }} <code>*</code></label>
