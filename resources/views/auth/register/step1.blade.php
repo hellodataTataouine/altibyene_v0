@@ -92,10 +92,10 @@
                             </div>
 
                             <!-- Téléphone fixe -->
-                            <div class="form-grp">
+                            {{-- <div class="form-grp">
                                 <label for="phone_fix">N° Fixe *</label>
                                 <input type="text" id="phone_fix" name="phone_fix" placeholder="N° Fixe" required>
-                            </div>
+                            </div> --}}
 
                             <!-- Téléphone portable -->
                             <div class="form-grp">

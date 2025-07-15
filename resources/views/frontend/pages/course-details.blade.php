@@ -500,7 +500,8 @@
                                     <img src="{{ asset('frontend/img/icons/course_icon02.svg') }}" alt="img"
                                         class="injectable">
                                     {{ __('Durée') }}
-                                    <span>{{ minutesToHours($course->duration) }}</span>
+                                    {{-- <span>{{ minutesToHours($course->duration) }}</span> --}}
+                                    <span>{{ $course->cours_duration }}</span>
                                 </li>
 
 

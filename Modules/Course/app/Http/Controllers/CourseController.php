@@ -150,7 +150,7 @@ class CourseController extends Controller
         switch ($request->step) {
             case '2':
                 $request->validate([
-                    'course_duration' => ['nullable', 'numeric', 'min:0'],
+                    'course_duration' => ['nullable', 'string', 'min:0'],
                     'category' => ['required']
                 ]);
                 $this->storeMoreInfo($request);
@@ -189,7 +189,7 @@ class CourseController extends Controller
         checkAdminHasPermissionAndThrowException('course.management');
         $course = Course::findOrFail($request->course_id);
         $course->capacity = $request->capacity;
-        $course->duration = $request->course_duration?? null;
+        $course->cours_duration = $request->course_duration?? null;
         $course->category_id = $request->category;
         $course->qna = $request->qna;
         $course->downloadable = $request->downloadable;

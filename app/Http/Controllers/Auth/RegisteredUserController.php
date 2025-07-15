@@ -26,7 +26,6 @@ class RegisteredUserController extends Controller
             'address' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
             'city' => 'required|string|max:255',
-            'phone_fix' => 'required|string|max:20',
             'phone' => 'required|string|max:20',
             'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:6|max:100|confirmed',
