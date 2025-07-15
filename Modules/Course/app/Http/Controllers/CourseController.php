@@ -69,6 +69,7 @@ class CourseController extends Controller
 
     function store(CourseStoreRequest $request)
     {
+        //dd($request->all());
         if ($request->edit_mode == 1) {
             $course = Course::findOrFail($request->id);
             $course->instructor_id = $request->instructor ?? null;
@@ -77,7 +78,7 @@ class CourseController extends Controller
             //$slug = generateUniqueSlug(Course::class, $request->title);
             //$course->slug = $request->$slug;
         }
-        $course->type = $request->type;
+        $course->type = $request->type ?? 'course';
         $course->title = $request->title;
         $course->slug = $request->slug;
         $course->seo_description = $request->seo_description;
