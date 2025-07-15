@@ -54,7 +54,14 @@
                                                             class="form-control" value="{{ @$course?->title }}">
                                                     </div>
                                                 </div>
-                                                
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="date">{{ __('Date') }} </label>
+                                                        <input id="date" name="date" type="text"
+                                                            class="form-control" value="{{ @$course?->date }}">
+                                                        <code>{{ __('par exmpl: de janvier à mai 2025') }}</code>
+                                                    </div>
+                                                </div>
                                                 <div class="col-md-12">
                                                     <div class="form-grp">
                                                         <label for="slug">{{ __('Slug') }} <code>*</code></label>

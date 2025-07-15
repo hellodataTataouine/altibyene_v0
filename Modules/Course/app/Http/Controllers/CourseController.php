@@ -89,6 +89,7 @@ class CourseController extends Controller
         $course->discount = $request->discount_price;
         $course->description = $request->description;
         $course->instructor_id = $request->instructor?? null;
+        $course->date = $request->date ?? null;
         $course->save();
 
         // save course id in session
