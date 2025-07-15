@@ -28,6 +28,8 @@ use App\Http\Controllers\Frontend\FavoriteController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\LearningController;
 use App\Http\Controllers\Frontend\AboutPageController;
+use App\Http\Controllers\Frontend\AdhkarController;
+use App\Http\Controllers\Frontend\AskBookController;
 use App\Http\Controllers\Frontend\CoursePageController;
 use App\Http\Controllers\Global\CloudStorageController;
 use App\Http\Controllers\Frontend\StudentOrderController;
@@ -335,7 +337,8 @@ Route::get('/clairelune', [ClaireLuneController::class, 'index'])->name('clairel
 Route::get('/altibyan', [AltibyanController::class, 'index'])->name('altibyan.index');
 Route::get('/adhkar', [AdhkarController::class, 'index'])->name('adhkar.index');
 Route::get('/message', [MessageController::class, 'index'])->name('message.index');
-Route::get('/offre-tarif', [OffreController::class, 'index'])->name('offre-tarif.index');
+Route::get('/ask-for-book', [AskBookController::class, 'index'])->name('askbook.index');
+Route::post('/ask-for-book', [AskBookController::class, 'store'])->name('askbook.store');
 
 
 
