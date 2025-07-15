@@ -56,7 +56,7 @@
                     <div class="contact-form-wrap">
                         <h4 class="title">{{ __('Les livres à demander') }}</h4>
                         <p>{{ __('Votre adresse email ne sera pas publiée. Les champs obligatoires sont marqués') }} *</p>
-                        <form id="contact-form" class="askbook-form" action="{{ route('askbook.store')}}" method="POST">
+                        <form id="askbook-form" class="askbook-form" action="{{ route('askbook.store')}}" method="POST">
                             @csrf
                             @method('POST')
                             <div class="row">
