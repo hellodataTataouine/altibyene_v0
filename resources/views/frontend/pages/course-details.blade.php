@@ -496,7 +496,7 @@
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li>
+                                <li style="white-space: normal; word-break: break-word;">
                                     <img src="{{ asset('frontend/img/icons/course_icon02.svg') }}" alt="img"
                                         class="injectable">
                                     {{ __('Durée') }}
