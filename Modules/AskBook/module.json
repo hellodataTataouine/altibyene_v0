@@ -1,0 +1,11 @@
+{
+    "name": "AskBook",
+    "alias": "askbook",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\AskBook\\app\\Providers\\AskBookServiceProvider"
+    ],
+    "files": []
+}

@@ -25,7 +25,9 @@
                 @if (Module::isEnabled('Course') && checkAdminHasPermission('course.management'))
                     @include('course::sidebar')
                 @endif
-
+                @if (Module::isEnabled('AskBook') && checkAdminHasPermission('course.certificate.management'))
+                    @include('askbook::sidebar')
+                @endif
                 @if (Module::isEnabled('CertificateBuilder') && checkAdminHasPermission('course.certificate.management'))
                     @include('certificatebuilder::sidebar')
                 @endif
@@ -98,7 +100,7 @@
                 @if (Module::isEnabled('MenuBuilder') && checkAdminHasPermission('menu.view'))
                     @include('menubuilder::sidebar')
                 @endif
-                
+
                 @if (Module::isEnabled('PageBuilder') && checkAdminHasPermission('page.management'))
                     @include('pagebuilder::sidebar')
                 @endif
