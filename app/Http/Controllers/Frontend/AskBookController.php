@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\BookRequest;
 use Illuminate\Http\Request;
+use Modules\Frontend\app\Models\ContactSection;
 
 class AskBookController extends Controller
 {
     //
     public function index()
     {
-        return view('frontend.pages.ask-for-book');
+        $contact = ContactSection::first();
+        return view('frontend.pages.ask-for-book',compact($contact));
     }
     public function store(Request $request)
     {
