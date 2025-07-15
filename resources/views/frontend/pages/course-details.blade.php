@@ -508,7 +508,7 @@
                                    <img src="{{ asset('frontend/img/icons/course_icon03.svg') }}" alt="img"
                                         class="injectable">
                                     {{ __('Date') }}
-                                    <span>{{ ($courseLessonCount) }}</span>
+                                    <span>{{ ($course->date) }}</span>
                                 </li>
                               {{-- <li>
                                     <img src="{{ asset('frontend/img/icons/course_icon04.svg') }}" alt="img"
