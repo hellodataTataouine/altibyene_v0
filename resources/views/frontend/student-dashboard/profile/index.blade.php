@@ -21,11 +21,11 @@
                                 aria-controls="itemFour-tab-pane" aria-selected="true">{{ __('Biographie') }}</button>
                         </li>
 
-                        <li class="nav-item" role="presentation">
+                        {{-- <li class="nav-item" role="presentation">
                             <button class="nav-link {{ session('profile_tab') == 'location' ? 'active' : '' }}" id="itemSix-tab" data-bs-toggle="tab"
                                 data-bs-target="#itemSix-tab-pane" type="button" role="tab"
                                 aria-controls="itemSix-tab-pane" aria-selected="true">{{ __('Location') }}</button>
-                        </li>
+                        </li> --}}
 
                         <li class="nav-item" role="presentation">
                             <button class="nav-link {{ session('profile_tab') == 'password' ? 'active' : '' }}" id="itemTwo-tab" data-bs-toggle="tab"
