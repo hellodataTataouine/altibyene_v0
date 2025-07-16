@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Enums\UserStatus;
 use App\Models\JitsiSetting;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -18,7 +19,7 @@ use Modules\Location\app\Models\Country;
 use Modules\Order\app\Models\Enrollment;
 use Modules\Order\app\Models\Order;
 
-class User extends Authenticatable {
+class User extends Authenticatable implements MustVerifyEmail{
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
