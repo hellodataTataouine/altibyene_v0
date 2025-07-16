@@ -146,7 +146,7 @@ class EmailSettingController extends Controller
             set_time_limit(0.3);
             self::setMailConfig();
             $result = Mail::raw('This is a test email', function ($message) {
-                $message->to('example@gmail.com')->subject('Test Email');
+                $message->to('jaabermarwan@gmail.com')->subject('Test Email');
             });
             if($result){
                 $notification = __('Mail Send Successfully');
