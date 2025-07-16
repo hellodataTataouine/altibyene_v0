@@ -51,7 +51,7 @@
                                 <label for="gender-male" style="margin-right: 10px;">Genre *</label>
 
                                 <label for="gender-male" style="display: flex; align-items: center; gap: 4px;">
-                                    <input type="radio" id="gender-male" name="gender" value="H" required> Homme
+                                    <input type="radio" id="gender-male" name="gender" value="M" required> Homme
                                 </label>
 
                                 <label for="gender-female" style="display: flex; align-items: center; gap: 4px;">
