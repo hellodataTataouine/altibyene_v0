@@ -73,13 +73,12 @@ class AuthenticatedSessionController extends Controller
         }
 
         // Check if email is verified
-        if (!$user->email_verified_at) {
-            $user->sendEmailVerificationNotification();
-            $notification = __('Please verify your email').__('Un e-mail de vérification vous a été envoyé.');
+        /* if (!$user->email_verified_at) {
+            $notification = __('Please verify your email');
             $notification = ['messege' => $notification, 'alert-type' => 'error'];
 
             return redirect()->back()->with($notification);
-        }
+        } */
 
         // Authenticate user
         Auth::guard('web')->attempt($credential, $request->remember);

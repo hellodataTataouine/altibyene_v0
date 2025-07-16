@@ -19,7 +19,7 @@ use Modules\Location\app\Models\Country;
 use Modules\Order\app\Models\Enrollment;
 use Modules\Order\app\Models\Order;
 
-class User extends Authenticatable implements MustVerifyEmail{
+class User extends Authenticatable {
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
