@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Traits\MailSenderTrait;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 use Modules\GlobalSetting\app\Models\Setting;
 use Modules\GlobalSetting\app\Models\EmailTemplate;
@@ -145,9 +146,18 @@ class EmailSettingController extends Controller
         try{
             set_time_limit(0.3);
             self::setMailConfig();
-
-            $result = Mail::raw('This is a test email', function ($message) {
-                $message->to('jaabermarwan@gmail.com')->subject('Test Email');
+            if (Cache::has('setting')) {
+                $email_setting = Cache::get('setting');
+            } else {
+                $setting_info = Setting::get();
+                $setting = [];
+                foreach ($setting_info as $setting_item) {
+                    $setting[$setting_item->key] = $setting_item->value;
+                }
+                $email_setting = (object) $setting;
+            }
+            $result = Mail::raw('This is a test email', function ($message) use($email_setting) {
+                $message->to($email_setting->contact_message_receiver_mail)->subject('Test Email');
             });
             if($result){
                 $notification = __('Mail Send Successfully');
