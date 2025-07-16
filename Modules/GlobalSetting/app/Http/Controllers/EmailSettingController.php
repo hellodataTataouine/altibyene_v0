@@ -139,7 +139,7 @@ class EmailSettingController extends Controller
         }
     }
 
-    /* public function test_mail_credentials()
+    public function test_mail_credentials()
     {
         abort_unless(checkAdminHasPermission('setting.view'), 403);
         try{
@@ -149,7 +149,6 @@ class EmailSettingController extends Controller
             $result = Mail::raw('This is a test email', function ($message) {
                 $message->to('jaabermarwan@gmail.com')->subject('Test Email');
             });
-            Log::info('resultat : ',[$result]);
             if($result){
                 $notification = __('Mail Send Successfully');
                 $notification = ['messege' => $notification, 'alert-type' => 'success'];
@@ -164,8 +163,8 @@ class EmailSettingController extends Controller
             return redirect()->back()->with($notification);
         }
 
-    } */
-    public function test_mail_credentials()
+    }
+    /* public function test_mail_credentials()
     {
         abort_unless(checkAdminHasPermission('setting.view'), 403);
 
@@ -187,5 +186,5 @@ class EmailSettingController extends Controller
         }
 
         return redirect()->back()->with($notification);
-    }
+    } */
 }
