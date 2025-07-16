@@ -14,7 +14,7 @@ trait MailSenderTrait
         return getSettingStatus('is_queable');
     }
 
-    private static function setMailConfig(): bool
+    public static function setMailConfig(): bool
     {
         try {
             if (Cache::has('setting')) {
