@@ -139,15 +139,17 @@ class EmailSettingController extends Controller
         }
     }
 
-    public function test_mail_credentials()
+    /* public function test_mail_credentials()
     {
         abort_unless(checkAdminHasPermission('setting.view'), 403);
         try{
             set_time_limit(0.3);
             self::setMailConfig();
+
             $result = Mail::raw('This is a test email', function ($message) {
                 $message->to('jaabermarwan@gmail.com')->subject('Test Email');
             });
+            Log::info('resultat : ',[$result]);
             if($result){
                 $notification = __('Mail Send Successfully');
                 $notification = ['messege' => $notification, 'alert-type' => 'success'];
@@ -162,5 +164,28 @@ class EmailSettingController extends Controller
             return redirect()->back()->with($notification);
         }
 
+    } */
+    public function test_mail_credentials()
+    {
+        abort_unless(checkAdminHasPermission('setting.view'), 403);
+
+        try {
+            set_time_limit(10);
+
+            self::setMailConfig();
+
+            Mail::raw('This is a test email from Brevo SMTP', function ($message) {
+                $message->to('jaabermarwan@gmail.com')
+                        ->subject('Test Email via Brevo');
+            });
+
+            $notification = ['messege' => __('Mail sent successfully'), 'alert-type' => 'success'];
+        } catch (Exception $e) {
+            Log::error('Mail test failed: ' . $e->getMessage());
+
+            $notification = ['messege' => __('Mail sending failed: ' . $e->getMessage()), 'alert-type' => 'error'];
+        }
+
+        return redirect()->back()->with($notification);
     }
 }

@@ -99,7 +99,7 @@
   <div class="container section fade-in fade-in-delay">
     <h2>Présentation du Programme</h2>
     <div class="card p-4">
-      <p>Découvrez notre programme unique pour mémoriser le Coran en entier en 6 ans. Ce cursus repose sur une méthode structurée, intégrant une compréhension globale du texte sacré, une révision approfondie des règles de lecture issues du programme Tybiane, ainsi que l'étude des vers de <strong>Touhfatoul Atfal</strong>.</p>
+      <p>Découvrez notre programme pour mémoriser le Coran en entier en 6 ans. Ce cursus repose sur une méthode structurée, intégrant une compréhension globale du texte sacré, une révision approfondie des règles de lecture issues du programme Tybiane, ainsi que l'étude des vers de <strong>Touhfatoul Atfal</strong>.</p>
       <p>À l'issue du programme de Tybiane, l’étudiant passe à l’étape de mémorisation.</p>
     </div>
 

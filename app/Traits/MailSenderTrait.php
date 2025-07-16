@@ -14,7 +14,7 @@ trait MailSenderTrait
         return getSettingStatus('is_queable');
     }
 
-    private static function setMailConfig(): bool
+    /* private static function setMailConfig(): bool
     {
         try {
             if (Cache::has('setting')) {
@@ -50,5 +50,19 @@ trait MailSenderTrait
 
             return false;
         }
+    } */
+    public static function setMailConfig()
+    {
+        config([
+            'mail.mailers.smtp.transport' => 'smtp',
+            'mail.mailers.smtp.host' => env('MAIL_HOST'),
+            'mail.mailers.smtp.port' => env('MAIL_PORT'),
+            'mail.mailers.smtp.encryption' => env('MAIL_ENCRYPTION'),
+            'mail.mailers.smtp.username' => env('MAIL_USERNAME'),
+            'mail.mailers.smtp.password' => env('MAIL_PASSWORD'),
+            'mail.from.address' => env('MAIL_FROM_ADDRESS'),
+            'mail.from.name' => env('MAIL_FROM_NAME'),
+        ]);
     }
+
 }
