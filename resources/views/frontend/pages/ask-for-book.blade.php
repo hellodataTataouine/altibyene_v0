@@ -1,8 +1,8 @@
 @extends('frontend.layouts.master')
-@section('meta_title', 'Demander un livre ' . ' || ' . $setting->app_name)
+@section('meta_title', 'Demande de livre ' . ' || ' . $setting->app_name)
 @section('contents')
     <!-- breadcrumb-area -->
-    <x-frontend.breadcrumb :title="__('Demander un livre')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('askbook.index'), 'text' => __('Demander un livre')]]" />
+    <x-frontend.breadcrumb :title="__('Demande de livre')" :links="[['url' => route('home'), 'text' => __('Accueil')], ['url' => route('askbook.index'), 'text' => __('Demande de livre')]]" />
     <!-- breadcrumb-area-end -->
     @include('frontend.pages.adhkar')
     <!-- contact-area -->
