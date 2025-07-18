@@ -16,6 +16,9 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth:admi
         Route::put('update-stripe', 'update_stripe')->name('update-stripe');
         Route::put('update-paypal', 'update_paypal')->name('update-paypal');
         Route::put('update-bank-payment', 'update_bank_payment')->name('update-bank-payment');
+        Route::put('update-cheque-payment', 'update_cheque_payment')->name('update-cheque-payment');
+        Route::put('update-cash-payment', 'update_cash_payment')->name('update-cash-payment');
+
 
     });
 
@@ -32,25 +35,27 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::controller(PaymentController::class)->group(function () {
         Route::post('place-order/{method}', 'placeOrder')->name('place.order');
         Route::get('payment', 'index')->name('payment');
-    
+
         Route::get('payment-success', 'payment_success')->name('payment-success');
         Route::get('payment-failed', 'payment_failed')->name('payment-failed');
-        
+
         Route::post('pay-via-bank', 'pay_via_bank')->name('pay-via-bank');
+        Route::post('pay-via-cheque', 'pay_via_cheque')->name('pay-via-cheque');
+        Route::post('pay-via-cash', 'pay_via_cash')->name('pay-via-cash');
         Route::post('pay-via-free-gateway', 'pay_via_free_gateway')->name('pay-via-free-gateway');
-        
+
         Route::get('pay-via-paypal', 'pay_via_paypal')->name('pay-via-paypal');
         Route::post('pay-via-stripe', 'pay_via_stripe')->name('pay-via-stripe');
         Route::get('pay-via-stripe', 'stripe_success')->name('stripe-success');
-    
+
         Route::post('pay-via-razorpay', 'pay_via_razorpay')->name('pay-via-razorpay');
-    
+
         Route::get('pay-via-mollie', 'pay_via_mollie')->name('pay-via-mollie');
         Route::get('mollie-payment-success', 'mollie_payment_success')->name('mollie-payment-success');
-    
+
         Route::post('pay-via-flutterwave', 'flutterwave_payment')->name('pay-via-flutterwave');
         Route::get('pay-via-paystack', 'paystack_payment')->name('pay-via-paystack');
-    
+
         Route::get('pay-via-instamojo', 'pay_via_instamojo')->name('pay-via-instamojo');
         Route::get('instamojo-success', 'instamojo_success')->name('instamojo-success');
     });
@@ -81,5 +86,7 @@ Route::group(['as'=> 'payment-api.'],function (){
     Route::get('instamojo-webview-success', [PaymentApiController::class, 'instamojo_success'])->name('instamojo-success')->middleware('payment.api');
 
     Route::post('bank-webview', [PaymentApiController::class, 'pay_via_bank'])->name('bank-webview')->middleware('payment.api');
+    Route::post('cheque-webview', [PaymentApiController::class, 'pay_via_cheque'])->name('cheque-webview')->middleware('payment.api');
+    Route::post('cash-webview', [PaymentApiController::class, 'pay_via_cash'])->name('cash-webview')->middleware('payment.api');
 });
 

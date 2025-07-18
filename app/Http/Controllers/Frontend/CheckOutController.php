@@ -14,7 +14,7 @@ class CheckOutController extends Controller
     {
         $user = userAuth();
         $cart_count = $user->cart_count;
-    
+
         if($cart_count == 0){
             return redirect()->route('courses')->with(['messege' => __('Please add some courses in your cart.'), 'alert-type' => 'error']);
         }
@@ -29,8 +29,8 @@ class CheckOutController extends Controller
         Session::put('payable_amount', $payable_amount);
 
         $paymentService = app(\Modules\BasicPayment\app\Services\PaymentMethodService::class);
-        $activeGateways = $paymentService->getActiveGatewaysWithDetails();
 
+        $activeGateways = $paymentService->getActiveGatewaysWithDetails();
 
         return view('frontend.pages.checkout')->with([
             'cart_count' => $cart_count,

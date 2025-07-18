@@ -63,33 +63,90 @@
 
                                 <div class="col-md-6">
                                     <div class="form-grp">
-                                        <input name="name" type="text" placeholder="{{ __('Nom et prénom') }} *" required>
+                                        <input
+                                            name="name"
+                                            type="text"
+                                            placeholder="{{ __('Nom et prénom') }} *"
+                                            required
+                                            oninvalid="this.setCustomValidity('Veuillez remplir ce champ')"
+                                            oninput="setCustomValidity('')"
+                                        >
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-grp">
-                                        <input name="email" type="email" placeholder="{{ __('E-mail') }} *" required>
+                                        <input
+                                            name="school"
+                                            type="text"
+                                            placeholder="{{ __('Nom de l\'école') }} *"
+                                            required
+                                            oninvalid="this.setCustomValidity('Veuillez remplir ce champ')"
+                                            oninput="setCustomValidity('')"
+                                        >
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+
+                                <div class="form-grp">
+                                    <textarea
+                                        name="address"
+                                        placeholder="{{ __('Adresse de livraison') }} *"
+                                        required
+                                        oninvalid="this.setCustomValidity('Veuillez remplir ce champ')"
+                                        oninput="setCustomValidity('')"
+                                        rows="3"
+                                    ></textarea>
+                                </div>
+
+                                <div class="col-md-6">
                                     <div class="form-grp">
-                                        <input name="phone" type="text" placeholder="{{ __('Téléphone') }} *" required>
+                                        <input
+                                            name="email"
+                                            type="email"
+                                            placeholder="{{ __('E-mail') }} *"
+                                            required
+                                            oninvalid="this.setCustomValidity('Veuillez remplir ce champ avec une adresse email valide')"
+                                            oninput="setCustomValidity('')"
+                                        >
                                     </div>
                                 </div>
-                                <!-- g-recaptcha -->
-                               {{--  @if (Cache::get('setting')->recaptcha_status === 'active')
+
+                                <div class="col-md-6">
+                                    <div class="form-grp">
+                                        <input
+                                            name="phone"
+                                            type="text"
+                                            placeholder="{{ __('Téléphone') }} *"
+                                            required
+                                            oninvalid="this.setCustomValidity('Veuillez remplir ce champ')"
+                                            oninput="setCustomValidity('')"
+                                        >
+                                    </div>
+                                </div>
+
+                                {{--
+                                @if (Cache::get('setting')->recaptcha_status === 'active')
                                     <div class="form-grp mt-3">
                                         <div class="g-recaptcha"
-                                            data-sitekey="{{ Cache::get('setting')->recaptcha_site_key }}"></div>
+                                            data-sitekey="{{ Cache::get('setting')->recaptcha_site_key }}">
+                                        </div>
                                     </div>
-                                @endif --}}
+                                @endif
+                                --}}
+
+                                <div class="form-grp">
+                                    <textarea
+                                        name="message"
+                                        placeholder="{{ __('Commantaire') }} *"
+                                        required
+                                        oninvalid="this.setCustomValidity('Veuillez remplir ce champ')"
+                                        oninput="setCustomValidity('')"
+                                    ></textarea>
+                                </div>
                             </div>
-                            <div class="form-grp">
-                                <textarea name="message" placeholder="{{ __('Commantaire ') }} *" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-two arrow-btn">{{ __('Envoyer') }}<img
-                                    src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt="img"
-                                    class="injectable"></button>
+                                <button type="submit" class="btn btn-two arrow-btn">{{ __('Envoyer') }}<img
+                                        src="{{ asset('frontend/img/icons/right_arrow.svg') }}" alt="img"
+                                        class="injectable"></button>
                         </form>
                         <p class="ajax-response mb-0"></p>
                     </div>

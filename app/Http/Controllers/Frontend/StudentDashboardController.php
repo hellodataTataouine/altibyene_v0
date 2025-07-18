@@ -32,9 +32,14 @@ class StudentDashboardController extends Controller {
     }
 
     function enrolledCourses() {
-        $enrolls = Enrollment::with(['course' => function ($q) {
+        $enrolls = Enrollment::with(['order','course' => function ($q) {
             $q->withTrashed();
-        },'session'])->where('user_id', userAuth()->id)->orderByDesc('id')->paginate(10);
+        },'session'])->where('user_id', userAuth()->id)
+            ->whereHas('order', function ($query) {
+            $query->where('status', 'completed')
+                ->where('payment_status', 'paid');
+            })->orderByDesc('id')->paginate(10);
+
         return view('frontend.student-dashboard.enrolled-courses.index', compact('enrolls'));
     }
 

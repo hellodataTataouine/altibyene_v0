@@ -21,7 +21,6 @@ class BasicPaymentController extends Controller
         foreach ($payment_info as $payment_item) {
             $basic_payment[$payment_item->key] = $payment_item->value;
         }
-
         $basic_payment = (object) $basic_payment;
 
         $payment_info = PaymentGateway::get();
@@ -161,4 +160,73 @@ class BasicPaymentController extends Controller
         $basic_payment = (object) $basic_payment;
         Cache::put('basic_payment', $basic_payment);
     }
+    public function update_cheque_payment(Request $request)
+    {
+        checkAdminHasPermissionAndThrowException('basic.payment.update');
+
+        $rules = [
+            'cheque_information' => 'required',
+        ];
+
+        $customMessages = [
+            'cheque_information.required' => __('Bank information is required'),
+            'cheque_charge.required'      => __('Gateway charge is required'),
+            'cheque_charge.numeric'       => __('Gateway charge should be numeric'),
+        ];
+
+        $request->validate($rules, $customMessages);
+
+        BasicPayment::where('key', 'cheque_information')->update(['value' => $request->cheque_information]);
+        BasicPayment::where('key', 'cheque_charge')->update(['value' => 0]);
+        BasicPayment::where('key', 'cheque_status')->update(['value' => $request->cheque_status]);
+
+        if ($request->file('cheque_image')) {
+            $cheque_setting = BasicPayment::where('key', 'cheque_image')->first();
+            $file_name = file_upload($request->cheque_image, 'uploads/custom-images/', $cheque_setting->value);
+            $cheque_setting->value = $file_name;
+            $cheque_setting->save();
+        }
+
+        $this->put_basic_payment_cache();
+
+        $notification = __('Update Successfully');
+        $notification = ['messege' => $notification, 'alert-type' => 'success'];
+
+        return redirect()->back()->with($notification);
+    }
+    public function update_cash_payment(Request $request)
+    {
+        checkAdminHasPermissionAndThrowException('basic.payment.update');
+
+        $rules = [
+            'cash_information' => 'required',
+        ];
+
+        $customMessages = [
+            'cash_information.required' => __('Cash payment information is required'),
+            'cash_charge.required'      => __('Gateway charge is required'),
+            'cash_charge.numeric'       => __('Gateway charge should be numeric'),
+        ];
+
+        $request->validate($rules, $customMessages);
+
+        BasicPayment::where('key', 'cash_information')->update(['value' => $request->cash_information]);
+        BasicPayment::where('key', 'cash_charge')->update(['value' => 0]);
+        BasicPayment::where('key', 'cash_status')->update(['value' => $request->cash_status]);
+
+        if ($request->file('cash_image')) {
+            $cash_setting = BasicPayment::where('key', 'cash_image')->first();
+            $file_name = file_upload($request->cash_image, 'uploads/custom-images/', $cash_setting->value);
+            $cash_setting->value = $file_name;
+            $cash_setting->save();
+        }
+
+        $this->put_basic_payment_cache();
+
+        $notification = __('Update Successfully');
+        $notification = ['messege' => $notification, 'alert-type' => 'success'];
+
+        return redirect()->back()->with($notification);
+    }
+
 }

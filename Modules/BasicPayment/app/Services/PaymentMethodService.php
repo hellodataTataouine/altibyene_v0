@@ -11,17 +11,23 @@ use Modules\Currency\app\Models\MultiCurrency;
 class PaymentMethodService implements PaymentMethodInterface {
     use GetGlobalInformationTrait;
 
-    const STRIPE = 'stripe';
+    const STRIPE = 'Carte bancaire';
 
     const PAYPAL = 'paypal';
 
-    const BANK_PAYMENT = 'bank';
+    const BANK_PAYMENT = 'Virement bancaire';
+
+    const CHEQUE = 'chèque';
+
+    const CASH_PAYMENT= 'Comptant';
 
     // Holds the supported payment gateways
     protected static array $supportedPayments = [
         self::STRIPE,
         self::PAYPAL,
         self::BANK_PAYMENT,
+        self::CHEQUE,
+        self::CASH_PAYMENT,
     ];
 
     /**
@@ -38,6 +44,8 @@ class PaymentMethodService implements PaymentMethodInterface {
         self::STRIPE,
         self::PAYPAL,
         self::BANK_PAYMENT,
+        self::CHEQUE,
+        self::CASH_PAYMENT,
     ];
 
     /**
@@ -84,9 +92,11 @@ class PaymentMethodService implements PaymentMethodInterface {
      */
     public function getPaymentName(string $gatewayName): ?string {
         return match ($gatewayName) {
-            self::STRIPE => 'Stripe',
+            self::STRIPE => 'Carte bancaire',
             self::PAYPAL => 'PayPal',
-            self::BANK_PAYMENT => 'Bank Payment',
+            self::BANK_PAYMENT => 'Virement bancaire',
+            self::CHEQUE=>'Chèque',
+            self::CASH_PAYMENT=>'Comptant',
             default => null,
         };
     }
@@ -122,6 +132,20 @@ class PaymentMethodService implements PaymentMethodInterface {
                 'charge'           => $basicPayment->bank_charge ?? null,
                 'currency_id'      => $basicPayment->bank_currency_id ?? null,
             ],
+            self::CHEQUE => (object) [
+                'cheque_information' => $basicPayment->cheque_information ?? null,
+                'cheque_status'      => $basicPayment->cheque_status ?? null,
+                'cheque_image'       => $basicPayment->cheque_image ?? null,
+                'charge'           => $basicPayment->cheque_charge ?? null,
+                'currency_id'      => $basicPayment->cheque_currency_id ?? null,
+            ],
+            self::CASH_PAYMENT => (object) [
+                'cash_information' => $basicPayment->cash_information ?? null,
+                'cash_status'      => $basicPayment->cash_status ?? null,
+                'cash_image'       => $basicPayment->cash_image ?? null,
+                'charge'           => $basicPayment->cash_charge ?? null,
+                'currency_id'      => $basicPayment->cash_currency_id ?? null,
+            ],
             default => (object) false,
         };
     }
@@ -137,6 +161,8 @@ class PaymentMethodService implements PaymentMethodInterface {
             self::STRIPE => $gatewayDetails->stripe_status == $activeStatus,
             self::PAYPAL => $gatewayDetails->paypal_status == $activeStatus,
             self::BANK_PAYMENT => $gatewayDetails->bank_status == $activeStatus,
+            self::CHEQUE => $gatewayDetails->cheque_status == $activeStatus,
+            self::CASH_PAYMENT=> $gatewayDetails->cash_status == $activeStatus,
             default => false,
         };
     }
@@ -146,9 +172,11 @@ class PaymentMethodService implements PaymentMethodInterface {
      */
     public function getIcon(string $gatewayName): string {
         return match ($gatewayName) {
-            self::STRIPE => 'fa-cc-stripe',
-            self::PAYPAL => 'fa-cc-paypal',
-            self::BANK_PAYMENT => 'fa-credit-card',
+            self::STRIPE => 'fa-brands fa-cc-stripe',
+            self::PAYPAL => 'fa-brands fa-cc-paypal',
+            self::BANK_PAYMENT => 'fa-solid fa-university',      // banque classique
+            self::CHEQUE => 'fa-solid fa-file-invoice-dollar',   // chèque
+            self::CASH_PAYMENT => 'fa-solid fa-money-bill-wave', // paiement comptant / espèces
             default => null,
         };
     }
@@ -165,6 +193,8 @@ class PaymentMethodService implements PaymentMethodInterface {
             self::STRIPE => $basicPayment->stripe_image ? asset($basicPayment->stripe_image) : asset('uploads/website-images/stripe.png'),
             self::PAYPAL => $basicPayment->paypal_image ? asset($basicPayment->paypal_image) : asset('uploads/website-images/paypal.png'),
             self::BANK_PAYMENT => $basicPayment->bank_image ? asset($basicPayment->bank_image) : asset('uploads/website-images/bank-pay.png'),
+            self::CHEQUE => $basicPayment->bank_image ? asset($basicPayment->cheque_image) : asset('uploads/website-images/cheque-pay.png'),
+            self::CASH_PAYMENT=> $basicPayment->cash_image ? asset($basicPayment->cash_image) : asset('uploads/website-images/chash-pay.png'),
             default => null,
         };
     }
@@ -188,7 +218,7 @@ class PaymentMethodService implements PaymentMethodInterface {
         // Base gateways
         $gateways = [
             self::STRIPE => [
-                'name' => 'Stripe',
+                'name' => 'Carte bancaire',
                 'logo' => asset($basicPayment->stripe_image ?? 'uploads/website-images/stripe.png'),
                 'status' => $basicPayment->stripe_status == $activeStatus,
             ],
@@ -198,9 +228,19 @@ class PaymentMethodService implements PaymentMethodInterface {
                 'status' => $basicPayment->paypal_status == $activeStatus,
             ],
             self::BANK_PAYMENT => [
-                'name' => 'Bank Payment',
+                'name' => 'Virement bancaire',
                 'logo' => asset($basicPayment->bank_image ?? 'uploads/website-images/bank-pay.png'),
                 'status' => $basicPayment->bank_status == $activeStatus,
+            ],
+            self::CHEQUE => [
+                'name' => 'Chèque',
+                'logo' => asset($basicPayment->cheque_image ?? 'uploads/website-images/cheque-pay.png'),
+                'status' => $basicPayment->cheque_status == $activeStatus,
+            ],
+            self::CASH_PAYMENT => [
+                'name' => 'Comptant',
+                'logo' => asset($basicPayment->cash_image ?? 'uploads/website-images/cash-pay.png'),
+                'status' => $basicPayment->cash_status == $activeStatus,
             ],
         ];
 
@@ -226,6 +266,8 @@ class PaymentMethodService implements PaymentMethodInterface {
             self::STRIPE => BasicPaymentSupportedCurrencyListEnum::isStripeSupportedCurrencies($code),
             self::PAYPAL => BasicPaymentSupportedCurrencyListEnum::isPaypalSupportedCurrencies($code),
             self::BANK_PAYMENT => str($code)->lower() == str(MultiCurrency::where('is_default', 'yes')->first()->currency_code)->lower(),
+            self::CHEQUE => str($code)->lower() == str(MultiCurrency::where('is_default', 'yes')->first()->currency_code)->lower(),
+            self::CASH_PAYMENT => str($code)->lower() == str(MultiCurrency::where('is_default', 'yes')->first()->currency_code)->lower(),
             default => false,
         };
     }
@@ -240,6 +282,8 @@ class PaymentMethodService implements PaymentMethodInterface {
             self::STRIPE => BasicPaymentSupportedCurrencyListEnum::getStripeSupportedCurrencies(),
             self::PAYPAL => BasicPaymentSupportedCurrencyListEnum::getPaypalSupportedCurrencies(),
             self::BANK_PAYMENT => MultiCurrency::where('is_default', 'yes')->pluck('currency_code')->toArray(),
+            self::CHEQUE => MultiCurrency::where('is_default', 'yes')->pluck('currency_code')->toArray(),
+            self::CASH_PAYMENT => MultiCurrency::where('is_default', 'yes')->pluck('currency_code')->toArray(),
             default => [],
         };
     }
@@ -252,6 +296,8 @@ class PaymentMethodService implements PaymentMethodInterface {
             self::STRIPE => 'basicpayment::gateway-actions.stripe',
             self::PAYPAL => 'basicpayment::gateway-actions.paypal',
             self::BANK_PAYMENT => 'basicpayment::gateway-actions.bank',
+            self::CHEQUE => 'basicpayment::gateway-actions.cheque',
+            self::CASH_PAYMENT => 'basicpayment::gateway-actions.cash',
             default => null,
         };
     }

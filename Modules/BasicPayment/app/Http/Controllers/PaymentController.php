@@ -224,6 +224,7 @@ class PaymentController extends Controller {
         $view = $this->paymentService->getBladeView($paymentMethod);
         return view($view, compact('order', 'paymentService', 'paymentMethod'));
     }
+
     public function pay_via_bank(BankInformationRequest $request) {
         $bankDetails = json_encode($request->only(['bank_name', 'account_number', 'routing_number', 'branch', 'transaction']));
 
@@ -246,6 +247,77 @@ class PaymentController extends Controller {
 
         return $this->payment_success();
     }
+    public function pay_via_cash()
+    {
+        // Générer des détails de paiement simples pour cash
+        $cashDetailsArray = [
+            'method'      => 'cash_payment',
+            'transaction' => 'cash_txn_' . now()->timestamp, // identifiant unique
+        ];
+        $cashDetails = json_encode($cashDetailsArray);
+
+        // Récupérer tous les paiements existants pour vérifier la transaction
+        $allPayments = Order::whereNotNull('payment_details')->get();
+
+        foreach ($allPayments as $payment) {
+            $paymentDetailsJson = json_decode($payment?->payment_details, true);
+
+            if (isset($paymentDetailsJson['transaction']) && $paymentDetailsJson['transaction'] == $cashDetailsArray['transaction']) {
+                $notification = __('Payment failed, transaction already exists');
+                $notification = ['messege' => $notification, 'alert-type' => 'error'];
+
+                return redirect()->back()->with($notification);
+            }
+        }
+
+        // Stocker en session
+        Session::put('after_success_transaction', $cashDetailsArray['transaction']);
+        Session::put('payment_details', $cashDetails);
+
+        // Appeler la méthode de succès qui finalise la commande
+        return $this->payment_success();
+    }
+
+    public function pay_via_cheque(Request $request)
+    {
+        //dd('2',$request->all());
+        // Valide les champs nécessaires (tu peux aussi utiliser un FormRequest spécifique)
+        $request->validate([
+            'holder_name'   => 'required|string|max:255',
+            'cheque_number' => 'required|string|max:255',
+            'cheque_date'   => 'required|date',
+            'amount'        => 'required|numeric',
+            'reference'     => 'nullable|string|max:255',
+        ]);
+
+        // Encode les détails du chèque en JSON
+        $chequeDetails = json_encode($request->only(['holder_name', 'cheque_number', 'cheque_date', 'amount', 'reference']));
+
+        // Récupère toutes les commandes avec des détails de paiement existants
+        $allPayments = Order::whereNotNull('payment_details')->get();
+
+        foreach ($allPayments as $payment) {
+            $paymentDetailsJson = json_decode($payment?->payment_details, true);
+            // Vérifie si un paiement existe déjà avec le même numéro de chèque et la même référence
+            if (
+                isset($paymentDetailsJson['cheque_number']) && $paymentDetailsJson['cheque_number'] == $request->cheque_number &&
+                isset($paymentDetailsJson['reference']) && $paymentDetailsJson['reference'] == $request->reference
+            ) {
+                $notification = __('Payment failed, cheque transaction already exists');
+                $notification = ['messege' => $notification, 'alert-type' => 'error'];
+
+                return redirect()->back()->with($notification);
+            }
+        }
+        //dd('m here now');
+        // Enregistre les infos de transaction dans la session
+        Session::put('after_success_transaction', $request->reference ?? $request->cheque_number);
+        Session::put('payment_details', $chequeDetails);
+
+        // Appelle la méthode de succès de paiement
+        return $this->payment_success();
+    }
+
     public function pay_via_free_gateway() {
         $user = userAuth();
         if (!$user->cart_total || $user->cart_total != 0) {
@@ -360,7 +432,7 @@ class PaymentController extends Controller {
                 'quantity'   => 1,
             ]],
             'mode'                 => 'payment',
-            'success_url'          => url('/pay-via-stripe') . '?session_id={CHECKOUT_SESSION_ID}',
+            'success_url'          => route('stripe-success',) . '?session_id={CHECKOUT_SESSION_ID}',
             'cancel_url'           => $after_failed_url,
         ]);
 
@@ -369,11 +441,13 @@ class PaymentController extends Controller {
 
     }
     public function stripe_success(Request $request) {
+
         $after_success_url = route('payment-success');
         $basic_payment = $this->get_basic_payment_info();
 
         // Assuming the Checkout Session ID is passed as a query parameter
         $session_id = $request->query('session_id');
+
         if ($session_id) {
             \Stripe\Stripe::setApiKey($basic_payment->stripe_secret);
 
@@ -743,19 +817,103 @@ class PaymentController extends Controller {
         }
     }
 
-    public function payment_success() {
+    public function payment_success()
+    {
+        $order = session()->get('order');
+        $after_success_transaction = session()->get('after_success_transaction', null);
+        $payment_details = session()->get('payment_details', null);
+
+        try {
+            $order->transaction_id = $after_success_transaction;
+
+            // Gestion du statut selon le mode de paiement
+            if (in_array($order->payment_method, [
+                $this->paymentService::BANK_PAYMENT,
+                $this->paymentService::CHEQUE
+            ])) {
+                // Paiement par banque ou chèque : en attente de validation manuelle
+                $order->payment_status = 'pending';
+            } elseif (in_array($order->payment_method, [
+                $this->paymentService::STRIPE,
+                $this->paymentService::PAYPAL
+            ])) {
+                // Paiement Stripe ou PayPal : paiement validé
+                $order->payment_status = 'paid';
+            } else {
+                // Autres méthodes, par défaut payé (adapter si besoin)
+                $order->payment_status = 'paid';
+            }
+
+            $order->status = 'completed';
+
+            // Stockage des détails de paiement
+            if (in_array($order->payment_method, [
+                $this->paymentService::BANK_PAYMENT,
+                $this->paymentService::CHEQUE
+            ])) {
+                // Banques/chèque stocké en JSON string déjà
+                $order->payment_details = $payment_details;
+            } else {
+                // Stripe/PayPal (ou autres) stocker en JSON encodé (au cas où)
+                $order->payment_details = is_string($payment_details) ? $payment_details : json_encode($payment_details);
+            }
+
+            $order->save();
+
+            // Attribution accès pour les paiements immédiats (Stripe, PayPal, autres sauf banque et chèque)
+            if ($order->payment_status == 'paid') {
+                foreach ($order->orderItems as $item) {
+                    Enrollment::create([
+                        'order_id' => $order->id,
+                        'user_id' => $order->buyer_id,
+                        'course_id' => $item->course_id,
+                        'has_access' => 1,
+                    ]);
+                }
+            }
+
+            // Envoi mail de confirmation
+            try {
+                $user = auth()->user();
+                $this->sendingPaymentStatusMail([
+                    'email' => $user->email,
+                    'name' => $user->name,
+                    'order_id' => $order->invoice_id,
+                    'paid_amount' => $order->paid_amount . ' ' . $order->payable_currency,
+                    'payment_status' => $order->payment_status,
+                ]);
+            } catch (Exception $e) {
+                info($e->getMessage());
+            }
+
+            // Nettoyage des sessions de paiement
+            $this->paymentService->removeSessions();
+
+            $notification = __('Payment Success.');
+            $notification = ['messege' => $notification, 'alert-type' => 'success'];
+            return view('frontend.pages.order-success')->with($notification);
+
+        } catch (Exception $e) {
+            $notification = trans('Payment faild, please try again');
+            $notification = ['messege' => $notification, 'alert-type' => 'error'];
+
+            return redirect()->route('order-fail')->with($notification);
+        }
+    }
+
+    public function payment_success_cheque() {
         $order = session()->get('order');
         $after_success_transaction = session()->get('after_success_transaction', null);
         $payment_details = session()->get('payment_details', null);
         $session_id= session()->get('session_id');
         try {
             $order->transaction_id = $after_success_transaction;
-            $order->payment_status = $order->payment_method == $this->paymentService::BANK_PAYMENT ? 'pending' : 'paid';
+            $order->payment_status = $order->payment_method == $this->paymentService::CHEQUE ? 'pending' : 'paid';
             $order->status = 'completed';
-            $order->payment_details = $order->payment_method == $this->paymentService::BANK_PAYMENT ? $payment_details : json_encode($payment_details);
+            $order->payment_details = $order->payment_method == $this->paymentService::CHEQUE ? $payment_details : json_encode($payment_details);
             $order->save();
 
-            if ($order->payment_method != $this->paymentService::BANK_PAYMENT) {
+            if ($order->payment_method != $this->paymentService::CHEQUE) {
                 foreach ($order->orderItems as $item) {
                     Enrollment::create([
                         'order_id'   => $order->id,
@@ -791,7 +949,6 @@ class PaymentController extends Controller {
             return redirect()->route('order-fail')->with($notification);
         }
     }
-
     function payment_failed() {
         $order = session()->get('order');
         $order->payment_status = 'cancelled';

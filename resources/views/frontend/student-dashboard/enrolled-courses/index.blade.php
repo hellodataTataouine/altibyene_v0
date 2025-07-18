@@ -29,9 +29,9 @@
                                                     <div class="courses__item-content courses__item-content-two">
                                                         <ul class="courses__item-meta list-wrap">
                                                            <li class="courses__item-tag">
-
-                                                                <a
-                                                                    href="javascript:;">{{ $enroll->session->title }}</a>
+                                                                @if (!empty($enroll->session))
+                                                                    <a href="javascript:;">{{ $enroll->session->title }}</a>
+                                                                @endif
                                                             </li>
                                                         </ul>
 

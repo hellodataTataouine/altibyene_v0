@@ -30,5 +30,9 @@ class Enrollment extends Model
     public function session(): BelongsTo{
         return $this->belongsTo(CoursSession::class,'session_id','id');
     }
+    public function order()
+    {
+        return $this->belongsTo(Order::class,'order_id','id');
+    }
 
 }

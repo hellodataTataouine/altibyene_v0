@@ -24,9 +24,7 @@
                     <h2 class=sub-title>
                        A propos Altibyan </h2>
              <p >
-                    Altibyan est une approche pédagogique spécifique dédiée à l'enseignement des études islamiques.
-                    Elle repose sur une méthode d'apprentissage progressive, intégrant à la fois la transmission du savoir religieux,
-                    la réflexion critique et la pratique des principes de l'islam dans la vie quotidienne.
+                    Altibyan est une approche pédagogique unique, fondée sur un apprentissage progressif. Elle combine la transmission de connaissances, le développement de la pensée critique et l’application concrète des valeurs étudiées dans la vie quotidienne.
                 </p>
                 <p style="display: none;">
                     L'objectif principal de l'attebyane est de former des individus non seulement savants en matière de théologie et de jurisprudence islamique,

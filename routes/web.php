@@ -46,6 +46,7 @@ use App\Http\Controllers\Frontend\StudentProfileSettingController;
 use App\Http\Controllers\Frontend\InstructorAnnouncementController;
 use App\Http\Controllers\Frontend\InstructorLiveCredentialController;
 use App\Http\Controllers\Frontend\InstructorProfileSettingController;
+use Modules\BasicPayment\app\Http\Controllers\API\PaymentController;
 
 Route::group(['middleware' => 'maintenance.mode'], function () {
 
@@ -288,6 +289,7 @@ Route::group(['middleware' => 'maintenance.mode'], function () {
 
     Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('checkout', [CheckOutController::class, 'index'])->name('checkout.index');
+        Route::get('order-fail',[PaymentController::class,'payment_failed'])->name('order-fail');
         Route::post('tinymce-upload-image', [TinymceImageUploadController::class, 'upload']);
         Route::delete('tinymce-delete-image', [TinymceImageUploadController::class, 'destroy']);
     });

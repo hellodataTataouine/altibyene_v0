@@ -11,6 +11,9 @@ class CoursSessionController extends Controller
     //
     public function show($id){
         $sessions = CoursSession::where('cours_id',$id)->get();
+        if($sessions->isEmpty()){
+            return redirect()->route('checkout.index');
+        }
         return view('frontend.pages.cours-session-select',compact('sessions','id'));
     }
     public function redirectToCheckout($id){

@@ -11,6 +11,14 @@
         aria-controls="direct-bank" aria-selected="false">{{ __('Direct Bank Payment') }}</a>
 </li>
 <li class="nav-item">
+    <a class="nav-link" id="cheque-tab" data-toggle="tab" href="#cheque_tab" role="tab"
+        aria-controls="cheque" aria-selected="false">{{ __('Cheque') }}</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" id="cash-tab" data-toggle="tab" href="#cash_tab" role="tab"
+        aria-controls="cash" aria-selected="false">{{ __('Comptant') }}</a>
+</li>
+<li class="nav-item">
     <a class="nav-link" id="razorpay-tab" data-toggle="tab" href="#razorpay_tab" role="tab"
         aria-controls="razorpay" aria-selected="true">{{ __('Razorpay') }}</a>
 </li>

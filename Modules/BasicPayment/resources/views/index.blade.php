@@ -36,11 +36,13 @@
                                     @include('basicpayment::sections.stripe')
                                     @include('basicpayment::sections.paypal')
                                     @include('basicpayment::sections.direct-bank')
+                                    @include('basicpayment::sections.cheque')
                                     @include('basicpayment::sections.razorpay')
                                     @include('basicpayment::sections.flutterwave')
                                     @include('basicpayment::sections.paystack')
                                     @include('basicpayment::sections.mollie')
                                     @include('basicpayment::sections.instamojo')
+                                    @include('basicpayment::sections.cash')
                                 </div>
                             </div>
                         </div>
@@ -67,7 +69,7 @@
                 var newTab = $(e.target).attr("href").substring(1);
                 localStorage.setItem("activeTab", newTab);
             });
-            
+
 
 
             $.uploadPreview({
@@ -113,9 +115,38 @@
                 no_label: false,
                 success_callback: null
             });
-
+            $.uploadPreview({
+                input_field: "#image-upload-cheque",
+                preview_box: "#image-preview-cheque",
+                label_field: "#image-label-cheque",
+                label_default: "{{ __('Choose Image') }}",
+                label_selected: "{{ __('Change Image') }}",
+                no_label: false,
+                success_callback: null
+            });
+            $.uploadPreview({
+                input_field: "#image-upload-cash",
+                preview_box: "#image-preview-cash",
+                label_field: "#image-label-cash",
+                label_default: "{{ __('Choose Image') }}",
+                label_selected: "{{ __('Change Image') }}",
+                no_label: false,
+                success_callback: null
+            });
             $('#image-preview-bank').css({
                 'background-image': 'url({{ asset($basic_payment->bank_image) }})',
+                'background-size': 'contain',
+                'background-position': 'center',
+                'background-repeat': 'no-repeat'
+            });
+            $('#image-preview-cheque').css({
+                'background-image': 'url({{ asset($basic_payment->cheque_image) }})',
+                'background-size': 'contain',
+                'background-position': 'center',
+                'background-repeat': 'no-repeat'
+            });
+            $('#image-preview-cash').css({
+                'background-image': 'url({{ asset($basic_payment->cash_image) }})',
                 'background-size': 'contain',
                 'background-position': 'center',
                 'background-repeat': 'no-repeat'
