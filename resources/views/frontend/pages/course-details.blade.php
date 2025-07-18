@@ -509,7 +509,7 @@
                                    <img src="{{ asset('frontend/img/icons/course_icon03.svg') }}" alt="img"
                                         class="injectable">
                                     {{ __('Date') }}
-                                    <span>{{ ($course->date) }}</span>
+                                    <span>{{ $course->date ?? 'à planifier , pas de cours disponible' }}</span>
                                 </li>
                               {{-- <li>
                                     <img src="{{ asset('frontend/img/icons/course_icon04.svg') }}" alt="img"
@@ -554,23 +554,30 @@
                         </div>
                         <div class="courses__details-enroll">
                             <div class="tg-button-wrap">
-                                @if (in_array($course->id, session('enrollments') ?? []))
-                                    <a href="{{ route('student.enrolled-courses') }}"
-                                        class="btn btn-two arrow-btn already-enrolled-btn" data-id="">
-                                        <span class="text">{{ __('Inscrit') }}</span>
-                                        <i class="flaticon-arrow-right"></i>
-                                    </a>
-                                @elseif ($course->enrollments->count() >= $course->capacity && $course->capacity != null)
-                                    <a href="{{ route('register.step1') }}" class="btn btn-two arrow-btn" data-id="{{ $course->id }}">
-                                        <span class="text">{{ __('Réservé') }}</span>
-                                        <i class="flaticon-arrow-right"></i>
-                                    </a>
+                                @if(!is_null($course->date))
+                                    @if (in_array($course->id, session('enrollments') ?? []))
+                                        <a href="{{ route('student.enrolled-courses') }}"
+                                            class="btn btn-two arrow-btn already-enrolled-btn" data-id="">
+                                            <span class="text">{{ __('Inscrit') }}</span>
+                                            <i class="flaticon-arrow-right"></i>
+                                        </a>
+                                    @elseif ($course->enrollments->count() >= $course->capacity && $course->capacity != null)
+                                        <a href="{{ route('register.step1') }}" class="btn btn-two arrow-btn" data-id="{{ $course->id }}">
+                                            <span class="text">{{ __('Réservé') }}</span>
+                                            <i class="flaticon-arrow-right"></i>
+                                        </a>
+                                    @else
+                                        <a href="javascript:;"class="btn btn-two arrow-btn add-to-cart"
+                                            data-id="{{ $course->id }}">
+                                            <span class="text">{{ __('S\'abonner') }}</span>
+                                            <i class="flaticon-arrow-right"></i>
+                                        </a>
+                                    @endif
                                 @else
-                                    <a href="javascript:;"class="btn btn-two arrow-btn add-to-cart"
-                                        data-id="{{ $course->id }}">
-                                        <span class="text">{{ __('S\'abonner') }}</span>
-                                        <i class="flaticon-arrow-right"></i>
-                                    </a>
+                                        <a href="#"class="btn btn-two arrow-btn disabled">
+                                            <span class="text">{{ __('S\'abonner') }}</span>
+                                            <i class="flaticon-arrow-right"></i>
+                                        </a>
                                 @endif
 
                             </div>

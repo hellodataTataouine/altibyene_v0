@@ -139,7 +139,7 @@
 </div>
 
 <script>
-    
+
     // Fonction pour afficher/masquer la fenêtre de chat avec animation
 
     const chatBubble = document.getElementById('chat-bubble');
@@ -204,7 +204,7 @@
 
     // Fonction pour envoyer à l'API WhatsApp
     async function sendToWhatsApp(message) {
-        const phoneNumber = "21658038510"; // Remplacez par votre numéro
+        const phoneNumber = "22248464667"; // Remplacez par votre numéro
         const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
         // Ouvrir WhatsApp directement

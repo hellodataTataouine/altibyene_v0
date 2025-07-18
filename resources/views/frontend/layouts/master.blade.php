@@ -68,7 +68,7 @@
         @yield('contents')
     </main>
     <!-- main-area-end -->
-
+    @include('frontend.pages.message')
     <!-- modal-area -->
     @include('frontend.partials.modal')
     @include('frontend.instructor-dashboard.course.partials.add-new-section-modal')

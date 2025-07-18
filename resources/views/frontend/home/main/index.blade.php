@@ -10,7 +10,7 @@
         @include('frontend.home.main.sections.banner-area')
         <!-- banner-area-end -->
     @endif
-    @include('frontend.pages.message')
+    
     @include('frontend.pages.adhkar')
 
           <!--presentataion attebyan --->

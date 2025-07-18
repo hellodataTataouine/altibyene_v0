@@ -16,8 +16,8 @@
                         <a
                             href="{{ route('courses', ['category' => $course->category->id]) }}">{{ $course->category->translation->name }}</a>
                     </li>--}}
-                    <li class="avg-rating"><i class="fas fa-star"></i>
-                        {{ number_format($course->reviews()->avg('rating'), 1) ?? 0 }}</li>
+                    <li class="avg-rating"><i class="fas fa-euro-sign"></i>
+                        {{ number_format($course->price, 2) ?? 0 }}</li>
                 </ul>
                 <h5 class="title"><a
                         href="{{ route('course.show', $course->slug) }}">{{ truncate($course->title, 50) }}</a></h5>
@@ -32,39 +32,40 @@
                 </div>
 
                 <div class="courses__item-bottom">
-                    @if (in_array($course->id, session('enrollments') ?? []))
-                        <div class="button">
-                            <a href="{{ route('student.enrolled-courses') }}"
-                                class="already-enrolled-btn" data-id="">
-                                <span class="text">{{ __('Inscrit') }}</span>
-                                <i class="flaticon-arrow-right"></i>
-                            </a>
-                        </div>
-                    @elseif ($course->enrollments_count >= $course->capacity && $course->capacity != null)
-                        <div class="button">
-                            <a href="javascript:;" class=""
-                                data-id="{{ $course->id }}">
-                                <span class="text">{{ __('Réservé') }}</span>
-                                <i class="flaticon-arrow-right"></i>
-                            </a>
-                        </div>
-                    @else
-                  <div class="button">
+                    @if (!is_null($course->date))
 
-                    <a href="javascript:;" class="add-to-cart" data-id="{{ $course->id }}">
+                        @if (in_array($course->id, session('enrollments') ?? []))
+                            <div class="button">
+                                <a href="{{ route('student.enrolled-courses') }}"
+                                    class="already-enrolled-btn" data-id="">
+                                    <span class="text">{{ __('Inscrit') }}</span>
+                                    <i class="flaticon-arrow-right"></i>
+                                </a>
+                            </div>
+                        @elseif ($course->enrollments_count >= $course->capacity && $course->capacity != null)
+                            <div class="button">
+                                <a href="javascript:;" class=""
+                                    data-id="{{ $course->id }}">
+                                    <span class="text">{{ __('Réservé') }}</span>
+                                    <i class="flaticon-arrow-right"></i>
+                                </a>
+                            </div>
+                        @else
+                            <div class="button">
+
+                                <a href="javascript:;" class="add-to-cart" data-id="{{ $course->id }}">
+                                    <span class="text">{{ __('S\'abonner') }}</span>
+                                    <i class="flaticon-arrow-right"></i>
+                                </a>
+                            </div>
+                        @endif
+                    @else
+                            <a href="#"class="btn btn-two arrow-btn disabled">
                                 <span class="text">{{ __('S\'abonner') }}</span>
                                 <i class="flaticon-arrow-right"></i>
                             </a>
-                        </div>
                     @endif
-                   {{-- @if ($course->price == 0)
-                    <h4 class="price">{{ __('Gratuit') }}</h4>
-                @elseif ($course->price > 0 && $course->discount > 0)
-                    <h4 class="price">{{ number_format($course->discount, 2) }}  €  /M</h4>
-                @else
-                    <h4 class="price">{{ number_format($course->price, 2) }}  € /M</h4>
-                @endif--}}
-            </div>
+                </div>
 
 
              <div class="courses__item-bottom">
