@@ -396,7 +396,10 @@ class PaymentController extends Controller {
     }
     public function pay_via_stripe() {
         $basic_payment = $this->get_basic_payment_info();
-
+        $order = session()->get('order');
+        $orderItem = OrderItem::where('order_id',$order->id)->first();
+        $course = Course::findOrFail($orderItem->course_id);
+        
         // Set your Stripe API secret key
         \Stripe\Stripe::setApiKey($basic_payment?->stripe_secret);
 
@@ -426,7 +429,7 @@ class PaymentController extends Controller {
                     'currency'     => $payable_currency,
                     'unit_amount'  => $payable_with_charge,
                     'product_data' => [
-                        'name' => cache()->get('setting')->app_name,
+                        'name' => cache()->get('setting')->app_name.': '.$course->title,
                     ],
                 ],
                 'quantity'   => 1,
