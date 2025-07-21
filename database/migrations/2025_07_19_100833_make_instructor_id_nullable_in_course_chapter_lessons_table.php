@@ -13,18 +13,15 @@ return new class extends Migration
     {
         Schema::table('course_chapter_lessons', function (Blueprint $table) {
             // Supprimer d'abord la contrainte si elle existe
-            $table->dropForeign(['instructor_id']);
-        });
-
-        Schema::table('course_chapter_lessons', function (Blueprint $table) {
-            // Rendre la colonne nullable
             $table->foreignId('instructor_id')->nullable()->change();
 
-            // Recréer la contrainte
+            // Et ajouter la contrainte si tu veux la mettre maintenant
             $table->foreign('instructor_id')
                   ->references('id')->on('users')
-                  ->nullOnDelete(); // ou ->onDelete('set null')
+                  ->nullOnDelete();
         });
+
+
     }
 
     /**
