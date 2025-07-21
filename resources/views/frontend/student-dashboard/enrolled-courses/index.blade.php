@@ -49,13 +49,17 @@
                                                                 {{ number_format($enroll->course->reviews()->avg('rating') ?? 0, 1) }}
                                                             </div>
                                                         </div>
+
                                                         @php
-                                                            $courseLectureCount = App\Models\CourseChapterItem::whereHas(
-                                                                'chapter',
-                                                                function ($q) use ($enroll) {
-                                                                    $q->where('course_id', $enroll->course->id);
-                                                                },
-                                                            )->count();
+                                                            $courseLectureCount = \App\Models\CourseChapterItem::whereHas('chapter', function ($q) use ($enroll) {
+                                                                $q->where('course_id', $enroll->course->id);
+
+                                                                if (!is_null($enroll->session_id)) {
+                                                                    $q->where('session_id', $enroll->session_id);
+                                                                } else {
+                                                                    $q->whereNull('session_id');
+                                                                }
+                                                            })->count();
 
                                                             $courseLectureCompletedByUser = App\Models\CourseProgress::where(
                                                                 'user_id',
@@ -100,14 +104,29 @@
                                                             <li><i
                                                                     class="flaticon-mortarboard"></i>{{ $enroll->course->enrollments()->count() }}
                                                             </li>
-                                                            @if ($courseCompletedPercent == 100)
+                                                            {{-- download certificate --}}
+                                                            @php
+                                                                $certificate = \App\Models\Certification::where('user_id', $enroll->user_id)
+                                                                    ->where('course_id', $enroll->course->id)
+                                                                    ->first();
+                                                            @endphp
+                                                            @if ($certificate)
+                                                                <li class="ms-auto">
+                                                                    <a class="basic-button"
+                                                                        href="{{ asset($certificate->certificat) }}" target="_blank" download><i
+                                                                            class="certificate fas fa-download"></i>
+                                                                        {{ __('Certificate') }}</a>
+                                                                </li>
+
+                                                            @endif
+                                                            {{-- @if ($courseCompletedPercent == 100)
                                                                 <li class="ms-auto">
                                                                     <a class="basic-button"
                                                                         href="{{ route('student.download-certificate', $enroll->course->id) }}"><i
                                                                             class="certificate fas fa-download"></i>
                                                                         {{ __('Certificate') }}</a>
                                                                 </li>
-                                                            @endif
+                                                            @endif --}}
                                                         </ul>
                                                     </div>
                                                 </div>

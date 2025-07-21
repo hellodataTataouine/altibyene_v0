@@ -64,6 +64,7 @@ class OrderController extends Controller
                     'order_id' => $order->id,
                     'user_id' => $order->buyer_id,
                     'course_id' => $item->course_id,
+                    'session_id' => $item->session_id, // Ensure session_id is set
                     'has_access' => 1,
                 ]);
 
@@ -78,7 +79,7 @@ class OrderController extends Controller
             foreach ($order->orderItems as $item) {
                 // delete enrollment
                 $enrollment = Enrollment::where('user_id', $order->buyer_id)->where('course_id', $item->course_id)->first();
-                
+
                 if($enrollment && !is_null($enrollment)){
                     $enrollment->delete();
                 }

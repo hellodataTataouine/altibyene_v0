@@ -28,6 +28,9 @@
                 @if (Module::isEnabled('AskBook') && checkAdminHasPermission('course.certificate.management'))
                     @include('askbook::sidebar')
                 @endif
+                @if (Module::isEnabled('Certificate') && checkAdminHasPermission('course.certificate.management'))
+                    @include('certificate::sidebar')
+                @endif
                 @if (Module::isEnabled('CertificateBuilder') && checkAdminHasPermission('course.certificate.management'))
                     @include('certificatebuilder::sidebar')
                 @endif

@@ -97,6 +97,7 @@ class CourseContentController extends Controller {
     }
 
     function lessonCreate(Request $request) {
+        
         $courseId = $request->courseId;
         $chapterId = $request->chapterId;
         $chapters = CourseChapter::where('course_id', $courseId)->orderBy('order')->get();
@@ -133,6 +134,7 @@ class CourseContentController extends Controller {
     }
 
     function lessonStore(ChapterLessonRequest $request) {
+
         $chapterItem = CourseChapterItem::create([
             'instructor_id' => auth('web')->id(),
             'chapter_id'    => $request->chapter_id,
@@ -258,7 +260,7 @@ class CourseContentController extends Controller {
 
         if ($request->type == 'lesson') {
             $courseChapterLesson = CourseChapterLesson::where('chapter_item_id', $chapterItem->id)->first();
-            
+
             $old_file_path = $courseChapterLesson->file_path;
             if (in_array($courseChapterLesson->storage, ['wasabi', 'aws']) && $old_file_path != $request->link_path) {
                 $disk = Storage::disk($courseChapterLesson->storage);
@@ -281,6 +283,7 @@ class CourseContentController extends Controller {
         } elseif ($request->type == 'live') {
 
             $courseChapterLesson = CourseChapterLesson::where('chapter_item_id', $chapterItem->id)->first();
+
             $courseChapterLesson->update([
                 'title'           => $request->title,
                 'description'     => $request->description,
@@ -352,6 +355,7 @@ class CourseContentController extends Controller {
     }
 
     function chapterLessonDestroy(string $chapterItemId) {
+
         $chapterItem = CourseChapterItem::findOrFail($chapterItemId);
         abort_if($chapterItem->instructor_id != auth('web')->user()->id, 403, __('unauthorized access'));
 

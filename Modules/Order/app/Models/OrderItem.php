@@ -20,6 +20,7 @@ class OrderItem extends Model
         'price' => 'price',
         'course_id' => 'course_id',
         'commission_rate' => 'commission_rate',
+        'session_id' => 'session_id',
     ];
 
     public function course() {

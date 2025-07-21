@@ -11,6 +11,7 @@ use App\Models\CoursePartnerInstructor;
 use App\Models\CourseSelectedFilterOption;
 use App\Models\CourseSelectedLanguage;
 use App\Models\CourseSelectedLevel;
+use App\Models\CoursSession;
 use App\Models\Quiz;
 use App\Models\QuizQuestion;
 use App\Models\User;
@@ -132,8 +133,10 @@ class CourseController extends Controller
                 ));
                 break;
             case '3':
+                $sessions = CoursSession::where('cours_id', $request->id)->get();
                 $chapters = CourseChapter::with(['chapterItems'])->where(['course_id' => $request->id, 'status' => 'active'])->orderBy('order')->get();
-                return view('course::course.course-content', compact('chapters'));
+                
+                return view('course::course.course-content', compact('chapters','sessions'));
                 break;
             case '4':
                 $courseId = request('id');

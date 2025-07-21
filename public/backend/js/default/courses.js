@@ -178,9 +178,10 @@ $(document).ready(function () {
     $(".sort-chapter-btn").on("click", function () {
         $(".dynamic-modal").modal("show");
         let courseId = $('meta[name="course_id"]').attr("content");
+        let sessionId = $(this).data("session-id");
         $.ajax({
             method: "get",
-            url: base_url + "/admin/course-chapter/sorting/" + courseId,
+            url: base_url + "/admin/course-chapter/sorting/" + courseId+ "?session_id=" + sessionId,
             beforeSend: function () {
                 dynamicModalContent.html(loader);
             },
@@ -513,6 +514,7 @@ $(document).ready(function () {
                     url: url,
                     data: {
                         _token: $('meta[name="csrf-token"]').attr("content"),
+                        _method: "DELETE",
                     },
                     beforeSend: function () {},
                     success: function (data) {

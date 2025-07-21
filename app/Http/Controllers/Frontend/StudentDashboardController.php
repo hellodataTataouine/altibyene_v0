@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Certification;
 use App\Models\Course;
 use App\Models\CourseChapterItem;
 use App\Models\CourseProgress;
@@ -39,7 +40,6 @@ class StudentDashboardController extends Controller {
             $query->where('status', 'completed')
                 ->where('payment_status', 'paid');
             })->orderByDesc('id')->paginate(10);
-
         return view('frontend.student-dashboard.enrolled-courses.index', compact('enrolls'));
     }
 

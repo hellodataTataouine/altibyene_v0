@@ -399,7 +399,7 @@ class PaymentController extends Controller {
         $order = session()->get('order');
         $orderItem = OrderItem::where('order_id',$order->id)->first();
         $course = Course::findOrFail($orderItem->course_id);
-        
+
         // Set your Stripe API secret key
         \Stripe\Stripe::setApiKey($basic_payment?->stripe_secret);
 
@@ -832,7 +832,8 @@ class PaymentController extends Controller {
             // Gestion du statut selon le mode de paiement
             if (in_array($order->payment_method, [
                 $this->paymentService::BANK_PAYMENT,
-                $this->paymentService::CHEQUE
+                $this->paymentService::CHEQUE,
+                $this->paymentService::CASH_PAYMENT,
             ])) {
                 // Paiement par banque ou chèque : en attente de validation manuelle
                 $order->payment_status = 'pending';
@@ -852,7 +853,8 @@ class PaymentController extends Controller {
             // Stockage des détails de paiement
             if (in_array($order->payment_method, [
                 $this->paymentService::BANK_PAYMENT,
-                $this->paymentService::CHEQUE
+                $this->paymentService::CHEQUE,
+                $this->paymentService::CASH_PAYMENT,
             ])) {
                 // Banques/chèque stocké en JSON string déjà
                 $order->payment_details = $payment_details;
@@ -870,6 +872,7 @@ class PaymentController extends Controller {
                         'order_id' => $order->id,
                         'user_id' => $order->buyer_id,
                         'course_id' => $item->course_id,
+                        'session_id' => session()->get('session_id', null), // Si applicable
                         'has_access' => 1,
                     ]);
                 }

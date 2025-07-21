@@ -15,6 +15,7 @@
             <div class="form-group">
                 <label for="title">{{ __('Title') }} <code>*</code></label>
                 <input id="title" name="title" type="text" value="" class="form-control">
+                <input type="hidden" name="session_id" id="session_id" value="">
             </div>
           </div>
           <div class="text-end">

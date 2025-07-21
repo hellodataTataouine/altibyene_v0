@@ -213,7 +213,7 @@ class PaymentController extends Controller {
             $data_layer_order_items = [];
 
             $carts = $user->carts()->with('course:id,title,slug,price,discount')->get(['id', 'user_id', 'course_id']);
-
+            $session_id = Session::get('session_id', null);
             foreach ($carts as $item) {
                 $order_item = [
                     'order_id'        => $order->id,
@@ -226,6 +226,7 @@ class PaymentController extends Controller {
                     'price'           => $item->course->price,
                     'course_id'       => $item->course->id,
                     'commission_rate' => Cache::get('setting')->commission_rate,
+                    'session_id'    => $session_id,
                 ]);
                 $data_layer_order_items[] = [
                     'course_name' => $item->course->title,
@@ -383,7 +384,9 @@ class PaymentController extends Controller {
     }
     public function payment_success()
     {
+        
         $order = session()->get('order');
+        $session_id = session()->get('session_id', null);
         $after_success_transaction = session()->get('after_success_transaction', null);
         $payment_details = session()->get('payment_details', null);
 
@@ -425,16 +428,17 @@ class PaymentController extends Controller {
             $order->save();
 
             // Attribution accès pour les paiements immédiats (Stripe, PayPal, autres sauf banque et chèque)
-            if ($order->payment_status == 'paid') {
+            //if ($order->payment_status == 'paid') {
                 foreach ($order->orderItems as $item) {
                     Enrollment::create([
                         'order_id' => $order->id,
                         'user_id' => $order->buyer_id,
                         'course_id' => $item->course_id,
+                        'session_id' => $session_id,
                         'has_access' => 1,
                     ]);
                 }
-            }
+            //}
 
             // Envoi mail de confirmation
             try {

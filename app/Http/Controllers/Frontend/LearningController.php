@@ -21,17 +21,41 @@ use Illuminate\Support\Facades\Cache;
 use App\Traits\GenerateSecureLinkTrait;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Modules\Order\app\Models\Enrollment;
 
 class LearningController extends Controller {
     use GenerateSecureLinkTrait;
     function index(string $slug) {
         $user = userAuth();
-        $course = Course::active()->with([
-            'chapters',
-            'chapters.chapterItems',
-            'chapters.chapterItems.lesson',
-            'chapters.chapterItems.quiz',
-        ])->withTrashed()->where('slug', $slug)->whereHas('enrollments', fn($q) => $q->where('user_id', $user->id))->first();
+        $course = Course::where('slug', $slug)->firstOrFail();
+
+        $enrollment = Enrollment::where('user_id', $user->id)
+            ->where('course_id', $course->id)
+            ->first();
+
+        $sessionId = $enrollment?->session_id;
+
+        // Load the course with filtered chapters based on session
+        $course = Course::active()
+            ->withTrashed()
+            ->where('id', $course->id)
+            ->whereHas('enrollments', fn($q) => $q->where('user_id', $user->id))
+            ->with([
+                'chapters' => function ($q) use ($sessionId) {
+                    if ($sessionId) {
+                        $q->where('session_id', $sessionId);
+                    } else {
+                        $q->whereNull('session_id');
+                    }
+
+                    $q->with([
+                        'chapterItems',
+                        'chapterItems.lesson',
+                        'chapterItems.quiz',
+                    ]);
+                }
+            ])
+            ->firstOrFail();
         if(!$course){
             abort(404);
         }
