@@ -13,21 +13,15 @@ return new class extends Migration
     {
         Schema::table('course_chapter_items', function (Blueprint $table) {
             // Supprime la contrainte existante
-            $table->dropForeign(['instructor_id']);
-        });
+            $table->foreignId('instructor_id')->nullable()->change();
 
-        // Pour pouvoir utiliser `change()`, il faut que le package doctrine/dbal soit installé
-        Schema::table('course_chapter_items', function (Blueprint $table) {
-            // Rendre la colonne nullable
-            $table->unsignedBigInteger('instructor_id')->nullable()->change();
-        });
-
-        Schema::table('course_chapter_items', function (Blueprint $table) {
-            // Recréer la contrainte de clé étrangère
+            // Et ajouter la contrainte si tu veux la mettre maintenant
             $table->foreign('instructor_id')
-                ->references('id')->on('users')
-                ->nullOnDelete(); // ou ->onDelete('set null')
+                  ->references('id')->on('users')
+                  ->nullOnDelete();
         });
+
+
     }
 
     /**
@@ -37,16 +31,10 @@ return new class extends Migration
     {
         Schema::table('course_chapter_items', function (Blueprint $table) {
             $table->dropForeign(['instructor_id']);
+
+            // Remet la colonne comme NOT NULL
+            $table->foreignId('instructor_id')->nullable(false)->change();
         });
 
-        Schema::table('course_chapter_items', function (Blueprint $table) {
-            $table->unsignedBigInteger('instructor_id')->nullable(false)->change();
-        });
-
-        Schema::table('course_chapter_items', function (Blueprint $table) {
-            $table->foreign('instructor_id')
-                ->references('id')->on('users')
-                ->onDelete('cascade'); // selon le comportement initial
-        });
     }
 };
