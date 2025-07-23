@@ -23,7 +23,7 @@ class AskBookController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'school'=>'required|string|max:255',
+            'school'=>'nullable|string|max:255',
             'address'=>'required|string|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'required|string|max:50',
@@ -42,10 +42,11 @@ class AskBookController extends Controller
             }
             $email_setting = (object) $setting;
         }
+        $school = $bookRequest->school ? $bookRequest->school : '--';
         Mail::raw("
             Nouvelle demande de livre reçue :
             Nom : {$bookRequest->name}
-            École: {$bookRequest->school}
+            École: {$school}
             Adresse de livraison: {$bookRequest->address}
             Email : {$bookRequest->email}
             Téléphone : {$bookRequest->phone}

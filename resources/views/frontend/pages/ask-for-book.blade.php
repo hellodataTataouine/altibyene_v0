@@ -79,10 +79,8 @@
                                         <input
                                             name="school"
                                             type="text"
-                                            placeholder="{{ __('Nom de l\'école') }} *"
-                                            required
-                                            oninvalid="this.setCustomValidity('Veuillez remplir ce champ')"
-                                            oninput="setCustomValidity('')"
+                                            placeholder="{{ __('Nom de l\'école') }}"
+
                                         >
                                     </div>
                                 </div>
@@ -90,7 +88,7 @@
                                 <div class="form-grp">
                                     <textarea
                                         name="address"
-                                        placeholder="{{ __('Adresse de livraison') }} *"
+                                        placeholder="{{ __('Adresse postale') }} *"
                                         required
                                         oninvalid="this.setCustomValidity('Veuillez remplir ce champ')"
                                         oninput="setCustomValidity('')"
