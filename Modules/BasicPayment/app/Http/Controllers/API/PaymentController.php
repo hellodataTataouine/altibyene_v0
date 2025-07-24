@@ -41,50 +41,59 @@ class PaymentController extends Controller {
     }
     public function pay_via_cheque(Request $request)
     {
-
-        // Valider les champs essentiels (tu peux aussi utiliser un FormRequest dédié)
+        // ✅ Étape 1 : Valider les champs du formulaire
         $request->validate([
-            'holder_name'    => 'required|string|max:255',
-            'cheque_number'  => 'required|string|max:255',
-            'cheque_date'    => 'required|date',
-            'amount'         => 'required|numeric',
-            'reference'      => 'nullable|string|max:255',
+            'holder_name'      => 'required|string|max:255',
+            'installments'     => 'required|integer|min:1|max:4',
+            'payment_amounts'  => 'required|array|min:1|max:4',
+            'payment_amounts.*'=> 'required|numeric|min:0.01',
+            'payment_dates'    => 'required|array|min:1|max:4',
+            'payment_dates.*'  => 'required|date|after_or_equal:today',
+            'cheque_count'     => 'required|integer|min:1',
+            'reference'        => 'nullable|string|max:255',
         ]);
 
-        // Préparer les détails du paiement à stocker
-        $chequeDetails = json_encode([
-            'holder_name'   => $request->holder_name,
-            'cheque_number' => $request->cheque_number,
-            'cheque_date'   => $request->cheque_date,
-            'amount'        => $request->amount,
-            'reference'     => $request->reference,
-        ]);
+        // ✅ Étape 2 : Construire les paiements en tableau structuré
+        $payments = [];
+        foreach ($request->payment_amounts as $index => $amount) {
+            $payments[] = [
+                'amount' => $amount,
+                'date'   => $request->payment_dates[$index] ?? null,
+            ];
+        }
 
-        // Vérifier les doublons (par exemple même numéro de chèque et même référence)
-        $allPayments = Order::whereNotNull('payment_details')->get();
+        // ✅ Étape 3 : Vérifier s’il y a un doublon de référence
+        if (!empty($request->reference)) {
+            $duplicate = Order::whereNotNull('payment_details')->get()
+                ->first(function ($order) use ($request) {
+                    $details = json_decode($order->payment_details, true);
+                    return isset($details['reference']) && $details['reference'] === $request->reference;
+                });
 
-        foreach ($allPayments as $payment) {
-            $paymentDetailsJson = json_decode($payment->payment_details, true);
-
-            if (
-                isset($paymentDetailsJson['cheque_number']) && $paymentDetailsJson['cheque_number'] === $request->cheque_number &&
-                isset($paymentDetailsJson['reference']) && $paymentDetailsJson['reference'] === $request->reference
-            ) {
-                // Transaction déjà utilisée, redirection échec
+            if ($duplicate) {
+                // 🔁 Redirection vers l’échec si la référence est déjà utilisée
                 $after_failed_url = route('payment-api.webview-failed-payment');
                 return redirect($after_failed_url)
-                    ->with('messege', 'Ce chèque a déjà été utilisé pour un paiement.')
+                    ->with('messege', 'Cette référence est déjà utilisée pour un paiement par chèque.')
                     ->with('alert-type', 'error');
             }
         }
 
-        // Enregistrer les détails dans la session pour traitement ultérieur
-        Session::put('after_success_transaction', $request->reference ?? $request->cheque_number);
+        // ✅ Étape 4 : Enregistrement des données du paiement dans la session
+        $chequeDetails = json_encode([
+            'holder_name'  => $request->holder_name,
+            'installments' => $request->installments,
+            'cheque_count' => $request->cheque_count,
+            'reference'    => $request->reference,
+            'payments'     => $payments, // montant et date par paiement
+        ]);
+
+        Session::put('after_success_transaction', $request->reference ?? 'cheque_' . now()->timestamp);
         Session::put('payment_details', $chequeDetails);
 
-        // Rediriger vers la page de confirmation de succès
+        // ✅ Étape 5 : Redirection vers la page de succès
         $after_success_url = route('payment-api.webview-success-payment', [
-            'bearer_token' => request()->bearer_token,
+            'bearer_token' => request()->bearerToken(),
         ]);
 
         return redirect($after_success_url)
@@ -93,54 +102,120 @@ class PaymentController extends Controller {
     }
 
 
-    public function pay_via_bank(BankInformationRequest $request) {
-        $bankDetails = json_encode($request->only(['bank_name', 'account_number', 'routing_number', 'branch', 'transaction']));
 
-        $allPayments = Order::whereNotNull('payment_details')->get();
-
-        foreach ($allPayments as $payment) {
-            $paymentDetailsJson = json_decode($payment?->payment_details, true);
-
-            if (isset($paymentDetailsJson['account_number']) && $paymentDetailsJson['account_number'] == $request->account_number) {
-                if (isset($paymentDetailsJson['transaction']) && $paymentDetailsJson['transaction'] == $request->transaction) {
-                    $after_failed_url = route('payment-api.webview-failed-payment');
-                    return redirect($after_failed_url);
-                }
-            }
-        }
-        Session::put('after_success_transaction', $request->transaction);
-        Session::put('payment_details', $bankDetails);
-
-        $after_success_url = route('payment-api.webview-success-payment', ['bearer_token' => request()->bearer_token]);
-        return redirect($after_success_url);
-    }
-    public function pay_via_cash()
+    public function pay_via_bank(Request $request)
     {
-        // Tu peux enregistrer des infos par défaut ou vides pour les détails de paiement comptant
-        $cashDetails = json_encode([
-            'method' => 'cash_payment',
-            'transaction' => 'cash_txn_' . now()->timestamp, // identifiant unique simple
+        // Validate inputs matching your blade form (if not done in BankInformationRequest)
+        $request->validate([
+            'installments' => 'required|integer|min:1|max:4',
+            'payment_amounts' => 'required|array',
+            'payment_amounts.*' => 'required|numeric|min:0.01',
+            'payment_dates' => 'required|array',
+            'payment_dates.*' => 'required|date',
+            'accept_terms' => 'accepted',
+            'comment' => 'nullable|string|max:1000',
         ]);
 
-        // Optionnel : vérifier si cette transaction existe déjà (peu utile ici car on génère unique)
-        $allPayments = Order::whereNotNull('payment_details')->get();
-        foreach ($allPayments as $payment) {
-            $paymentDetailsJson = json_decode($payment?->payment_details, true);
-            if (isset($paymentDetailsJson['transaction']) && $paymentDetailsJson['transaction'] == json_decode($cashDetails, true)['transaction']) {
-                // Si jamais transaction existe déjà, on redirige vers l'échec
-                $after_failed_url = route('payment-api.webview-failed-payment');
-                return redirect($after_failed_url);
-            }
+        // Build payment details array with unique transaction id
+        $bankDetailsArray = [
+            'method' => 'bank_transfer',
+            'installments' => $request->installments,
+            'payments' => [],
+            'comment' => $request->comment,
+            'transaction' => 'bank_txn_' . now()->timestamp . '_' . uniqid(),
+        ];
+
+        for ($i = 0; $i < $request->installments; $i++) {
+            $bankDetailsArray['payments'][] = [
+                'amount' => $request->payment_amounts[$i],
+                'date' => $request->payment_dates[$i],
+            ];
         }
 
-        // Stocker en session les infos de la transaction et détails
-        Session::put('after_success_transaction', json_decode($cashDetails, true)['transaction']);
-        Session::put('payment_details', $cashDetails);
+        $bankDetailsJson = json_encode($bankDetailsArray);
 
-        // Rediriger vers la page de succès avec bearer token
-        $after_success_url = route('payment-api.webview-success-payment', ['bearer_token' => request()->bearer_token]);
+        // Optionally check duplicate transaction (usually unnecessary since txn id is unique)
+        $exists = Order::whereNotNull('payment_details')->get()->contains(function ($payment) use ($bankDetailsArray) {
+            $details = json_decode($payment->payment_details, true);
+            return isset($details['transaction']) && $details['transaction'] === $bankDetailsArray['transaction'];
+        });
+
+        if ($exists) {
+            $after_failed_url = route('payment-api.webview-failed-payment');
+            return redirect($after_failed_url);
+        }
+
+        // Store session data for after payment success processing
+        Session::put('after_success_transaction', $bankDetailsArray['transaction']);
+        Session::put('payment_details', $bankDetailsJson);
+
+        // Redirect to success URL with bearer token
+        $after_success_url = route('payment-api.webview-success-payment', ['bearer_token' => $request->bearer_token]);
         return redirect($after_success_url);
     }
+
+    public function pay_via_cash(Request $request)
+    {
+        // Validation des données reçues
+        $request->validate([
+            'installments'      => 'required|integer|min:1|max:4',
+            'payment_amounts'   => 'required|array',
+            'payment_amounts.*' => 'required|numeric|min:0.01',
+            'payment_dates'     => 'required|array',
+            'payment_dates.*'   => 'required|date',
+            'accept_terms'      => 'accepted',
+            'comment'           => 'nullable|string|max:1000',
+        ]);
+
+        $installments = $request->input('installments');
+        $amounts = $request->input('payment_amounts');
+        $dates = $request->input('payment_dates');
+        $comment = $request->input('comment');
+
+        // Vérifier que le nombre de montants et de dates correspond au nombre d'échéances choisi
+        if (count($amounts) !== $installments || count($dates) !== $installments) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Le nombre de montants et de dates doit correspondre au nombre de paiements sélectionnés.'
+            ], 422);
+        }
+
+        // Construire le détail complet du paiement cash
+        $cashDetailsArray = [
+            'method'        => 'cash_payment',
+            'transaction'   => 'cash_txn_' . now()->timestamp . '_' . uniqid(), // identifiant unique
+            'installments'  => $installments,
+            'payments'      => [], // chaque paiement aura montant + date
+            'comment'       => $comment,
+        ];
+
+        for ($i = 0; $i < $installments; $i++) {
+            $cashDetailsArray['payments'][] = [
+                'amount' => $amounts[$i],
+                'date'   => $dates[$i],
+            ];
+        }
+
+        $cashDetails = json_encode($cashDetailsArray);
+
+        // Ici, tu pourrais vérifier les doublons si besoin
+
+        // Stocker en session pour traitement post paiement (ou autre stockage adapté à ton API)
+        Session::put('after_success_transaction', $cashDetailsArray['transaction']);
+        Session::put('payment_details', $cashDetails);
+
+        // Appeler la méthode de succès qui finalise la commande (adapter si nécessaire pour API)
+        $result = $this->payment_success();
+
+        // Renvoi d’une réponse JSON
+        return response()->json([
+            'success' => true,
+            'message' => 'Paiement comptant enregistré avec succès.',
+            'transaction_id' => $cashDetailsArray['transaction'],
+            'data' => $result, // si tu souhaites retourner des infos supplémentaires
+        ]);
+    }
+
 
     public function placeOrder($paymentMethod) {
         $user = auth()->user();
@@ -384,7 +459,7 @@ class PaymentController extends Controller {
     }
     public function payment_success()
     {
-        
+
         $order = session()->get('order');
         $session_id = session()->get('session_id', null);
         $after_success_transaction = session()->get('after_success_transaction', null);

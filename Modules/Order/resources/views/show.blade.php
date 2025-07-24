@@ -36,6 +36,7 @@
                                             {{ __('Email') }} {{ $order->user->email }}<br>
                                             {{ __('Address') }} {{ $order->user->address }}<br>
                                         </address>
+
                                     </div>
 
                                 </div>
@@ -50,6 +51,49 @@
                                             {{ $order->payment_status }}<br><br>
                                         </address>
                                     </div>
+                                </div>
+                                <div class="row">
+                                     @if ($order->payment_method ==='chèque' || $order->payment_method === 'Virement bancaire' || $order->payment_method === 'Comptant')
+                                            <addrerss>
+                                                <strong>{{__('Détails')}}</strong><br>
+                                                @php
+                                                    $details = json_decode($order->payment_details, true);
+
+                                                @endphp
+                                                {{ __('Nombre de paiements :')}} {{ $details['installments'] ?? 'N/A' }}<br>
+                                                @if (isset($details['holder_name']))
+                                                    {{ __('Titulaire :') }} {{ $details['holder_name'] }}<br>
+
+                                                @endif
+
+                                                @if (isset($details['cheque_count']))
+                                                    {{ __('Nombre de chèques :') }} {{ $details['cheque_count'] }} <br>
+                                                @endif
+                                                @if (isset($details['payments']) && count($details['payments']))
+                                                    <strong>{{ __('Détails des paiements') }}:</strong><br><br>
+                                                    <table style="width: 100%; border-collapse: collapse;" border="1" cellpadding="8">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>{{ __('Date') }}</th>
+                                                                <th>{{ __('Montant') }}</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($details['payments'] as $payment)
+                                                                <tr>
+                                                                    <td>{{ \Carbon\Carbon::parse($payment['date'])->format('d-m-Y') }}</td>
+                                                                    <td>{{ number_format($payment['amount'], 2) }} {{ $order->payable_currency }}</td>
+                                                                    
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                    <br>
+                                                @endif
+                                                {{ __('Commentaire :') }} {{ $details['comment'] ?? 'N/A' }}<br>
+
+                                            </addrerss>
+                                        @endif
                                 </div>
                             </div>
                         </div>
@@ -152,7 +196,7 @@
                                             <div class="invoice-detail-value invoice-detail-value-lg">{{ $total }} {{ $order->payable_currency }}
                                             </div>
                                         </div>
-                                       
+
                                     </div>
                                 </div>
                             </div>

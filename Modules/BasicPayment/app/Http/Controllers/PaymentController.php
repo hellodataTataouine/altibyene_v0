@@ -225,52 +225,92 @@ class PaymentController extends Controller {
         return view($view, compact('order', 'paymentService', 'paymentMethod'));
     }
 
-    public function pay_via_bank(BankInformationRequest $request) {
-        $bankDetails = json_encode($request->only(['bank_name', 'account_number', 'routing_number', 'branch', 'transaction']));
+    public function pay_via_bank(Request $request)
+    {
+        // Validate inputs according to your blade form
+        $request->validate([
+            'installments' => 'required|integer|min:1|max:4',
+            'payment_amounts' => 'required|array',
+            'payment_amounts.*' => 'required|numeric|min:0.01',
+            'payment_dates' => 'required|array',
+            'payment_dates.*' => 'required|date',
+            'accept_terms' => 'accepted',
+            'comment' => 'nullable|string|max:1000',
+        ]);
 
-        $allPayments = Order::whereNotNull('payment_details')->get();
+        // Build the payment details array based on what the blade sends
+        $bankDetailsArray = [
+            'method' => 'bank_transfer',
+            'installments' => $request->installments,
+            'payments' => [],
+            'comment' => $request->comment,
+            'transaction' => 'bank_txn_' . now()->timestamp . '_' . uniqid(),
+        ];
 
-        foreach ($allPayments as $payment) {
-            $paymentDetailsJson = json_decode($payment?->payment_details, true);
-
-            if (isset($paymentDetailsJson['account_number']) && $paymentDetailsJson['account_number'] == $request->account_number) {
-                if (isset($paymentDetailsJson['transaction']) && $paymentDetailsJson['transaction'] == $request->transaction) {
-                    $notification = __('Payment failed, transaction already exist');
-                    $notification = ['messege' => $notification, 'alert-type' => 'error'];
-
-                    return redirect()->back()->with($notification);
-                }
-            }
+        for ($i = 0; $i < $request->installments; $i++) {
+            $bankDetailsArray['payments'][] = [
+                'amount' => $request->payment_amounts[$i],
+                'date' => $request->payment_dates[$i],
+            ];
         }
-        Session::put('after_success_transaction', $request->transaction);
-        Session::put('payment_details', $bankDetails);
+
+        $bankDetailsJson = json_encode($bankDetailsArray);
+
+        // You can check for duplicate transaction if needed, but with unique txn id, usually no need
+
+        Session::put('after_success_transaction', $bankDetailsArray['transaction']);
+        Session::put('payment_details', $bankDetailsJson);
 
         return $this->payment_success();
     }
-    public function pay_via_cash()
+
+    public function pay_via_cash(Request $request)
     {
-        // Générer des détails de paiement simples pour cash
-        $cashDetailsArray = [
-            'method'      => 'cash_payment',
-            'transaction' => 'cash_txn_' . now()->timestamp, // identifiant unique
-        ];
-        $cashDetails = json_encode($cashDetailsArray);
+        // Validation
+        $request->validate([
+            'installments'      => 'required|integer|min:1|max:4',
+            'payment_amounts'   => 'required|array',
+            'payment_amounts.*' => 'required|numeric|min:0.01',
+            'payment_dates'     => 'required|array',
+            'payment_dates.*'   => 'required|date',
+            'accept_terms'      => 'accepted',
+            'comment'           => 'nullable|string|max:1000',
+        ]);
 
-        // Récupérer tous les paiements existants pour vérifier la transaction
-        $allPayments = Order::whereNotNull('payment_details')->get();
+        $installments = $request->input('installments');
+        $amounts = $request->input('payment_amounts');
+        $dates = $request->input('payment_dates');
+        $comment = $request->input('comment');
 
-        foreach ($allPayments as $payment) {
-            $paymentDetailsJson = json_decode($payment?->payment_details, true);
-
-            if (isset($paymentDetailsJson['transaction']) && $paymentDetailsJson['transaction'] == $cashDetailsArray['transaction']) {
-                $notification = __('Payment failed, transaction already exists');
-                $notification = ['messege' => $notification, 'alert-type' => 'error'];
-
-                return redirect()->back()->with($notification);
-            }
+        // Vérifier que le nombre de montants et de dates correspond au nombre d'échéances choisi
+        if (count($amounts) !== $installments || count($dates) !== $installments) {
+            return redirect()->back()
+                ->withInput()
+                ->withErrors(['payment' => 'Le nombre de montants et de dates doit correspondre au nombre de paiements sélectionnés.']);
         }
 
-        // Stocker en session
+        // Construire le détail complet du paiement cash
+        $cashDetailsArray = [
+            'method'        => 'cash_payment',
+            'transaction'   => 'cash_txn_' . now()->timestamp . '_' . uniqid(), // identifiant unique
+            'installments'  => $installments,
+            'payments'      => [], // chaque paiement aura montant + date
+            'comment'       => $comment,
+        ];
+
+        for ($i = 0; $i < $installments; $i++) {
+            $cashDetailsArray['payments'][] = [
+                'amount' => $amounts[$i],
+                'date'   => $dates[$i],
+            ];
+        }
+
+        $cashDetails = json_encode($cashDetailsArray);
+
+        // Ici on peut vérifier doublons si tu as une logique plus fiable,
+        // mais avec un transaction id unique généré à la volée ça n'a pas trop de sens.
+
+        // Stocker en session pour traitement post paiement
         Session::put('after_success_transaction', $cashDetailsArray['transaction']);
         Session::put('payment_details', $cashDetails);
 
@@ -278,43 +318,59 @@ class PaymentController extends Controller {
         return $this->payment_success();
     }
 
+
     public function pay_via_cheque(Request $request)
     {
-        //dd('2',$request->all());
-        // Valide les champs nécessaires (tu peux aussi utiliser un FormRequest spécifique)
+
+        // ✅ Étape 1 : Validation des champs
         $request->validate([
-            'holder_name'   => 'required|string|max:255',
-            'cheque_number' => 'required|string|max:255',
-            'cheque_date'   => 'required|date',
-            'amount'        => 'required|numeric',
-            'reference'     => 'nullable|string|max:255',
+            'holder_name'      => 'required|string|max:255',
+            'installments'     => 'required|integer|min:1|max:4',
+            'payment_amounts'  => 'required|array|min:1',
+            'payment_amounts.*'=> 'required|numeric|min:0.01',
+            'payment_dates'    => 'required|array|min:1',
+            'payment_dates.*'  => 'required|date|after_or_equal:today',
+            'cheque_count'     => 'required|integer|min:1',
+            'comment'          => 'nullable|string|max:1000',
         ]);
 
-        // Encode les détails du chèque en JSON
-        $chequeDetails = json_encode($request->only(['holder_name', 'cheque_number', 'cheque_date', 'amount', 'reference']));
+        // ✅ Étape 2 : Créer un tableau structuré des paiements
+        $payments = [];
+        foreach ($request->payment_amounts as $index => $amount) {
+            $payments[] = [
+                'amount' => $amount,
+                'date'   => $request->payment_dates[$index] ?? null,
+            ];
+        }
 
-        // Récupère toutes les commandes avec des détails de paiement existants
-        $allPayments = Order::whereNotNull('payment_details')->get();
+        // ✅ Étape 3 : Vérifier si une transaction similaire existe (par référence)
+        if (!empty($request->reference)) {
+            $duplicate = Order::whereNotNull('payment_details')
+                ->get()
+                ->first(function ($order) use ($request) {
+                    $details = json_decode($order->payment_details, true);
+                    return isset($details['reference']) && $details['reference'] == $request->reference;
+                });
 
-        foreach ($allPayments as $payment) {
-            $paymentDetailsJson = json_decode($payment?->payment_details, true);
-            // Vérifie si un paiement existe déjà avec le même numéro de chèque et la même référence
-            if (
-                isset($paymentDetailsJson['cheque_number']) && $paymentDetailsJson['cheque_number'] == $request->cheque_number &&
-                isset($paymentDetailsJson['reference']) && $paymentDetailsJson['reference'] == $request->reference
-            ) {
-                $notification = __('Payment failed, cheque transaction already exists');
-                $notification = ['messege' => $notification, 'alert-type' => 'error'];
-
+            if ($duplicate) {
+                $notification = ['messege' => __('Payment failed, a transaction with the same reference already exists.'), 'alert-type' => 'error'];
                 return redirect()->back()->with($notification);
             }
         }
-        //dd('m here now');
-        // Enregistre les infos de transaction dans la session
-        Session::put('after_success_transaction', $request->reference ?? $request->cheque_number);
+
+        // ✅ Étape 4 : Enregistrer les informations de paiement dans la session
+        $chequeDetails = json_encode([
+            'holder_name'  => $request->holder_name,
+            'installments' => $request->installments,
+            'cheque_count' => $request->cheque_count,
+            'payments'     => $payments, // tableau avec montants & dates
+            'comment'      => $request->comment ?? null,
+        ]);
+
+        Session::put('after_success_transaction', $request->reference ?? ('cheque_' . now()->timestamp));
         Session::put('payment_details', $chequeDetails);
 
-        // Appelle la méthode de succès de paiement
+        // ✅ Étape 5 : Continuer le traitement après le paiement
         return $this->payment_success();
     }
 
