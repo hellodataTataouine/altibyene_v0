@@ -178,102 +178,100 @@
                                                                             </div>
                                                                         </div>
                                                                     @elseif ($chapterItem->type == 'quiz')
-                                                                        <div class="accordion card mb-2" id="accordionExample"
-                                                                            data-chapter-item-id="{{ $chapterItem->id }}"
-                                                                            data-chapterid="{{ $chapter->id }}">
+                                                                        <div class="accordion card mb-2" id="quiz-accordion-{{ $chapterItem->id }}"> {{-- Unique ID for the quiz accordion wrapper --}}
                                                                             <div class="accordion-item">
-                                                                                <h2 class="accordion-header">
-                                                                                    <div
-                                                                                        class="accordion_header_content d-flex flex-wrap justify-content-between">
-                                                                                        <button
-                                                                                            class="accordion-button course-quiz-btn collapsed"
-                                                                                            type="button" data-toggle="collapse"
-                                                                                            data-target="#panelsStayOpen-collapse{{ $chapterItem->id }}"
-                                                                                            aria-expanded="true"
-                                                                                            aria-controls="panelsStayOpen-collapse{{ $chapterItem->id }}">
-                                                                                            <div
-                                                                                                class="d-flex flex-wrap justify-content-between align-items-center w-100">
-                                                                                                <div
-                                                                                                    class="d-flex flex-wrap align-items-center">
-                                                                                                    <span class="icon-container"><i
-                                                                                                            class="fas fa-question"></i></span>
+                                                                                <h2 class="accordion-header" id="panelsStayOpen-heading-quiz-{{ $chapterItem->id }}"> {{-- Unique ID for quiz header --}}
+                                                                                    <div class="accordion_header_content d-flex flex-wrap justify-content-between">
+                                                                                        <button class="accordion-button course-quiz-btn collapsed"
+                                                                                                type="button"
+                                                                                                data-toggle="collapse"
+                                                                                                data-target="#panelsStayOpen-collapse-quiz-{{ $chapterItem->id }}" {{-- Unique target --}}
+                                                                                                aria-expanded="false" {{-- Default to false --}}
+                                                                                                aria-controls="panelsStayOpen-collapse-quiz-{{ $chapterItem->id }}"> {{-- Match unique ID --}}
+                                                                                            <div class="d-flex flex-wrap justify-content-between align-items-center w-100">
+                                                                                                <div class="d-flex flex-wrap align-items-center">
+                                                                                                    <span class="icon-container"><i class="fas fa-question"></i></span>
                                                                                                     <p class="mb-0 ms-2 bold-text">
-
                                                                                                         {{ $chapterItem->quiz?->title }}
                                                                                                     </p>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </button>
-                                                                                        <div
-                                                                                            class="item-action course_quiz_item_action d-flex">
+                                                                                        <div class="item-action course_quiz_item_action d-flex">
                                                                                             <div class="dropdown action-item">
-                                                                                                <span
-                                                                                                    class="dropdown-toggle btn btn-small small-more-btn"
+                                                                                                <span class="dropdown-toggle btn btn-small small-more-btn"
                                                                                                     data-toggle="dropdown"
                                                                                                     aria-expanded="false">
                                                                                                     <i class="fas fa-plus"></i>
                                                                                                 </span>
-                                                                                                <ul
-                                                                                                    class="dropdown-menu dropdown-menu-end">
-                                                                                                    <li><a class="dropdown-item add-quiz-question-btn"
-                                                                                                            data-quiz-id="{{ $chapterItem->quiz?->id }}"
-                                                                                                            href="javascript:;">{{ __('Add Question') }}</a>
+                                                                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                                                                    <li>
+                                                                                                        <a class="dropdown-item add-quiz-question-btn"
+                                                                                                        data-quiz-id="{{ $chapterItem->quiz?->id }}"
+                                                                                                        href="javascript:;">
+                                                                                                            {{ __('Add Question') }}
+                                                                                                        </a>
                                                                                                     </li>
                                                                                                 </ul>
                                                                                             </div>
                                                                                             <a href="javascript:;"
-                                                                                                data-type="{{ $chapterItem->type }}"
-                                                                                                data-courseid="{{ $chapter->course_id }}"
-                                                                                                data-chapterid="{{ $chapter->id }}"
-                                                                                                data-chapter_item_id="{{ $chapterItem->id }}"
-                                                                                                class="text-dark action-item edit-lesson-btn"><i
-                                                                                                    class="fas fa-edit"></i></a>
-                                                                                            <a href="{{ route('admin.course-chapter.lesson.destroy', $chapterItem->id) }}"
-                                                                                                class="text-danger action-item delete-item"><i
-                                                                                                    class="fas fa-trash-alt"></i></a>
+                                                                                            data-chapter_item_id="{{ $chapterItem->id }}"
+                                                                                            class="text-dark quiz-copy-btn">
+                                                                                                <i class="fas fa-copy"></i>
+                                                                                            </a>
                                                                                             <a href="javascript:;"
-                                                                                                class="ms-2 dragger"><i
-                                                                                                    class="fas fa-arrows-alt"></i></a>
+                                                                                            data-type="{{ $chapterItem->type }}"
+                                                                                            data-courseid="{{ $chapter->course_id }}"
+                                                                                            data-chapterid="{{ $chapter->id }}"
+                                                                                            data-chapter_item_id="{{ $chapterItem->id }}"
+                                                                                            class="text-dark action-item edit-lesson-btn">
+                                                                                                <i class="fas fa-edit"></i>
+                                                                                            </a>
+                                                                                            <a href="{{ route('admin.course-chapter.lesson.destroy', $chapterItem->id) }}"
+                                                                                            class="text-danger action-item delete-item">
+                                                                                                <i class="fas fa-trash-alt"></i>
+                                                                                            </a>
+                                                                                            <a href="javascript:;" class="ms-2 dragger">
+                                                                                                <i class="fas fa-arrows-alt"></i>
+                                                                                            </a>
                                                                                         </div>
                                                                                     </div>
                                                                                 </h2>
-                                                                                <div id="panelsStayOpen-collapse{{ $chapterItem->id }}"
-                                                                                    class="accordion-collapse collapse"
-                                                                                    data-bs-parent="#accordionExample">
+                                                                                <div id="panelsStayOpen-collapse-quiz-{{ $chapterItem->id }}" {{-- Unique ID for collapse panel --}}
+                                                                                    class="accordion-collapse collapse" {{-- Initially collapsed --}}
+                                                                                    aria-labelledby="panelsStayOpen-heading-quiz-{{ $chapterItem->id }}" {{-- Match unique header ID --}}
+                                                                                    data-bs-parent="#quiz-accordion-{{ $chapterItem->id }}"> {{-- Match unique parent ID --}}
                                                                                     <div class="accordion-body">
                                                                                         @if ($chapterItem->quiz)
-
-                                                                                        @forelse ($chapterItem->quiz->questions as $question)
-                                                                                            <div class="card course-section-item mb-3"
-                                                                                                data-chapter-item-id=""
-                                                                                                data-chapterid="">
-                                                                                                <div
-                                                                                                    class="d-flex flex-wrap justify-content-between align-items-center">
-                                                                                                    <div
-                                                                                                        class="edit_course_icons d-flex flex-wrap align-items-center">
-                                                                                                        <span
-                                                                                                            class="icon-container"><i
-                                                                                                                class="far fa-question-circle"></i></span>
-                                                                                                        <p
-                                                                                                            class="mb-0 ms-2 bold-text">
-                                                                                                            {{ $question->title }}
-                                                                                                        </p>
-                                                                                                    </div>
-                                                                                                    <div class="item-action">
-                                                                                                        <a href="javascript:;"
+                                                                                            @forelse ($chapterItem->quiz->questions as $question)
+                                                                                                <div class="card course-section-item mb-3"
+                                                                                                    data-chapter-item-id=""
+                                                                                                    data-chapterid="">
+                                                                                                    <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                                                                                        <div class="edit_course_icons d-flex flex-wrap align-items-center">
+                                                                                                            <span class="icon-container">
+                                                                                                                <i class="far fa-question-circle"></i>
+                                                                                                            </span>
+                                                                                                            <p class="mb-0 ms-2 bold-text">
+                                                                                                                {{ $question->title }}
+                                                                                                            </p>
+                                                                                                        </div>
+                                                                                                        <div class="item-action">
+                                                                                                            <a href="javascript:;"
                                                                                                             class="ms-2 text-dark edit-question-btn"
-                                                                                                            data-question-id="{{ $question->id }}"><i
-                                                                                                                class="fas fa-edit"></i></a>
-                                                                                                        <a href="{{ route('admin.course-chapter.quiz-question.destroy', $question->id) }}"
-                                                                                                            class="ms-2 text-danger delete-item"><i
-                                                                                                                class="fas fa-trash-alt"></i></i></a>
+                                                                                                            data-question-id="{{ $question->id }}">
+                                                                                                                <i class="fas fa-edit"></i>
+                                                                                                            </a>
+                                                                                                            <a href="{{ route('admin.course-chapter.quiz-question.destroy', $question->id) }}"
+                                                                                                            class="ms-2 text-danger delete-item">
+                                                                                                                <i class="fas fa-trash-alt"></i>
+                                                                                                            </a>
+                                                                                                        </div>
                                                                                                     </div>
                                                                                                 </div>
-                                                                                            </div>
-                                                                                        @empty
-                                                                                            <p class="text-center">
-                                                                                                {{ __('No questions found.') }}</p>
-                                                                                        @endforelse
+                                                                                            @empty
+                                                                                                <p class="text-center">{{ __('No questions found.') }}</p>
+                                                                                            @endforelse
                                                                                         @endif
                                                                                     </div>
                                                                                 </div>

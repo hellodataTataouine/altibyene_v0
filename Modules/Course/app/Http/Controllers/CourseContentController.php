@@ -441,4 +441,45 @@ class CourseContentController extends Controller
         $question->delete();
         return response()->json(['status' => 'success', 'message' => __('Question deleted successfully')]);
     }
+    public function copyChapterItem($chapterItemId)
+    {
+        $chapterItem = CourseChapterItem::with('quiz.questions')->findOrFail($chapterItemId);
+        $chapter = CourseChapter::findOrFail($chapterItem->chapter_id);
+        $selectedCourse = Course::findorFail($chapter->course_id);
+        $courses = Course::with('chapters')->get();
+        return view('course::course.partials.quiz-duplicate-modal', ['courses' => $courses,'selectedCourse'=>$selectedCourse,'chapter'=>$chapter,'chapter_item_id'=>$chapterItemId])->render();
+    }
+    public function copyChapterItemStore(Request $request)
+    {
+        //dd($request->all());
+        $request->validate([
+            'chapter_item_id' => 'required|exists:course_chapter_items,id',
+            'chapter_id' => 'required|exists:course_chapters,id',
+        ]);
+
+        $chapterItem = CourseChapterItem::with('quiz.questions')->findOrFail($request->chapter_item_id);
+        $newChapterItem = $chapterItem->replicate();
+        $newChapterItem->chapter_id = $request->chapter_id;
+        $newChapterItem->save();
+
+        if ($chapterItem->quiz) {
+            $newQuiz = $chapterItem->quiz->replicate();
+            $newQuiz->chapter_item_id = $newChapterItem->id;
+            $newQuiz->save();
+
+            foreach ($chapterItem->quiz->questions as $question) {
+                $newQuestion = $question->replicate();
+                $newQuestion->quiz_id = $newQuiz->id;
+                $newQuestion->save();
+
+                foreach ($question->answers as $answer) {
+                    $newAnswer = $answer->replicate();
+                    $newAnswer->question_id = $newQuestion->id;
+                    $newAnswer->save();
+                }
+            }
+        }
+
+        return response()->json(['status' => 'success', 'message' => __('Chapter item copied successfully')]);
+    }
 }

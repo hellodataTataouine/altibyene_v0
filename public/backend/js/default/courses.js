@@ -396,6 +396,25 @@ $(document).ready(function () {
             },
         });
     });
+    /** load copy quiz modal */
+    $(".quiz-copy-btn").on("click", function () {
+        $(".dynamic-modal").modal("show");
+        let chapterItemId = $(this).data("chapter_item_id");
+        $.ajax({
+            method: "GET",
+            url: base_url + "/admin/course-chapter/quiz-duplicate/copy/" + chapterItemId,
+
+            beforeSend: function () {
+                dynamicModalContent.html(loader);
+            },
+            success: function (data) {
+                dynamicModalContent.html(data);
+            },
+            error: function (xhr, status, error) {
+                toastr(error);
+            },
+        });
+    });
 
     // update lesson
     $("body").on("submit", ".update_lesson_form", function (e) {
